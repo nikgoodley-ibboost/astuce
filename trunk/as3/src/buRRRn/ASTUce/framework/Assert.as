@@ -196,8 +196,24 @@ package buRRRn.ASTUce.framework
                 {
                 return;
                 }
-                
-            if( (expected is String) || (actual is String) )
+            
+            /* note:
+               maybe something to improve here
+               ComparisonFailure allow to show the string diff
+               between two strings
+               ex:
+               assertEquals( "hello", "hallo" ) -> <...e...> but was <...a...>
+               
+               but as we use serialization to represent our result
+               ex:
+               assertEquals( true, false ) --> <true> but was <false>
+               
+               we could apply the string diff of ComparisonFailure to the serialization result
+               this could be a cleare representation of the failure for objects, arrays, etc.
+               ex:
+               assertEquals( [1,2,3], [1,5,3] ) --> <[...,2,...]> but was <[...,5,...]>
+            */
+            if( (expected is String) && (actual is String) )
                 {
                 throw new ComparisonFailure( expected, actual, message );
                 }
