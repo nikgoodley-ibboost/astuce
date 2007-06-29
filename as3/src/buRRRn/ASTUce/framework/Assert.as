@@ -192,6 +192,12 @@ package buRRRn.ASTUce.framework
                 return;
                 }
             
+            //special case: you can't compare NaN with himself
+            if( isNaN(expected) && isNaN(actual) )
+                {
+                return;
+                }
+            
             if( (expected is IEquatable) && expected.equals( actual ) )
                 {
                 return;
