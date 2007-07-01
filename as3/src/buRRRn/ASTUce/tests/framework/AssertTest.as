@@ -99,7 +99,7 @@ package buRRRn.ASTUce.tests.framework
                 {
                 assertEquals( null, "foo" );
                 }
-            catch( e:ComparisonFailure )
+            catch( e:AssertionFailedError )
                 {
                 return;
                 }
@@ -113,7 +113,7 @@ package buRRRn.ASTUce.tests.framework
                 {
                 assertEquals( "foo", null );
                 }
-            catch( e:ComparisonFailure )
+            catch( e:AssertionFailedError )
                 {
                 return;
                 }
