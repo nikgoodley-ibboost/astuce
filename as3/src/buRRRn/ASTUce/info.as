@@ -24,7 +24,7 @@ package buRRRn.ASTUce
     import system.Version;
     import system.Console;
     import system.Serializer;
-    
+     
     /* Function: info
        basic system info
     */
