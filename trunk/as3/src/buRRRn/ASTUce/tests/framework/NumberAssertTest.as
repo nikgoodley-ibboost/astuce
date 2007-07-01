@@ -66,6 +66,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testAssertNaNEqualsNaNFails():void
             {
+            /*
             try
                 {
                 assertEquals( NaN, NaN );
@@ -76,6 +77,9 @@ package buRRRn.ASTUce.tests.framework
                 }
             
             fail();
+            */
+            //we do support NaN even if it's useless...
+            assertEquals( NaN, NaN );
             }
         
         public function testAssertPosInfinityNotEqualsNegInfinity():void
