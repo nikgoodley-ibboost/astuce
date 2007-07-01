@@ -182,6 +182,13 @@ package buRRRn.ASTUce.framework
         */
         static public function assertEquals( expected:*, actual:*, message:String = "" ):void
             {
+            
+            if( ((expected == undefined) && (actual != undefined)) ||
+                ((expected != undefined) && (actual == undefined)) )
+                {
+                _failNotEquals( expected, actual, message );
+                }
+            
             if( (expected == null) && (actual == null) )
                 {
                 return;
@@ -193,7 +200,8 @@ package buRRRn.ASTUce.framework
                 }
             
             //special case: you can't compare NaN with himself
-            if( isNaN(expected) && isNaN(actual) )
+            if( ((expected is Number) && (actual is Number)) &&
+                (isNaN(expected) && isNaN(actual)) )
                 {
                 return;
                 }
