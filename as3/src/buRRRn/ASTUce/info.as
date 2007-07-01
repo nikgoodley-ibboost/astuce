@@ -21,12 +21,26 @@
 
 package buRRRn.ASTUce
     {
+    import system.Version;
+    import system.Console;
+    import system.Serializer;
     
-    public function info():String
+    /* Function: info
+       basic system info
+    */
+    public function info( verbose:Boolean = false, showConfig:Boolean = false ):void
         {
-        var str:String  = "";
-        var CRLF:String = "\n";
+        var separator:String = "----------------------------------------------------------------";
+        var CRLF:String      = "\n";
+        var name:String      = "ASTUce";
+        var fullname:String  = "ActionScript Test Unit compact edition AS3";
+        var version:Version  = new Version( 0, 8 );
+            version.revision = parseInt( "$Rev$".split( " " )[1] );
         
+        var copyright:String = "Copyright © 2006-2007 Zwetan Kjukov, All right reserved.";
+        var origin:String    = "Made in the EU.";
+        
+        /*
         if( config.verbose )
             {
             str += name + ": " + fullName + " " + ext + " v" + version;
@@ -44,12 +58,45 @@ package buRRRn.ASTUce
             }
         
         return str;
+        */
+        
+        var str:String = "";
+            if( !verbose && config.verbose )
+                {
+                verbose = true;
+                }
+            
+            if( verbose ) {
+            str += "{sep}{crlf}";
+            str += "{name}: {fullname} v{version}{crlf}";
+            str += "{copyright}{crlf}";
+            str += "{origin}{crlf}";
+            str += "{sep}";
+            } else {
+            str += "{name} v{version}{crlf}";
+            str += "{sep}";
+             }
+            
+            if( showConfig ) {
+            str += "{crlf}config:";
+            str += "{config}{crlf}";
+            str += "{sep}";
+            }
+            
+        Console.writeLine( str,
+                           {
+                           sep:separator,
+                           crlf:CRLF,
+                           name:name,
+                           fullname:fullname,
+                           version:version,
+                           copyright:copyright,
+                           origin:origin,
+                           config: Serializer.serialize( config )
+                           }
+                         );
+        
         }
     
     }
 
-var name:String     = "ASTUce";
-var fullName:String = "ActionScript Test Unit compact edition";
-var version:String  = "0.8";
-var ext:String      = "AS3";
-var platform:String = "Flash ActionScript v3.0";
