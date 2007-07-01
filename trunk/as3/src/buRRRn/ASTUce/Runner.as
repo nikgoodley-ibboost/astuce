@@ -42,8 +42,9 @@ package buRRRn.ASTUce
         
         static protected function displayHeader():void
             {
-            Console.writeLine( buRRRn.ASTUce.info() );
-            Console.writeLine( strings.separator );
+            //Console.writeLine( buRRRn.ASTUce.info() );
+            //Console.writeLine( strings.separator );
+            buRRRn.ASTUce.info();
             }
         
         static protected function displayInfos( suite:ITest, result:TestResult ):void
