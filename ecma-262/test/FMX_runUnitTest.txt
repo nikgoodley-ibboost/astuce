@@ -1,0 +1,7 @@
+
+We need to have a special branch of ASTUce
+for Flash MX which support a particular way
+of catching errors.
+
+see branch: ECMA-262\ASTUce\branches\ASTUce_v1.0.x_Flash6
+
