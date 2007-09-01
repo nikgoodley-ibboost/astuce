@@ -1,6 +1,0 @@
-
-build.name     = "ASTUce";
-build.fullName = "ActionScript Test Unit compact edition";
-build.version  = "1.0.0";
-build.ext      = "";
-build.platform = "ECMA-262";
