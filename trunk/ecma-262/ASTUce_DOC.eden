@@ -1,0 +1,24 @@
+/* ASTUce documentation */
+
+//general
+config.debug = false;
+
+//files
+config.files.build = "build_DOC.eden";
+
+//actions
+config.actions.generateRelease = false;
+config.actions.combineAll      = false;
+
+//doc
+config.actions.generateDoc = true;
+config.doc.cmdline = "perl bin\\nd\\NaturalDocs -i src -o HTML doc -p bin -s buRRRn";
+
+//zip
+config.actions.zipRelease = true;
+
+config.zip.full = false;
+config.zip.dev  = false;
+config.zip.lib  = false;
+config.zip.doc  = true;
+

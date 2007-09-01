@@ -1,0 +1,28 @@
+/* ASTUce for ECMA-262 */
+
+//general
+config.source = "src";
+
+//files
+config.files.build = "build.eden";
+
+//extensions
+config.extension.source          = ["es"];
+config.extension.ignore          = ["txt","eden"];
+config.extension.ignoreNonSource = true;
+config.extension.dev             = "es";
+config.extension.lib             = "es";
+
+//Subversion
+config.actions.accessSVN = false;
+config.SVN.path = "svn://live.buRRRn.com/ECMA-262/ASTUce";
+
+//zip
+config.actions.zipRelease = true;
+
+config.zip.full = false;
+config.zip.dev  = true;
+config.zip.lib  = true;
+config.zip.doc  = false;
+
+
