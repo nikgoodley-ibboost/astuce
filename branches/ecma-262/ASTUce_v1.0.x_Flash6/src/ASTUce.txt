@@ -1,0 +1,7 @@
+
+document: ASTUce
+
+ASTUce: ActionScript Test Unit compact edition v1.0.0
+
+project page: http://www.buRRRn.com/projects/ASTUce.html
+
