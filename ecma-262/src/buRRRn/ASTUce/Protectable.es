@@ -13,22 +13,24 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
 */
 
-/* Interface: IProtectable
+/* Constructor: Protectable
+   A Protectable can be run and can throw errors.
 */
-buRRRn.ASTUce.IProtectable = function()
+buRRRn.ASTUce.Protectable = function()
     {
     
     }
 
 /* Method: protect
+   Run the the following method protected.
 */
-buRRRn.ASTUce.IProtectable.prototype.protect = function()
+buRRRn.ASTUce.Protectable.prototype.protect = function()
     {
     
     }
