@@ -19,101 +19,23 @@
   Contributor(s):
 */
 
+var self = this;
+
+if( !self.buRRRn )
+    {
+    self.buRRRn = {};
+    }
+
 if( !buRRRn.ASTUce  )
     {
     /* Singleton: buRRRn.ASTUce
-       The ASTUce framework.
+       The ASTUce application.
     */
     buRRRn.ASTUce = {};
     }
 
-/* StaticMethod: getInfo
-   Returns information about the ASTUce framework.
+/* Property: version
+   Contains ASTUce version.
 */
-buRRRn.ASTUce.getInfo = function()
-    {
-    var str, CRLF;
-    str = "";
-    CRLF = "\n";
-    
-    if( this.verbose )
-        {
-        str += this._name + ": " + this._fullName + " v" + this._version;
-        }
-    else
-        {
-        str += this._name + " v" + this._version;
-        }
-    
-    /*!## TODO: change copyright notice */
-    if( this.verbose )
-        {
-        str += CRLF;
-        str += "Copyright (c) 2004-2005 Zwetan Kjukov, All right reserved." +CRLF
-        str += "Made in the EU.";
-        }
-    
-    return str;
-    }
-
-/* StaticMethod: main
-   Execute the main process of the ASTUce framework.
-*/
-buRRRn.ASTUce.main = function()
-    {
-    
-    var separator = "----------------------------------------------------------------";
-    trace( separator );
-    
-    var runner = new buRRRn.ASTUce.MiniRunner( "Main Tests" );
-    
-    if( this.testMyself )
-        {
-        
-        runner.setUp = function()
-            {
-            this.suite.addTest( Tests.AllTests.suite() );
-            }
-        
-        }
-    
-    if( arguments.length > 0 )
-        {
-        for( var i=0; i<arguments.length; i++ )
-            {
-            runner.suite.addTest( arguments[i] );
-            }
-        }
-    
-    trace( this.getInfo() );
-    trace( separator );
-    runner.run();
-    trace( separator );
-    
-    if( this.showConstructorList )
-        {
-        trace( runner.suite );
-        trace( separator );
-        }
-    }
-
-/* StaticPrivateProperty: _name
-   The code name of the framework.
-*/
-buRRRn.ASTUce._name = "ASTUce";
-
-/* StaticPrivateProperty: _fullName
-   The full name of the framework.
-*/
-buRRRn.ASTUce._fullName = "ActionScript Test Unit compact edition";
-
-/* StaticPrivateProperty: _version
-   The version as string of the framework.
-*/
-buRRRn.ASTUce._version = "1.0.0";
-
-/* StaticPrivateProperty: _platform
-   The target platform of the framework.
-*/
-buRRRn.ASTUce._platform = "ECMA-262";
+buRRRn.ASTUce.version = "1.1.0." + parseInt( "$Rev$".split( " " )[1] );
 
