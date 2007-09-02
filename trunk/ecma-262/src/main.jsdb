@@ -1,0 +1,14 @@
+
+load( "../lib/core2/core2_v1.1.0.es" );
+load( "../lib/eden/edenlite_v0.1.0.es" );
+load( "ASTUce_v1.1.0.es" );
+
+trace( "---------------------------------" );
+var eden = buRRRn.eden;
+var ASTUce = buRRRn.ASTUce;
+trace( "ASTUce v"+eden.ASTUce);
+
+eden.prettyPrinting = true;
+
+trace( eden.serialize( ASTUce ) );
+trace( "---------------------------------" );

@@ -1,0 +1,2 @@
+@echo off
+copy /D /A buRRRn\ASTUce.es+buRRRn\ASTUce\config.es+buRRRn\ASTUce\strings.es+buRRRn\ASTUce\Assertion.es+buRRRn\ASTUce\AssertionFailedError.es+buRRRn\ASTUce\ComparisonFailure.es+buRRRn\ASTUce\ITest.es+buRRRn\ASTUce\ITestListener.es+buRRRn\ASTUce\Protectable.es+buRRRn\ASTUce\TestCase.es+buRRRn\ASTUce\TestFailure.es+buRRRn\ASTUce\TestResult.es+buRRRn\ASTUce\TestSuite.es ASTUce_v1.1.0_debug.es
