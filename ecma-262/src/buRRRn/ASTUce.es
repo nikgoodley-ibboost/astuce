@@ -39,3 +39,51 @@ if( !buRRRn.ASTUce  )
 */
 buRRRn.ASTUce.version = "1.1.0." + parseInt( "$Rev$".split( " " )[1] );
 
+
+buRRRn.ASTUce.info = function( verbose/*Boolean*/, showConfig/*Boolean*/ )/*String*/
+    {
+    if( verbose == null )
+        {
+        verbose = false;
+        }
+    
+    if( showConfig == null )
+        {
+        showConfig = false;
+        }
+    
+    var separator = "----------------------------------------------------------------";
+    var CRLF      = "\n";
+    var name      = "ASTUce";
+    var fullname  = "ActionScript Test Unit compact edition";
+    var copyright = "Copyright © 2004-2007 Zwetan Kjukov, All right reserved.";
+    var origin    = "Made in the EU.";
+    
+    var str = "";
+    
+    if( !verbose && buRRRn.ASTUce.config.verbose )
+        {
+        verbose = true;
+        }
+    
+    if( verbose ) {
+    str += separator+CRLF;
+    str += name+": "+fullname+" v"+this.version+CRLF;
+    str += copyright+CRLF;
+    str += origin+CRLF;
+    str += separator;
+    } else {
+    str += name+" v"+this.version+CRLF;
+    str += separator;
+    }
+    
+    if( showConfig ) {
+    str += CRLF+"config:";
+    str += buRRRn.eden.serialize( buRRRn.ASTUce.config )+CRLF;
+    str += separator;
+    }
+    
+    trace( str );
+    }
+
+

@@ -4,7 +4,17 @@ var self=this;if(!self.buRRRn)
 {self.buRRRn={};}
 if(!buRRRn.ASTUce)
 {buRRRn.ASTUce={};}
-buRRRn.ASTUce.version="1.1.0."+parseInt("$Rev: 23 $".split(" ")[1]);buRRRn.ASTUce.Assertion={};buRRRn.ASTUce.Assertion.assertTrue=function(condition,message)
+buRRRn.ASTUce.version="1.1.0."+parseInt("$Rev: 23 $".split(" ")[1]);buRRRn.ASTUce.info=function(verbose,showConfig)
+{if(verbose==null)
+{verbose=false;}
+if(showConfig==null)
+{showConfig=false;}
+var separator="----------------------------------------------------------------";var CRLF="\n";var name="ASTUce";var fullname="ActionScript Test Unit compact edition";var copyright="Copyright © 2004-2007 Zwetan Kjukov, All right reserved.";var origin="Made in the EU.";var str="";if(!verbose&&buRRRn.ASTUce.config.verbose)
+{verbose=true;}
+if(verbose){str+=separator+CRLF;str+=name+": "+fullname+" v"+this.version+CRLF;str+=copyright+CRLF;str+=origin+CRLF;str+=separator;}else{str+=name+" v"+this.version+CRLF;str+=separator;}
+if(showConfig){str+=CRLF+"config:";str+=buRRRn.eden.serialize(buRRRn.ASTUce.config)+CRLF;str+=separator;}
+trace(str);}
+buRRRn.ASTUce.Assertion={};buRRRn.ASTUce.Assertion.assertTrue=function(condition,message)
 {if(!condition)
 {this.fail(message);}}
 buRRRn.ASTUce.Assertion.assertFalse=function(condition,message)
@@ -169,7 +179,7 @@ buRRRn.ASTUce.ResultPrinter.prototype.startTest=function(test)
 buRRRn.ASTUce.Runner=function(writer)
 {this.printer=new buRRRn.ASTUce.ResultPrinter(writer);}
 buRRRn.ASTUce.Runner.prototype=new buRRRn.ASTUce.BaseTestRunner();buRRRn.ASTUce.Runner.prototype.constructor=buRRRn.ASTUce.Runner;buRRRn.ASTUce.Runner.displayHeader=function()
-{trace("buRRRn.ASTUce.info");}
+{buRRRn.ASTUce.info(true,true);}
 buRRRn.ASTUce.Runner.prototype.getTestName=function(any)
 {if(any==null)
 {return"null";}

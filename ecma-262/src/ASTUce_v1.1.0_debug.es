@@ -40,6 +40,54 @@ if( !buRRRn.ASTUce  )
 buRRRn.ASTUce.version = "1.1.0." + parseInt( "$Rev: 23 $".split( " " )[1] );
 
 
+buRRRn.ASTUce.info = function( verbose/*Boolean*/, showConfig/*Boolean*/ )/*String*/
+    {
+    if( verbose == null )
+        {
+        verbose = false;
+        }
+    
+    if( showConfig == null )
+        {
+        showConfig = false;
+        }
+    
+    var separator = "----------------------------------------------------------------";
+    var CRLF      = "\n";
+    var name      = "ASTUce";
+    var fullname  = "ActionScript Test Unit compact edition";
+    var copyright = "Copyright © 2004-2007 Zwetan Kjukov, All right reserved.";
+    var origin    = "Made in the EU.";
+    
+    var str = "";
+    
+    if( !verbose && buRRRn.ASTUce.config.verbose )
+        {
+        verbose = true;
+        }
+    
+    if( verbose ) {
+    str += separator+CRLF;
+    str += name+": "+fullname+" v"+this.version+CRLF;
+    str += copyright+CRLF;
+    str += origin+CRLF;
+    str += separator;
+    } else {
+    str += name+" v"+this.version+CRLF;
+    str += separator;
+    }
+    
+    if( showConfig ) {
+    str += CRLF+"config:";
+    str += buRRRn.eden.serialize( buRRRn.ASTUce.config )+CRLF;
+    str += separator;
+    }
+    
+    trace( str );
+    }
+
+
+
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -1027,7 +1075,8 @@ buRRRn.ASTUce.Runner.prototype.constructor = buRRRn.ASTUce.Runner;
 
 buRRRn.ASTUce.Runner.displayHeader = function()
     {
-    trace( "buRRRn.ASTUce.info" );
+    //trace( "buRRRn.ASTUce.info" );
+    buRRRn.ASTUce.info( true, true );
     }
 
 buRRRn.ASTUce.Runner.prototype.getTestName = function( any )/*String*/
