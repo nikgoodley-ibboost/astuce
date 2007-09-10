@@ -37,7 +37,7 @@ buRRRn.ASTUce.config.verbose = true;
    true  - show constructors list
    false - don't show constructor list
 */
-buRRRn.ASTUce.config.showConstructorList = false;
+buRRRn.ASTUce.config.showConstructorList = true;
 
 /* StaticProperty: showObjectSource
    Boolean option to display the source of objects being compared.

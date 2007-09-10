@@ -66,11 +66,13 @@ buRRRn.ASTUce.TestSuite = function( theConstructor, name/*String*/, simpleTrace/
         {
         try
             {
+            var originalCtor = theConstructor;
             theConstructor = Reflection.getConstructorByName( theConstructor );
             }
         catch( e )
             {
-            this.addTest( this._warning( e.toString() ) );
+            //this.addTest( this._warning( e.toString() ) );
+            this.setName( originalCtor );
             return;
             }
         }
