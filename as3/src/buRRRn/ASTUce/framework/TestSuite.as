@@ -84,8 +84,16 @@ package buRRRn.ASTUce.framework
             
             if( theConstructor is String )
                 {
-                _name = theConstructor;
-                return;
+                try
+                    {
+                    var originalCtor:String = theConstructor;
+                    theConstructor = Reflection.getClassByName( theConstructor );
+                    }
+                catch( e:Error )
+                    {
+                    _name = originalCtor
+                    return;
+                    }
                 }
             
             if( theConstructor is ITest )
