@@ -28,7 +28,7 @@ buRRRn.ASTUce.ResultPrinter = function( /*String*/ writer )
     this.writer = trace; //default writer from core2
     this.column = 0;
 
-    if( (writer != null) && (GetTypeOf( writer ) == "function") ) //core2
+    if( (writer != null) && (typeof writer == "function") ) //core2
         {
         this.writer = writer;
         }

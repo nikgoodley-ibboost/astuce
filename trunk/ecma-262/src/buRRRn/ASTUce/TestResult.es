@@ -158,7 +158,7 @@ buRRRn.ASTUce.TestResult.prototype.run = function( /*TestCase*/ test )
     var p;
     this.startTest( test );
     
-    p = new buRRRn.ASTUce.IProtectable();
+    p = new buRRRn.ASTUce.Protectable();
     p.protect = function()
         {
         return test.runBare();

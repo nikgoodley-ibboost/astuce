@@ -19,8 +19,9 @@
   Contributor(s):
 */
 
-/* Document: config
+/* Singleton: config
 */
+buRRRn.ASTUce.config = {};
 
 /* StaticProperty: verbose
    Boolean configuring the getInfo method behaviour.
@@ -28,7 +29,7 @@
    true  - more verbose
    false - less verbose
 */
-buRRRn.ASTUce.verbose = true;
+buRRRn.ASTUce.config.verbose = true;
 
 /* StaticProperty: showConstructorList
    Boolean option to display all the constructors being tested.
@@ -36,7 +37,7 @@ buRRRn.ASTUce.verbose = true;
    true  - show constructors list
    false - don't show constructor list
 */
-buRRRn.ASTUce.showConstructorList = false;
+buRRRn.ASTUce.config.showConstructorList = false;
 
 /* StaticProperty: showObjectSource
    Boolean option to display the source of objects being compared.
@@ -54,7 +55,7 @@ buRRRn.ASTUce.showConstructorList = false;
    ## AssertionFailedError : expected:<[object Object]> but was:<[object Object]> ##
    (end)
 */
-buRRRn.ASTUce.showObjectSource = true;
+buRRRn.ASTUce.config.showObjectSource = true;
 
 /* StaticProperty: invertExpectedActual
    Boolean option to invert the order of the arguments: expected, actual
@@ -63,7 +64,10 @@ buRRRn.ASTUce.showObjectSource = true;
    true  - the argument order is: actual, expected. (inverted)
    false - the argument order is: expected, actual. (default)
 */
-buRRRn.ASTUce.invertExpectedActual = false;
+buRRRn.ASTUce.config.invertExpectedActual = false;
+
+
+buRRRn.ASTUce.config.testInheritedTests = true;
 
 /* StaticProperty: testPrivateMethods
    Boolean configuring the behaviour of ASTUce regarding private methods.
@@ -85,7 +89,7 @@ buRRRn.ASTUce.invertExpectedActual = false;
       to provide this parameter per TestCase or TestSuite
       instead of the global actual on/off parameter.
 */
-buRRRn.ASTUce.testPrivateMethods = false;
+buRRRn.ASTUce.config.testPrivateMethods = false;
 
 /* StaticProperty: testMyself
    Boolean option allowing the ASTUce framework to test itself.
@@ -93,5 +97,5 @@ buRRRn.ASTUce.testPrivateMethods = false;
    true  - add to tests *buRRRn.Tests.AllTests.suite()*.
    false - add nothing
 */
-buRRRn.ASTUce.testMyself = false;
+buRRRn.ASTUce.config.testMyself = false;
 
