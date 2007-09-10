@@ -13,13 +13,13 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
 */
 
-Tests.ASTUce.TestListenerTest = function( name )
+tests.ASTUce.TestListenerTest = function( name )
     {
     buRRRn.ASTUce.TestCase.call( this, name );
     
@@ -30,30 +30,30 @@ Tests.ASTUce.TestListenerTest = function( name )
     this._errorCount   = null;
     }
 
-Tests.ASTUce.TestListenerTest.prototype = new buRRRn.ASTUce.TestCase();
-Tests.ASTUce.TestListenerTest.prototype.constructor = Tests.ASTUce.TestListenerTest;
+tests.ASTUce.TestListenerTest.prototype = new buRRRn.ASTUce.TestCase();
+tests.ASTUce.TestListenerTest.prototype.constructor = tests.ASTUce.TestListenerTest;
 
-Tests.ASTUce.TestListenerTest.prototype.addError = function( /*ITest*/ test, /*Error*/ e )
+tests.ASTUce.TestListenerTest.prototype.addError = function( /*ITest*/ test, /*Error*/ e )
     {
     this._errorCount++;
     }
 
-Tests.ASTUce.TestListenerTest.prototype.addFailure = function( /*ITest*/ test, /*AssertionFailedError*/ afe )
+tests.ASTUce.TestListenerTest.prototype.addFailure = function( /*ITest*/ test, /*AssertionFailedError*/ afe )
     {
     this._failureCount++;
     }
 
-Tests.ASTUce.TestListenerTest.prototype.endTest = function( /*ITest*/ test )
+tests.ASTUce.TestListenerTest.prototype.endTest = function( /*ITest*/ test )
     {
     this._endCount++;
     }
 
-Tests.ASTUce.TestListenerTest.prototype.startTest = function( /*ITest*/ test )
+tests.ASTUce.TestListenerTest.prototype.startTest = function( /*ITest*/ test )
     {
     this._startCount++;
     }
 
-Tests.ASTUce.TestListenerTest.prototype.setUp = function()
+tests.ASTUce.TestListenerTest.prototype.setUp = function()
     {
     this._result = new buRRRn.ASTUce.TestResult();
     this._result.addListener( this );
@@ -64,7 +64,7 @@ Tests.ASTUce.TestListenerTest.prototype.setUp = function()
     this._errorCount   = 0;
     }
 
-Tests.ASTUce.TestListenerTest.prototype.testError = function()
+tests.ASTUce.TestListenerTest.prototype.testError = function()
     {
     var test = new buRRRn.ASTUce.TestCase( "noop" );
     
@@ -78,7 +78,7 @@ Tests.ASTUce.TestListenerTest.prototype.testError = function()
     this.assertEquals( 1, this._endCount,   "TL_001b" );
     }
 
-Tests.ASTUce.TestListenerTest.prototype.testFailure = function()
+tests.ASTUce.TestListenerTest.prototype.testFailure = function()
     {
     var test = new buRRRn.ASTUce.TestCase( "noop" );
     
@@ -101,7 +101,7 @@ Tests.ASTUce.TestListenerTest.prototype.testFailure = function()
     this.assertEquals( 1, this._endCount,     "TL_002b" );
     }
 
-Tests.ASTUce.TestListenerTest.prototype.testStartStop = function()
+tests.ASTUce.TestListenerTest.prototype.testStartStop = function()
     {
     var test = new buRRRn.ASTUce.TestCase("noop");
     

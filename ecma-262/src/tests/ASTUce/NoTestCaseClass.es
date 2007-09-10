@@ -13,18 +13,18 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
 */
 
-Tests.ASTUce.NoTestCaseClass = function()
+tests.ASTUce.NoTestCaseClass = function()
     {
     
     }
 
-Tests.ASTUce.NoTestCaseClass.prototype.testSuccess = function()
+tests.ASTUce.NoTestCaseClass.prototype.testSuccess = function()
     {
     
     }

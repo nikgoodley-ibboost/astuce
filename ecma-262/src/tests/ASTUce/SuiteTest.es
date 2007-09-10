@@ -13,7 +13,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -22,25 +22,25 @@
 /* Constructor: SuiteTest
    A fixture for testing the "auto" test suite feature.
 */
-Tests.ASTUce.SuiteTest = function( name )
+tests.ASTUce.SuiteTest = function( name )
     {
     buRRRn.ASTUce.TestCase.call( this, name );
     }
 
-Tests.ASTUce.SuiteTest.prototype = new buRRRn.ASTUce.TestCase();
-Tests.ASTUce.SuiteTest.prototype.constructor = Tests.ASTUce.SuiteTest;
+tests.ASTUce.SuiteTest.prototype = new buRRRn.ASTUce.TestCase();
+tests.ASTUce.SuiteTest.prototype.constructor = tests.ASTUce.SuiteTest;
 
-Tests.ASTUce.SuiteTest.prototype.setUp = function()
+tests.ASTUce.SuiteTest.prototype.setUp = function()
     {
     this.result = new buRRRn.ASTUce.TestResult();
     }
 
 /* StaticMethod: suite
 */
-Tests.ASTUce.SuiteTest.suite = function()
+tests.ASTUce.SuiteTest.suite = function()
     {
     var SuiteTest, suite;
-    SuiteTest = Tests.ASTUce.SuiteTest;
+    SuiteTest = tests.ASTUce.SuiteTest;
     suite     = new buRRRn.ASTUce.TestSuite( "Suite Tests" );
     //suite.simpleTrace = true;
     
@@ -59,26 +59,26 @@ Tests.ASTUce.SuiteTest.suite = function()
     return suite;
     }
 
-Tests.ASTUce.SuiteTest.prototype.testNoTestCaseClass = function()
+tests.ASTUce.SuiteTest.prototype.testNoTestCaseClass = function()
     {
-    var t = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.NoTestCaseClass );
+    var t = new buRRRn.ASTUce.TestSuite( tests.ASTUce.NoTestCaseClass );
     t.run( this.result );
     this.assertEquals( 1, this.result.runCount(),  "SUIT_001a" );  // warning test
     this.assertTrue( !this.result.wasSuccessful(), "SUIT_001b" );
     }
 
-Tests.ASTUce.SuiteTest.prototype.testNoTestCases = function()
+tests.ASTUce.SuiteTest.prototype.testNoTestCases = function()
     {
-    var t = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.NoTestCases );
+    var t = new buRRRn.ASTUce.TestSuite( tests.ASTUce.NoTestCases );
     t.run( this.result );
     this.assertTrue( this.result.runCount() == 1,     "SUIT_002a" );  // warning test
     this.assertTrue( this.result.failureCount() == 1, "SUIT_002b" );
     this.assertTrue( !this.result.wasSuccessful(),    "SUIT_002c" );
     }
 
-Tests.ASTUce.SuiteTest.prototype.testOneTestCase = function()
+tests.ASTUce.SuiteTest.prototype.testOneTestCase = function()
     {
-    var t = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.OneTestCase );
+    var t = new buRRRn.ASTUce.TestSuite( tests.ASTUce.OneTestCase );
     t.run( this.result );
     this.assertTrue( this.result.runCount() == 1,     "SUIT_003a" );  
     this.assertTrue( this.result.failureCount() == 0, "SUIT_003b" );
@@ -86,19 +86,19 @@ Tests.ASTUce.SuiteTest.prototype.testOneTestCase = function()
     this.assertTrue( this.result.wasSuccessful(),     "SUIT_003d" );
     }
 
-Tests.ASTUce.SuiteTest.prototype.testNotPublicTestCase = function()
+tests.ASTUce.SuiteTest.prototype.testNotPublicTestCase = function()
     {
-    var suite = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.NotPublicTestCase );
+    var suite = new buRRRn.ASTUce.TestSuite( tests.ASTUce.NotPublicTestCase );
     // 1 public test case + 1 warning for the non-public test case
     this.assertEquals( 2, suite.countTestCases(), "SUIT_004" );
     }
 
-Tests.ASTUce.SuiteTest.prototype.testNotPublicTestCase2 = function()
+tests.ASTUce.SuiteTest.prototype.testNotPublicTestCase2 = function()
     {
     var original = buRRRn.ASTUce.testPrivateMethods;
     buRRRn.ASTUce.testPrivateMethods = true;
     
-    var suite = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.NotPublicTestCase );
+    var suite = new buRRRn.ASTUce.TestSuite( tests.ASTUce.NotPublicTestCase );
     suite.run( this.result );
     
     // 1 public test case + 1 non-public test case
@@ -110,34 +110,34 @@ Tests.ASTUce.SuiteTest.prototype.testNotPublicTestCase2 = function()
     buRRRn.ASTUce.testPrivateMethods = original;
     }
 
-Tests.ASTUce.SuiteTest.prototype.testNotExistingTestCase = function()
+tests.ASTUce.SuiteTest.prototype.testNotExistingTestCase = function()
     {
-    var t = new Tests.ASTUce.SuiteTest( "notExistingMethod" );
+    var t = new tests.ASTUce.SuiteTest( "notExistingMethod" );
     t.run( this.result );
     this.assertTrue( this.result.runCount() == 1,     "SUIT_006a" );  
     this.assertTrue( this.result.failureCount() == 1, "SUIT_006b" );
     this.assertTrue( this.result.errorCount() == 0,   "SUIT_006c" );
     }
 
-Tests.ASTUce.SuiteTest.prototype.testInheritedTests = function()
+tests.ASTUce.SuiteTest.prototype.testInheritedTests = function()
     {
-    var suite = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.InheritedTestCase );
+    var suite = new buRRRn.ASTUce.TestSuite( tests.ASTUce.InheritedTestCase );
     suite.run( this.result );
     this.assertTrue( this.result.wasSuccessful(),  "SUIT_007a" );
     this.assertEquals( 2, this.result.runCount(),  "SUIT_007b" );
     }
 
-Tests.ASTUce.SuiteTest.prototype.testShadowedTests = function()
+tests.ASTUce.SuiteTest.prototype.testShadowedTests = function()
     {
-    var suite = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.OverrideTestCase );
+    var suite = new buRRRn.ASTUce.TestSuite( tests.ASTUce.OverrideTestCase );
     suite.run( this.result );
     this.assertEquals( 1, this.result.runCount(), "SUIT_008" );
     }
 
-Tests.ASTUce.SuiteTest.prototype.testAddTestSuite = function()
+tests.ASTUce.SuiteTest.prototype.testAddTestSuite = function()
     {
     var suite = new buRRRn.ASTUce.TestSuite();
-    suite.addTestSuite( Tests.ASTUce.OneTestCase );
+    suite.addTestSuite( tests.ASTUce.OneTestCase );
     suite.run( this.result );
     this.assertEquals( 1, this.result.runCount(), "SUIT_009" );
     }

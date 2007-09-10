@@ -13,21 +13,21 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
 */
 
-Tests.ASTUce.NoTestCases = function( name )
+tests.ASTUce.NoTestCases = function( name )
     {
     buRRRn.ASTUce.TestCase.call( this, name );
     }
 
-Tests.ASTUce.NoTestCases.prototype = new buRRRn.ASTUce.TestCase();
-Tests.ASTUce.NoTestCases.prototype.constructor = Tests.ASTUce.NoTestCases;
+tests.ASTUce.NoTestCases.prototype = new buRRRn.ASTUce.TestCase();
+tests.ASTUce.NoTestCases.prototype.constructor = tests.ASTUce.NoTestCases;
 
-Tests.ASTUce.NoTestCases.prototype.noTestCase = function()
+tests.ASTUce.NoTestCases.prototype.noTestCase = function()
     {
     
     }

@@ -13,7 +13,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -42,15 +42,15 @@
    
    because fail() would never be reported.
 */
-Tests.ASTUce.AssertionTest = function( name )
+tests.ASTUce.AssertionTest = function( name )
     {
     buRRRn.ASTUce.TestCase.call( this, name );
     }
 
-Tests.ASTUce.AssertionTest.prototype = new buRRRn.ASTUce.TestCase();
-Tests.ASTUce.AssertionTest.prototype.constructor = Tests.ASTUce.AssertionTest;
+tests.ASTUce.AssertionTest.prototype = new buRRRn.ASTUce.TestCase();
+tests.ASTUce.AssertionTest.prototype.constructor = tests.ASTUce.AssertionTest;
 
-Tests.ASTUce.AssertionTest.prototype.testFail = function()
+tests.ASTUce.AssertionTest.prototype.testFail = function()
     {
     /* attention:
        Also, we are testing fail,
@@ -71,24 +71,24 @@ Tests.ASTUce.AssertionTest.prototype.testFail = function()
     this.fail( "ASSERT_001" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertEquals = function()
+tests.ASTUce.AssertionTest.prototype.testAssertEquals = function()
     {
     var o = new Object();
     this.assertEquals( o, o );
     this.assertEquals( new Object(), new Object(), "ASSERT_002" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertEqualsNull = function()
+tests.ASTUce.AssertionTest.prototype.testAssertEqualsNull = function()
     {
     this.assertEquals( null, null, "ASSERT_003" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertStringEquals = function()
+tests.ASTUce.AssertionTest.prototype.testAssertStringEquals = function()
     {
     this.assertEquals( "a", "a", "ASSERT_004" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertNullNotEqualsString = function()
+tests.ASTUce.AssertionTest.prototype.testAssertNullNotEqualsString = function()
     {
     try
         {
@@ -104,7 +104,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertNullNotEqualsString = function()
     this.fail( "ASSERT_005" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertStringNotEqualsNull = function()
+tests.ASTUce.AssertionTest.prototype.testAssertStringNotEqualsNull = function()
     {
     try
         {
@@ -120,7 +120,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertStringNotEqualsNull = function()
     this.fail( "ASSERT_006" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertNullNotEqualsNull = function()
+tests.ASTUce.AssertionTest.prototype.testAssertNullNotEqualsNull = function()
     {
     try
         {
@@ -136,7 +136,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertNullNotEqualsNull = function()
     this.fail( "ASSERT_007" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertNull = function()
+tests.ASTUce.AssertionTest.prototype.testAssertNull = function()
     {
     this.assertNull( null );
     
@@ -154,7 +154,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertNull = function()
     this.fail( "ASSERT_008" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertNotNull = function()
+tests.ASTUce.AssertionTest.prototype.testAssertNotNull = function()
     {
     this.assertNotNull( new Object() );
     
@@ -172,7 +172,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertNotNull = function()
     this.fail( "ASSERT_009" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertTrue = function()
+tests.ASTUce.AssertionTest.prototype.testAssertTrue = function()
     {
     this.assertTrue( true );
     
@@ -190,7 +190,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertTrue = function()
     this.fail( "ASSERT_010" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertFalse = function()
+tests.ASTUce.AssertionTest.prototype.testAssertFalse = function()
     {
     this.assertFalse( false );
     
@@ -208,7 +208,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertFalse = function()
     this.fail( "ASSERT_011" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertSame = function()
+tests.ASTUce.AssertionTest.prototype.testAssertSame = function()
     {
     var o = new Object();
     this.assertSame( o, o );
@@ -227,7 +227,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertSame = function()
     this.fail( "ASSERT_012" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertNotSame = function()
+tests.ASTUce.AssertionTest.prototype.testAssertNotSame = function()
     {
     this.assertNotSame( new Number(1), null );
     this.assertNotSame( null, new Number(1) );
@@ -249,7 +249,7 @@ Tests.ASTUce.AssertionTest.prototype.testAssertNotSame = function()
     this.fail( "ASSERT_013" );
     }
 
-Tests.ASTUce.AssertionTest.prototype.testAssertNotSameFailsNull = function()
+tests.ASTUce.AssertionTest.prototype.testAssertNotSameFailsNull = function()
     {
     try
         {

@@ -13,21 +13,21 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
 */
 
-Tests.ASTUce.AllTests = function( /*String*/ name )
+tests.ASTUce.AllTests = function( /*String*/ name )
     {
     buRRRn.ASTUce.TestCase.call( this, name );
     }
 
-Tests.ASTUce.AllTests.prototype = new buRRRn.ASTUce.TestCase();
-Tests.ASTUce.AllTests.prototype.constructor = Tests.ASTUce.AllTests;
+tests.ASTUce.AllTests.prototype = new buRRRn.ASTUce.TestCase();
+tests.ASTUce.AllTests.prototype.constructor = tests.ASTUce.AllTests;
 
-Tests.ASTUce.AllTests.suite = function()
+tests.ASTUce.AllTests.suite = function()
     {
     var TestSuite = buRRRn.ASTUce.TestSuite;
     var suite     = new TestSuite( "ASTUce Tests" );
@@ -38,11 +38,11 @@ Tests.ASTUce.AllTests.suite = function()
     */
     //suite.simpleTrace = true;
     
-    suite.addTest( new TestSuite( Tests.ASTUce.AssertionTest ) );
-    suite.addTest( new TestSuite( Tests.ASTUce.ComparisonFailureTest ) );
-    suite.addTest( new TestSuite( Tests.ASTUce.TestListenerTest ) );
-    suite.addTest( new TestSuite( Tests.ASTUce.TestCaseTest ) );
-    suite.addTest( Tests.ASTUce.SuiteTest.suite() );
+    suite.addTest( new TestSuite( tests.ASTUce.AssertionTest ) );
+    suite.addTest( new TestSuite( tests.ASTUce.ComparisonFailureTest ) );
+    suite.addTest( new TestSuite( tests.ASTUce.TestListenerTest ) );
+    suite.addTest( new TestSuite( tests.ASTUce.TestCaseTest ) );
+    suite.addTest( tests.ASTUce.SuiteTest.suite() );
     
     return suite;
     }
