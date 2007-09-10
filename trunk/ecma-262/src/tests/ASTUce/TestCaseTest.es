@@ -13,7 +13,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -22,41 +22,41 @@
 /* Constructor: TestCaseTest
    A test case testing the testing framework.
 */
-Tests.ASTUce.TestCaseTest = function( name )
+tests.ASTUce.TestCaseTest = function( name )
     {
     buRRRn.ASTUce.TestCase.call( this, name );
     }
 
-Tests.ASTUce.TestCaseTest.prototype = new buRRRn.ASTUce.TestCase();
-Tests.ASTUce.TestCaseTest.prototype.constructor = Tests.ASTUce.TestCaseTest;
+tests.ASTUce.TestCaseTest.prototype = new buRRRn.ASTUce.TestCase();
+tests.ASTUce.TestCaseTest.prototype.constructor = tests.ASTUce.TestCaseTest;
 
         /* InnerConstructor: TestCaseTest.TornDown
         */
-        Tests.ASTUce.TestCaseTest.TornDown = function( name )
+        tests.ASTUce.TestCaseTest.TornDown = function( name )
             {
             buRRRn.ASTUce.TestCase.call( this, name );
             this._tornDown = false;
             }
         
-        Tests.ASTUce.TestCaseTest.TornDown.prototype = new buRRRn.ASTUce.TestCase();
-        Tests.ASTUce.TestCaseTest.TornDown.prototype.constructor = Tests.ASTUce.TestCaseTest.TornDown;
+        tests.ASTUce.TestCaseTest.TornDown.prototype = new buRRRn.ASTUce.TestCase();
+        tests.ASTUce.TestCaseTest.TornDown.prototype.constructor = tests.ASTUce.TestCaseTest.TornDown;
         
-        Tests.ASTUce.TestCaseTest.TornDown.prototype.setUp = function()
+        tests.ASTUce.TestCaseTest.TornDown.prototype.setUp = function()
             {
             
             }
         
-        Tests.ASTUce.TestCaseTest.TornDown.prototype.tearDown = function()
+        tests.ASTUce.TestCaseTest.TornDown.prototype.tearDown = function()
             {
             this._tornDown = true;
             }
         
-        Tests.ASTUce.TestCaseTest.TornDown.prototype.runTest = function()
+        tests.ASTUce.TestCaseTest.TornDown.prototype.runTest = function()
             {
             throw new Error();
             }
 
-Tests.ASTUce.TestCaseTest.prototype.testSuccess = function()
+tests.ASTUce.TestCaseTest.prototype.testSuccess = function()
     {
     var success = new buRRRn.ASTUce.TestCase( "success" );
     
@@ -67,7 +67,7 @@ Tests.ASTUce.TestCaseTest.prototype.testSuccess = function()
     this.verifySuccess( success );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testFailure = function()
+tests.ASTUce.TestCaseTest.prototype.testFailure = function()
     {
     var failure = new buRRRn.ASTUce.TestCase( "failure" );
     
@@ -79,7 +79,7 @@ Tests.ASTUce.TestCaseTest.prototype.testFailure = function()
     this.verifyFailure( failure );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testError = function()
+tests.ASTUce.TestCaseTest.prototype.testError = function()
     {
     var err = new buRRRn.ASTUce.TestCase( "error" );
     err.runTest = function()
@@ -90,7 +90,7 @@ Tests.ASTUce.TestCaseTest.prototype.testError = function()
     this.verifyError( err );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testSetupFails = function()
+tests.ASTUce.TestCaseTest.prototype.testSetupFails = function()
     {
     var fails = new buRRRn.ASTUce.TestCase( "success" );
     
@@ -106,7 +106,7 @@ Tests.ASTUce.TestCaseTest.prototype.testSetupFails = function()
     this.verifyError( fails );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testTearDownFails = function()
+tests.ASTUce.TestCaseTest.prototype.testTearDownFails = function()
     {
     var fails = new buRRRn.ASTUce.TestCase( "success" );
     
@@ -122,14 +122,14 @@ Tests.ASTUce.TestCaseTest.prototype.testTearDownFails = function()
     this.verifyError( fails );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testCaseToString = function()
+tests.ASTUce.TestCaseTest.prototype.testCaseToString = function()
     {
     this.assertEquals( "TestCaseTest( testCaseToString )", this.toString(), "TC_001" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testRunAndTearDownFails = function()
+tests.ASTUce.TestCaseTest.prototype.testRunAndTearDownFails = function()
     {
-    var fails = new Tests.ASTUce.TestCaseTest.TornDown( "runAndTearDown" );
+    var fails = new tests.ASTUce.TestCaseTest.TornDown( "runAndTearDown" );
     fails.tearDown = function()
         {
         /* ATTENTION:
@@ -147,7 +147,7 @@ Tests.ASTUce.TestCaseTest.prototype.testRunAndTearDownFails = function()
            (end)
         */
         //safer call
-        Tests.ASTUce.TestCaseTest.TornDown.prototype.tearDown.apply( this );
+        tests.ASTUce.TestCaseTest.TornDown.prototype.tearDown.apply( this );
         
         throw new Error();
         }
@@ -161,16 +161,16 @@ Tests.ASTUce.TestCaseTest.prototype.testRunAndTearDownFails = function()
     this.assertTrue( fails._tornDown, "TC_002" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testTearDownAfterError = function()
+tests.ASTUce.TestCaseTest.prototype.testTearDownAfterError = function()
     {
-    var fails = new Tests.ASTUce.TestCaseTest.TornDown();
+    var fails = new tests.ASTUce.TestCaseTest.TornDown();
     this.verifyError( fails );
     this.assertTrue( fails._tornDown, "TC_003" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testTearDownSetupFails = function()
+tests.ASTUce.TestCaseTest.prototype.testTearDownSetupFails = function()
     {
-    var fails = new Tests.ASTUce.TestCaseTest.TornDown();
+    var fails = new tests.ASTUce.TestCaseTest.TornDown();
     
     fails.setUp = function()
         {
@@ -186,16 +186,16 @@ Tests.ASTUce.TestCaseTest.prototype.testTearDownSetupFails = function()
     this.assertTrue( !fails._tornDown, "TC_004" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testWasRun = function()
+tests.ASTUce.TestCaseTest.prototype.testWasRun = function()
     {
-    var test = new Tests.ASTUce.WasRun();
+    var test = new tests.ASTUce.WasRun();
     test.run();
     this.assertTrue( test._wasRun, "TC_005" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testExceptionRunningAndTearDown = function()
+tests.ASTUce.TestCaseTest.prototype.testExceptionRunningAndTearDown = function()
     {
-    var t = new Tests.ASTUce.TestCaseTest.TornDown();
+    var t = new tests.ASTUce.TestCaseTest.TornDown();
     
     t.tearDown = function()
         {
@@ -208,9 +208,9 @@ Tests.ASTUce.TestCaseTest.prototype.testExceptionRunningAndTearDown = function()
     this.assertEquals( "tearDown", failure.thrownException().getMessage(), "TC_006" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testNoArgTestCasePasses = function()
+tests.ASTUce.TestCaseTest.prototype.testNoArgTestCasePasses = function()
     {
-    var t = new buRRRn.ASTUce.TestSuite( Tests.ASTUce.NoArgTestCaseTest );
+    var t = new buRRRn.ASTUce.TestSuite( tests.ASTUce.NoArgTestCaseTest );
     var result = new buRRRn.ASTUce.TestResult();
     t.run( result );
     this.assertTrue( result.runCount()     == 1, "TC_007a" );
@@ -218,7 +218,7 @@ Tests.ASTUce.TestCaseTest.prototype.testNoArgTestCasePasses = function()
     this.assertTrue( result.errorCount()   == 0, "TC_007c" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.testNamelessTestCase = function()
+tests.ASTUce.TestCaseTest.prototype.testNamelessTestCase = function()
     {
     var t = new buRRRn.ASTUce.TestCase();
     
@@ -237,7 +237,7 @@ Tests.ASTUce.TestCaseTest.prototype.testNamelessTestCase = function()
     this.fail( "TC_008" );    
     }
 
-Tests.ASTUce.TestCaseTest.prototype.verifyError = function( /*TestCase*/ test )
+tests.ASTUce.TestCaseTest.prototype.verifyError = function( /*TestCase*/ test )
     {
     var result = test.run();
     this.assertTrue( result.runCount()     == 1, "TC_009a" );
@@ -245,7 +245,7 @@ Tests.ASTUce.TestCaseTest.prototype.verifyError = function( /*TestCase*/ test )
     this.assertTrue( result.errorCount()   == 1, "TC_009c" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.verifyFailure = function( /*TestCase*/ test )
+tests.ASTUce.TestCaseTest.prototype.verifyFailure = function( /*TestCase*/ test )
     {
     var result = test.run();
     this.assertTrue( result.runCount()     == 1, "TC_010a" );
@@ -253,7 +253,7 @@ Tests.ASTUce.TestCaseTest.prototype.verifyFailure = function( /*TestCase*/ test 
     this.assertTrue( result.errorCount()   == 0, "TC_010c" );
     }
 
-Tests.ASTUce.TestCaseTest.prototype.verifySuccess = function( /*TestCase*/ test )
+tests.ASTUce.TestCaseTest.prototype.verifySuccess = function( /*TestCase*/ test )
     {
     var result = test.run();
     this.assertTrue( result.runCount()     == 1, "TC_011a" );

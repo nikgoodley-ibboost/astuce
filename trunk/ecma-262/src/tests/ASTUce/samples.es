@@ -13,15 +13,15 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2004-2006
+  Portions created by the Initial Developer are Copyright (C) 2004-2007
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
 */
 
-if( !Tests.ASTUce.samples )
+if( !tests.ASTUce.samples )
     {
     /* NameSpace: Tests.ASTUce.samples
     */
-    Tests.ASTUce.samples = {};
+    tests.ASTUce.samples = {};
     }
