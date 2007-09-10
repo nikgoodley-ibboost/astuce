@@ -5,18 +5,10 @@ load( "ASTUce_v1.1.0.es" );
 load( "ASTUce.samples_v1.1.0.es" );
 load( "tests.ASTUce_v1.1.0.es" );
 
-trace( "---------------------------------" );
-var eden = buRRRn.eden;
-var ASTUce = buRRRn.ASTUce;
-trace( "ASTUce v"+ASTUce.version );
+eden   = buRRRn.eden
+ASTUce = buRRRn.ASTUce;
 
 eden.prettyPrinting = true;
 
-//trace( eden.serialize( ASTUce ) );
-
-//ASTUce.Runner.main( buRRRn.ASTUce.samples.SimpleTest );
-//ASTUce.Runner.main( "buRRRn.ASTUce.samples.SimpleTest" );
-
-ASTUce.Runner.main( tests.ASTUce.AllTests, buRRRn.ASTUce.samples.SimpleTest );
-
-trace( "---------------------------------" );
+ASTUce.Runner.main( tests.ASTUce.AllTests,
+                    "buRRRn.ASTUce.samples.SimpleTest" );

@@ -39,7 +39,8 @@ buRRRn.ASTUce.Runner.prototype.constructor = buRRRn.ASTUce.Runner;
 
 buRRRn.ASTUce.Runner.displayHeader = function()
     {
-    trace( "buRRRn.ASTUce.info" );
+    //trace( "buRRRn.ASTUce.info" );
+    buRRRn.ASTUce.info( true, true );
     }
 
 buRRRn.ASTUce.Runner.prototype.getTestName = function( any )/*String*/

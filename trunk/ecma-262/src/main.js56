@@ -1,0 +1,32 @@
+
+/* GlobalFunction: include
+   Provide an include mecanism for Windows Script Host
+*/
+include = function( /*String*/ filepath )
+    {
+    var FSO = new ActiveXObject( "Scripting.FileSystemObject" );
+    
+    if( FSO.FileExists( filepath ) )
+        {
+        return eval( FSO.OpenTextFile( filepath ).ReadAll() );
+        }
+    else
+        {
+        WScript.Echo( "## ERROR : \"" + filepath + "\" does not exist ##" );
+        }
+    }
+
+include( "..\\lib\\core2\\core2_v1.1.0.es" );
+include( "..\\lib\\eden\\edenlite_v0.1.0.es" );
+include( "ASTUce_v1.1.0.es" );
+include( "ASTUce.samples_v1.1.0.es" );
+include( "tests.ASTUce_v1.1.0.es" );
+
+eden   = buRRRn.eden
+ASTUce = buRRRn.ASTUce;
+
+eden.prettyPrinting = true;
+
+ASTUce.Runner.main( tests.ASTUce.AllTests,
+                    "buRRRn.ASTUce.samples.SimpleTest" );
+
