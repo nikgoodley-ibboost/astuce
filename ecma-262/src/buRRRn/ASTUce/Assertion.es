@@ -60,6 +60,48 @@ buRRRn.ASTUce.Assertion.assertFalse = function( /*Boolean*/ condition, /*String*
 */
 buRRRn.ASTUce.Assertion.assertEquals = function( expected, actual, /*String*/ message )
     {
+    
+    if( ((expected == undefined) && (actual != undefined)) ||
+        ((expected != undefined) && (actual == undefined)) )
+        {
+        _failNotEquals( expected, actual, message );
+        }
+    
+    if( (expected == null) && (actual == null) )
+        {
+        return;
+        }
+    
+    if( expected == actual )
+        {
+        return;
+        }
+    
+    //special case: you can't compare NaN with himself
+    if( ((typeof expected == "number") && (typeof actual == "number")) &&
+        (isNaN(expected) && isNaN(actual)) )
+        {
+        return;
+        }
+    
+    if( (expected["equals"] != undefined) && expected.equals( actual ) )
+        {
+        return;
+        }
+    
+    
+    if( ((typeof expected == "string") || (expected instanceof String)) &&
+        ((typeof actual == "string") || (actual instanceof String)) )
+        {
+        throw new buRRRn.ASTUce.ComparisonFailure( expected, actual, message );
+        }
+    else
+        {
+        this._failNotEquals( expected, actual, message );
+        }
+    
+    
+    /*
     if( (expected == null) && (actual == null) )
         {
         return;
@@ -73,14 +115,12 @@ buRRRn.ASTUce.Assertion.assertEquals = function( expected, actual, /*String*/ me
     if( ( GetTypeOf( expected ) == "string" ) || ( GetTypeOf( actual ) == "string" ) ) //core2
         {
         throw new buRRRn.ASTUce.ComparisonFailure( expected, actual, message );
-        /*!## patch: for Flash 6 AS1
-        this.__e = new buRRRn.ASTUce.ComparisonFailure( expected, actual, message );
-        */
         }
     else
         {
         this._failNotEquals( expected, actual, message );
         }
+    */
     }
 
 /* StaticMethod: assertNotNull
@@ -133,15 +173,10 @@ buRRRn.ASTUce.Assertion.assertNotUndefined = function( obj, /*String*/ message )
 */
 buRRRn.ASTUce.Assertion.assertSame = function( expected, actual, /*String*/ message )
     {
-    if( expected == null )
+    if( expected === actual )
 		{
-		expected = new NullObject(); //core2
+		return;
 		}
-    
-    if( expected.referenceEquals( actual ) ) //core2
-        {
-        return;
-        }
     
     this._failNotSame( expected, actual, message );
     }
@@ -153,12 +188,7 @@ buRRRn.ASTUce.Assertion.assertSame = function( expected, actual, /*String*/ mess
 */
 buRRRn.ASTUce.Assertion.assertNotSame = function( expected, actual, /*String*/ message )
     {
-    if( expected == null )
-		{
-		expected = new NullObject(); //core2
-		}
-	
-    if( expected.referenceEquals( actual ).toBoolean() ) //core2
+    if( expected === actual )
         {
         this._failSame( expected, actual, message );
         }

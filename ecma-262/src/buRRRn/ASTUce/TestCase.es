@@ -229,7 +229,8 @@ buRRRn.ASTUce.TestCase.prototype.tearDown = function()
 */
 buRRRn.ASTUce.TestCase.prototype.toString = function()
     {
-    return( this.getConstructorName() + "( " + this.getName() + " )" ); //core2
+    //return( this.getConstructorName() + "( " + this.getName() + " )" ); //core2
+    return( buRRRn.Reflection.getConstructorName(this) + "( " + this.getName() + " )" );
     }
 
 /* Getter: getName
@@ -239,7 +240,8 @@ buRRRn.ASTUce.TestCase.prototype.getName = function()
     {
     if( this._name == undefined )
         {
-        this._name = GetObjectPath( this ); //core2
+        //this._name = GetObjectPath( this ); //core2
+        this._name = buRRRn.Reflection.getObjectPath( this );
         }
     
     return this._name;

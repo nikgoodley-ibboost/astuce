@@ -35,10 +35,8 @@
    simpleTrace    - optionnal, allows you to reduce the
                     amount of tracing in the output to 1 line.
 */
-buRRRn.ASTUce.TestSuite = function( /*Object*/ theConstructor, /*String*/ name, /*Boolean*/ simpleTrace )
+buRRRn.ASTUce.TestSuite = function( theConstructor, name/*String*/, simpleTrace/*Boolean*/ )
     {
-    var ctorName, member;
-    
     if( simpleTrace == null )
         {
         simpleTrace = false;
@@ -48,28 +46,42 @@ buRRRn.ASTUce.TestSuite = function( /*Object*/ theConstructor, /*String*/ name, 
     this._tests       = [];
     this._name        = "Unknown";
     
+    if( (name != "") && (name != null) )
+        {
+        this._name = name;
+        }
+    
     //Constructs an empty TestSuite
-    if( (theConstructor == null) && (name == null) )
+    if( theConstructor == null )
         {
         return;
         }
     
+    var strings    = buRRRn.ASTUce.strings;
+    var config     = buRRRn.ASTUce.config;
+    var Reflection = buRRRn.Reflection;
+    
     //theConstructor is a string
-    if( GetTypeOf( theConstructor ) == "string" )
+    if( Reflection.getTypeOf( theConstructor ) == "string" )
         {
-        this.setName( theConstructor );
-        return;
+        try
+            {
+            theConstructor = Reflection.getConstructorByName( theConstructor );
+            }
+        catch( e )
+            {
+            this.addTest( this._warning( e.toString() ) );
+            return;
+            }
         }
     
     if( theConstructor.prototype == null )
         {
-        this.addTest( this._warning( String.format( buRRRn.ASTUce.strings.objectNotCtor, GetObjectPath( theConstructor ) ) ) ); //core2
+        this.addTest( this._warning( String.format( strings.objectNotCtor, Reflection.getObjectPath( theConstructor ) ) ) ); //core2
         return;
         }
-    else
-        {
-        ctorName = theConstructor.prototype.getConstructorName(); //core2
-        }
+    
+    var ctorName = Reflection.getObjectPath( theConstructor );
     
     /* attention:
        Due to ECMAscript limitation all custom constructors
@@ -78,7 +90,7 @@ buRRRn.ASTUce.TestSuite = function( /*Object*/ theConstructor, /*String*/ name, 
     */
     if( ctorName.startsWith( "_" ) ) //core2
         {
-        this.addTest( this._warning( String.format( buRRRn.ASTUce.strings.ctorNotPublic, ctorName ) ) );
+        this.addTest( this._warning( String.format( strings.ctorNotPublic, ctorName ) ) );
         return;
         }
     
@@ -91,23 +103,17 @@ buRRRn.ASTUce.TestSuite = function( /*Object*/ theConstructor, /*String*/ name, 
         this.setName( name );
         }
     
-    for( member in theConstructor.prototype )
+    var methods = Reflection.getConstructorMethods( theConstructor, config.testInheritedTests );
+    
+    for( var i=0; i<methods.length; i++ )
         {
-        /* attention:
-           if we use
-           if( theConstructor.prototype.hasOwnProperty( member ) )
-           we can't inherits testCase
-        */
-        if( typeof( theConstructor.prototype[member] ) == "function" )
-            {
-            //trace( "MEMBER = " + member );
-            this._addTestMethod( member, theConstructor );
-            }
+        this._addTestMethod( methods[i], theConstructor );
         }
+    
     
     if( this.testCount() == 0 )
         {
-        this.addTest( this._warning( String.format( buRRRn.ASTUce.strings.noTestsFound, ctorName ) ) ); //core2
+        this.addTest( this._warning( String.format( strings.noTestsFound, ctorName ) ) ); //core2
         }
     
     }
@@ -178,7 +184,7 @@ buRRRn.ASTUce.TestSuite.prototype._addTestMethod = function( /*String*/ method, 
 buRRRn.ASTUce.TestSuite.createTest = function( /*Object*/ theConstructor, /*String*/ name )
     {
     var test;
-    
+    //trace( "createTest( obj, " + name + " )" );
     if( theConstructor == null )
         {
         return( this._warning( String.format( buRRRn.ASTUce.strings.canNotCreateTest, name ) ) );
@@ -186,12 +192,12 @@ buRRRn.ASTUce.TestSuite.createTest = function( /*Object*/ theConstructor, /*Stri
     
     if( theConstructor.prototype == null )
         {
-        this.addTest( this._warning( String.format( buRRRn.ASTUce.strings.objectNotCtor, GetObjectPath( theConstructor ) ) ) );
+        this.addTest( this._warning( String.format( buRRRn.ASTUce.strings.objectNotCtor, buRRRn.Reflection.getObjectPath( theConstructor ) ) ) );
         return;
         }
     
     /*!## TODO: add error checking if path could not be found ? */
-    var path = GetObjectPath( theConstructor ); //core2
+    var path = buRRRn.Reflection.getObjectPath( theConstructor ); //core2
     
     /* attention:
        Dynamic instanciation hack using ECMAscript eval().
@@ -287,6 +293,7 @@ buRRRn.ASTUce.TestSuite.prototype.testCount = function()
     return this._tests.length;
     }
 
+
 /* Method: tests
    Returns the tests as an Array.
 */
@@ -367,7 +374,7 @@ buRRRn.ASTUce.TestSuite.prototype.getName = function()
     {
     if( this._name == undefined )
         {
-        this._name = GetObjectPath( this ); //core2
+        this._name = buRRRn.Reflection.getConstructorPath( this ); //core2
         }
     
     return this._name;
