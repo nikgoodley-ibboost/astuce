@@ -35,11 +35,14 @@ package
             buRRRn.ASTUce.info( true, false );
             
             import buRRRn.ASTUce.tests.AllTests;
-            import buRRRn.ASTUce.samples.AllTests;
+            import buRRRn.ASTUce.samples.*;
+            //import buRRRn.ASTUce.samples.AllTests;
+            //import buRRRn.ASTUce.samples.SimpleTest;
             import buRRRn.ASTUce.Runner;
             
             Runner.main( buRRRn.ASTUce.tests.AllTests.suite(),
-                         buRRRn.ASTUce.samples.AllTests.suite() );
+                         buRRRn.ASTUce.samples.AllTests.suite(),
+                         "buRRRn.ASTUce.samples.SimpleTest" );
             
             }
         }
