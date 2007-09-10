@@ -19,7 +19,7 @@
   Contributor(s):
 */
 
-tests.ASTUce.AllTests = function( /*String*/ name )
+tests.ASTUce.AllTests = function( name/*String*/ )
     {
     buRRRn.ASTUce.TestCase.call( this, name );
     }

@@ -96,7 +96,7 @@ tests.ASTUce.AssertionTest.prototype.testAssertNullNotEqualsString = function()
         }
     catch( e )
         {
-        if( e instanceof buRRRn.ASTUce.ComparisonFailure )
+        if( e instanceof buRRRn.ASTUce.AssertionFailedError )
             {
             return;
             }
@@ -112,7 +112,7 @@ tests.ASTUce.AssertionTest.prototype.testAssertStringNotEqualsNull = function()
         }
     catch( e )
         {
-        if( e instanceof buRRRn.ASTUce.ComparisonFailure )
+        if( e instanceof buRRRn.ASTUce.AssertionFailedError )
             {
             return;
             }

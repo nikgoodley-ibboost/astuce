@@ -31,6 +31,8 @@ if( !buRRRn.ASTUce.strings )
     buRRRn.ASTUce.strings = {};
     }
 
+buRRRn.ASTUce.strings.separator = "----------------------------------------------------------------";
+
 /* Property: expectedNotSame
    {0}expected not same
 */

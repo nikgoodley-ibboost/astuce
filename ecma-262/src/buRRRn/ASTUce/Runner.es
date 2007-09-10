@@ -156,43 +156,34 @@ buRRRn.ASTUce.Runner.run = function( test, runner )/*TestResult*/
     
     if( test == null )
         {
-        trace( "suite is null" );
         throw new Error( "test is null" );
         }
     
     if( (test instanceof String) || (typeof test == "string") )
         {
-        trace( "suite is string" );
         suite = runner.getTest( test );
-        trace( "suite: " + suite.toString() );
-        trace( "doRun suite from string" );
         return runner.doRun( suite );
         }
     
     if( (test instanceof buRRRn.ASTUce.TestCase) || (test instanceof buRRRn.ASTUce.TestSuite) )
         {
-        trace( "suite is TestCase|TestSuite" );
         suite = test;
         }
     
     if( (typeof test == "function") || (typeof test == "object") )
         {
-        trace( "suite is ctor or instance" );
         var staticSuite = buRRRn.Reflection.getMethodByName( test, "suite" );
         
         if( staticSuite != null )
             {
-            trace( "staticSuite != null" );
             suite = staticSuite();
             }
         else
             {
-            trace( "new buRRRn.ASTUce.TestSuite( test )" )
             suite = new buRRRn.ASTUce.TestSuite( test );
             }
         }
     
-    trace( "doRun suite" );
     return runner.doRun( suite );
     }
 

@@ -44,10 +44,10 @@ buRRRn.ASTUce.samples.SimpleTest.prototype.testAdd = function()
     var result = this.value1 + this.value2;
     
     //forced failure
-    //this.assertTrue( result == 6 );
+    this.assertTrue( result == 6 );
     
     //passing test
-    this.assertTrue( result == 5 );
+    //this.assertTrue( result == 5 );
     }
 
 buRRRn.ASTUce.samples.SimpleTest.prototype.testDivideByZero = function()
@@ -56,10 +56,10 @@ buRRRn.ASTUce.samples.SimpleTest.prototype.testDivideByZero = function()
     var result = 8/zero;
     
     //forced failure
-    //this.assertEquals( 8, result );
+    this.assertEquals( 8, result );
     
     //passing test
-    this.assertEquals( Infinity, result );
+    //this.assertEquals( Infinity, result );
     }
 
 buRRRn.ASTUce.samples.SimpleTest.prototype.testEquals = function()
@@ -72,10 +72,10 @@ buRRRn.ASTUce.samples.SimpleTest.prototype.testEquals = function()
     this.assertEquals( 0x000000000c , 0x000000000c );
     
     //forced failure
-    //this.assertEquals( 12.0, 11.99, "Capacity" );
+    this.assertEquals( 12.0, 11.99, "Capacity" );
     
     //passing test
-    this.assertEquals( 12.0, 12, "Capacity" );
+    //this.assertEquals( 12.0, 12, "Capacity" );
     }
 
 buRRRn.ASTUce.samples.SimpleTest.prototype.testEqualsObject = function()

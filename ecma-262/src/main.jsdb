@@ -3,6 +3,7 @@ load( "../lib/core2/core2_v1.1.0.es" );
 load( "../lib/eden/edenlite_v0.1.0.es" );
 load( "ASTUce_v1.1.0.es" );
 load( "ASTUce.samples_v1.1.0.es" );
+load( "tests.ASTUce_v1.1.0.es" );
 
 trace( "---------------------------------" );
 var eden = buRRRn.eden;
@@ -14,6 +15,8 @@ eden.prettyPrinting = true;
 //trace( eden.serialize( ASTUce ) );
 
 //ASTUce.Runner.main( buRRRn.ASTUce.samples.SimpleTest );
-ASTUce.Runner.main( "buRRRn.ASTUce.samples.SimpleTest" );
+//ASTUce.Runner.main( "buRRRn.ASTUce.samples.SimpleTest" );
+
+ASTUce.Runner.main( tests.ASTUce.AllTests, buRRRn.ASTUce.samples.SimpleTest );
 
 trace( "---------------------------------" );

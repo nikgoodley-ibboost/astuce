@@ -64,7 +64,7 @@ buRRRn.ASTUce.Assertion.assertEquals = function( expected, actual, /*String*/ me
     if( ((expected == undefined) && (actual != undefined)) ||
         ((expected != undefined) && (actual == undefined)) )
         {
-        _failNotEquals( expected, actual, message );
+        this._failNotEquals( expected, actual, message );
         }
     
     if( (expected == null) && (actual == null) )
