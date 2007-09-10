@@ -42,7 +42,7 @@ del ASTUce.samples_v%VERSION%_tmp.es
 echo ----------------
 
 echo [build tests v%VERSION%]
-copy /D tests\ASTUce.es+tests\ASTUce\OneTestCase.es+tests\ASTUce\*.es /A tests.ASTUce_v%VERSION%_tmp.es /A
+copy /D tests\ASTUce.es+tests\ASTUce\*.es /A tests.ASTUce_v%VERSION%_tmp.es /A
 
 if "%DEBUG%"=="0" (
 ..\bin\jsjuicer -smc "tests.ASTUce v%VERSION% - %WEB% (%LICENCE%)" tests.ASTUce_v%VERSION%.es tests.ASTUce_v%VERSION%_tmp.es
