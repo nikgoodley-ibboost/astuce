@@ -143,10 +143,6 @@ tests.ASTUce.NotPublicTestCase.prototype=new buRRRn.ASTUce.TestCase();tests.ASTU
 {}
 tests.ASTUce.NotPublicTestCase.prototype.testPublic=function()
 {}
-tests.ASTUce.OneTestCase=function(name)
-{buRRRn.ASTUce.TestCase.call(this,name);}
-tests.ASTUce.OneTestCase.prototype=new buRRRn.ASTUce.TestCase();tests.ASTUce.OneTestCase.prototype.constructor=tests.ASTUce.OneTestCase;tests.ASTUce.OneTestCase.prototype.testCase=function(arg)
-{}
 tests.ASTUce.OverrideTestCase=function(name)
 {tests.ASTUce.OneTestCase.call(this,name);}
 tests.ASTUce.OverrideTestCase.prototype=new tests.ASTUce.OneTestCase();tests.ASTUce.OverrideTestCase.prototype.constructor=tests.ASTUce.OverrideTestCase;tests.ASTUce.OverrideTestCase.prototype.testCase=function()
