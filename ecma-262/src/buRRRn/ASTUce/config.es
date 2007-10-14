@@ -23,6 +23,8 @@
 */
 buRRRn.ASTUce.config = {};
 
+buRRRn.ASTUce.config.CRLF = buRRRn.core2.config.CRLF;
+
 /* StaticProperty: verbose
    Boolean configuring the getInfo method behaviour.
    
