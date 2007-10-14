@@ -53,7 +53,7 @@ buRRRn.ASTUce.info = function( verbose/*Boolean*/, showConfig/*Boolean*/ )/*Stri
         }
     
     var separator = "----------------------------------------------------------------";
-    var CRLF      = "\n";
+    var CRLF      = buRRRn.ASTUce.config.CRLF;
     var name      = "ASTUce";
     var fullname  = "ActionScript Test Unit compact edition";
     var copyright = "Copyright © 2004-2007 Zwetan Kjukov, All right reserved.";

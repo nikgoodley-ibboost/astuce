@@ -53,7 +53,7 @@ buRRRn.ASTUce.info = function( verbose/*Boolean*/, showConfig/*Boolean*/ )/*Stri
         }
     
     var separator = "----------------------------------------------------------------";
-    var CRLF      = "\n";
+    var CRLF      = buRRRn.ASTUce.config.CRLF;
     var name      = "ASTUce";
     var fullname  = "ActionScript Test Unit compact edition";
     var copyright = "Copyright © 2004-2007 Zwetan Kjukov, All right reserved.";
@@ -615,6 +615,8 @@ buRRRn.ASTUce.ComparisonFailure.prototype.getMessage = function()
 /* Singleton: config
 */
 buRRRn.ASTUce.config = {};
+
+buRRRn.ASTUce.config.CRLF = buRRRn.core2.config.CRLF;
 
 /* StaticProperty: verbose
    Boolean configuring the getInfo method behaviour.
@@ -2307,7 +2309,7 @@ buRRRn.ASTUce.TestSuite.prototype.toString = function( /*int*/ increment )
     {
     var str, CRLF, TAB, SPC, i, j, tests, count;
     str   = "";
-    CRLF  = "\r\n";
+    CRLF  = buRRRn.ASTUce.config.CRLF;
     TAB   = "\t";
     SPC   = TAB;
     

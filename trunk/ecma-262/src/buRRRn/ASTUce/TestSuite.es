@@ -310,7 +310,7 @@ buRRRn.ASTUce.TestSuite.prototype.toString = function( /*int*/ increment )
     {
     var str, CRLF, TAB, SPC, i, j, tests, count;
     str   = "";
-    CRLF  = "\r\n";
+    CRLF  = buRRRn.ASTUce.config.CRLF;
     TAB   = "\t";
     SPC   = TAB;
     

@@ -9,7 +9,7 @@ buRRRn.ASTUce.version="1.1.0."+parseInt("$Rev: 40 $".split(" ")[1]);buRRRn.ASTUc
 {verbose=false;}
 if(showConfig==null)
 {showConfig=false;}
-var separator="----------------------------------------------------------------";var CRLF="\n";var name="ASTUce";var fullname="ActionScript Test Unit compact edition";var copyright="Copyright © 2004-2007 Zwetan Kjukov, All right reserved.";var origin="Made in the EU.";var str="";if(!verbose&&buRRRn.ASTUce.config.verbose)
+var separator="----------------------------------------------------------------";var CRLF=buRRRn.ASTUce.config.CRLF;var name="ASTUce";var fullname="ActionScript Test Unit compact edition";var copyright="Copyright © 2004-2007 Zwetan Kjukov, All right reserved.";var origin="Made in the EU.";var str="";if(!verbose&&buRRRn.ASTUce.config.verbose)
 {verbose=true;}
 if(verbose){str+=separator+CRLF;str+=name+": "+fullname+" v"+this.version+CRLF;str+=copyright+CRLF;str+=origin+CRLF;str+=separator;}else{str+=name+" v"+this.version+CRLF;str+=separator;}
 if(showConfig){str+=CRLF+"config:";str+=buRRRn.eden.serialize(buRRRn.ASTUce.config)+CRLF;str+=separator;}
@@ -112,7 +112,7 @@ if(j<this.expected.length-1)
 if(k<this.actual.length-1)
 {actual=actual+dots;}}
 return buRRRn.ASTUce.Assertion.format(expected,actual,this.message);}
-buRRRn.ASTUce.config={};buRRRn.ASTUce.config.verbose=true;buRRRn.ASTUce.config.showConstructorList=true;buRRRn.ASTUce.config.showObjectSource=true;buRRRn.ASTUce.config.invertExpectedActual=false;buRRRn.ASTUce.config.testInheritedTests=true;buRRRn.ASTUce.config.testPrivateMethods=false;buRRRn.ASTUce.config.testMyself=false;buRRRn.ASTUce.ITest=function()
+buRRRn.ASTUce.config={};buRRRn.ASTUce.config.CRLF=buRRRn.core2.config.CRLF;buRRRn.ASTUce.config.verbose=true;buRRRn.ASTUce.config.showConstructorList=true;buRRRn.ASTUce.config.showObjectSource=true;buRRRn.ASTUce.config.invertExpectedActual=false;buRRRn.ASTUce.config.testInheritedTests=true;buRRRn.ASTUce.config.testPrivateMethods=false;buRRRn.ASTUce.config.testMyself=false;buRRRn.ASTUce.ITest=function()
 {}
 buRRRn.ASTUce.ITest.prototype.countTestCases=function()
 {}
@@ -393,7 +393,7 @@ buRRRn.ASTUce.TestSuite.prototype.testCount=function()
 buRRRn.ASTUce.TestSuite.prototype.tests=function()
 {return this._tests;}
 buRRRn.ASTUce.TestSuite.prototype.toString=function(increment)
-{var str,CRLF,TAB,SPC,i,j,tests,count;str="";CRLF="\r\n";TAB="\t";SPC=TAB;if(increment==null)
+{var str,CRLF,TAB,SPC,i,j,tests,count;str="";CRLF=buRRRn.ASTUce.config.CRLF;TAB="\t";SPC=TAB;if(increment==null)
 {increment=0;}
 else
 {for(j=0;j<increment;j++)
