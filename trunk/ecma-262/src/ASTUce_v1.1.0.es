@@ -4,7 +4,7 @@ var self=this;if(!self.buRRRn)
 {self.buRRRn={};}
 if(!buRRRn.ASTUce)
 {buRRRn.ASTUce={};}
-buRRRn.ASTUce.version="1.1.0."+parseInt("$Rev: 23 $".split(" ")[1]);buRRRn.ASTUce.info=function(verbose,showConfig)
+buRRRn.ASTUce.version="1.1.0."+parseInt("$Rev: 40 $".split(" ")[1]);buRRRn.ASTUce.info=function(verbose,showConfig)
 {if(verbose==null)
 {verbose=false;}
 if(showConfig==null)
@@ -393,7 +393,7 @@ buRRRn.ASTUce.TestSuite.prototype.testCount=function()
 buRRRn.ASTUce.TestSuite.prototype.tests=function()
 {return this._tests;}
 buRRRn.ASTUce.TestSuite.prototype.toString=function(increment)
-{var str,CRLF,TAB,SPC,i,j,tests,count;str="";CRLF="\n";TAB="\t";SPC=TAB;if(increment==null)
+{var str,CRLF,TAB,SPC,i,j,tests,count;str="";CRLF="\r\n";TAB="\t";SPC=TAB;if(increment==null)
 {increment=0;}
 else
 {for(j=0;j<increment;j++)
