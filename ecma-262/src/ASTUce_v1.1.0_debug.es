@@ -37,7 +37,7 @@ if( !buRRRn.ASTUce  )
 /* Property: version
    Contains ASTUce version.
 */
-buRRRn.ASTUce.version = "1.1.0." + parseInt( "$Rev: 23 $".split( " " )[1] );
+buRRRn.ASTUce.version = "1.1.0." + parseInt( "$Rev: 40 $".split( " " )[1] );
 
 
 buRRRn.ASTUce.info = function( verbose/*Boolean*/, showConfig/*Boolean*/ )/*String*/
@@ -2307,7 +2307,7 @@ buRRRn.ASTUce.TestSuite.prototype.toString = function( /*int*/ increment )
     {
     var str, CRLF, TAB, SPC, i, j, tests, count;
     str   = "";
-    CRLF  = "\n";
+    CRLF  = "\r\n";
     TAB   = "\t";
     SPC   = TAB;
     
