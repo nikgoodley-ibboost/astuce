@@ -84,16 +84,8 @@ package buRRRn.ASTUce.framework
             
             if( theConstructor is String )
                 {
-                try
-                    {
-                    var originalCtor:String = theConstructor;
-                    theConstructor = Reflection.getClassByName( theConstructor );
-                    }
-                catch( e:Error )
-                    {
-                    _name = originalCtor
-                    return;
-                    }
+                _name = theConstructor;
+                return;
                 }
             
             if( theConstructor is ITest )
@@ -231,12 +223,12 @@ package buRRRn.ASTUce.framework
                - add check for return type == void
             */
             method = method.toLowerCase();
-            return new Strings(method).startsWith( "test" );
+            return Strings.startsWith( method, "test" );
             }
         
         private function _isTestMethodFilter( element:*, index:int, arr:Array ):Boolean
             {
-            return new Strings(element.toLowerCase()).startsWith( "test" );
+            return Strings.startsWith( element.toLowerCase(), "test" );
             }
         
         public function get countTestCases():int
