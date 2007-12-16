@@ -22,13 +22,13 @@
 package buRRRn.ASTUce
     {
     import system.Version;
-    import system.Console;
+    import system.Strings;
     import system.Serializer;
-     
+    
     /* Function: info
        basic system info
     */
-    public function info( verbose:Boolean = false, showConfig:Boolean = false ):void
+    public function info( verbose:Boolean = false, showConfig:Boolean = false ):String
         {
         var separator:String = "----------------------------------------------------------------";
         var CRLF:String      = "\n";
@@ -39,26 +39,6 @@ package buRRRn.ASTUce
         
         var copyright:String = "Copyright © 2006-2007 Zwetan Kjukov, All right reserved.";
         var origin:String    = "Made in the EU.";
-        
-        /*
-        if( config.verbose )
-            {
-            str += name + ": " + fullName + " " + ext + " v" + version;
-            }
-        else
-            {
-            str += name + " " + ext + " v" + version;
-            }
-        
-        if( config.verbose )
-            {
-            str += CRLF;
-            str += "Copyright © 2006-2007 Zwetan Kjukov, All right reserved." + CRLF;
-            str += "Made in the EU.";
-            }
-        
-        return str;
-        */
         
         var str:String = "";
             if( !verbose && config.verbose )
@@ -83,18 +63,18 @@ package buRRRn.ASTUce
             str += "{sep}";
             }
             
-        Console.writeLine( str,
-                           {
-                           sep:separator,
-                           crlf:CRLF,
-                           name:name,
-                           fullname:fullname,
-                           version:version,
-                           copyright:copyright,
-                           origin:origin,
-                           config: Serializer.serialize( config )
-                           }
-                         );
+        return Strings.format( str,
+                               {
+                               sep:separator,
+                               crlf:CRLF,
+                               name:name,
+                               fullname:fullname,
+                               version:version,
+                               copyright:copyright,
+                               origin:origin,
+                               config: Serializer.serialize( config )
+                               }
+                             );
         
         }
     
