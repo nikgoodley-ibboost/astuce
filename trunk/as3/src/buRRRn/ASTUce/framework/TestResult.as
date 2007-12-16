@@ -243,6 +243,7 @@ package buRRRn.ASTUce.framework
             var count:int = test.countTestCases;
             var listeners:Array = cloneListeners();
             
+            //trace( "_runTests: " + _runTests );
             _runTests += count;
             
             for( i=0; i<listeners.length; i++ )
