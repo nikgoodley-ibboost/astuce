@@ -28,11 +28,9 @@ package
         
         public function main()
             {
-            import buRRRn.ASTUce.info;
-            //import system.Serializer;
-            //Serializer.prettyPrinting = true;
-            //buRRRn.ASTUce.info( true, true );
-            buRRRn.ASTUce.info( true, false );
+            
+            import buRRRn.ASTUce.about;
+            buRRRn.ASTUce.about( true, false );
             
             import buRRRn.ASTUce.tests.AllTests;
             import buRRRn.ASTUce.samples.*;
