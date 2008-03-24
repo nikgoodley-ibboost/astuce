@@ -6,9 +6,10 @@
 == (v0.9 AS3) ==
 
  * new build system
+ * documentation (asdoc)
  * graphical console
  * TestRunner using sockets
- * exported as a SWC
+ * exported as a SWC (easy use)
  * tutorial as videos
 
 == v0.8 AS3 ==
