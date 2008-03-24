@@ -23,7 +23,7 @@ package buRRRn.ASTUce
     {
     import system.Version;
     import system.Strings;
-    import system.Serializer;
+    import buRRRn.ASTUce.config;
     
     /* Function: info
        basic system info
@@ -37,7 +37,7 @@ package buRRRn.ASTUce
         var version:Version  = new Version( 0, 8 );
             version.revision = parseInt( "$Rev$".split( " " )[1] );
         
-        var copyright:String = "Copyright © 2006-2007 Zwetan Kjukov, All right reserved.";
+        var copyright:String = "Copyright © 2006-2008 Zwetan Kjukov, All right reserved.";
         var origin:String    = "Made in the EU.";
         
         var str:String = "";
@@ -72,7 +72,7 @@ package buRRRn.ASTUce
                                version:version,
                                copyright:copyright,
                                origin:origin,
-                               config: Serializer.serialize( config )
+                               config: config.toSource()
                                }
                              );
         
