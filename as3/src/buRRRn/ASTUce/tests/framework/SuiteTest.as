@@ -41,15 +41,15 @@ package buRRRn.ASTUce.tests.framework
             {
             var suite:TestSuite = new TestSuite( "SuiteTest" );
             
-            //suite.addTest( new SuiteTest( "testOneTestCase" ) );
-            //suite.addTest( new SuiteTest( "testInheritedTests" ) );
+            suite.addTest( new SuiteTest( "testOneTestCase" ) );
+            suite.addTest( new SuiteTest( "testInheritedTests" ) );
             suite.addTest( new SuiteTest( "testNoTestCaseClass" ) );
-            //suite.addTest( new SuiteTest( "testNoTestCases" ) );
+            suite.addTest( new SuiteTest( "testNoTestCases" ) );
             suite.addTest( new SuiteTest( "testNotExistingTestCase" ) );
             //suite.addTest( new SuiteTest( "testNotPublicTestCase" ) ); //Will NOT be implemented
             //suite.addTest( new SuiteTest( "testNotVoidTestCase" ) ); //not implemented yet
-            //suite.addTest( new SuiteTest( "testShadowedTests" ) );
-            //suite.addTest( new SuiteTest( "testAddTestSuite" ) );
+            suite.addTest( new SuiteTest( "testShadowedTests" ) );
+            suite.addTest( new SuiteTest( "testAddTestSuite" ) );
             
             return suite;
             }
@@ -59,7 +59,7 @@ package buRRRn.ASTUce.tests.framework
             result = new TestResult();
             }
         
-        /*
+        
         public function testOneTestCase():void
             {
             var t:ITest = new TestSuite( OneTestCase );
@@ -69,8 +69,8 @@ package buRRRn.ASTUce.tests.framework
             assertTrue( result.errorCount   == 0 );
             assertTrue( result.wasSuccessful() );
             }
-        */
-        /*
+        
+        
         public function testInheritedTests():void
             {
             var suite:TestSuite = new TestSuite( InheritedTestCase );
@@ -78,7 +78,7 @@ package buRRRn.ASTUce.tests.framework
             assertTrue( result.wasSuccessful() );
             assertTrue( result.runCount == 2, "see buRRRn.ASTUce.config.testInheritedTests" );
             }
-        */
+        
         public function testNoTestCaseClass():void
             {
             var t:ITest = new TestSuite( NoTestCaseClass );
@@ -86,7 +86,7 @@ package buRRRn.ASTUce.tests.framework
             assertEquals( 1, result.runCount ); //warning test
             assertTrue( !result.wasSuccessful() );
             }
-        /*
+        
         public function testNoTestCases():void
             {
             var t:ITest = new TestSuite( NoTestCases );
@@ -95,7 +95,7 @@ package buRRRn.ASTUce.tests.framework
             assertTrue( result.failureCount == 1 );
             assertTrue( !result.wasSuccessful() );
             }
-        */
+        
         public function testNotExistingTestCase():void
             {
             var t:ITest = new SuiteTest( "notExistingMethod" );
@@ -106,7 +106,7 @@ package buRRRn.ASTUce.tests.framework
             }
         
         /* note:
-           There are no way for now to access private members in ECMAScript 4.
+           There are no way for now to access private members in AS3.
         */
         /*
         public function testNotPublicTestCase():void
@@ -116,7 +116,7 @@ package buRRRn.ASTUce.tests.framework
         */
         
         /* note:
-           solo Type reflection does not allow us yet to
+           ES4a system Reflection does not allow us yet to
            tell if a method return void(undefined).
         */
         /*
@@ -126,15 +126,15 @@ package buRRRn.ASTUce.tests.framework
             }
         */
         
-        /*
+        
         public function testShadowedTests():void
             {
             var t:ITest = new TestSuite( OverrideTestCase );
             t.run( result );
             assertEquals( 1, result.runCount );
             }
-        */
-        /*
+        
+        
         public function testAddTestSuite():void
             {
             var suite:TestSuite = new TestSuite();
@@ -142,7 +142,7 @@ package buRRRn.ASTUce.tests.framework
             suite.run( result );
             assertEquals( 1, result.runCount );
             }
-        */
+        
         }
     
     }
