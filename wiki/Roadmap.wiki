@@ -8,7 +8,7 @@
  * new build system
  * documentation (asdoc)
  * graphical console
- * TestRunner using sockets
+ * !TestRunner using sockets
  * exported as a SWC (easy use)
  * tutorial as videos
 
