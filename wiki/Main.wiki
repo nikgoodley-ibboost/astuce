@@ -1,13 +1,32 @@
-#summary this is a test.
+#summary Main page, start here for any documentation.
+#labels Featured
 
 = Introduction =
 
-Add your content here.
+*ASTUce*
+
+ASTUce stand for "ActionScript Test Unit compact edition".
+
+ASTUce is a regression testing framework inspired by the xUnit architecture.
+
+This framework is intended for developers who wish to implement unit tests in ActionScript3.
+
+Ideally the framework will be usable in any other ES4 implementation.
+
+
+= Philosophy =
+
+We believe in
+ * unit tests that run as fast as possible
+ * mock objects to emulate events etc. (or any async stuff)
+
+because of that asyncronous tests have not been implemented,
+ASTUce is syncronous only.
+
+We think
+ * GUI for unit tests sucks and we intend to change that
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+[Roadmap roadmap]
