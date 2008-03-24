@@ -8,7 +8,8 @@
  * new build system
  * graphical console
  * TestRunner using sockets
-
+ * exported as a SWC
+ * tutorial as videos
 
 == v0.8 AS3 ==
 
