@@ -36,7 +36,7 @@ package buRRRn.ASTUce
         var fullname:String  = "ActionScript Test Unit compact edition AS3";
         var version:Version  = new Version( 0, 8 );
             version.revision = parseInt( "$Rev$".split( " " )[1] );
-        
+         
         var copyright:String = "Copyright © 2006-2008 Zwetan Kjukov, All right reserved.";
         var origin:String    = "Made in the EU.";
         
