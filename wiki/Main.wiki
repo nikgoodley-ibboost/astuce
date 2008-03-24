@@ -5,7 +5,7 @@
 
 *ASTUce*
 
-ASTUce stand for "ActionScript Test Unit compact edition".
+ASTUce stand for "!ActionScript Test Unit compact edition".
 
 ASTUce is a regression testing framework inspired by the xUnit architecture.
 
