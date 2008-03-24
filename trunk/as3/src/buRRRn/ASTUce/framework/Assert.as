@@ -23,11 +23,10 @@ package buRRRn.ASTUce.framework
     {
     import system.IEquatable;
     import system.Strings;
-    import system.Serializer;
+    import system.config;
     
     import buRRRn.ASTUce.strings;
     import buRRRn.ASTUce.config;
-    import system.SerializationFormat;
     
     /* A set of assert methods.
        Messages are only displayed when an assert fails.
@@ -64,16 +63,17 @@ package buRRRn.ASTUce.framework
                we don't want to have prettyPrinting messing
                with our lines output so we deactivate it
             */
-            var pretty:Boolean = Serializer.prettyPrinting;
-            Serializer.prettyPrinting = false;
+            var pretty:Boolean = system.config.serializer.prettyPrinting;
+            system.config.serializer.prettyPrinting = false;
             
-            var str:String = Serializer.serialize( o );
+            var str:String = system.config.serializer.serialize( o );
             
             /* note:
                in case original serializer would output nothing
                we use the Basic serializer to at least obtain
                the toString() representation
             */
+            /* temporaly removed
             if( (str == "{}") || (str == "") )
                 {
                 var tmp:* = Serializer.format;
@@ -81,20 +81,20 @@ package buRRRn.ASTUce.framework
                 str = Serializer.serialize( o );
                 Serializer.format = tmp;
                 }
-            
-            Serializer.prettyPrinting = pretty;
+            */
+            system.config.serializer.prettyPrinting = pretty;
             return str;
             }
         
         static private function _failNotEquals( expected:*, actual:*, message:String = "" ):void
             {
-            if( config.showObjectSource )
+            if( buRRRn.ASTUce.config.showObjectSource )
                 {
                 expected = _serialize( expected );
                 actual   = _serialize( actual );
                 }
             
-            if( config.invertExpectedActual )
+            if( buRRRn.ASTUce.config.invertExpectedActual )
                 {
                 var tmp:*  = expected;
                 expected   = actual;
@@ -125,13 +125,13 @@ package buRRRn.ASTUce.framework
                 formatted = message + " ";
                 }
             
-            if( config.showObjectSource )
+            if( buRRRn.ASTUce.config.showObjectSource )
                 {
                 expected = _serialize( expected );
                 actual   = _serialize( actual );
                 }
             
-            if( config.invertExpectedActual )
+            if( buRRRn.ASTUce.config.invertExpectedActual )
                 {
                 var tmp:*  = expected;
                 expected   = actual;
