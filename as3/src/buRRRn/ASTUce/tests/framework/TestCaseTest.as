@@ -134,7 +134,7 @@ package buRRRn.ASTUce.tests.framework
         
         /* See <NoArgTestCaseTest> for explanation.
         */
-        
+        /*
         public function testNoArgTestCaseFails():void
             {
             var t:TestSuite = new TestSuite( NoArgTestCaseTest );
@@ -143,7 +143,7 @@ package buRRRn.ASTUce.tests.framework
             assertTrue( result.runCount == 1 );
             assertTrue( result.failureCount == 1 ); //1 warning
             }
-        
+        */
         public function testNamelessTestCase():void
             {
             var t:TestCase = new TestCase();
