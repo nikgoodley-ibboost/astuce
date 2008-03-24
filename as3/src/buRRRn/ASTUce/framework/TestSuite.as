@@ -13,7 +13,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2007
+  Portions created by the Initial Developer are Copyright (C) 2006-2008
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -21,14 +21,11 @@
 
 package buRRRn.ASTUce.framework
     {
-    import system.Strings;
-    import system.Reflection;
-    
-    import system.Environment;
-    import system.Arrays;
-    
-    import buRRRn.ASTUce.strings;
     import buRRRn.ASTUce.config;
+    import buRRRn.ASTUce.strings;
+    
+    import system.Reflection;
+    import system.Strings;
     
     /* Class: TestSuite
        A TestSuite is a composite of Tests.
@@ -98,7 +95,7 @@ package buRRRn.ASTUce.framework
             
             if( theConstructor is ITest )
                 {
-                trace( "ctor addtest : " + Reflection.getClassName( theConstructor ) );
+                //trace( "ctor addtest : " + Reflection.getClassName( theConstructor ) );
                 addTest( theConstructor );
                 return;
                 }
@@ -170,6 +167,7 @@ package buRRRn.ASTUce.framework
             
             //Adds all the methods starting with "test" as test cases to the suite.
             var names:Array = Reflection.getClassMethods( ctorResult, config.testInheritedTests );
+            //trace( "method names: " + names );
             
             /* note:
                we want to prefilter the list of methods
@@ -185,6 +183,7 @@ package buRRRn.ASTUce.framework
                get all the methods starting with "test"
             */
             names = names.filter( _isTestMethodFilter );
+            //trace( "method names filtered: " + names );
             
             for( var i:int=0; i<names.length; i++ )
                 {
@@ -236,6 +235,18 @@ package buRRRn.ASTUce.framework
         
         private function _isTestMethodFilter( element:*, index:int, arr:Array ):Boolean
             {
+            var method:String = element.toLowerCase();
+            
+            /* note:
+               toString and valueOF are a special case
+               because they are defined in the prototype
+               and so will not be filtered correctly
+            */
+            if( (method == "tostring") || (method == "tostring") )
+                {
+                return false;
+                }
+            
             return Strings.startsWith( element.toLowerCase(), "test" );
             }
         
@@ -289,7 +300,7 @@ package buRRRn.ASTUce.framework
         
         /* Creates a test corresponding to the method name in theConstructor class.
         */
-        static public function createTest( theConstructor:Class, name:String ):ITest
+        public static function createTest( theConstructor:Class, name:String ):ITest
             {
             if( theConstructor == null )
                 {
@@ -463,33 +474,4 @@ package buRRRn.ASTUce.framework
         }
     
     }
-
-
-import buRRRn.ASTUce.framework.TestCase;
-
-internal class TestWarning extends TestCase
-    {
-    
-    private var _message:String;
-    private var _detail:String;
-    
-    public function TestWarning( message:String = "", detail:String = "" )
-        {
-        super( "warning" );
-        _message = message;
-        _detail  = detail;
-        }
-    
-    override protected function runTest():void
-        {
-        fail( _detail );
-        }
-    
-    override public function toString( ...args ):String
-        {
-        return name + "(" + _message + ")";
-        }
-    
-    }
-
 
