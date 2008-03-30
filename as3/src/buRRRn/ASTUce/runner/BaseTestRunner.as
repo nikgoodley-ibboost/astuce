@@ -55,7 +55,7 @@ package buRRRn.ASTUce.runner
         /**
          * An error occurred.
          */
-        public function addError( test:ITest, e:Error ):void
+        public static function getFilteredTrace( stack:String ):Array
             {
             var lines:Array = stack.split( "\n" );
             
