@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -20,12 +20,10 @@
 */
 
 package buRRRn.ASTUce.tests.extensions
-    {
-    import buRRRn.ASTUce.framework.*;
-    
-    import buRRRn.ASTUce.extensions.TimedTest;
-    
-    public class AllTests
+{
+	import buRRRn.ASTUce.framework.*;    
+
+	public class AllTests
         {
         
         static public function suite():ITest
