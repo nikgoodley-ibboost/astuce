@@ -20,6 +20,7 @@
   	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
 */
+
 package buRRRn.ASTUce
     {
     import system.Reflection;
@@ -32,7 +33,10 @@ package buRRRn.ASTUce
     import buRRRn.ASTUce.framework.*;
     
     import buRRRn.ASTUce.runner.BaseTestRunner;
+    import buRRRn.ASTUce.runner.strings;
+    import buRRRn.ASTUce.runner.NullSuiteError;
     import buRRRn.ASTUce.ui.ResultPrinter;
+    
     
 	/**
      * This is the default TestRunner for ASTUce
@@ -149,7 +153,7 @@ package buRRRn.ASTUce
             for( var i:int=0; i<args.length; i++ )
                 {
                 suiteName = runner.getTestName( args[i] );
-                Console.writeLine( Strings.format( _strings.runTitle, suiteName, i ) );
+                Console.writeLine( Strings.format( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i ) );
                 
                 try
                     {
@@ -157,15 +161,15 @@ package buRRRn.ASTUce
                     }
                 catch( e:NullSuiteError )
                     {
-                    runner.runFailed( _strings.nullTestsuite );
+                    runner.runFailed( buRRRn.ASTUce.runner.strings.nullTestsuite );
                     }
                 catch( e:Error )
                     {
-                    runner.runFailed( Strings.format( _strings.canNotCreateAndRun, i ) );
-                    runner.runFailed( Strings.format( _strings.tab, e.toString() ) );
+                    runner.runFailed( Strings.format( buRRRn.ASTUce.runner.strings.canNotCreateAndRun, i ) );
+                    runner.runFailed( Strings.format( buRRRn.ASTUce.runner.strings.tab, e.toString() ) );
                     }
                 
-                Console.writeLine( strings.separator );
+                Console.writeLine( buRRRn.ASTUce.strings.separator );
                 }
             }
         
@@ -249,22 +253,4 @@ package buRRRn.ASTUce
         }
     
     }
-
-/**
- * Internal strings.
- */
-internal var _strings:Object = {};
-             _strings.runTitle           = "[{0}] #{1}";
-             _strings.tab                = "    {0}";
-             _strings.nullTestsuite      = "Could not create and run a null test suite";
-             _strings.canNotCreateAndRun = "Could not create and run test suite #{0}.";
-
-/**
- * The NullSuiteError internal class.
- */
-internal class NullSuiteError extends Error
-    {
-    
-    }
-
 

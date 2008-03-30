@@ -22,21 +22,20 @@
 package
     {
     import flash.display.Sprite;
-
+    
+    import buRRRn.ASTUce.about;
+    import buRRRn.ASTUce.tests.AllTests;
+    import buRRRn.ASTUce.samples.AllTests;
+    import buRRRn.ASTUce.samples.SimpleTest;
+    import buRRRn.ASTUce.Runner;
+    
     public class ASTUce_TestRunner extends Sprite
         {
         
         public function ASTUce_TestRunner()
             {
             
-            import buRRRn.ASTUce.about;
             buRRRn.ASTUce.about( true, false );
-            
-            import buRRRn.ASTUce.tests.AllTests;
-            import buRRRn.ASTUce.samples.*;
-            //import buRRRn.ASTUce.samples.AllTests;
-            //import buRRRn.ASTUce.samples.SimpleTest;
-            import buRRRn.ASTUce.Runner;
             
             Runner.main( buRRRn.ASTUce.tests.AllTests.suite(),
                          buRRRn.ASTUce.samples.AllTests.suite(),
