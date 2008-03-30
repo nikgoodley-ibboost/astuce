@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -23,13 +23,17 @@ package buRRRn.ASTUce.extensions
     {
     import buRRRn.ASTUce.framework.*;
     
-    /* A Decorator for Tests.
-       Use TestDecorator as the base class for defining new test decorators.
-       Test decorator subclasses can be introduced to add behaviour
-       before or after a test is run.
-    */
+    /**
+     * A Decorator for Tests.
+     * <p>Use TestDecorator as the base class for defining new test decorators.</p>
+     * <p>Test decorator subclasses can be introduced to add behaviour before or after a test is run.</p>
+     */
     public class TestDecorator extends Assert implements ITest
         {
+        	
+        /**
+         * @private
+         */
         private var _test:ITest;
         
         public function TestDecorator( test:ITest )
@@ -37,26 +41,42 @@ package buRRRn.ASTUce.extensions
             _test = test;
             }
         
+        /**
+         * The number of test cases.
+         */
         public function get countTestCases():int
             {
             return _test.countTestCases;
             }
         
+        /**
+         * Indicates the ITest reference of this decorator.
+         */
         public function get test():ITest
             {
             return _test;
             }
         
+        /**
+         * Runs the specified TestResult with this run method.
+         */
         public function basicRun( result:TestResult ):void
             {
             _test.run( result );
             }
         
+        /**
+         * Runs the TestResult.
+         */
         public function run( result:TestResult ):void
             {
             basicRun( result );
             }
         
+        /**
+         * Returns the String representation of the object.
+         * @return the String representation of the object.
+         */
         public function toString( ...args ):String
             {
             return _test.toString.apply( _test, args );

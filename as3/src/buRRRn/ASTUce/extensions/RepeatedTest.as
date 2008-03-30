@@ -1,5 +1,4 @@
-
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -17,18 +16,30 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce.extensions
     {
     import buRRRn.ASTUce.framework.*;
     
-    /* A Decorator that runs a test repeatedly.
-    */
+    /**
+     *  A Decorator that runs a test repeatedly.
+     */
     public class RepeatedTest extends TestDecorator
         {
+        	
+        /**
+         * @private
+         */
         private var _timesRepeat:int;
         
+        /**
+         * Creates a new RepeatedTest instance.
+         * @param test The ITest reference of this object.
+         * @param repeat The number of iteration of this repeated test.
+         */
         public function RepeatedTest( test:ITest, repeat:int )
             {
             super( test );
@@ -41,12 +52,18 @@ package buRRRn.ASTUce.extensions
             _timesRepeat = repeat;
             }
         
-        override public function get countTestCases():int
+        /**
+         * The number of test cases.
+         */
+        public override function get countTestCases():int
             {
             return super.countTestCases * _timesRepeat;
             }
         
-        override public function run( result:TestResult ):void
+        /**
+         * Run the test.
+         */
+        public override function run( result:TestResult ):void
             {
             var i:int;
             for( i=0; i<_timesRepeat; i++ )
@@ -60,7 +77,11 @@ package buRRRn.ASTUce.extensions
                 }
             }
         
-        override public function toString( ...args ):String
+        /**
+         * Returns the String representation of the object.
+         * @return the String representation of the object.
+         */
+        public override function toString( ...args ):String
             {
             return super.toString() + " (repeated)";
             }

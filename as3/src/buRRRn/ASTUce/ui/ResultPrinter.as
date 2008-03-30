@@ -1,5 +1,4 @@
-
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -17,8 +16,10 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce.ui
     {
     import system.Strings;
@@ -33,6 +34,9 @@ package buRRRn.ASTUce.ui
     import buRRRn.ASTUce.framework.TestResult;
     import buRRRn.ASTUce.runner.BaseTestRunner;
     
+    /**
+     * The UI result printer object.
+     */
     public class ResultPrinter implements ITestListener
         {
         private var _writer:Class = Console; //default writer
