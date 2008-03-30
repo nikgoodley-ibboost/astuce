@@ -51,7 +51,7 @@ package buRRRn.ASTUce.extensions
                     self["setUp"]();
                     self["basicRun"]( result );
                     self["tearDown"]();
-                    }
+                    };
             
             result.runProtected( this, p );
             }
@@ -70,7 +70,7 @@ package buRRRn.ASTUce.extensions
         prototype.setUp = function():void
             {
             
-            }
+            };
         
         /**
          * Tears down the fixture. Implement as :
@@ -85,7 +85,7 @@ package buRRRn.ASTUce.extensions
         prototype.tearDown = function():void
             {
             
-            }
+            };
         
         }
     

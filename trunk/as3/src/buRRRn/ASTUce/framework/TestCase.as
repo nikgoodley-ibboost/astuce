@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -216,7 +216,7 @@ package buRRRn.ASTUce.framework
         prototype.setUp = function():void
             {
             
-            }
+            };
         
         /* Tears down the fixture, for example, close a network connection.
            This method is called after a test is executed.
@@ -224,7 +224,7 @@ package buRRRn.ASTUce.framework
         prototype.tearDown = function():void
             {
             
-            }
+            };
         
         /* Returns a string representation of the test case
         */

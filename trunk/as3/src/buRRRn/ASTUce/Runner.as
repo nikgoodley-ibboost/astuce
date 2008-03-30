@@ -73,7 +73,6 @@ package buRRRn.ASTUce
         /**
          * Invoked when the runner failed.
          */
-
         protected override function runFailed( message:String ):void
             {
             Console.writeLine( message );

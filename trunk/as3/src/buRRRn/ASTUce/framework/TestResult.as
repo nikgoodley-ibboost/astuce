@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -115,7 +115,7 @@ package buRRRn.ASTUce.framework
         */
         public function addError( test:ITest, e:Error ):void
             {
-            var i:int
+            var i:int;
             var listeners:Array = cloneListeners();
             
             _errors.push( new TestFailure( test, e ) );
@@ -204,7 +204,7 @@ package buRRRn.ASTUce.framework
             p.protect = function():void
                 {
                 test.runBare();
-                }
+                };
             
             runProtected( test, p );
             endTest( test );

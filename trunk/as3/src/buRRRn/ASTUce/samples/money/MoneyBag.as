@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -282,7 +282,7 @@ package buRRRn.ASTUce.samples.money
         public function toString():String
             {
             var i:int;
-            var str:String = "{"
+            var str:String = "{" ;
             for( i=0; i<_monies.length; i++ )
                 {
                 str += _monies[i].toString();

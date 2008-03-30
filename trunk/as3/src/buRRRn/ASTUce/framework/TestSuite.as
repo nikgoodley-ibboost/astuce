@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -88,7 +88,7 @@ package buRRRn.ASTUce.framework
                     }
                 catch( e:Error )
                     {
-                    _name = originalCtor
+                    _name = originalCtor ;
                     return;
                     }
                 }
@@ -414,7 +414,7 @@ package buRRRn.ASTUce.framework
             
             if( (args.length > 2) && (args[2] is Number) )
                 {
-                asSimpleTrace    = false
+                asSimpleTrace    = false ;
                 simpleTraceDepth = int( args[2] );
                 }
             else
