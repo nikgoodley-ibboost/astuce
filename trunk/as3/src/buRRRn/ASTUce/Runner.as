@@ -1,5 +1,4 @@
-
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -17,8 +16,10 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce
     {
     import system.Reflection;
@@ -33,21 +34,31 @@ package buRRRn.ASTUce
     import buRRRn.ASTUce.runner.BaseTestRunner;
     import buRRRn.ASTUce.ui.ResultPrinter;
     
-    /* Class: Runner
-       This is the default TestRunner for ASTUce
-    */
+	/**
+     * This is the default TestRunner for ASTUce
+     */
     public class Runner extends BaseTestRunner
         {
+        	
+        /**
+         * @private
+         */
         private var _printer:ResultPrinter;
         
-        static protected function displayHeader():void
+        /**
+         * Display the header.
+         */
+        protected static function displayHeader():void
             {
             //Console.writeLine( buRRRn.ASTUce.info() );
             //Console.writeLine( strings.separator );
             buRRRn.ASTUce.info();
             }
         
-        static protected function displayInfos( suite:ITest, result:TestResult ):void
+        /**
+         * Display the test infos.
+         */
+        protected static function displayInfos( suite:ITest, result:TestResult ):void
             {
             if( config.showConstructorList )
                 {
@@ -55,39 +66,50 @@ package buRRRn.ASTUce
                 }
             }
         
+        /**
+         * Invoked when the runner failed.
+         */
+
         protected override function runFailed( message:String ):void
             {
             Console.writeLine( message );
             }
         
-        /* Constructor: Runner
-           Constructs a TestRunner,
-           using the given class writer if provided.
-           
-           note:
-           The default class writer for ResultPrinter is system.Console.
-           
-           For building a custom class writer, you have to define
-           a class with a static method having this signature
-           (code)
-           static public function writeLine( ...messages ):void
-           (end)
-        */
+        /**
+         * Creates a new Runner instance.
+         * Using the given class writer if provided.
+         * <p><b>Note :</b></p>
+         * The default class writer for ResultPrinter is system.Console.
+         * For building a custom class writer, you have to define a class with a static method having this signature.
+         * <pre class="prettyprint">
+         *  public static function writeLine( ...messages ):void
+         * </pre>
+         */
         public function Runner( writer:Class = null )
             {
             _printer = new ResultPrinter( writer );
             }
         
+        /**
+         * Indicates the printer of this runner.
+         */
         public function get printer():*
             {
             return _printer;
             }
         
+        /**
+         * @private
+         */
         public function set printer( printer:* ):void
             {
             _printer = printer;
             }
         
+        /**
+         * Returns the name of the test.
+         * @return the name of the test.
+         */
         public function getTestName( any:* ):String
             {
             if( any == null )
@@ -113,9 +135,10 @@ package buRRRn.ASTUce
             return "";
             }
         
-        /* Runs a multiple test and collects their results.
-        */
-        static public function main( ...args ):void
+        /**
+         * Runs a multiple test and collects their results.
+         */
+        public static function main( ...args ):void
             {
             var result:TestResult;
             var runner:Runner = new Runner();
@@ -146,19 +169,17 @@ package buRRRn.ASTUce
                 }
             }
         
-        /* Runs a single test and collects its results.
-           This method can be used to start a test run
-           from your program.
-           
-           Parameters:
-           test - can be a ITest (TestCase,TestSuite,etc.), a Class or a String
-           
-           note:
-           In the case of a string parameter, the runner will first try to
-           locate a static suite() method, and if it can not find it
-           then will try to extract a test suite automatically.
-        */
-        static public function run( test:*, runner:Runner = null ):TestResult
+        /**
+         * Runs a single test and collects its results.
+         * <p>This method can be used to start a test run from your program.</p>
+         * <p>Parameters :</p>
+         * <p><b>Note :</b></p>
+         * <p>In the case of a string parameter, the runner will first try to
+         * locate a static suite() method, and if it can not find it 
+         * then will try to extract a test suite automatically.
+         * @param test Can be a ITest (TestCase,TestSuite,etc.), a Class or a String
+         */
+        public static function run( test:*, runner:Runner = null ):TestResult
             {
             if( runner == null )
                 {
@@ -201,6 +222,9 @@ package buRRRn.ASTUce
             return runner.doRun( suite );
             }
         
+        /**
+         * Do the run process.
+         */
         public function doRun( suite:ITest ):TestResult
             {
             var result:TestResult = new TestResult();
@@ -226,12 +250,18 @@ package buRRRn.ASTUce
     
     }
 
+/**
+ * Internal strings.
+ */
 internal var _strings:Object = {};
              _strings.runTitle           = "[{0}] #{1}";
              _strings.tab                = "    {0}";
              _strings.nullTestsuite      = "Could not create and run a null test suite";
              _strings.canNotCreateAndRun = "Could not create and run test suite #{0}.";
 
+/**
+ * The NullSuiteError internal class.
+ */
 internal class NullSuiteError extends Error
     {
     

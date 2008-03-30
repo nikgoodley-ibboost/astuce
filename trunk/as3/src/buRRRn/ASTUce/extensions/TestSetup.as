@@ -1,5 +1,4 @@
-
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -17,26 +16,33 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  
+  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+
 */
-
-
 package buRRRn.ASTUce.extensions
     {
     import buRRRn.ASTUce.framework.*;
     
-    /* A Decorator to set up and tear down additional fixture state.
-       Subclass TestSetup and insert it into your tests when you want
-       to set up additional state once before the tests are run.
-    */
+    /**
+     * A Decorator to set up and tear down additional fixture state.
+     * Subclass TestSetup and insert it into your tests when you want to set up additional state once before the tests are run.
+     */
     public class TestSetup extends TestDecorator
         {
         
+        /**
+         * Creates a new TestSetup instance.
+         */
         public function TestSetup( test:ITest )
             {
             super( test );
             }
         
-        override public function run( result:TestResult ):void
+        /**
+         * Runs the TestSetup.
+         */
+        public override function run( result:TestResult ):void
             {
             var self:TestSetup = this;
             var p:Protectable = new Protectable();
@@ -50,31 +56,32 @@ package buRRRn.ASTUce.extensions
             result.runProtected( this, p );
             }
         
-        /* Sets up the fixture.
-           Implement as:
-           (code)
-           public function setUp():void
-               {
-               //...
-               }
-           (end)
-           to set up additional fixture state.
-        */
+        /**
+         * Sets up the fixture.
+         * <p><b>Implement as :</b></p>
+         * <pre class="prettyprint">
+         * public function setUp():void
+         *     {
+         *     //...
+         *     }
+         * </pre>
+         * <p>To set up additional fixture state.</p>
+         */
         prototype.setUp = function():void
             {
             
             }
         
-        /* Tears down the fixture.
-           Implement as:
-           (code)
-           public function tearDown():void
-               {
-               //...
-               }
-           (end)
-           to tear down additional fixture state.
-        */
+        /**
+         * Tears down the fixture. Implement as :
+         * <pre class="prettyprint">
+         * public function tearDown():void
+         *     {
+         *     //...
+         *     }
+         * </pre>
+         * to tear down additional fixture state.
+         */
         prototype.tearDown = function():void
             {
             

@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -22,17 +22,35 @@
 package buRRRn.ASTUce.runner
     {
     
+    /**
+     * The TestRunStatus class.
+     */
     public class TestRunStatus
         {
+        	
+        /**
+         * @private
+         */
         private var _value:int;
         
+        /**
+         * Creates a new TestRunStatus instance.
+         * @param value The status value of this instance.
+         */
         public function TestRunStatus(value:int)
             {
             _value = value;
             }
         
-        static public const error:TestRunStatus   = new TestRunStatus( 1 );
-        static public const failure:TestRunStatus = new TestRunStatus( 2 );
+        /**
+         * The error TestRunStatus constante (1).
+         */
+        public static const error:TestRunStatus   = new TestRunStatus( 1 ) ;
+
+        /**
+         * The failure TestRunStatus constante (2).
+         */
+        public static const failure:TestRunStatus = new TestRunStatus( 2 ) ;
         
         }
     
