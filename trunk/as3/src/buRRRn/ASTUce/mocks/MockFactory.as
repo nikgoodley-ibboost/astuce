@@ -28,7 +28,6 @@ package buRRRn.ASTUce.mocks
      * The MockFactory class.
      * @see http://jsmock.sourceforge.net/jsmock.js
      * @see http://jsmock.sourceforge.net/examples/
-     * @author eKameleon
      */
     public class MockFactory
     {

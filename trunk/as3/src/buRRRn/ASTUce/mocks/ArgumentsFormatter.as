@@ -24,7 +24,6 @@ package buRRRn.ASTUce.mocks
     
     /**
      * This tool class format an Array of types.
-     * @author eKameleon
      */
     public class ArgumentsFormatter 
     {

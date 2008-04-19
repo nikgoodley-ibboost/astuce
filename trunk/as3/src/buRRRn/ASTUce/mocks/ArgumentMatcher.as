@@ -23,7 +23,6 @@ package buRRRn.ASTUce.mocks
 
     /**
      * The ArgumentsMatcher class.
-     * @author eKameleon
      */
     public class ArgumentMatcher 
     {

@@ -22,7 +22,6 @@ package buRRRn.ASTUce.mocks
 {
     /**
      * The ExpectationMatcher class.
-     * @author eKameleon
      */
     public class ExpectationMatcher 
     {

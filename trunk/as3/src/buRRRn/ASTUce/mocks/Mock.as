@@ -23,7 +23,6 @@ package buRRRn.ASTUce.mocks
 
     /**
      * The Mock object class.
-     * @author eKameleon
      */
     public dynamic class Mock 
     {

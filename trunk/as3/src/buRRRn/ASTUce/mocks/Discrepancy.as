@@ -23,7 +23,6 @@ package buRRRn.ASTUce.mocks
 
     /**
      * The Discrepancy class.
-     * @author eKameleon
      */
     public class Discrepancy 
     {

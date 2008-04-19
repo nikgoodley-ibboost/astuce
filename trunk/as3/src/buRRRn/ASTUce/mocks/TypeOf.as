@@ -23,7 +23,6 @@ package buRRRn.ASTUce.mocks
 
     /**
      * Register a type.
-     * @author eKameleon
      */
     public class TypeOf 
     {
