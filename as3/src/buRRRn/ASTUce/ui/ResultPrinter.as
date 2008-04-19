@@ -42,6 +42,9 @@ package buRRRn.ASTUce.ui
         private var _writer:Class = Console; //default writer
         protected var column:int  = 0;
         
+        /**
+         * Converts the elapsed time as String.
+         */
         protected function elapsedTimeAsString( runTime:Number ):String
             {
             use namespace AS3; //to avoid 3594 errors

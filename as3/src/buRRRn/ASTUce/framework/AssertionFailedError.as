@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -17,16 +17,23 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce.framework
     {
     
-    /* Thrown when an assertion failed.
-    */
+    /**
+     * Throwns when an assertion failed.
+     */
     public class AssertionFailedError extends Error
         {
         
+        /**
+         * Creates a new AssertionFailedError instance.
+         * @param message The message of the error object.
+         */
         public function AssertionFailedError( message:String = "" )
             {
             super( message );
@@ -40,6 +47,10 @@ package buRRRn.ASTUce.framework
             name = "AssertionFailedError";
             }
         
+        /**
+         * Returns the String representation of the object.
+         * @return the String representation of the object.
+         */
         public function toString():String
             {
             return name + ": " + message;

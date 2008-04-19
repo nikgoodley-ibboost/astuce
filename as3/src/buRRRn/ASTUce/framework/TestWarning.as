@@ -17,17 +17,32 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce.framework
     {
     
+    /**
+     * TestWarning, an enclosure for information on tests that generate warnings.
+     */
     public class TestWarning extends TestCase
         {
         
+        /**
+         * @private
+         */
         private var _message:String;
+        
+        /**
+         * @private
+         */
         private var _detail:String;
         
+        /**
+         * Creates a new TestWarning instance.
+         */
         public function TestWarning( message:String = "", detail:String = "" )
             {
             super( "warning" );
@@ -35,12 +50,19 @@ package buRRRn.ASTUce.framework
             _detail  = detail;
             }
         
-        override protected function runTest():void
+        /**
+         * Runs the test.
+         */
+        protected override function runTest():void
             {
             fail( _detail );
             }
         
-        override public function toString( ...args ):String
+        /**
+         * Returns the String representation of the object.
+         * @return the String representation of the object.
+         */
+        public override function toString( ...args ):String
             {
             return name + "(" + _message + ")";
             }

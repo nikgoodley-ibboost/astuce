@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -12,36 +11,33 @@
   The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
   
   The Initial Developer of the Original Code is
-  Zwetan Kjukov <zwetan@gmail.com>.
+  ALCARAZ Marc <ekameleon@gmail.com>.
   Portions created by the Initial Developer are Copyright (C) 2006-2008
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
 
-package buRRRn.ASTUce.tests.framework
-    {
-    import buRRRn.ASTUce.framework.*;
-    
-    import buRRRn.ASTUce.tests.framework.*;
-    
-    /* TestSuite that runs all the framework tests.
-    */
+*/
+package buRRRn.ASTUce.tests.mocks
+{
+    import buRRRn.ASTUce.framework.*;                
+
     public class AllTests
         {
         
-        static public function suite():ITest
+        public static function suite():ITest
             {
-            var suite:TestSuite = new TestSuite( "Framework Tests" );
-            //suite.simpleTrace = true;
+            var suite:TestSuite = new TestSuite( "Mock Tests" );
             
-            suite.addTestSuite( TestCaseTest );
-            suite.addTest( SuiteTest.suite() ); //you can't use automatic test extraction
-            suite.addTestSuite( TestListenerTest );
-            suite.addTestSuite( AssertTest );
-            suite.addTestSuite( TestImplementorTest );
-            suite.addTestSuite( ComparisonFailureTest );
-            suite.addTestSuite( NumberAssertTest );
+            suite.addTestSuite( ArgumentMatcherTest );
+            suite.addTestSuite( ArgumentsFormatterTest ) ;
+            suite.addTestSuite( DiscrepancyTest   ) ;
+            suite.addTestSuite( eachIndexForMockTest ) ;
+            suite.addTestSuite( ExpectationBehaviourTest ) ;
+            suite.addTestSuite( InvocationBehaviourTest ) ;
+            suite.addTestSuite( MockFactoryTest ) ;
+            suite.addTestSuite( MockTest ) ;
+            suite.addTestSuite( TypeOfTest ) ;
             
             return suite;
             }

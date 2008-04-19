@@ -17,8 +17,10 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce.framework
     {
     import buRRRn.ASTUce.config;
@@ -27,43 +29,50 @@ package buRRRn.ASTUce.framework
     import system.Reflection;
     import system.Strings;
     
-    /* Class: TestSuite
-       A TestSuite is a composite of Tests.
-       It runfs collection of test cases.
-       
-       example:
-       (code)
-       var suite:TestSuite = new TestSuite();
-       suite.addTest( new SimpleTest( "testHelloWorld" );
-       suite.addTest( new SimpleTest( "testOtherThing" );
-       (end)
-       
-       Alternatively, a testSuite can extract the tests to be run automatically.
-       To do so you pass the class of your ITest to the constructor.
-       
-       example:
-       (code)
-       var suite:TestSuite = new TestSuite( SimpleTest );
-       (end)
-       
-       This constructor creates a suite with all the methods
-       starting with "test" that take no arguments.
-    */    
+    /**
+     * A TestSuite is a composite of Tests.
+     * <p>It runfs collection of test cases.</p>
+     * <p><b>Example :</b></p>
+     * <pre class="prettyprint">
+     * var suite:TestSuite = new TestSuite();
+     * suite.addTest( new SimpleTest( "testHelloWorld" );
+     * suite.addTest( new SimpleTest( "testOtherThing" );
+     * </pre>
+     * Alternatively, a testSuite can extract the tests to be run automatically.
+     * To do so you pass the class of your ITest to the constructor.
+     * <p><b>Example :</b></p>
+     * <pre class="prettyprint">
+     * var suite:TestSuite = new TestSuite( SimpleTest );
+     * </pre>
+     * <p>This constructor creates a suite with all the methods starting with "test" that take no arguments.</p>
+     */       
     public class TestSuite implements ITest
         {
+        	
+        /**
+         * @private
+         */
         private var _unknown:String = "[Unknown]";
+        
+        /**
+         * @private
+         */
         private var _tests:Array    = [];
         
+        /**
+         * @private
+         */
         private var _name:String;
         
+        /**
+         * @private
+         */
         public var simpleTrace:Boolean;
         
-        /* Constructor: TestSuite
-           
-           note:
-           theConstructor argument can be either a String an ITest or a Class
-           in case of a Class tests will be extracted automatically.
-        */
+        /**
+         * Creates a new TestSuite instance.
+         * <p><b>Note :<b>theConstructor argument can be either a String an ITest or a Class in case of a Class tests will be extracted automatically.</p>
+         */
         public function TestSuite( theConstructor:* = null, name:String = "", simpleTrace:Boolean = false )
             {
             if( (name != "") && (name != null) )
@@ -121,7 +130,7 @@ package buRRRn.ASTUce.framework
                 {
                 var ctorResult:* = new theConstructor();
                 }
-            catch( e:Error )
+            catch( er:Error )
                 {
                 /* note:
                    some class could have a constructor that throw an error
@@ -148,13 +157,13 @@ package buRRRn.ASTUce.framework
                          <buRRRn.ASTUce.tests.framework.TestCaseTest.testNoArgTestCasePasses>
                          
                 */
-                if( e.errorID == 1063 )
+                if( er.errorID == 1063 )
                     {
-                    addTest( _warning( Strings.format( strings.ctorIsMalformed, className ), e.message ) );
+                    addTest( _warning( Strings.format( strings.ctorIsMalformed, className ), er.message ) );
                     }
                 else
                     {
-                    addTest( _warning( Strings.format( strings.ctorNotInstanciable, className ), e.message ) );
+                    addTest( _warning( Strings.format( strings.ctorNotInstanciable, className ), er.message ) );
                     }
                 return;
                 }
@@ -198,12 +207,18 @@ package buRRRn.ASTUce.framework
             
             }
        
-       static private function _warning( message:String, detail:String = "" ):ITest
+       /**
+        * @private
+        */
+       private static function _warning( message:String, detail:String = "" ):ITest
             {
             return new TestWarning( message, detail );
             }
-        
-        private function _addTestMethod( method:String, theConstructor:Class ):void
+
+       /**
+        * @private
+        */
+       private function _addTestMethod( method:String, theConstructor:Class ):void
             {
             if( !_isTestMethod( method ) )
                 {
@@ -223,6 +238,9 @@ package buRRRn.ASTUce.framework
             }
         */
         
+        /**
+         * @private
+         */
         private function _isTestMethod( method:String ):Boolean
             {
             /* TODO:
@@ -233,7 +251,10 @@ package buRRRn.ASTUce.framework
             return Strings.startsWith( method, "test" );
             }
         
-        private function _isTestMethodFilter( element:*, index:int, arr:Array ):Boolean
+       /**
+        * @private
+        */
+       private function _isTestMethodFilter( element:*, index:int, arr:Array ):Boolean
             {
             var method:String = element.toLowerCase();
             
@@ -250,6 +271,9 @@ package buRRRn.ASTUce.framework
             return Strings.startsWith( element.toLowerCase(), "test" );
             }
         
+        /**
+         * Indicates the number of TestCase elements in this suite.
+         */
         public function get countTestCases():int
             {
             var count:int = 0;
@@ -262,11 +286,9 @@ package buRRRn.ASTUce.framework
             return count;
             }
         
-        /* Returns the name of the suite.
-           
-           note:
-           if no name is defined we return "[Unknown]".
-        */
+        /**
+         * Indicates the name of the suite. if no name is defined we return "[Unknown]".
+         */
         public function get name():String
             {
             if( (_name == null) || (_name == "") )
@@ -277,29 +299,33 @@ package buRRRn.ASTUce.framework
             return _name;
             }
         
-        /* Sets the name of the suite.
-        */
+        /**
+         * @private
+         */
         public function set name( value:String ):void
             {
             _name = value;
             }
         
-        /* Returns the number of tests in this suite.
-        */
+        /**
+         * Indicates the number of tests in this suite.
+         */
         public function get testCount():int
             {
             return _tests.length;
             }
         
-        /* Returns the tests as an Array.
-        */
+        /**
+         * Indicates the tests as an Array.
+         */
         public function get tests():Array
             {
             return _tests;
             }
         
-        /* Creates a test corresponding to the method name in theConstructor class.
-        */
+        /**
+         * Creates a test corresponding to the method name in theConstructor class.
+         */
         public static function createTest( theConstructor:Class, name:String ):ITest
             {
             if( theConstructor == null )
@@ -331,8 +357,9 @@ package buRRRn.ASTUce.framework
             return test;
             }
         
-        /* Adds a test to the suite.
-        */
+        /**
+         * Adds a test to the suite.
+         */
         public function addTest( test:ITest ):void
             {
             /* attention:
@@ -354,15 +381,17 @@ package buRRRn.ASTUce.framework
             _tests.push( test );
             }
         
-        /* Adds the tests from the given class to the suite.
-        */
+        /**
+         * Adds the tests from the given class to the suite.
+         */
         public function addTestSuite( testConstructor:Class ):void
             {
             addTest( new TestSuite( testConstructor ) );
             }
         
-        /* Runs the tests and collects their result in a <TestResult>.
-        */
+        /**
+         * Runs the tests and collects their result in a <TestResult>.
+         */
         public function run( result:TestResult ):void
             {
             var i:int;
@@ -380,22 +409,29 @@ package buRRRn.ASTUce.framework
                 }
             }
         
+        /**
+         * Runs the test.
+         */
         public function runTest( test:ITest, result:TestResult ):void
             {
             test.run( result );
             }
         
-        /* Returns the test at the given index.
-        */
+        /**
+         * Returns the test at the given index.
+         * @return the test at the given index.
+         */
         public function testAt( index:int ):ITest
             {
             return _tests[ index ];
             }
         
-        /* Returns a string representation of the test suite.
-           
-           toString( increment:int = 0, asSimpleTrace:Boolean = false, [simpleTraceDepth:int = 0] )
-        */
+        /**
+         * Returns a string representation of the test suite.
+         * <pre class="prettyprint">
+         * toString( increment:int = 0, asSimpleTrace:Boolean = false, [simpleTraceDepth:int = 0] )
+         * </pre>
+         */
         public function toString( ...args ):String
             {
             var increment:int = 0;

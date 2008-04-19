@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -20,12 +20,12 @@
 */
 
 package buRRRn.ASTUce.tests
-    {
+{
     import buRRRn.ASTUce.framework.*;
-    
-    import buRRRn.ASTUce.tests.framework.AllTests;
     import buRRRn.ASTUce.tests.extensions.AllTests;
-    
+    import buRRRn.ASTUce.tests.framework.AllTests;
+    import buRRRn.ASTUce.tests.mocks.AllTests;    
+
     /* TestSuite that runs all the ASTUce tests
     */
     public class AllTests
@@ -42,6 +42,7 @@ package buRRRn.ASTUce.tests
             
             suite.addTest( buRRRn.ASTUce.tests.framework.AllTests.suite() );
             suite.addTest( buRRRn.ASTUce.tests.extensions.AllTests.suite() );
+            suite.addTest( buRRRn.ASTUce.tests.mocks.AllTests.suite() );
             
             return suite;
             }

@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -17,8 +17,10 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce.framework
     {
     import system.IEquatable;
@@ -28,9 +30,16 @@ package buRRRn.ASTUce.framework
     import buRRRn.ASTUce.strings;
     import buRRRn.ASTUce.config;
     
-    /* A set of assert methods.
-       Messages are only displayed when an assert fails.
-    */
+
+    /**
+     * A set of assert methods. Messages are only displayed when an assert fails. It is a static only class.
+     * <p><b>Notes :</b></p>
+     * <li>in ES4 we do not have protected/private constructor (which is good imho)</li>
+     * <li>we could make a public const Assert instancied by an internal class _Assert</li>
+     * <p>defined outside of the package but this would not allow us to inherit from Assert as class can not extends from an instance (from what I tested)</p>
+     * <li>so we choose to define this class on the model of the Math class as a static only class (with static only members)</li>
+     * <li>to really not instanciate the class we could throw an error if someone tried to do a <code class="prettyprint">myAssert = new Assert()</code> but well the class does not vehiculate states and we don't care if someone instanciate it ;)</li>
+     */ 
     public class Assert
         {
         
@@ -57,7 +66,10 @@ package buRRRn.ASTUce.framework
             }
         */
         
-        static private function _serialize( o:* ):String
+        /**
+         * @private
+         */
+        private static function _serialize( o:* ):String
             {
             /* note:
                we don't want to have prettyPrinting messing
@@ -86,7 +98,10 @@ package buRRRn.ASTUce.framework
             return str;
             }
         
-        static private function _failNotEquals( expected:*, actual:*, message:String = "" ):void
+        /**
+         * @private
+         */      
+        private static function _failNotEquals( expected:*, actual:*, message:String = "" ):void
             {
             if( buRRRn.ASTUce.config.showObjectSource )
                 {
@@ -104,7 +119,10 @@ package buRRRn.ASTUce.framework
             fail( format( expected, actual, message ) );
             }
         
-        static private function _failSame( message:String = "" ):void
+        /**
+         * @private
+         */
+        private static function _failSame( message:String = "" ):void
             {
             var formatted:String = "";
             
@@ -116,7 +134,10 @@ package buRRRn.ASTUce.framework
             fail( Strings.format( strings.expectedNotSame, formatted ) );
             }
         
-        static private function _failNotSame( expected:*, actual:*, message:String = "" ):void
+        /**
+         * @private
+         */
+        private static function _failNotSame( expected:*, actual:*, message:String = "" ):void
             {
             var formatted:String = "";
             
@@ -141,23 +162,21 @@ package buRRRn.ASTUce.framework
             fail( Strings.format( strings.expectedSame, formatted, expected, actual ) );
             }
         
-        /* Method: assertTrue
-           Asserts that a condition is true.
-           If it isn't it throws an AssertionFailedError
-           (with the given message if provided).
-           
-           note:
-           - the order of the arguments are inversed because
-             we can not declare overloaded methods in ES4.
-           - also optionnal arguments must be defined as default parameter value
-             and as they can be defined only at the end that's why the order
-             of arguments is inversed.
-           - not defining default parameters would make them required parameters
-           - by default a non-declared string is equal to null
-             but here as the goal is to display messages we define the
-             default value to the empty string
-        */
-        static public function assertTrue( condition:Boolean, message:String = "" ):void
+        /**
+         * Asserts that a condition is true.
+         * <p>If it isn't it throws an AssertionFailedError (with the given message if provided).</p>
+         * <p><b>Note :</b></p>
+         * - the order of the arguments are inversed because
+         *   we can not declare overloaded methods in ES4.
+         * - also optionnal arguments must be defined as default parameter value
+         *   and as they can be defined only at the end that's why the order
+         *   of arguments is inversed.
+         * - not defining default parameters would make them required parameters
+         * - by default a non-declared string is equal to null
+         *   but here as the goal is to display messages we define the
+         *   default value to the empty string
+         */
+        public static function assertTrue( condition:Boolean, message:String = "" ):void
             {
             if( !condition )
                 {
@@ -165,22 +184,18 @@ package buRRRn.ASTUce.framework
                 }
             }
         
-        /* Method: assertFalse
-           Asserts that a condition is false.
-           If it isn't it throws an AssertionFailedError
-           (with the given message if provided).
-        */
-        static public function assertFalse( condition:Boolean, message:String = "" ):void
+        /**
+         * Asserts that a condition is false. If it isn't it throws an AssertionFailedError (with the given message if provided).
+         */
+        public static function assertFalse( condition:Boolean, message:String = "" ):void
             {
             assertTrue( !condition, message );
             }
         
-        /* Method: assertEquals
-           Asserts that any two objects are equal.
-           If they are not an AssertionFailedError is thrown
-           (with the given message if provided).
-        */
-        static public function assertEquals( expected:*, actual:*, message:String = "" ):void
+        /**
+         * Asserts that any two objects are equal. If they are not an AssertionFailedError is thrown (with the given message if provided).
+         */
+        public static function assertEquals( expected:*, actual:*, message:String = "" ):void
             {
             
             if( ((expected == undefined) && (actual != undefined)) ||
@@ -238,32 +253,28 @@ package buRRRn.ASTUce.framework
             
             }
         
-        /* Method: assertNotNull
-           Asserts that an object is not null.
-           If it is an AssertionFailedError is thrown with the given message.
-        */
-        static public function assertNotNull( o:*, message:String = "" ):void
+        /**
+         * Asserts that an object is not null. If it is an AssertionFailedError is thrown with the given message.
+         */
+        public static function assertNotNull( o:*, message:String = "" ):void
             {
             assertTrue( o != null, message );
             }
         
-        /* Method: assertNull
-           Asserts that an object is null
-           If it is not an AssertionFailedError is thrown with the given message.
-        */
-        static public function assertNull( o:*, message:String = "" ):void
+        /**
+         * Asserts that an object is null. If it is not an AssertionFailedError is thrown with the given message.
+         */
+        public static function assertNull( o:*, message:String = "" ):void
             {
             assertTrue( o == null, message );
             }
         
-        /* Method: assertSame
-           Asserts that two objects refer to the same object.
-           If they are not an AssertionFailedError is thrown with the given message.
-           
-           note:
-           same object mean same reference so the comparison is by reference not by value
-        */
-        static public function assertSame( expected:*, actual:*, message:String = "" ):void
+        /**
+         * Asserts that two objects refer to the same object.
+         * If they are not an AssertionFailedError is thrown with the given message.
+         * <p><b>Note :</b>Same object mean same reference so the comparison is by reference not by value</p>
+         */
+        public static function assertSame( expected:*, actual:*, message:String = "" ):void
             {
             if( expected === actual )
                 {
@@ -273,11 +284,11 @@ package buRRRn.ASTUce.framework
             _failNotSame( expected, actual, message );
             }
         
-        /* Method: assertNotSame
-           Asserts that two objects does not refer to the same object.
-           If they are an AssertionFailedError is thrown with the given message.
-        */
-        static public function assertNotSame( expected:*, actual:*, message:String = "" ):void
+        /**
+         * Asserts that two objects does not refer to the same object.
+         * If they are an AssertionFailedError is thrown with the given message.
+         */
+        public static function assertNotSame( expected:*, actual:*, message:String = "" ):void
             {
             if( expected === actual )
                 {
@@ -285,36 +296,36 @@ package buRRRn.ASTUce.framework
                 }
             }
         
-        /* Method: assertUndefined
-           Asserts that an object is undefined.
-           If it is not an AssertionFailedError is thrown with the given message.
-        */
-        static public function assertUndefined( o:*, message:String = "" ):void
+        /**
+         * Asserts that an object is undefined.
+         * If it is not an AssertionFailedError is thrown with the given message.
+         */
+        public static function assertUndefined( o:*, message:String = "" ):void
             {
             assertTrue( o === undefined, message );
             }
         
-        /* Method: assertNotUndefined
-           Asserts that an object is not undefined.
-           If it is an AssertionFailedError is thrown with the given message.
-        */
-        static public function assertNotUndefined( o:*, message:String = "" ):void
+        /**
+         * Asserts that an object is not undefined.
+         * If it is an AssertionFailedError is thrown with the given message.
+         */
+        public static function assertNotUndefined( o:*, message:String = "" ):void
             {
             assertTrue( o !== undefined, message );
             }
         
-        /* Method: fail
-           Fails a test with the given message or with no message.
-        */
-        static public function fail( message:String = "" ):void
+        /**
+         * Fails a test with the given message or with no message.
+         */
+        public static function fail( message:String = "" ):void
             {
             throw new AssertionFailedError( message );
             }
         
-        /* Method: format
-           Formats the result.
-        */
-        static public function format( expected:*, actual:*, message:String = "" ):String
+        /**
+         * Formats the result.
+         */
+        public static function format( expected:*, actual:*, message:String = "" ):String
             {
             var formatted:String = "";
             

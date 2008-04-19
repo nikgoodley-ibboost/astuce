@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -12,50 +11,50 @@
   The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
   
   The Initial Developer of the Original Code is
-  Zwetan Kjukov <zwetan@gmail.com>.
+  ALCARAZ Marc <ekameleon@gmail.com>.
   Portions created by the Initial Developer are Copyright (C) 2006-2008
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
 */
-package buRRRn.ASTUce.framework
-    {
-    
-    /**
-     * A Listener for test progress.
-     */
-    public interface ITestListener
-        {
-        
-        /**
-         * An error occurred.
-         */
-        function addError( test:ITest, e:Error ):void;
-        
-        /**
-         * A failure occurred.
-         */
-        function addFailure( test:ITest, afe:AssertionFailedError ):void;
-        
-        /**
-         * A valid test occurred.
-         */
-        function addValid( test:ITest ):void;
-        
-        /**
-         * A test ended.
-         */
-        function endTest( test:ITest ):void;
-        
-        /**
-         * A test started.
-         */
-        function startTest( test:ITest ):void;
-        
-        }
-    
-    }
+package buRRRn.ASTUce.mocks 
+{
 
+    /**
+     * This class provides a container to prepare a method to invoke.
+     * @author eKameleon
+     */
+    public class InvocationBehavior
+    {
+
+        /**
+         * Creates a new InvocationBehavior.
+         * @param caller The caller scope of the method to invoke.
+         * @param method The method to invoke.
+         * @param arguments The arguments passed-in the method.
+         */
+        public function InvocationBehavior( caller:* , method:String , arguments:Array )
+        {
+            this.caller    = caller    ;
+            this.method    = method    ;
+            this.arguments = arguments ;
+        }
+        
+        /**
+         * The caller scope of the method to invoke.
+         */
+        public var caller:* ;
+        
+        /**
+         * The method to invoke.
+         */
+        public var method:String ;
+        
+        /**
+         * The arguments passed-in the method.
+         */
+        public var arguments:Array ;
+        
+    }
+}

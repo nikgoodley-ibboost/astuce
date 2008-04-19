@@ -96,7 +96,7 @@ internal class DoubleTestCase implements ITest
                 {
                 _testcase.runBare();
                 _testcase.runBare();
-                }
+                };
         
         result.runProtected( this, p );
         result.endTest( this );

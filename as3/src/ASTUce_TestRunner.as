@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -20,20 +20,26 @@
 */
 
 package
-    {
+{
     import flash.display.Sprite;
     
-    import buRRRn.ASTUce.about;
-    import buRRRn.ASTUce.tests.AllTests;
-    import buRRRn.ASTUce.samples.AllTests;
-    import buRRRn.ASTUce.samples.SimpleTest;
     import buRRRn.ASTUce.Runner;
-    
+    import buRRRn.ASTUce.about;
+    import buRRRn.ASTUce.config;
+    import buRRRn.ASTUce.samples.AllTests;
+    import buRRRn.ASTUce.tests.AllTests;    
+
     public class ASTUce_TestRunner extends Sprite
         {
         
         public function ASTUce_TestRunner()
             {
+            
+            buRRRn.ASTUce.config.allowStackTrace     = false ;
+            // buRRRn.ASTUce.config.allowErrorTrace     = false ;
+            // buRRRn.ASTUce.config.showPrinterDetails  = false ;
+            // buRRRn.ASTUce.config.showPrinterShortTests = false ;
+            buRRRn.ASTUce.config.showConstructorList = false ;
             
             buRRRn.ASTUce.about( true, false );
             
