@@ -1,4 +1,4 @@
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -20,13 +20,19 @@
     - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
 */
-
 package buRRRn.ASTUce.runner
     {
     
+    /**
+     * Throws a NullSuiteError.
+     */
     public class NullSuiteError extends Error
         {
         
+        /**
+         * Creates a new NullSuiteError instance.
+         * @param message The message of the error.
+         */
         public function NullSuiteError( message:String="" )
             {
             super( message );

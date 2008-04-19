@@ -158,14 +158,14 @@ package buRRRn.ASTUce
                     {
                     result = run( args[i], runner );
                     }
-                catch( e:NullSuiteError )
+                catch( e1:NullSuiteError )
                     {
                     runner.runFailed( buRRRn.ASTUce.runner.strings.nullTestsuite );
                     }
-                catch( e:Error )
+                catch( e2:Error )
                     {
                     runner.runFailed( Strings.format( buRRRn.ASTUce.runner.strings.canNotCreateAndRun, i ) );
-                    runner.runFailed( Strings.format( buRRRn.ASTUce.runner.strings.tab, e.toString() ) );
+                    runner.runFailed( Strings.format( buRRRn.ASTUce.runner.strings.tab, e2.toString() ) );
                     }
                 
                 Console.writeLine( buRRRn.ASTUce.strings.separator );

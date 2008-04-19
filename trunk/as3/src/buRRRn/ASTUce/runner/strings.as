@@ -1,4 +1,4 @@
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -20,7 +20,6 @@
     - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
 */
-
 package buRRRn.ASTUce.runner
     {
     
@@ -31,12 +30,24 @@ package buRRRn.ASTUce.runner
             {
             }
         
+         /**
+          * The run value.
+          */
          public static var runTitle:String           = "[{0}] #{1}";
-         
+
+         /**
+          * The tab value.
+          */
          public static var tab:String                = "    {0}";
          
+         /**
+          * The nullTestsuite value.
+          */
          public static var nullTestsuite:String      = "Could not create and run a null test suite";
          
+         /**
+          * The canNotCreateAndRun value.
+          */
          public static var canNotCreateAndRun:String = "Could not create and run test suite #{0}.";
         
         }

@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -20,8 +20,8 @@
 */
 
 package buRRRn.ASTUce.samples
-    {
-    import buRRRn.ASTUce.framework.TestCase;
+{
+    import buRRRn.ASTUce.framework.TestCase;        
 
     public class SimpleTest extends TestCase
         {
@@ -53,8 +53,8 @@ package buRRRn.ASTUce.samples
         
         public function testDivideByZero():void
             {
-            var zero:int   = 0;
-            var result:int = 8/zero;
+            // var zero:int   = 0;
+            // var result:int = 8/zero;
             
             //forced failure
             //assertEquals( 8, result );
@@ -82,7 +82,7 @@ package buRRRn.ASTUce.samples
         public function testEqualsObject():void
             {
             var obj1:Object = {a:1, b:2, c:3};
-            var obj2:Object = {a:1, b:2, c:4};
+            // var obj2:Object = {a:1, b:2, c:4};
             var obj3:Object = obj1;
             
             //forced failure

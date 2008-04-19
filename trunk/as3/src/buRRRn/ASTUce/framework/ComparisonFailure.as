@@ -1,4 +1,4 @@
-
+﻿
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -17,20 +17,32 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  
+    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+
 */
-
-
 package buRRRn.ASTUce.framework
     {
     
-    /* Thrown when an assert equals for Strings failed.
-    */
+    /**
+     * Throwns when an assert equals for Strings failed.
+     */
     public class ComparisonFailure extends AssertionFailedError
         {
-        
-        private var _expected:String;
+
+        /**
+         * @private
+         */
         private var _actual:String;
+                
+        /**
+         * @private
+         */
+        private var _expected:String;
         
+        /**
+         * Creates a new ComparisonFailure instance.
+         */
         public function ComparisonFailure( expected:String, actual:String, message:String = "" )
             {
             super( message );
@@ -40,13 +52,10 @@ package buRRRn.ASTUce.framework
             _actual   = actual;
             }
         
-        /* Returns "..." in place of common prefix and "..." in
-           place of common suffix between expected and actual.
-           
-           note:
-           Ideally we would want to override the message property
-           but that's not possible.
-        */
+        /**
+         * Returns "..." in place of common prefix and "..." in place of common suffix between expected and actual.
+         * <p><b>Note :</b> Ideally we would want to override the message property but that's not possible.</p>
+         */
         public function getMessage():String
             {
             if( (_expected == null) || (_actual == null) || (_expected == _actual) )
@@ -116,25 +125,24 @@ package buRRRn.ASTUce.framework
             return Assert.format( expected, actual, super.message );
             }
         
-        /* Override the Error toString method.
-           
-           note:
-           as toString is declared in the prototype you can not use
-           the override statement the 1st time you declare it,
-           this because a function declared in a class take priority
-           over a function declared in the prototype.
-           
-           But later if you want to redefine the function in another class
-           inheriting the class where you defined toString
-           you will have to use the statement override.
-           
-           little schema:
-           > Error.prototype.toString
-           >   |_ AssertionFailedError :: no declaration of toString
-           >        |_ ComparisonFailure :: public function toString (1st)
-           >              |_ OtherFailure :: public override function toString (2nd)
-        */
-        override public function toString():String
+        /**
+         * Returns the String representation of the object.
+         * Override the Error toString method.
+         * <p><b>Note :</b></p>
+         * <p>As toString is declared in the prototype you can not use the override statement the 1st time you declare it, 
+         * this because a function declared in a class take priority over a function declared in the prototype.</p>
+         * <p>But later if you want to redefine the function in another class inheriting the class where you defined toString
+         * you will have to use the statement override.</p>
+         * <p><b>little schema :</b></p>
+         * <pre class="prettyprint">
+         * Error.prototype.toString
+         *   |_ AssertionFailedError :: no declaration of toString
+         *        |_ ComparisonFailure :: public function toString (1st)
+         *              |_ OtherFailure :: public override function toString (2nd)
+         * </pre>
+         * @return the String representation of the object.
+         */
+        public override function toString():String
             {
             return name + ": " + getMessage();
             }

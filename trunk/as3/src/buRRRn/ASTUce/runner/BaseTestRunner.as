@@ -240,10 +240,10 @@ package buRRRn.ASTUce.runner
                 
                 var clazz:Class = Reflection.getClassByName( suiteClassName );
                 }
-            catch( e:Error )
+            catch( e1:Error )
                 {
                 runFailed( "Could not load \"" + suiteClassName + "\"" );                
-                runFailed( "    " + e.toString() );
+                runFailed( "    " + e1.toString() );
                 return null;
                 }
             
@@ -262,9 +262,9 @@ package buRRRn.ASTUce.runner
                 {
                 test = suiteMethod();
                 }
-            catch( e:Error )
+            catch( e2:Error )
                 {
-                runFailed( "Failed to invoke suite():" + e );
+                runFailed( "Failed to invoke suite():" + e2 );
                 return null;
                 }
             

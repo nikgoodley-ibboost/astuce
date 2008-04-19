@@ -17,30 +17,36 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-*/
+  
+    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
 
+*/
 package buRRRn.ASTUce.framework
     {
     
-    /* An ITest can be run and collect its results.
-       
-       See <TestResult>.
-    */
+    /**
+     * An ITest can be run and collect its results.
+     * @see TestResult
+     */
     public interface ITest
         {
         
-        /* Counts the number of test cases that will be run by this test.
-        */
+        /**
+         * Counts the number of test cases that will be run by this test.
+         */
         function get countTestCases():int;
         
         //function get name():String;
         
-        /* Runs a test and collects its result in a TestResult instance.
-        */
+        /**
+         * Runs a test and collects its result in a TestResult instance.
+         */
         function run( result:TestResult ):void;
         
-        /* Returns a string representation of the object.
-        */
+        /**
+         * Returns a string representation of the object.
+         * Returns a string representation of the object.
+         */
         function toString( ...args ):String;
         
         }
