@@ -23,7 +23,6 @@ package buRRRn.ASTUce.mocks
 
     /**
      * This class provides a container to prepare a method to invoke.
-     * @author eKameleon
      */
     public class InvocationBehavior
     {
