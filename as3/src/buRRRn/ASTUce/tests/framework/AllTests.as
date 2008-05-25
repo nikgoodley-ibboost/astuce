@@ -39,6 +39,7 @@ package buRRRn.ASTUce.tests.framework
             suite.addTest( SuiteTest.suite() ); //you can't use automatic test extraction
             suite.addTestSuite( TestListenerTest );
             suite.addTestSuite( AssertTest );
+            suite.addTestSuite( ArrayAssertTest );
             suite.addTestSuite( TestImplementorTest );
             suite.addTestSuite( ComparisonFailureTest );
             suite.addTestSuite( NumberAssertTest );
