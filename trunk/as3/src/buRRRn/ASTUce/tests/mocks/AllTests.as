@@ -29,6 +29,7 @@ package buRRRn.ASTUce.tests.mocks
             {
             var suite:TestSuite = new TestSuite( "Mock Tests" );
             
+            /*
             suite.addTestSuite( ArgumentMatcherTest );
             suite.addTestSuite( ArgumentsFormatterTest ) ;
             suite.addTestSuite( DiscrepancyTest   ) ;
@@ -38,7 +39,7 @@ package buRRRn.ASTUce.tests.mocks
             suite.addTestSuite( MockFactoryTest ) ;
             suite.addTestSuite( MockTest ) ;
             suite.addTestSuite( TypeOfTest ) ;
-            
+            */
             return suite;
             }
         

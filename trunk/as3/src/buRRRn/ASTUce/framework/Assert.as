@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -17,20 +16,18 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
-
+  - Marc Alcaraz <vegas@ekameleon.net>.
 */
+
 package buRRRn.ASTUce.framework
     {
+    import buRRRn.ASTUce.config;
+    import buRRRn.ASTUce.strings;
+    
     import system.IEquatable;
     import system.Strings;
     import system.config;
     
-    import buRRRn.ASTUce.strings;
-    import buRRRn.ASTUce.config;
-    
-
     /**
      * A set of assert methods. Messages are only displayed when an assert fails. It is a static only class.
      * <p><b>Notes :</b></p>
@@ -69,7 +66,7 @@ package buRRRn.ASTUce.framework
         /**
          * @private
          */
-        private static function _serialize( o:* ):String
+        protected static function _serialize( o:* ):String
             {
             /* note:
                we don't want to have prettyPrinting messing
@@ -101,7 +98,7 @@ package buRRRn.ASTUce.framework
         /**
          * @private
          */      
-        private static function _failNotEquals( expected:*, actual:*, message:String = "" ):void
+        protected static function _failNotEquals( expected:*, actual:*, message:String = "" ):void
             {
             if( buRRRn.ASTUce.config.showObjectSource )
                 {

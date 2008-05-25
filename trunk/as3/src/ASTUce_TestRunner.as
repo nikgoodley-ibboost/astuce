@@ -28,14 +28,14 @@ package
     import buRRRn.ASTUce.config;
     import buRRRn.ASTUce.samples.AllTests;
     import buRRRn.ASTUce.tests.AllTests;    
-
+    
     public class ASTUce_TestRunner extends Sprite
         {
         
         public function ASTUce_TestRunner()
             {
             
-            buRRRn.ASTUce.config.allowStackTrace     = false ;
+            buRRRn.ASTUce.config.allowStackTrace     = true ;
             // buRRRn.ASTUce.config.allowErrorTrace     = false ;
             // buRRRn.ASTUce.config.showPrinterDetails  = false ;
             // buRRRn.ASTUce.config.showPrinterShortTests = false ;
