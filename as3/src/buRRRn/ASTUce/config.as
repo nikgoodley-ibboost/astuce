@@ -16,9 +16,7 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
-
+  - Marc Alcaraz <vegas@ekameleon.net>.
 */
 package buRRRn.ASTUce
     {
@@ -53,7 +51,7 @@ package buRRRn.ASTUce
                                                                    "buRRRn.ASTUce.framework::TestResult",
                                                                    "buRRRn.ASTUce.framework::TestCase",
                                                                    "buRRRn.ASTUce.framework::TestSuite",
-                                                                   "buRRRn.ASTUce.ui",
+                                                                   "buRRRn.ASTUce.UI",
                                                                    "at MethodInfo",
                                                                    "at ()",
                                                                    "at Function/http://adobe.com/AS3/2006/builtin::call()",

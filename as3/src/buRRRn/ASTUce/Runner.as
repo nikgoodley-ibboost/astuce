@@ -34,7 +34,7 @@ package buRRRn.ASTUce
     import buRRRn.ASTUce.runner.BaseTestRunner;
     import buRRRn.ASTUce.runner.strings;
     import buRRRn.ASTUce.runner.NullSuiteError;
-    import buRRRn.ASTUce.ui.ResultPrinter;
+    import buRRRn.ASTUce.UI.ResultPrinter;
     
     
 	/**
