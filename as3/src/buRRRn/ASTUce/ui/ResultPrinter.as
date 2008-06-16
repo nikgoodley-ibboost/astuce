@@ -16,14 +16,14 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
-
+  - Marc Alcaraz <vegas@ekameleon.net>.
 */
+
 package buRRRn.ASTUce.ui
     {
+    import system.IO.Writeable;
     import system.Strings;
-    import system.Console;
+    import system.console;
     
     import buRRRn.ASTUce.config;
     import buRRRn.ASTUce.strings;
@@ -39,7 +39,7 @@ package buRRRn.ASTUce.ui
      */
     public class ResultPrinter implements ITestListener
         {
-        private var _writer:Class = Console; //default writer
+        private var _writer:Writeable = console; //default writer
         protected var column:int  = 0;
         
         /**
@@ -47,7 +47,6 @@ package buRRRn.ASTUce.ui
          */
         protected function elapsedTimeAsString( runTime:Number ):String
             {
-            use namespace AS3; //to avoid 3594 errors
             var dat:Date = new Date( runTime.valueOf() );
             
             var ms:int = dat.getUTCMilliseconds();
@@ -154,7 +153,7 @@ package buRRRn.ASTUce.ui
             writer.writeLine( strings.PrtTime, elapsedTimeAsString( runTime ) );
             }
         
-        public function ResultPrinter( writer:Class = null )
+        public function ResultPrinter( writer:Writeable = null )
             {
             if( writer != null )
                 {

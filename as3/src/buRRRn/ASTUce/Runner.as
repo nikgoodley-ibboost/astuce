@@ -16,15 +16,14 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
-
+  - Marc Alcaraz <vegas@ekameleon.net>.
 */
 
 package buRRRn.ASTUce
     {
+    import system.IO.Writeable;
     import system.Reflection;
-    import system.Console;
+    import system.console;
     import system.Strings;
     
     import buRRRn.ASTUce.strings;
@@ -43,7 +42,7 @@ package buRRRn.ASTUce
      */
     public class Runner extends BaseTestRunner
         {
-        	
+        
         /**
          * @private
          */
@@ -54,8 +53,6 @@ package buRRRn.ASTUce
          */
         protected static function displayHeader():void
             {
-            //Console.writeLine( buRRRn.ASTUce.info() );
-            //Console.writeLine( strings.separator );
             buRRRn.ASTUce.info();
             }
         
@@ -66,7 +63,7 @@ package buRRRn.ASTUce
             {
             if( config.showConstructorList )
                 {
-                Console.writeLine( suite );
+                console.writeLine( suite );
                 }
             }
         
@@ -75,20 +72,18 @@ package buRRRn.ASTUce
          */
         protected override function runFailed( message:String ):void
             {
-            Console.writeLine( message );
+            console.writeLine( message );
             }
         
         /**
          * Creates a new Runner instance.
          * Using the given class writer if provided.
          * <p><b>Note :</b></p>
-         * The default class writer for ResultPrinter is system.Console.
-         * For building a custom class writer, you have to define a class with a static method having this signature.
-         * <pre class="prettyprint">
-         *  public static function writeLine( ...messages ):void
-         * </pre>
+         * The default class writer for ResultPrinter is system.console.
+         * For building a custom class writer, you have to define a class witch
+         * implements system.IO.Writeable.
          */
-        public function Runner( writer:Class = null )
+        public function Runner( writer:Writeable = null )
             {
             _printer = new ResultPrinter( writer );
             }
@@ -152,7 +147,8 @@ package buRRRn.ASTUce
             for( var i:int=0; i<args.length; i++ )
                 {
                 suiteName = runner.getTestName( args[i] );
-                Console.writeLine( Strings.format( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i ) );
+                //console.writeLine( Strings.format( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i ) );
+                console.writeLine( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i );
                 
                 try
                     {
@@ -168,7 +164,7 @@ package buRRRn.ASTUce
                     runner.runFailed( Strings.format( buRRRn.ASTUce.runner.strings.tab, e2.toString() ) );
                     }
                 
-                Console.writeLine( buRRRn.ASTUce.strings.separator );
+                console.writeLine( buRRRn.ASTUce.strings.separator );
                 }
             }
         

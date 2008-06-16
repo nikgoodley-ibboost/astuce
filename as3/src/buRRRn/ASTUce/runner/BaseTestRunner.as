@@ -16,10 +16,9 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
-
+  - Marc Alcaraz <vegas@ekameleon.net>.
 */
+
 package buRRRn.ASTUce.runner
     {
     import system.Reflection;
@@ -34,7 +33,7 @@ package buRRRn.ASTUce.runner
     /**
      * Base class for all test runners.
      * <p><b>Note :</b></p>
-     * <p>This class is a mess in JUnit, so let keep it simple for now and think about how to refactor that in a cleaner way...</o>
+     * <p>This class is a mess in JUnit, so let keep it simple for now and think about how to refactor that in a cleaner way...</p>
      */
     public class BaseTestRunner implements ITestListener, ITestRunListener
         {
@@ -135,7 +134,7 @@ package buRRRn.ASTUce.runner
          */
         public function addValid( test:ITest ):void
             {
-            	// FIXME empty method ??
+            
             }
         
         /**
