@@ -25,7 +25,7 @@ package buRRRn.ASTUce
     import system.Version;
     import system.Strings;
     import buRRRn.ASTUce.config;
-    
+     
     /**
      * Basic system info
      */
