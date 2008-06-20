@@ -3,6 +3,11 @@
 
 ====== (v0.0): in development / v0.0: released ======
 
+== (v1.0 AS3) ==
+
+ * mock
+ * specialized asserts (Array, etc.)
+
 == (v0.9 AS3) ==
 
  * new build system
