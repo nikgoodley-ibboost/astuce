@@ -9,7 +9,7 @@ ASTUce stand for "!ActionScript Test Unit compact edition".
 
 ASTUce is a regression testing framework inspired by the xUnit architecture.
 
-This framework is intended for developers who wish to implement unit tests in ActionScript3.
+This framework is intended for developers who wish to implement unit tests in !ActionScript3.
 
 Ideally the framework will be usable in any other ES4 implementation.
 
