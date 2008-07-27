@@ -24,7 +24,7 @@ package buRRRn.ASTUce.framework
     import buRRRn.ASTUce.config;
     import buRRRn.ASTUce.strings;
     
-    import system.IEquatable;
+    import system.Equatable;
     import system.Strings;
     import system.config;
     
@@ -218,7 +218,7 @@ package buRRRn.ASTUce.framework
                 return;
                 }
             
-            if( (expected is IEquatable) && expected.equals( actual ) )
+            if( (expected is Equatable) && expected.equals( actual ) )
                 {
                 return;
                 }
