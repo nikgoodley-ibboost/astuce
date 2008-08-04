@@ -16,7 +16,8 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
+  Marc Alcaraz <ekameleon@gmail.com>.
+
 */
 
 package buRRRn.ASTUce.framework
@@ -28,6 +29,10 @@ package buRRRn.ASTUce.framework
     public class ArrayAssert extends Assert
         {
         
+        /**
+         * Asserts that any two Arrays are equal.
+         * @throws AssertionFailedError If they are not equals.
+         */   
         public static function assertEquals( expected:Array, actual:Array, message:String = "" ):void
             {
             if( expected == actual )
@@ -35,7 +40,7 @@ package buRRRn.ASTUce.framework
                 return;
                 }
             
-            var exp:String = _serialize( expected )
+            var exp:String = _serialize( expected );
             var act:String = _serialize( actual );
             
             if( expected.length != actual.length )
