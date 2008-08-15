@@ -21,7 +21,7 @@
 
 package buRRRn.ASTUce
     {
-    import system.IO.Writeable;
+    import system.io.Writeable;
     import system.Reflection;
     import system.console;
     import system.Strings;

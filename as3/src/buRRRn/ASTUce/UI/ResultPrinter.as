@@ -21,7 +21,7 @@
 
 package buRRRn.ASTUce.UI
     {
-    import system.IO.Writeable;
+    import system.io.Writeable;
     import system.Strings;
     import system.console;
     
