@@ -19,7 +19,7 @@
   - Marc Alcaraz <vegas@ekameleon.net>.
 */
 
-package buRRRn.ASTUce.UI
+package buRRRn.ASTUce.ui
     {
     import system.io.Writeable;
     import system.Strings;
