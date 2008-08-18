@@ -26,7 +26,7 @@ package buRRRn.ASTUce.framework
     
     import system.Equatable;
     import system.Strings;
-    import system.config;
+    import system.eden;
     
     /**
      * A set of assert methods. Messages are only displayed when an assert fails. It is a static only class.
@@ -72,10 +72,10 @@ package buRRRn.ASTUce.framework
                we don't want to have prettyPrinting messing
                with our lines output so we deactivate it
             */
-            var pretty:Boolean = system.config.serializer.prettyPrinting;
-            system.config.serializer.prettyPrinting = false;
+            var pretty:Boolean = eden.prettyPrinting;
+            eden.prettyPrinting = false;
             
-            var str:String = system.config.serializer.serialize( o );
+            var str:String = eden.serialize( o );
             
             /* note:
                in case original serializer would output nothing
@@ -91,7 +91,7 @@ package buRRRn.ASTUce.framework
                 Serializer.format = tmp;
                 }
             */
-            system.config.serializer.prettyPrinting = pretty;
+            eden.prettyPrinting = pretty;
             return str;
             }
         
