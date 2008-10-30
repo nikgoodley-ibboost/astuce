@@ -32,7 +32,7 @@ package buRRRn.ASTUce.mocks
          */
         public function Mock( owner:MockFactory )
         {
-              this.owner = owner ;
+            this.owner = owner ;
         }
         
         /**
@@ -48,7 +48,7 @@ package buRRRn.ASTUce.mocks
         /**
          * Indicates if the mock is recording.
          */
-        public var recording:Boolean = false ;
+        public var recording:Boolean ;
         
         /**
          * Adds a mock method in this Mock object.
