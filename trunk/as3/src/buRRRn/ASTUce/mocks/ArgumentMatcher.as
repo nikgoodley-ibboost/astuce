@@ -76,8 +76,8 @@ package buRRRn.ASTUce.mocks
             {
                 return false;
             }
-            var size:uint = expected.length ;
-            for( var i:uint = 0 ; i < size ; i++ ) 
+            var size:int = expected.length ;
+            for( var i:int = 0 ; i < size ; i++ ) 
             {
                 if( !matches(expected[i], actual[i]) )
                 {

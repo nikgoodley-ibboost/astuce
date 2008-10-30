@@ -37,9 +37,9 @@ package buRRRn.ASTUce.mocks
              
             var tmp:String ;
             var formatted:String = "" ;
-            var size:uint        =  arguments.length ;
+            var size:int        =  arguments.length ;
              
-            for( var i:uint = 0; i < size; i++) 
+            for( var i:int = 0; i < size; i++) 
             {
                 var value:* = arguments[i] ;
                 if( value == null ) 

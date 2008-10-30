@@ -22,7 +22,7 @@ package buRRRn.ASTUce.mocks
 {
     import flash.utils.describeType;
     
-    import system.Reflection;            
+    import system.Reflection;
 
     /**
      * The MockFactory class.
@@ -38,8 +38,8 @@ package buRRRn.ASTUce.mocks
         public function MockFactory()
         {
             expectationMatcher = new ExpectationMatcher() ;
-            lastCallName = null;
-            lastMock = null;
+            lastCallName       = null ;
+            lastMock           = null ;
         }
         
         /**
@@ -108,15 +108,14 @@ package buRRRn.ASTUce.mocks
             var mock:Mock = new Mock(this) ;
             if( o != null ) 
             {
-
-                if( typeof(o) == 'function' ) 
+                if( o is Class || o is Function ) 
                 {
-                    _populatesMethods( o       , mock ) ; // constants (static methods)
-                    _populatesMethods( new o() , mock ) ; // properties // problem if the constructor need arguments
+                    _createsMethods( o       , mock ) ; // constants (static methods)
+                    _createsMethods( new o() , mock ) ; // properties // problem if the constructor need arguments
                 } 
-                else if( typeof(o) == 'object') 
+                else if( o is Object ) 
                 {
-                    _populatesMethods(o, mock);
+                    _createsMethods( o , mock ) ;
                 } 
                 else 
                 {
@@ -215,7 +214,7 @@ package buRRRn.ASTUce.mocks
         /**
          * Creates the methods of the specified object in the mock object.
          */
-        private function _populatesMethods( o:* , mock:Mock ):void
+        private function _createsMethods( o:* , mock:Mock ):void
         {
             // finds methods with describeType 
             

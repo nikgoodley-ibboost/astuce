@@ -30,8 +30,8 @@ package buRRRn.ASTUce.mocks
         {
             return ;
         }
-        var size:uint = ar.length ;
-        for( var i:uint = 0 ; i < size ; i++ )
+        var size:int = ar.length ;
+        for( var i:int = 0 ; i < size ; i++ )
         {
             block( i , ar[i] ) ;
         }
