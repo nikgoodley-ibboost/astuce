@@ -27,7 +27,7 @@ package buRRRn.ASTUce
     /**
      * Display ASTUce about.
      */
-    public function about( verbose:Boolean = false, showConfig:Boolean = false ):void
+    public var about:Function = function( verbose:Boolean = false, showConfig:Boolean = false ):void
         {
         console.writeLine( info( verbose, showConfig ) );
         }
