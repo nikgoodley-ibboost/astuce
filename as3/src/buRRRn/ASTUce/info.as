@@ -22,24 +22,15 @@
 */
 package buRRRn.ASTUce
     {
-    import system.Version;
     import system.Strings;
-    import buRRRn.ASTUce.config;
      
     /**
      * Basic system info
      */
-    public function info( verbose:Boolean = false, showConfig:Boolean = false ):String
+    public var info:Function = function( verbose:Boolean = false, showConfig:Boolean = false ):String
         {
         var separator:String = "----------------------------------------------------------------";
         var CRLF:String      = "\n";
-        var name:String      = "ASTUce";
-        var fullname:String  = "ActionScript Test Unit compact edition AS3";
-        var version:Version  = new Version( 0, 8 );
-            version.revision = parseInt( "$Rev$".split( " " )[1] );
-         
-        var copyright:String = "Copyright © 2006-2008 Zwetan Kjukov, All right reserved.";
-        var origin:String    = "Made in the EU.";
         
         var str:String = "";
             if( !verbose && config.verbose )
@@ -66,13 +57,13 @@ package buRRRn.ASTUce
             
         return Strings.format( str,
                                {
-                               sep:separator,
-                               crlf:CRLF,
-                               name:name,
-                               fullname:fullname,
-                               version:version,
-                               copyright:copyright,
-                               origin:origin,
+                               sep: separator,
+                               crlf: CRLF,
+                               name: metadata.name,
+                               fullname: metadata.fullname,
+                               version: metadata.version,
+                               copyright: metadata.copyright,
+                               origin: metadata.origin,
                                config: config.toSource()
                                }
                              );
