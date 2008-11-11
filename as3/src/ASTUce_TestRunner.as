@@ -27,7 +27,7 @@ package
     import buRRRn.ASTUce.about;
     import buRRRn.ASTUce.config;
     import buRRRn.ASTUce.samples.AllTests;
-    import buRRRn.ASTUce.tests.AllTests;    
+    import buRRRn.ASTUce.tests.AllTests;
     
     public class ASTUce_TestRunner extends Sprite
         {
