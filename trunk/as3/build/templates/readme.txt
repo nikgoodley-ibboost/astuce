@@ -1,34 +1,42 @@
 @project_fullname@
-===================
-You can find the latest version of the @project_fullname@ on @project_url@
+==========================================
+You can find the latest version of the @project_name@ on @project_url@
 
-@project_fullname@ is an application framework for ActionScript 3.0
-which have the only purpose to provide portable,
-cross-platform and standard packages, libraries, etc.
+@project_name@ is a regression testing framework inspired by the xUnit architecture.
+This framework is intended for developers who wish to implement unit tests in ActionScript 3.0.
+(you can also find other implementation on the project page for JS/AS1/AS2)
+
+Dependencies
+============
+@project_name@ reuse part of the maashaack framework,
+so you will need to also install this library.
+http://maashaack.googlecode.com 
 
 Installation from sources
 =========================
 
 from subversion you can do
-$svn co @project_url@/trunk maashaack-framework
+$svn co @project_url@/trunk astuce
 or
-$svn co @project_url@/tags/0.1 maashaack-framework-v0.1
+$svn co @project_url@/tags/0.1 astuce-v0.1
 
 
 Installation for Flash CS3
 ==========================
-Before you begin to use the @project_fullname@ within Flash CS3,
-you first need to add the @project_shortname@ SWC to Flash CS3.
+Before you begin to use the @project_name@ within Flash CS3,
+you first need to add the @project_name@ SWC to Flash CS3.
 
 To do so:
 1. If you have Flash CS3 currently open, quit the application.
 
-2. Navigate to the location where you unzipped the @project_shortname@ zip
-   and find the swc (e.g. lib/maashaack.swc).
+2. Navigate to the location where you unzipped the @project_name@ zip
+   and find the swc (e.g. lib/ASTUce.swc).
 
 3. Copy the SWC file there:
    - (Windows) C:\Program Files\Adobe\ Adobe Flash CS3\language\Configuration\Components
    - (Mac OS X) Macintosh HD/Applications/Adobe Flash CS3/Configuration/Components
+
+4. You need also to install the maashaack.swc (see Dependencies).
 
 Flash CS3 is now set up to support the @project_fullname@.
 
@@ -46,9 +54,11 @@ To do so:
    Navigate to the location where you unzipped the @project_shortname@ zip
    and select lib/maashaack.swc file and click OK.
 
+3. You need also to install the maashaack.swc (see Dependencies).
+
 or
 
-Just drop the maashaack.swc file into your Flex project /libs directory
+Just drop the ASTUce.swc file into your Flex project /libs directory
 
 Documentation
 =============

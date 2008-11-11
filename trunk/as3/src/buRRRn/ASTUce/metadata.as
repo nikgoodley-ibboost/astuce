@@ -22,7 +22,7 @@
 package buRRRn.ASTUce
 {
     import system.Version;
-    
+     
     /**
     * stores static metadata about the project
     */
