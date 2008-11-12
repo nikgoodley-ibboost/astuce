@@ -28,6 +28,9 @@ package
     import buRRRn.ASTUce.config;
     import buRRRn.ASTUce.samples.AllTests;
     import buRRRn.ASTUce.tests.AllTests;
+    import buRRRn.ASTUce.samples.SimpleTest;
+    
+    SimpleTest;
     
     public class ASTUce_TestRunner extends Sprite
         {
@@ -35,6 +38,9 @@ package
         public function ASTUce_TestRunner()
             {
             
+            /* note:
+               basic options to tune your output
+            */
             buRRRn.ASTUce.config.allowStackTrace     = true ;
             // buRRRn.ASTUce.config.allowErrorTrace     = false ;
             // buRRRn.ASTUce.config.showPrinterDetails  = false ;
@@ -43,9 +49,15 @@ package
             
             buRRRn.ASTUce.about( true, false );
             
+            /* note:
+               SimpleTest will generate error and failure
+            */
+//            Runner.main( buRRRn.ASTUce.tests.AllTests.suite(),
+//                         buRRRn.ASTUce.samples.AllTests.suite(),
+//                         "buRRRn.ASTUce.samples.SimpleTest" );
+            
             Runner.main( buRRRn.ASTUce.tests.AllTests.suite(),
-                         buRRRn.ASTUce.samples.AllTests.suite(),
-                         "buRRRn.ASTUce.samples.SimpleTest" );
+                         buRRRn.ASTUce.samples.AllTests.suite() );
             
             }
         }

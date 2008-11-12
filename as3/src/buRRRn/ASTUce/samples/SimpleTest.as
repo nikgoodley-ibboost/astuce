@@ -42,25 +42,22 @@ package buRRRn.ASTUce.samples
         
         public function testAdd():void
             {
-            var result:int = value1 + value2;
+            var result:int = value1 + value2 + 1; //force failure with +1
+            //var result:int = value1 + value2 ;
             
-            //forced failure
-            //assertTrue( result == 6, "result == 6" );
-            
-            //passing test
-            assertTrue( result == 5, "result == 5"  );
+            assertTrue( result == 5, "result is not 5" );
             }
         
         public function testDivideByZero():void
             {
-            // var zero:int   = 0;
-            // var result:int = 8/zero;
+            var zero:int   = 0;
+            var result:int = 8/zero;
             
             //forced failure
-            //assertEquals( 8, result );
+            assertEquals( 8, result );
             
             //passing test
-            assertEquals( 8, 8 );
+            //assertEquals( 0, result );
             }
         
         public function testEquals():void
@@ -73,28 +70,28 @@ package buRRRn.ASTUce.samples
             assertEquals( 0x000000000c , 0x000000000c );
             
             //forced failure
-            //assertEquals( 12.0, 11.99, "Capacity" );
+            assertEquals( 12.0, 11.99, "Capacity" );
             
             //passing test
-            assertEquals( 12.0, 12, "Capacity" );
+            //assertEquals( 12.0, 12, "Capacity" );
             }
         
         public function testEqualsObject():void
             {
             var obj1:Object = {a:1, b:2, c:3};
-            // var obj2:Object = {a:1, b:2, c:4};
+            var obj2:Object = {a:1, b:2, c:4};
             var obj3:Object = obj1;
             
             //forced failure
-            //assertEquals( obj1, obj2 );
+            assertEquals( obj1, obj2 );
             
             //passing test
-            assertEquals( obj1, obj3 );
+            //assertEquals( obj1, obj3 );
             }
         
         public function testErrorThrow():void
             {
-            //throw new Error( "this is a basic error" );
+            throw new Error( "this is a basic error" );
             }
         
         }

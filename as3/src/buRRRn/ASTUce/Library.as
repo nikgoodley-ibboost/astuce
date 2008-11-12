@@ -28,7 +28,7 @@ package buRRRn.ASTUce
      * <p><b>Note :</b> This class is not a component, it just
      * a shim that allow to declare the SWC manifest and associate an icon file.</p>
      */
-    //[IconFile("ASTUce.png")]
+    [IconFile("ASTUce.png")]
     public class Library extends Sprite
     {
         public function Library()
