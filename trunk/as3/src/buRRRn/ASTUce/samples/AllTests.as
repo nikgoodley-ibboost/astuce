@@ -58,7 +58,7 @@ package buRRRn.ASTUce.samples
                suite.addTestSuite( className );
             */
             //suite.addTest( new TestSuite( SimpleTest ) );
-            suite.addTestSuite( SimpleTest );
+            //suite.addTestSuite( SimpleTest );
             
             suite.addTest( ArrayTest.suite() );
             suite.addTestSuite( MoneyTest );

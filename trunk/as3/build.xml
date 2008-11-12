@@ -189,8 +189,22 @@
             <verbose-stacktraces>false</verbose-stacktraces>
             <compute-digest>false</compute-digest>
             <source-path path-element="${release.tmp.as3}" />
+            <!--
+                we want to compile against the maashaack most recent sources
+                so the SWC can be used standalone
+             -->
+            <source-path path-element="${astuce.lib}" />
+            <!--
+                to compile a standalone SWC against a fixed version of maashaack SWC
+                note: we may need that in the futur
+             -->
+            <!--<library-path dir="${astuce.libs}" includes="maashaack.swc" />-->
             <external-library-path dir="${flex.libs}/player" includes="playerglobal.swc" />
-            <external-library-path dir="${astuce.libs}" includes="maashaack.swc" />
+            <!--
+                if we wanted to compile ASTUce with maashaack as a linked library
+                note: this force the user to include both SWC in their libs
+             -->
+            <!--<external-library-path dir="${astuce.libs}" includes="maashaack.swc" />-->
             <metadata date="${TODAY}" title="${project.name}">
                 <creator name="Zwetan Kjukov" />
                 <contributor name="Marc Alcaraz" />
