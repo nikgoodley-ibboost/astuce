@@ -9,7 +9,7 @@
  * specialized asserts (Array, etc.)
  * localization (i18n)
 
-== (v0.9 AS3) ==
+== v0.9 AS3 ==
 
  * new build system
  * documentation (asdoc)
