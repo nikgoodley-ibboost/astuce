@@ -18,6 +18,8 @@
  * exported as a SWC (easy use)
  * tutorial as videos
 
+tag: [http://astuce.googlecode.com/svn/tags/0.9.0 0.9.0]
+
 == v0.8 AS3 ==
 
  * removed all internal classes
