@@ -75,7 +75,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testError():void
             {
-            var test:TestCase = new ErrorTestCase( "noop" );
+            var test:TestCase = new ErrorTestCaseLocal( "noop" );
             
             test.run( _result );
             
@@ -113,67 +113,6 @@ package buRRRn.ASTUce.tests.framework
             assertEquals( 1, _endCount );
             }
         
-        }
-    
-    }
-
-import buRRRn.ASTUce.framework.TestCase;
-
-internal class ErrorTestCase extends TestCase
-    {
-    
-    public function ErrorTestCase( name:String = "" )
-        {
-        super( name );
-        }
-    
-    override protected function runTest():void
-        {
-        throw new Error();
-        }
-    
-    }
-
-internal class FailureTestCase extends TestCase
-    {
-    
-    public function FailureTestCase( name:String = "" )
-        {
-        super( name );
-        }
-    
-    override protected function runTest():void
-        {
-        fail();
-        }
-    
-    }
-
-internal class ValidTestCase extends TestCase
-    {
-    
-    public function ValidTestCase( name:String = "" )
-        {
-        super( name );
-        }
-    
-    override protected function runTest():void
-        {
-        assertTrue( true );
-        }
-    
-    }
-
-internal class EmptyRunTestCase extends TestCase
-    {
-    
-    public function EmptyRunTestCase( name:String = "" )
-        {
-        super( name );
-        }
-    
-    override protected function runTest():void
-        {
         }
     
     }

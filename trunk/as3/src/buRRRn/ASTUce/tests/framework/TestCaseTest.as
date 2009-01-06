@@ -67,7 +67,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testError():void
             {
-            var error:TestCase = new ErrorTestCase( "error" );
+            var error:TestCase = new ErrorTestCaseLocal( "error" );
             verifyError( error );
             }
         

@@ -23,6 +23,7 @@ package buRRRn.ASTUce.tests.extensions
     {
     import buRRRn.ASTUce.framework.*;
     import buRRRn.ASTUce.extensions.RepeatedTest;
+    import buRRRn.ASTUce.tests.extensions.SuccessTest;
     
     public class RepeatedTestTest extends TestCase
         {
@@ -82,22 +83,6 @@ package buRRRn.ASTUce.tests.extensions
             fail( "Should throw an ArgumentError" );
             }
         
-        }
-    
-    }
-
-import buRRRn.ASTUce.framework.TestCase;
-
-internal class SuccessTest extends TestCase
-    {
-    
-    public function SuccessTest( name:String = "" )
-        {
-        super( name );
-        }
-    
-    override protected function runTest():void
-        {
         }
     
     }

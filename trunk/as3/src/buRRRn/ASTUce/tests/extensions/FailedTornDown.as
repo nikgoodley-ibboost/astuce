@@ -19,23 +19,35 @@
   Contributor(s):
 */
 
-package buRRRn.ASTUce.tests.framework
+package buRRRn.ASTUce.tests.extensions
+{
+    import buRRRn.ASTUce.extensions.TestSetup;
+    import buRRRn.ASTUce.framework.ITest;
+    
+    public class FailedTornDown extends TestSetup
     {
-    import buRRRn.ASTUce.framework.TestCase;
-
-    public class ErrorTestCase extends TestCase
+        private var _tornDown:Boolean = false;
+        
+        public function FailedTornDown( test:ITest )
         {
-        
-        public function ErrorTestCase(name:String="")
-            {
-            super(name);
-            }
-        
-        override protected function runTest():void
-            {
-            throw new Error();
-            }        
-        
+            super( test );
         }
+        
+        public function get tornDown():Boolean
+        {
+            return _tornDown;
+        }
+        
+        public function setUp():void
+        {
+            fail();
+        }
+        
+        public function tearDown():void
+        {
+            _tornDown = true;
+        }
+        
     }
+}
 
