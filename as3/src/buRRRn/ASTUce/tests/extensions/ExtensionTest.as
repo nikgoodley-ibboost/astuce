@@ -27,6 +27,8 @@ package buRRRn.ASTUce.tests.extensions
     import buRRRn.ASTUce.extensions.TestSetup;
     
     import buRRRn.ASTUce.tests.WasRun;
+    import buRRRn.ASTUce.tests.framework.ErrorTestCaseLocal;
+    import buRRRn.ASTUce.tests.framework.FailureTestCase;
     
     public class ExtensionTest extends TestCase
         {
@@ -49,7 +51,7 @@ package buRRRn.ASTUce.tests.extensions
         public function testRunningErrorsInTestSetup():void
             {
             var failure:TestCase = new FailureTestCase( "failure" );
-            var error:TestCase   = new ErrorTestCase( "error" );
+            var error:TestCase   = new ErrorTestCaseLocal( "error" );
             
             var suite:TestSuite = new TestSuite();
             suite.addTest( failure );
@@ -78,81 +80,11 @@ package buRRRn.ASTUce.tests.extensions
             var wrapper:FailedSetUp = new FailedSetUp( test );
             var result:TestResult = new TestResult();
             wrapper.run( result );
-		    assertTrue( !test.wasRun);
-		    assertTrue( !result.wasSuccessful() );
+            assertTrue( !test.wasRun);
+            assertTrue( !result.wasSuccessful() );
             }
         
         }
     
     }
-
-import buRRRn.ASTUce.extensions.TestSetup;
-import buRRRn.ASTUce.framework.ITest;
-import buRRRn.ASTUce.framework.TestCase;
-
-internal class FailureTestCase extends TestCase
-    {
-    public function FailureTestCase( name:String = "" )
-        {
-        super( name );
-        }
-    
-    override protected function runTest():void
-        {
-        fail();
-        }
-    }
-
-internal class ErrorTestCase extends TestCase
-    {
-    public function ErrorTestCase( name:String = "" )
-        {
-        super( name );
-        }
-    
-    override protected function runTest():void
-        {
-        throw new Error();
-        }
-    }
-
-internal class FailedTornDown extends TestSetup
-    {
-    private var _tornDown:Boolean = false;
-    
-    public function FailedTornDown( test:ITest )
-        {
-        super( test );
-        }
-    
-    public function get tornDown():Boolean
-        {
-        return _tornDown;
-        }
-    
-    public function setUp():void
-        {
-        fail();
-        }
-    
-    public function tearDown():void
-        {
-        _tornDown = true;
-        }
-    }
-
-internal class FailedSetUp extends TestSetup
-    {
-    public function FailedSetUp( test:ITest )
-        {
-        super( test );
-        }
-    
-    public function setUp():void
-        {
-        fail();
-        }
-    }
-
-
 

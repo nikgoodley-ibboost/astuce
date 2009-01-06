@@ -122,6 +122,7 @@
               <include name="*.as"/>
               <include name="*.mxml"/>
             </fileset>
+            
         </delete>
         
         <!-- <delete file="${release.tmp.as3}/system/foobar.as" /> -->
@@ -129,7 +130,7 @@
         
     </target>
     
-    <target name="main" depends="clean,init,documentation,library_component,templates,commonfiles,package">
+    <target name="main" depends="clean,init,documentation,library_bytecode,library_component,templates,commonfiles,package">
     </target>
     
     <target name="clean-documentation">
@@ -162,6 +163,45 @@
         
     </target>
     
+    <target name="library_bytecode" description="build the library ABC">
+        <echo message="building library bytecode" level="verbose" />
+        
+        <exec executable="java">
+            <arg line="-jar ${redshell}/asc.jar" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-import ${redshell}/builtin.abc" />
+            <arg line="-import ${redshell}/toplevel.abc" />
+        <!--<arg line="-in ${astuce.lib.maashaack}/maashaack.as" />-->
+            <arg line="-import ${astuce.libs}/maashaack.abc" />
+            <arg line="${astuce.src}/ASTUce.as" />
+            
+        </exec>
+        
+        <exec executable="java">
+            <arg line="-jar ${redshell}/asc.jar" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-import ${redshell}/builtin.abc" />
+            <arg line="-import ${redshell}/toplevel.abc" />
+        <!--<arg line="-in ${astuce.lib.maashaack}/maashaack.as" />-->
+            <arg line="-import ${astuce.libs}/maashaack.abc" />
+            <arg line="-import ${astuce.src}/ASTUce.abc" />
+            <arg line="${astuce.src}/testrunner.as" />
+            
+        </exec>
+        
+        <exec executable="./${redshell}/redshell_d">
+            <arg line="-Dastrace 0" />
+            <arg line="${astuce.libs}/maashaack.abc" />
+            <arg line="${astuce.src}/ASTUce.abc" />
+            <arg line="${astuce.src}/testrunner.abc" />
+        </exec>
+        
+        <copy file="${astuce.src}/ASTUce.abc" todir="${release.dir}/lib" />
+        
+    </target>
+    
     <target name="library_component" description="build the Library SWC component">
         <echo message="building library component" level="verbose" />
         <!--
@@ -171,6 +211,7 @@
         -->
         <fileset id="sources" dir="${release.tmp.as3}">
             <include name="**/*.as"/>
+            <exclude name="**/about.as"/>
         </fileset>
         <pathconvert property="classes" pathsep=" " refid="sources">
             <chainedmapper>
@@ -201,7 +242,7 @@
                 we want to compile against the maashaack most recent sources
                 so the SWC can be used standalone
              -->
-            <source-path path-element="${astuce.lib}" />
+            <source-path path-element="${astuce.lib.maashaack}" />
             <!--
                 to compile a standalone SWC against a fixed version of maashaack SWC
                 note: we may need that in the futur

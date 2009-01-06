@@ -53,7 +53,8 @@ package buRRRn.ASTUce
          */
         protected static function displayHeader():void
             {
-            buRRRn.ASTUce.info();
+            //buRRRn.ASTUce.info()
+            console.writeLine( "ASTUce ..." );
             }
         
         /**

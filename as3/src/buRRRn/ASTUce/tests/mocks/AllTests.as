@@ -20,8 +20,8 @@
 */
 package buRRRn.ASTUce.tests.mocks
 {
-    import buRRRn.ASTUce.framework.*;                
-
+    import buRRRn.ASTUce.framework.*;
+    
     public class AllTests
         {
         
