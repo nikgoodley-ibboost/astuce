@@ -23,7 +23,8 @@
 package buRRRn.ASTUce
     {
     import system.Strings;
-     
+    import buRRRn.ASTUce.config;
+    
     /**
      * Basic system info
      */
@@ -31,6 +32,7 @@ package buRRRn.ASTUce
         {
         var separator:String = "----------------------------------------------------------------";
         var CRLF:String      = "\n";
+        var config:ASTUceConfigurator = buRRRn.ASTUce.config;
         
         var str:String = "";
             if( !verbose && config.verbose )

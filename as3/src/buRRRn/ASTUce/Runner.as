@@ -28,6 +28,7 @@ package buRRRn.ASTUce
     
     import buRRRn.ASTUce.strings;
     import buRRRn.ASTUce.config;
+    import buRRRn.ASTUce.info;
     
     import buRRRn.ASTUce.framework.*;
     
@@ -53,8 +54,7 @@ package buRRRn.ASTUce
          */
         protected static function displayHeader():void
             {
-            //buRRRn.ASTUce.info()
-            console.writeLine( "ASTUce ..." );
+            console.writeLine( buRRRn.ASTUce.info( true ) );
             }
         
         /**
