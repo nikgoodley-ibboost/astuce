@@ -22,6 +22,7 @@
 package buRRRn.ASTUce
 {
     import system.Version;
+    import system.console;
     
     /**
     * stores static metadata about the project
@@ -39,7 +40,7 @@ package buRRRn.ASTUce
         
         version.revision = parseInt( "$Rev$".split( " " )[1] );
         
-        public static var copyright:String = "Copyright © 2006-2008 Zwetan Kjukov, All right reserved.";
+        public static var copyright:String = "Copyright © 2006-2009 Zwetan Kjukov, All right reserved.";
         public static var origin:String    = "Made in the EU.";
         
     }

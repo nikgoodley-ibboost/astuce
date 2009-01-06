@@ -123,16 +123,15 @@ include "buRRRn/ASTUce/tests/WasRun.as";
 include "buRRRn/ASTUce/ui/ResultPrinter.as";
 
 //ASTUce
-include "buRRRn/ASTUce/about.as";
 include "buRRRn/ASTUce/ASTUceConfigurator.as";
 include "buRRRn/ASTUce/Runner.as";
   //statics
   include "buRRRn/ASTUce/metadata.as";
-  //functions
-  include "buRRRn/ASTUce/about.as";
-  include "buRRRn/ASTUce/info.as";
   //objects
   include "buRRRn/ASTUce/config.as";
   include "buRRRn/ASTUce/strings.as";
+  //functions
+  include "buRRRn/ASTUce/about.as";
+  include "buRRRn/ASTUce/info.as";
 
 

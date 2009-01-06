@@ -184,7 +184,6 @@
             <arg line="-avmtarget 2" />
             <arg line="-import ${redshell}/builtin.abc" />
             <arg line="-import ${redshell}/toplevel.abc" />
-        <!--<arg line="-in ${astuce.lib.maashaack}/maashaack.as" />-->
             <arg line="-import ${astuce.libs}/maashaack.abc" />
             <arg line="-import ${astuce.src}/ASTUce.abc" />
             <arg line="${astuce.src}/testrunner.as" />
