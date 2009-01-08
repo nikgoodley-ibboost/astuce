@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  The contents of this file are subject to the Mozilla Public License Version
+  1.1 (the "License"); you may not use this file except in compliance with
+  the License. You may obtain a copy of the License at 
+  http://www.mozilla.org/MPL/ 
+  
+  Software distributed under the License is distributed on an "AS IS" basis,
+  WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  for the specific language governing rights and limitations under the License. 
+  
+  The Original Code is [ASTUce: ActionScript Test Unit compact edition CLI]. 
+  
+  The Initial Developer of the Original Code is
+  Zwetan Kjukov <zwetan@gmail.com>.
+  Portions created by the Initial Developer are Copyright (C) 2006-2009
+  the Initial Developer. All Rights Reserved.
+  
+  Contributor(s):
+  
+-->
+
+<project name="astucecli" default="main" basedir=".">
+
+    <!-- timestamp of the build -->
+    <tstamp>
+        <format property="TODAY" pattern="dd MMMM yyyy" />
+    </tstamp>
+    
+    <!-- user can override those properties -->
+    <property file="build/user.properties"/>
+    
+    <!--
+       contributors have to define this properties
+       from the contributor.tmp file
+     -->
+    <available file="build/contributor.properties" property="is.contributor" />
+    
+    <!-- optional properties for contributors only -->
+    <property file="build/contributor.properties"/>
+    
+    <condition property="sep" value="${SEPARATOR_MAC}">
+        <os family="mac" />
+    </condition>
+    
+    <condition property="sep" value="${SEPARATOR_WIN}">
+        <os family="windows" />
+    </condition>
+    
+    <!-- define svnAnt -->
+    <taskdef resource="org/tigris/subversion/svnant/svnantlib.xml">
+        <classpath >
+            <fileset dir="build/ant/lib" includes="**/*.jar"/>
+        </classpath>
+    </taskdef>
+    
+    <echo message="fetch subversion informations" level="verbose" />
+    <!--
+       load the major, minor, build version number from the AS3 common source directory
+       the same properties file is used in AS3 with an include
+    -->
+    <property file="lib/ASTUce/buRRRn/ASTUce/version.properties"/>
+    <svn username="${contributor.username}" password="${contributor.password}">
+        <info target="."/>
+    </svn>
+    <!-- define the revision number from the svn information -->
+    <property name="version.revision" value="${svn.info.lastRev}"/>
+    
+    <!-- general properties of the project -->
+    <property file="build/build.properties"/>
+    
+    <!--
+       The build is intended to compile on Windows and Mac OS X and Linux
+    -->
+    <condition property="REDSHELL" value="${redshell.mac}">
+        <os family="mac"/>
+    </condition>
+    
+    <condition property="REDSHELL_DEBUG" value="${redshell.debug.mac}">
+        <os family="mac"/>
+    </condition>
+    
+    <condition property="REDSHELL" value="${redshell.win}">
+        <os family="windows" />
+    </condition>
+    
+    <condition property="REDSHELL_DEBUG" value="${redshell.debug.win}">
+        <os family="windows" />
+    </condition>
+    
+    <condition property="REDSHELL" value="${redshell.nix}">
+        <os family="unix" />
+    </condition>
+    
+    <condition property="REDSHELL_DEBUG" value="${redshell.debug.nix}">
+        <os family="unix" />
+    </condition>
+    
+    <echo message="${release.fullname} v${release.version}"/>
+    
+    <condition property="includesource">
+        <isfalse value="${no.source}"/>
+    </condition>
+    
+    
+    <target name="clean">
+        <delete dir="${release.dir}" />
+        <delete dir="${release.tmp}" />
+    </target>
+    
+    <target name="init">
+        <mkdir dir="${release.dir}" />
+        <mkdir dir="${release.tmp}" />
+        <!--
+           export the source code to a temporary location
+           to be able to manipulate some files and/or directories
+        
+        <svn>
+            <export srcPath="${astuce.src}" destPath="${release.tmp.as3}" />
+        </svn>
+         -->
+        <!-- delete some files we don't want to be included in the documentation or the component -->
+        <!--
+        <delete>
+            <fileset dir="${release.tmp.as3}">
+              <include name="*.as"/>
+              <include name="*.mxml"/>
+            </fileset>
+            
+        </delete>
+         -->
+        
+        <!-- <delete file="${release.tmp.as3}/system/foobar.as" /> -->
+        <!-- <delete dir="${release.tmp.as3}/buRRRn/ASTUce/mocks" /> -->
+        
+    </target>
+    
+    <target name="main" depends="clean,init,application,commonfiles,package">
+    </target>
+    
+    <target name="application" description="build the library ABC">
+        <echo message="building library bytecode" level="verbose" />
+        
+        <exec executable="java">
+            <arg line="-jar ${redshell.asc}" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
+            <arg line="-import ${astuce.libs}/maashaack.abc" />
+            <arg line="-import ${astuce.libs}/ASTUce.abc" />
+            <arg line="${astuce.src}/test/SimpleTest.as" />
+            
+        </exec>
+        
+        <exec executable="java">
+            <arg line="-jar ${redshell.asc}" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-exe ${REDSHELL_DEBUG}" />
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
+            <arg line="${astuce.src}/ASTUce.as" />
+            
+        </exec>
+        
+        <chmod file="${astuce.src}/ASTUce.exe" perm="+x"/>
+        
+        <!--
+        <exec executable="${REDSHELL_DEBUG}">
+            <arg line="-Dastrace 0" />
+            <arg line="${astuce.src}/ASTUce.abc" />
+        </exec>
+        -->
+        
+        <exec executable="${astuce.src}/ASTUce.exe" failonerror="true">
+            <arg line="-s" />
+            <arg line="-l:test/SimpleTest.abc" />
+            <arg line="test.SimpleTest" />
+        </exec>
+        
+        <!--<copy file="${astuce.src}/ASTUce.abc" todir="${release.dir}/lib" />-->
+        
+    </target>
+    
+    <!--
+        parse the templates for the release
+        can be use also to generate samples, mxml, as, etc.
+    -->
+    <target name="templates" description="generate files from templates">
+        <filter token="project_name" value="${project.name}"/>
+        <filter token="project_shortname" value="${project.shortname}"/>
+        <filter token="project_fullname" value="${project.fullname}"/>
+        <filter token="project_url" value="${project.url}"/>
+        <filter token="project_svn" value="${project.svn}"/>
+        <filter token="project_wiki" value="${project.wiki}"/>
+        <filter token="project_group" value="${project.group}"/>
+        <filter token="project_maintenance" value="${project.maintenance}"/>
+        <filter token="release_version" value="${release.version}"/>
+        <copy file="${astuce.template}/readme.txt" todir="${release.dir}" filtering="true" />
+    </target>
+    
+    <!-- include the source code in the release -->
+    <target name="include-source" if="includesource">
+        <copy todir="${release.dir}/src">
+            <fileset dir="${release.tmp.as3}"/>
+        </copy>
+    </target>
+    
+    <!-- add common files to the release -->
+    <target name="commonfiles" depends="include-source" description="copy common files">
+        <copy file="changelog.txt" todir="${release.dir}" />
+        <copy file="license.txt" todir="${release.dir}" />
+    </target>
+    
+    <!-- package the release to a versioned zip file -->
+    <target name="package" description="package the release for distribution" unless="no.package">
+        <echo message="generate release zip" level="verbose" />
+        <zip destfile="${release.dir}/${release.zipname}"
+             basedir="${release.dir}" 
+        />
+        
+        <delete includeemptydirs="true">
+            <fileset dir="${release.dir}" includes="**/*" excludes="${release.zipname}" defaultexcludes="false"/>
+        </delete>
+        
+    </target>
+    
+    <!-- reset the build to its default state -->
+    <target name="reset" depends="clean" description="to reset the build to its default state" >
+    </target>
+    
+    <!-- documentation of the build -->
+    <target name="help" description="documentation of the build">
+        <echo message="put some doc here" />
+        <echo message="" />
+        <echo message="" />
+    </target>
+    
+</project>
+
