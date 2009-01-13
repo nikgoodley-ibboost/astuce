@@ -205,6 +205,7 @@
         <echo message="building ASTUce executable" level="verbose" />
         
         <!-- build the OSX exe -->
+        <echo message="-----------------" />
         <echo message="build for OS X" />
         <exec executable="java">
             <arg line="-jar ${redshell.asc}" />
@@ -222,6 +223,7 @@
         <move file="${astuce.src}/ASTUce.exe" tofile="${release.dir}/ASTUce"/>
         
         <!-- build the Linux exe -->
+        <echo message="-----------------" />
         <echo message="build for Linux" />
         <exec executable="java">
             <arg line="-jar ${redshell.asc}" />
@@ -239,6 +241,7 @@
         <move file="${astuce.src}/ASTUce.exe" tofile="${release.dir}/ASTUce.nix"/>
         
         <!-- build the Windows exe -->
+        <echo message="-----------------" />
         <echo message="build for Windows" />
         <exec executable="java">
             <arg line="-jar ${redshell.asc}" />
@@ -254,6 +257,7 @@
         <chmod file="${astuce.src}/ASTUce.exe" perm="+x"/>
         <delete file="${astuce.src}/ASTUce.abc"/>
         <move file="${astuce.src}/ASTUce.exe" tofile="${release.dir}/ASTUce.exe"/>
+        <echo message="-----------------" />
         
     </target>
     
