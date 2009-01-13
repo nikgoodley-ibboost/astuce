@@ -33,7 +33,7 @@ package
         
         include "version.properties"
         
-        version.revision = parseInt( "$Rev: 122 $".split( " " )[1] );
+        version.revision = parseInt( "$Rev$".split( " " )[1] );
         
         public static var copyright:String = "Copyright © 2006-2009 Zwetan Kjukov, All right reserved.";
         public static var origin:String    = "Made in the EU.";
