@@ -308,8 +308,14 @@
         <echo message="generate release zip" level="verbose" />
         <delete file="${release.dir}/config.eden" />
         <zip destfile="${release.dir}/${release.zipname}"
-             basedir="${release.dir}" 
-        />
+             basedir="${release.dir}">
+            <zipfileset file="${release.dir}/ASTUce" filemode="755" />
+            <zipfileset file="${release.dir}/ASTUce.nix" filemode="755" />
+            <zipfileset file="${release.dir}/ASTUce.exe" filemode="755" />
+            <zipfileset file="${release.dir}/changelog.txt" />
+            <zipfileset file="${release.dir}/license.txt" />
+            <zipfileset file="${release.dir}/readme.txt" />
+        </zip>
         
         <delete includeemptydirs="true">
             <fileset dir="${release.dir}" includes="**/*" excludes="${release.zipname}" defaultexcludes="false"/>

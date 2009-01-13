@@ -25,6 +25,7 @@ package buRRRn.ASTUce
     import utils.SWF;
     
     import buRRRn.ASTUce.tests.AllTests;
+    import buRRRn.ASTUce.metadata;
     import buRRRn.ASTUce.config;
     import buRRRn.ASTUce.framework.TestResult;
     import buRRRn.ASTUce.runner.strings;
@@ -32,6 +33,7 @@ package buRRRn.ASTUce
     import buRRRn.ASTUce.Runner;
     import buRRRn.ASTUce.info;
     
+    import system.metadata;
     import system.eden;
     import system.console;
     import system.Strings;
@@ -46,6 +48,7 @@ package buRRRn.ASTUce
     import avmplus.Domain;
     import avmplus.File;
     import avmplus.System;
+    import avmplus.redtamarin;
     
     public class Application
     {
@@ -119,11 +122,12 @@ package buRRRn.ASTUce
         {
             var usage:String = "";
             
-            usage += "{name}: [-?] [-s] [-v] [-d] [-l:<filepath>] <classname> [, <classnameN>]{CRLF}";
+            usage += "{name}: [-?] [-s] [-v] [-i] [-l:<filepath>] <classname> [, <classnameN>]{CRLF}";
             usage += "             -?{sep,4}show this help{CRLF}";
             usage += "             -s{sep,4}run ASTUce self tests{CRLF}";
             usage += "             -v{sep,4}verbose{CRLF}";
-            usage += "             -d{sep,4}dump the config file 'config.eden'{CRLF}";
+            //usage += "             -d{sep,4}dump the config file 'config.eden'{CRLF}";
+            usage += "             -i{sep,4}show different infos (license etc.){CRLF}";
             usage += "  -l:<filepath>{sep,4}load a precompiled library{CRLF}";
             usage += "               {sep,4}either an *.abc or a *.swf file{CRLF}";
             usage += "               {sep,4}[repeatable]{CRLF}";
@@ -133,7 +137,7 @@ package buRRRn.ASTUce
             usage = Strings.format( usage, {
                                             CRLF: "\n",
                                             sep: " ",
-                                            name: "ASTUce"
+                                            name: AppMetadata.name
                                            } );
             
             console.writeLine( usage );
@@ -419,7 +423,7 @@ package buRRRn.ASTUce
             }
         }
         
-        private function _displayHeader():void
+        private function _displayHeader( verbose:Boolean = false ):void
         {
             //console.writeLine( buRRRn.ASTUce.info( true ) );
             
@@ -455,6 +459,31 @@ package buRRRn.ASTUce
             console.writeLine( info );
         }
         
+        private function _displayInfos():void
+        {
+            _displayHeader( true );
+            console.writeLine( "" );
+            console.writeLine( "License:" );
+            console.writeLine( AppMetadata.license );
+            console.writeLine( "" );
+            console.writeLine( "project URL:" );
+            console.writeLine( "  http://astuce.googlecode.com" );
+            console.writeLine( "" );
+            console.writeLine( "infos:" );
+            console.writeLine( "        OS: " + Capabilities.os );
+            console.writeLine( "  language: " + Capabilities.languages[0] );
+//            console.writeLine( "    memory: " );
+//            console.writeLine( "          total: " + System.totalMemory );
+//            console.writeLine( "           free: " + System.freeMemory );
+//            console.writeLine( "        private: " + System.privateMemory );
+            console.writeLine( "" );
+            console.writeLine( "Dependencies:" );
+            console.writeLine( "  maashaack  " + system.metadata.version.toString() );
+            console.writeLine( "  ASTUce AS3 " + buRRRn.ASTUce.metadata.version.toString() );
+            console.writeLine( "  redtamarin " + redtamarin.version );
+            console.writeLine( "  Tamarin    " + System.getAvmplusVersion() );
+        }
+        
         private function _runTests():Boolean
         {
             var allTestsWereSuccessful:Boolean = true;
@@ -469,7 +498,7 @@ package buRRRn.ASTUce
             }
             
             for( var i:int=0; i<_tests.length; i++ )
-                {
+            {
                 suiteName = _runner.getTestName( _tests[i] );
                 console.writeLine( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i );
                 
@@ -489,12 +518,12 @@ package buRRRn.ASTUce
                 
                 console.writeLine( buRRRn.ASTUce.strings.separator );
                 
-                if( !_result.wasSuccessful() )
+                if( !_result || !_result.wasSuccessful() )
                 {
                     allTestsWereSuccessful = false;
                 }
                 
-                }
+            }
             
             return allTestsWereSuccessful;
         }
@@ -518,9 +547,16 @@ package buRRRn.ASTUce
                 exit( EXIT_FAILURE );
             }
             
+            if( _options.showInfo )
+            {
+                _displayInfos();
+                console.writeLine( buRRRn.ASTUce.strings.separator );
+                exit( EXIT_FAILURE );
+            }
+            
             verbose = _options.verbose;
             
-            _displayHeader();
+            _displayHeader( verbose );
             
             if( verbose )
             {
@@ -529,13 +565,15 @@ package buRRRn.ASTUce
                 console.writeLine( "verbose: " + _options.verbose );
                 console.writeLine( "showUsage: " + _options.showUsage );
                 console.writeLine( "load: " + _options.load );
-                console.writeLine( "dumpConfig: " + _options.dumpConfig );
+                //console.writeLine( "dumpConfig: " + _options.dumpConfig );
+                console.writeLine( "showInfo: " + _options.showInfo );
                 console.writeLine( "files: [ " + _options.files +" ]" );
                 console.writeLine( "classnames: [ " + _options.classnames + " ]" );
                 console.writeLine( buRRRn.ASTUce.strings.separator );
             }
             
-            if( !_hasConfigFile() || _options.dumpConfig )
+            //if( !_hasConfigFile() || _options.dumpConfig )
+            if( !_hasConfigFile() )
             {
                 _dumpConfiguration();
             }
@@ -548,15 +586,18 @@ package buRRRn.ASTUce
                 _tests.push( buRRRn.ASTUce.tests.AllTests.suite() );
             }
             
-            if( _options.load && (_options.classnames.length != 0) )
+            var i:int;
+            
+            if( _options.load )
             {
-                var i:int;
-                
                 for( i = 0; i<_options.files.length; i++ )
                 {
                     _loadFileInMemory( _options.files[i] );
                 }
-                
+            }
+            
+            if( _options.classnames.length != 0 )
+            {
                 for( i = 0; i<_options.classnames.length; i++ )
                 {
                     _tests.push( _options.classnames[i] );

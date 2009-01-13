@@ -35,21 +35,23 @@ package buRRRn.ASTUce
         public var verbose:Boolean;
         public var showUsage:Boolean;
         public var load:Boolean;
-        public var dumpConfig:Boolean;
+        //public var dumpConfig:Boolean;
+        public var showInfo:Boolean;
         
         public var files:Array;
         public var classnames:Array;
         
         public function Options( app:Application )
         {
-            super( ["?","s","v","d","l"], true );
+            super( ["?","s","v","i","l"], true );
             
             _app       = app;
             selftest   = false;
             verbose    = false;
             showUsage  = false;
             load       = false;
-            dumpConfig = false;
+            //dumpConfig = false;
+            showInfo   = false;
             
             files         = [];
             classnames    = [];
@@ -90,8 +92,12 @@ package buRRRn.ASTUce
                 verbose = true;
                 break;
                 
-                case "d":
-                dumpConfig = true;
+//                case "d":
+//                dumpConfig = true;
+//                break;
+                
+                case "i":
+                showInfo = true;
                 break;
                 
                 case "l":
@@ -110,10 +116,11 @@ package buRRRn.ASTUce
         {
             var status:SwitchStatus = SwitchStatus.noError;
             
-            if( classnames.length == 0 )
-            {
-                //status = SwitchStatus.showUsage;
-            }
+//            if( (files.length > 0) && (classnames.length == 0) )
+//            {
+//                status = SwitchStatus.showUsage;
+//                console.writeLine( "you need to provide at least one <classname>" );
+//            }
             
             return status;
         }

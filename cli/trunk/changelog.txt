@@ -1,4 +1,4 @@
-* 0.1.0.129
+* 0.1.0.130
 - first release of ASTUce CLI
 - single exe with no dependencies
 - cross-platform for OS X / Linux / Windows

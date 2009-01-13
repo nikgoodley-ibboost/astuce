@@ -13,9 +13,6 @@ provide 3 executables to run AS3 unit tests on the command line.
   ASTUce.nix for Linux
   ASTUce.exe for Windows
 
-on OS X / Linux you'll probably need to restore the executable permission
-$ chmod +x ASTUce
-
 Dependencies
 ============
 @project_name@ reuse part of the maashaack framework (http://maashaack.googlecode.com).
