@@ -60,7 +60,7 @@
        load the major, minor, build version number from the AS3 common source directory
        the same properties file is used in AS3 with an include
     -->
-    <property file="lib/ASTUce/buRRRn/ASTUce/version.properties"/>
+    <property file="src/version.properties"/>
     <svn username="${contributor.username}" password="${contributor.password}">
         <info target="."/>
     </svn>
@@ -96,6 +96,23 @@
     <condition property="REDSHELL_DEBUG" value="${redshell.debug.nix}">
         <os family="unix" />
     </condition>
+    
+    <!--
+       The different release of ASTUce on Windows and Mac OS X and Linux
+       to allow selftest
+    -->
+    <condition property="ASTUCE" value="${astuce.mac}">
+        <os family="mac"/>
+    </condition>
+    
+    <condition property="ASTUCE" value="${astuce.win}">
+        <os family="windows" />
+    </condition>
+    
+    <condition property="ASTUCE" value="${astuce.nix}">
+        <os family="unix" />
+    </condition>
+    
     
     <echo message="${release.fullname} v${release.version}"/>
     
@@ -136,10 +153,10 @@
         
     </target>
     
-    <target name="main" depends="clean,init,application,commonfiles,package">
+    <target name="main" depends="clean,init,application,selftest,templates,commonfiles,package">
     </target>
     
-    <target name="application" description="build the library ABC">
+    <target name="application_test" description="build the library ABC">
         <echo message="building library bytecode" level="verbose" />
         
         <exec executable="java">
@@ -156,7 +173,7 @@
         
         <exec executable="java">
             <arg line="-jar ${redshell.asc}" />
-            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-AS3 -strict -md -debug" />
             <arg line="-avmtarget 2" />
             <arg line="-exe ${REDSHELL_DEBUG}" />
             <arg line="-import ${redshell.builtin}" />
@@ -167,20 +184,88 @@
         
         <chmod file="${astuce.src}/ASTUce.exe" perm="+x"/>
         
-        <!--
-        <exec executable="${REDSHELL_DEBUG}">
-            <arg line="-Dastrace 0" />
-            <arg line="${astuce.src}/ASTUce.abc" />
-        </exec>
-        -->
-        
         <exec executable="${astuce.src}/ASTUce.exe" failonerror="true">
             <arg line="-s" />
             <arg line="-l:test/SimpleTest.abc" />
-            <arg line="test.SimpleTest" />
+            <arg line="test.foobar test.SimpleTest" />
         </exec>
         
-        <!--<copy file="${astuce.src}/ASTUce.abc" todir="${release.dir}/lib" />-->
+        <delete file="${astuce.src}/ASTUce.abc"/>
+        <delete file="${astuce.src}/ASTUce.exe"/>
+        <delete file="${astuce.src}/test/SimpleTest.abc"/>
+        
+    </target>
+    
+    <!--
+        Here we create 3 executable for each respective OS
+        OS X, Windows, Linux
+        yeah you can do that from any OS
+     -->
+    <target name="application" description="build the application executable">
+        <echo message="building ASTUce executable" level="verbose" />
+        
+        <!-- build the OSX exe -->
+        <echo message="build for OS X" />
+        <exec executable="java">
+            <arg line="-jar ${redshell.asc}" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-exe ${redshell.debug.mac}" />
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
+            <arg line="${astuce.src}/ASTUce.as" />
+            
+        </exec>
+        
+        <chmod file="${astuce.src}/ASTUce.exe" perm="+x"/>
+        <delete file="${astuce.src}/ASTUce.abc"/>
+        <move file="${astuce.src}/ASTUce.exe" tofile="${release.dir}/ASTUce"/>
+        
+        <!-- build the Linux exe -->
+        <echo message="build for Linux" />
+        <exec executable="java">
+            <arg line="-jar ${redshell.asc}" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-exe ${redshell.debug.nix}" />
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
+            <arg line="${astuce.src}/ASTUce.as" />
+            
+        </exec>
+        
+        <chmod file="${astuce.src}/ASTUce.exe" perm="+x"/>
+        <delete file="${astuce.src}/ASTUce.abc"/>
+        <move file="${astuce.src}/ASTUce.exe" tofile="${release.dir}/ASTUce.nix"/>
+        
+        <!-- build the Windows exe -->
+        <echo message="build for Windows" />
+        <exec executable="java">
+            <arg line="-jar ${redshell.asc}" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-exe ${redshell.debug.win}" />
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
+            <arg line="${astuce.src}/ASTUce.as" />
+            
+        </exec>
+        
+        <chmod file="${astuce.src}/ASTUce.exe" perm="+x"/>
+        <delete file="${astuce.src}/ASTUce.abc"/>
+        <move file="${astuce.src}/ASTUce.exe" tofile="${release.dir}/ASTUce.exe"/>
+        
+    </target>
+    
+    <!--
+        Yep we eat our own dogfood and run a selftest ;)
+     -->
+    <target name="selftest" description="ASTUce self test">
+        <echo message="ASTUce selftest" level="verbose" />
+        
+        <exec executable="${ASTUCE}" failonerror="true">
+            <arg line="-s" />
+        </exec>
         
     </target>
     
@@ -204,7 +289,7 @@
     <!-- include the source code in the release -->
     <target name="include-source" if="includesource">
         <copy todir="${release.dir}/src">
-            <fileset dir="${release.tmp.as3}"/>
+            <fileset dir="${release.src}"/>
         </copy>
     </target>
     
@@ -217,6 +302,7 @@
     <!-- package the release to a versioned zip file -->
     <target name="package" description="package the release for distribution" unless="no.package">
         <echo message="generate release zip" level="verbose" />
+        <delete file="${release.dir}/config.eden" />
         <zip destfile="${release.dir}/${release.zipname}"
              basedir="${release.dir}" 
         />

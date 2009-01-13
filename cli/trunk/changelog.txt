@@ -1,0 +1,5 @@
+* 0.1.0.xx
+- first release of ASTUce
+- single exe with no dependencies
+- cross-platform for OS X / Linux / Windows
+- work with ant ;)
