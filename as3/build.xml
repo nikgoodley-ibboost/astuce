@@ -92,7 +92,31 @@
     
     <!-- general properties of the project -->
     <property file="build/build.properties"/>
-
+    
+    <condition property="REDSHELL" value="${redshell.mac}">
+        <os family="mac"/>
+    </condition>
+    
+    <condition property="REDSHELL_DEBUG" value="${redshell.debug.mac}">
+        <os family="mac"/>
+    </condition>
+    
+    <condition property="REDSHELL" value="${redshell.win}">
+        <os family="windows" />
+    </condition>
+    
+    <condition property="REDSHELL_DEBUG" value="${redshell.debug.win}">
+        <os family="windows" />
+    </condition>
+    
+    <condition property="REDSHELL" value="${redshell.nix}">
+        <os family="unix" />
+    </condition>
+    
+    <condition property="REDSHELL_DEBUG" value="${redshell.debug.nix}">
+        <os family="unix" />
+    </condition>
+    
     <echo message="${release.fullname} v${release.version}"/>
     
     <condition property="includesource">
@@ -130,7 +154,7 @@
         
     </target>
     
-    <target name="main" depends="clean,init,documentation,library_bytecode,library_component,templates,commonfiles,package">
+    <target name="main" depends="clean,init,library_bytecode,unit_tests,documentation,library_component,templates,commonfiles,package">
     </target>
     
     <target name="clean-documentation">
@@ -163,41 +187,64 @@
         
     </target>
     
-    <target name="library_bytecode" description="build the library ABC">
+    <target name="unit_tests" description="build and run the Library unit tests">
+        
+        <echo message="building ASTUce dynamically" level="verbose" />
+        <exec executable="java">
+            <arg line="-jar ${redshell.asc}" />
+            <arg line="-AS3 -strict -md -debug" />
+            <arg line="-avmtarget 2" />
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
+            <arg line="-import ${astuce.libs}/maashaack.abc" />
+            <arg line="-import ${release.dir}/lib/ASTUce.abc" />
+            <arg line="${astuce.src}/testrunner.as" />
+            
+        </exec>
+        
+        <echo message="running library unit tests" level="verbose" />
+        <exec executable="${REDSHELL_DEBUG}" failonerror="true">
+            <arg line="${astuce.libs}/maashaack.abc" />
+            <arg line="${release.dir}/lib/ASTUce.abc" />
+            <arg line="${astuce.src}/testrunner.abc" />
+        </exec>
+        
+        <delete file="${astuce.src}/testrunner.abc"/>
+        
+    </target>
+    
+    <target name="dependency_bytecode" description="build dependencies ABC">
+        <echo message="building dependencies bytecode" level="verbose" />
+        
+        <exec executable="java">
+            <arg line="-jar ${redshell.asc}" />
+            <arg line="-AS3 -strict -md -optimize" />
+            <arg line="-avmtarget 2" />
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
+            <arg line="${astuce.lib.maashaack}/maashaack.as" />
+            
+        </exec>
+        
+        <move file="${astuce.lib.maashaack}/maashaack.abc" todir="${astuce.libs}" />
+        
+    </target>
+    
+    <target name="library_bytecode" depends="dependency_bytecode" description="build the library ABC">
         <echo message="building library bytecode" level="verbose" />
         
         <exec executable="java">
-            <arg line="-jar ${redshell}/asc.jar" />
+            <arg line="-jar ${redshell.asc}" />
             <arg line="-AS3 -strict -md -optimize" />
             <arg line="-avmtarget 2" />
-            <arg line="-import ${redshell}/builtin.abc" />
-            <arg line="-import ${redshell}/toplevel.abc" />
-        <!--<arg line="-in ${astuce.lib.maashaack}/maashaack.as" />-->
+            <arg line="-import ${redshell.builtin}" />
+            <arg line="-import ${redshell.toplevel}" />
             <arg line="-import ${astuce.libs}/maashaack.abc" />
             <arg line="${astuce.src}/ASTUce.as" />
             
         </exec>
         
-        <exec executable="java">
-            <arg line="-jar ${redshell}/asc.jar" />
-            <arg line="-AS3 -strict -md -optimize" />
-            <arg line="-avmtarget 2" />
-            <arg line="-import ${redshell}/builtin.abc" />
-            <arg line="-import ${redshell}/toplevel.abc" />
-            <arg line="-import ${astuce.libs}/maashaack.abc" />
-            <arg line="-import ${astuce.src}/ASTUce.abc" />
-            <arg line="${astuce.src}/testrunner.as" />
-            
-        </exec>
-        
-        <exec executable="./${redshell}/redshell_d">
-            <arg line="-Dastrace 0" />
-            <arg line="${astuce.libs}/maashaack.abc" />
-            <arg line="${astuce.src}/ASTUce.abc" />
-            <arg line="${astuce.src}/testrunner.abc" />
-        </exec>
-        
-        <copy file="${astuce.src}/ASTUce.abc" todir="${release.dir}/lib" />
+        <move file="${astuce.src}/ASTUce.abc" todir="${release.dir}/lib" />
         
     </target>
     

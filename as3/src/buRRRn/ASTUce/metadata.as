@@ -37,7 +37,7 @@ package buRRRn.ASTUce
         public static var version:Version = new Version();
         
         include "version.properties"
-        
+         
         version.revision = parseInt( "$Rev$".split( " " )[1] );
         
         public static var copyright:String = "Copyright © 2006-2009 Zwetan Kjukov, All right reserved.";
