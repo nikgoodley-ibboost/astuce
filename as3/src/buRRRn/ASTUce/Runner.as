@@ -20,25 +20,9 @@
 */
 
 package buRRRn.ASTUce
-    {
-    import system.io.Writeable;
-    import system.Reflection;
-    import system.console;
-    import system.Strings;
-    
-    import buRRRn.ASTUce.strings;
-    import buRRRn.ASTUce.config;
-    import buRRRn.ASTUce.info;
-    
-    import buRRRn.ASTUce.framework.*;
-    
-    import buRRRn.ASTUce.runner.BaseTestRunner;
-    import buRRRn.ASTUce.runner.strings;
-    import buRRRn.ASTUce.runner.NullSuiteError;
-    import buRRRn.ASTUce.ui.ResultPrinter;
-    
-    
-	/**
+{
+    import buRRRn.ASTUce.config;    import buRRRn.ASTUce.framework.*;    import buRRRn.ASTUce.info;    import buRRRn.ASTUce.runner.BaseTestRunner;    import buRRRn.ASTUce.runner.NullSuiteError;    import buRRRn.ASTUce.ui.ResultPrinter;        import system.Reflection;    import system.Strings;    import system.console;    import system.io.Writeable;    
+    /**
      * This is the default TestRunner for ASTUce
      */
     public class Runner extends BaseTestRunner
