@@ -23,7 +23,7 @@ package buRRRn.ASTUce.mocks
     import flash.utils.describeType;
     
     import system.Reflection;
-
+    
     /**
      * The MockFactory class.
      * @see http://jsmock.sourceforge.net/jsmock.js
@@ -46,7 +46,7 @@ package buRRRn.ASTUce.mocks
          * The ExpectationMatcher reference.
          */ 
         public var expectationMatcher:ExpectationMatcher ;
-    
+        
         /**
          * The lastCallName value.
          */ 
@@ -55,7 +55,7 @@ package buRRRn.ASTUce.mocks
         /**
          * The last mock value.
          */ 
-        public var lastMock:Mock ;        
+        public var lastMock:Mock ;
         
         /**
          * The 'andReturn' test.
@@ -66,10 +66,10 @@ package buRRRn.ASTUce.mocks
             _initializeReturnExpectationForMock();    
             lastMock.calls[ lastCallName ].push( function():* 
             { 
-                return value ; 
+                return value ;
             });
         }
-
+        
         /**
          * The 'andThrow' test.
          */
@@ -82,7 +82,7 @@ package buRRRn.ASTUce.mocks
                 throw new Error( message ) ; 
             });
         }
-
+        
         /**
          * The 'andStub' test.
          */
@@ -121,7 +121,6 @@ package buRRRn.ASTUce.mocks
                 {
                     throw new Error("Cannot mock out a " + typeof(o));
                 }
-
             }
             return mock;
         }
@@ -236,8 +235,8 @@ package buRRRn.ASTUce.mocks
             {
                 throw new Error( message ) ;
             }
-        }    
-    
+        }
+        
         /**
          * Returns an array of public methods defined in the class of an object.
          * @return an array of public methods defined in the class of an object.
@@ -246,9 +245,8 @@ package buRRRn.ASTUce.mocks
         {
             var type:XML = describeType( o );
             var fullname:String = Reflection.getClassName( o, true );
-            var member:XML;
             var members:Array = [];
-            for each( member in type.method )
+            for each( var member:XML in type.method )
             {
                 if( inherited )
                 {
@@ -259,11 +257,7 @@ package buRRRn.ASTUce.mocks
                     members.push( String( member.@name ) );
                 }
             }
-            
             return members;
         } 
-    
-
     }
-
 }

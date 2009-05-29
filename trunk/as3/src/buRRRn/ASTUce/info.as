@@ -70,7 +70,7 @@ package buRRRn.ASTUce
                                }
                              );
         
-        }
+        };
     
     }
 
