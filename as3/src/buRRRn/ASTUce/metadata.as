@@ -21,15 +21,13 @@
 
 package buRRRn.ASTUce
 {
-    import system.Version;
-    import system.console;
+    import system.Version ;
     
     /**
-    * stores static metadata about the project
-    */
+     * Stores static metadata about the project
+     */
     public class metadata
     {
-        
         public static var name:String = "ASTUce";
         
         public static var fullname:String = "ActionScript Test Unit compact edition AS3";
@@ -42,6 +40,5 @@ package buRRRn.ASTUce
         
         public static var copyright:String = "Copyright © 2006-2009 Zwetan Kjukov, All right reserved.";
         public static var origin:String    = "Made in the EU.";
-        
     }
 }
