@@ -128,7 +128,7 @@ package buRRRn.ASTUce.mocks
         /**
          * Creates a method.
          */
-        public function createMethod( control:MockFactory , mock:Mock , method:String ):* 
+        public function createMethod( control:MockFactory , mock:Mock , method:String , methodArguments:Array = null ):* 
         {
             mock[ method ] = function():* 
             {
@@ -137,12 +137,12 @@ package buRRRn.ASTUce.mocks
                     mock.recording       = false;
                     control.lastMock     = mock   ;
                     control.lastCallName = method ;
-                    control.expectationMatcher.addExpectedMethodCall( mock, method, arguments );
+                    control.expectationMatcher.addExpectedMethodCall( mock, method, methodArguments );
                     return control ;
                 } 
                 else 
                 {
-                   control.expectationMatcher.addActualMethodCall( mock, method, arguments ) ;
+                   control.expectationMatcher.addActualMethodCall( mock, method, methodArguments ) ;
                    if( mock.calls[method] != null) 
                    {
                        var returnValue:Function = mock.calls[method].shift() as Function ;
