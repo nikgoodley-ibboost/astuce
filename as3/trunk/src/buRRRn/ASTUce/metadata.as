@@ -21,7 +21,7 @@
 
 package buRRRn.ASTUce
 {
-    import system.Version ;
+    import core.version;
     
     /**
      * Stores static metadata about the project
@@ -32,13 +32,13 @@ package buRRRn.ASTUce
         
         public static var fullname:String = "ActionScript Test Unit compact edition AS3";
         
-        public static var version:Version = new Version();
+        public static var version:core.version = new core.version();
         
         include "version.properties"
         
         version.revision = parseInt( "$Rev$".split( " " )[1] );
         
-        public static var copyright:String = "Copyright © 2006-2009 Zwetan Kjukov, All right reserved.";
+        public static var copyright:String = "Copyright © 2006-2010 Zwetan Kjukov, All right reserved.";
         public static var origin:String    = "Made in the EU.";
     }
 }
