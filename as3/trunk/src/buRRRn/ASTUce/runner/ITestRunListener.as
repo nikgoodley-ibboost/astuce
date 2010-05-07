@@ -12,22 +12,22 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
+
 package buRRRn.ASTUce.runner
-    {
+{
     
     /**
      * A listener interface for observing the execution of a test run.
      */
     public interface ITestRunListener
-        {
+    {
         
         /**
          * Invoked when the test is ended.
@@ -59,7 +59,7 @@ package buRRRn.ASTUce.runner
          */
         function testStarted( testName:String ):void
         
-        }
-    
     }
+    
+}
 

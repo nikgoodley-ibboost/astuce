@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -13,28 +12,31 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
+
 package buRRRn.ASTUce.framework
-    {
-    import system.Strings;
-    import system.Reflection;
+{
+    import core.strings.format; void(format);
+    import core.reflect.getClassName; void(getClassName);
     
-    import buRRRn.ASTUce.strings;
+    import buRRRn.ASTUce.metadata;
     
     /**
      * A test case define the fixture to run multiple tests.
+     * 
      * @see TestResult
      * @see TestSuite
      */
     public class TestCase extends Assert implements ITest
-        {
+    {
+        
+        private var strings:Object = metadata.strings;
         
         /**
          * @private
@@ -45,87 +47,95 @@ package buRRRn.ASTUce.framework
          * Creates a new TestCase instance with the given name if provided.
          */
         public function TestCase( name:String = "" )
-            {
+        {
             _name = name;
-            }
+        }
         
         /**
          * Counts the number of test cases executed by run( result:TestResult ).
          */
         public function get countTestCases():int
-            {
+        {
             return 1;
-            }
+        }
         
         /**
          * Indicates the name of a TestCase
          */
         public function get name():String
-            {
+        {
             return _name;
-            }
+        }
         
         /**
          * @private
          */
         public function set name( value:String ):void
-            {
+        {
             _name = value;
-            }
+        }
         
         /**
          * Creates a default TestResult object.
          */
         protected function createResult():TestResult
-            {
+        {
             return new TestResult();
-            }
+        }
         
         /**
          * Runs the test case and collects the results in TestResult.
          * If the TestResult is not provided use the default TestResult object.
          */
         public function run( result:TestResult ):void
-            {
+        {
             if( result == null )
-                {
+            {
                 result = createResult();
-                }
+            }
             
             result.run( this );
-            }
+        }
         
         /**
          * Runs the bare test sequence.
          */
         public function runBare():void
-            {
+        {
+            /* note:
+               should use CC to have a runBare DEBUG and RELEASE
+            */
             this["setUp"]();
             
             try
-                {
+            {
                 runTest();
-                }
+            }
             /* attention:
                for debugging only !!
             
               catch( e:Error )
-                {
-                trace( e );
-                }*/
+              {
+                //trace( e );
+              }*/
             finally
-                {
+            {
                 this["tearDown"]();
-                }
             }
+        }
         
         /**
          * Overrides to run the test and assert its state.
-         * <p><b>Note :</b></p>
-         * <p>Sometimes you need a TestCase which will always have thesame behaviour, 
-         * for example "always throw an Error" so to do that you will need to override this method. 
-         * <p>Also, if you just need that class as a helper class inside only one test class, then just declare it as internal after the package declaration.</p>
-         * <p><b>Example :</b></p>
+         * <p><b>Note:</b></p>
+         * <p>
+         * Sometimes you need a TestCase which will always have thesame behaviour, 
+         * for example "always throw an Error" so to do that you will need to override this method.
+         * </p>
+         * <p>
+         * Also, if you just need that class as a helper class inside only one test class,
+         * then just declare it as internal after the package declaration.
+         * </p>
+         * <p><b>Example:</b></p>
          * <pre class="prettyprint">
          * package
          *      {
@@ -152,7 +162,7 @@ package buRRRn.ASTUce.framework
          * </pre>
          */
         protected function runTest():void
-            {
+        {
             assertNotNull( _name, strings.methodNameNull );
             //assertNotUndefined( _name, strings.methodNameUndef );
             assertTrue( _name != "", strings.methodNameEmpty );
@@ -160,34 +170,40 @@ package buRRRn.ASTUce.framework
             var runMethod:Function;
             
             try
-                {
+            {
                 if( this[ _name ] == undefined )
-                    {
+                {
                     throw new Error();
-                    }
+                }
                 
                 runMethod = this[ _name ];
-                }
+            }
             catch( e1:Error )
-                {
-                fail( Strings.format( strings.methodNotFound, _name ) );
-                }
+            {
+                fail( format( strings.methodNotFound, _name ) );
+            }
             
             try
-                {
+            {
                 runMethod.call( this );
-                }
-            catch( e2:Error )
-                {
-                throw e2 ;
-                }
             }
+            catch( e2:Error )
+            {
+                throw e2 ;
+            }
+        }
         
         /**
          * Sets up the fixture, for example, open a network connection.
-         * <p>This method is called before a test is executed.</p>
-         * <p><b>Note :</b></p>
-         * Yes, this method is declared in the prototype on purpose, so when you want to add a setUp method you just need to write.
+         * <p>
+         * This method is called before a test is executed.
+         * </p>
+         * 
+         * <p><b>Note:</b></p>
+         * <p>
+         * Yes, this method is declared in the prototype on purpose, so when you want
+         * to add a setUp method you just need to write.
+         * </p>
          * <pre class="prettyprint">
          * public function setUp():void
          *     {
@@ -201,37 +217,47 @@ package buRRRn.ASTUce.framework
          *     
          *     }
          * </pre>
-         * <p>This is because ECMAScript 4 has a nifty feature which give priority to a function declared in the class over
-         * a function declared in the class prototype.</p><br/>
-         * <p>With this setting we can call "this.setUp()" from the runBare method without obtaining an error about a missing method,
-         * and "override" the method in a subclass without the need for an override keyword (more userfriendly imho) and without a compiler error
-         * about an "incompatible override".</p>
-         * <p>No, this is not a hack, this is a prototype-based language feature ;).</p>
+         * <p>
+         * This is because ActionScript 3 has a nifty feature which give priority to a function
+         * declared in the class over a function declared in the class prototype.
+         * </p>
+         * <p>
+         * With this setting we can call <code>this.setUp()</code> from the runBare method without
+         * obtaining an error about a missing method, and "override" the method in a subclass without
+         * the need for an override keyword (more userfriendly imho) and without a compiler error
+         * about an "incompatible override".
+         * </p>
+         * <p>
+         * No, this is not a hack, this is a prototype-based language feature ;).
+         * </p>
          */
         prototype.setUp = function():void
-            {
+        {
             
-            };
+        }
         
         /**
-         * Tears down the fixture, for example, close a network connection. This method is called after a test is executed.
+         * Tears down the fixture, for example, close a network connection.
+         * <p>
+         * This method is called after a test is executed.
+         * </p>
          */
         prototype.tearDown = function():void
-            {
+        {
             
-            };
+        }
         
         /**
          * Returns a string representation of the test case.
          * @return a string representation of the test case.
          */
         public function toString( ...args ):String
-            {
-            var classname:String = Reflection.getClassName( this );
+        {
+            var classname:String = getClassName( this );
             return name + "( " + classname + " )";
-            }
-        
         }
-    
+        
     }
+    
+}
 

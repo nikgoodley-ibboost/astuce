@@ -12,16 +12,15 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
 package buRRRn.ASTUce.extensions
-    {
+{
     import flash.utils.getTimer;
     
     import buRRRn.ASTUce.framework.TestCase;
@@ -85,7 +84,7 @@ package buRRRn.ASTUce.extensions
      * </pre>
      */
     public class TimedTestCase extends TestCase
-        {
+    {
         
         /**
          * @private
@@ -118,84 +117,84 @@ package buRRRn.ASTUce.extensions
          * @param maxElapsedTime The max elapsed time of this TestCase.
          */
         public function TimedTestCase( name:String = "", maxElapsedTime:int = -1 )
-            {
+        {
             super( name );
             
             if( maxElapsedTime < 0 )
-                {
+            {
                 maxElapsedTime = timeout;
-                }
+            }
             
             _maxElapsedTime = maxElapsedTime;
             _elapsedTime    = 0;
             _timeExceeded   = false;
-            }
+        }
         
         /**
          * Indicates the elapsedTime value of this TestCase.
          */
         protected function get elapsedTime():int
+        {
+            if( _elapsedTime == 0 )
             {
-             if( _elapsedTime == 0 )
-                {
                 _elapsedTime = getTimer() - _startTime;
-                }
+            }
             
             return _elapsedTime;
-            }        
+        }        
         
         /**
          * The timeout value of this timed TestCase.
          */
         public static function get timeout():int
-            {
+        {
             return _timeout;
-            }
+        }
         
         /**
          * @private
          */
         public static function set timeout( milliseconds:int ):void
-            {
+        {
             if( milliseconds < 0 )
-                {
+            {
                 milliseconds = -milliseconds;
-                }
+            }
             
             _timeout = milliseconds;
-            }
+        }
         
         /**
          * Runs the test.
          */
         protected override function runTest():void
-            {
+        {
             _startTime = getTimer();
             
             super.runTest();
             
             if( elapsedTime > _maxElapsedTime )
-                {
+            {
                 _timeExceeded = true;
                 fail( "Maximum elapsed time (" + _maxElapsedTime + " ms) exceeded!" );
-                }
             }
+        }
         
         /**
          * Returns the String representation of the object.
          * @return the String representation of the object.
          */
         public override function toString( ...args ):String
-            {
+        {
             if( _timeExceeded )
-                {
+            {
                 return super.toString() + " (exceeded: " + elapsedTime + " ms)";
-                }
+            }
             
             return super.toString() + " (timed: " + elapsedTime + " ms)";
-            }
-        
         }
-    
+        
     }
+    
+}
 

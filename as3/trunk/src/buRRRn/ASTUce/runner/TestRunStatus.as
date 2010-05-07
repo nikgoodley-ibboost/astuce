@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -13,20 +12,20 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
 */
 
 package buRRRn.ASTUce.runner
-    {
+{
     
     /**
      * The TestRunStatus class.
      */
     public class TestRunStatus
-        {
+    {
         	
         /**
          * @private
@@ -37,18 +36,18 @@ package buRRRn.ASTUce.runner
          * Creates a new TestRunStatus instance.
          * @param value The status value of this instance.
          */
-        public function TestRunStatus(value:int)
-            {
+        public function TestRunStatus( value:int )
+        {
             _value = value;
-            }
+        }
         
         /**
-         * The error TestRunStatus constante (1).
+         * The error TestRunStatus constant (1).
          */
         public static const error:TestRunStatus   = new TestRunStatus( 1 ) ;
 
         /**
-         * The failure TestRunStatus constante (2).
+         * The failure TestRunStatus constant (2).
          */
         public static const failure:TestRunStatus = new TestRunStatus( 2 ) ;
         

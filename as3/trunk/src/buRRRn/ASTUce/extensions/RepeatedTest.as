@@ -12,23 +12,23 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
   
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
-
 */
+
 package buRRRn.ASTUce.extensions
-    {
+{
     import buRRRn.ASTUce.framework.*;
     
     /**
      *  A Decorator that runs a test repeatedly.
      */
     public class RepeatedTest extends TestDecorator
-        {
+    {
         	
         /**
          * @private
@@ -41,30 +41,30 @@ package buRRRn.ASTUce.extensions
          * @param repeat The number of iteration of this repeated test.
          */
         public function RepeatedTest( test:ITest, repeat:int )
-            {
+        {
             super( test );
             
             if( repeat < 0 )
-                {
+            {
                 throw new ArgumentError( "Repetition count must be > 0" );
-                }
+            }
             
             _timesRepeat = repeat;
-            }
+        }
         
         /**
          * The number of test cases.
          */
         public override function get countTestCases():int
-            {
+        {
             return super.countTestCases * _timesRepeat;
-            }
+        }
         
         /**
          * Run the test.
          */
         public override function run( result:TestResult ):void
-            {
+        {
             var i:int;
             for( i=0; i<_timesRepeat; i++ )
                 {
@@ -75,18 +75,18 @@ package buRRRn.ASTUce.extensions
                 
                 super.run( result );
                 }
-            }
+        }
         
         /**
          * Returns the String representation of the object.
          * @return the String representation of the object.
          */
         public override function toString( ...args ):String
-            {
+        {
             return super.toString() + " (repeated)";
-            }
-        
         }
-    
+        
     }
+    
+}
 

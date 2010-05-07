@@ -13,29 +13,28 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
 package buRRRn.ASTUce.framework
-    {
+{
     
     /**
      * Throwns when an assertion failed.
      */
     public class AssertionFailedError extends Error
-        {
+    {
         
         /**
          * Creates a new AssertionFailedError instance.
          * @param message The message of the error object.
          */
         public function AssertionFailedError( message:String = "" )
-            {
+        {
             super( message );
             /* note:
                To have better errors description we want to define
@@ -45,18 +44,18 @@ package buRRRn.ASTUce.framework
                "Error: error message here"
             */
             name = "AssertionFailedError";
-            }
+        }
         
         /**
          * Returns the String representation of the object.
          * @return the String representation of the object.
          */
         public function toString():String
-            {
+        {
             return name + ": " + message;
-            }
-        
         }
-    
+        
     }
+    
+}
 

@@ -12,16 +12,15 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
 package buRRRn.ASTUce.extensions
-    {
+{
     import buRRRn.ASTUce.framework.*;
     
     /**
@@ -29,32 +28,32 @@ package buRRRn.ASTUce.extensions
      * Subclass TestSetup and insert it into your tests when you want to set up additional state once before the tests are run.
      */
     public class TestSetup extends TestDecorator
-        {
+    {
         
         /**
          * Creates a new TestSetup instance.
          */
         public function TestSetup( test:ITest )
-            {
+        {
             super( test );
-            }
+        }
         
         /**
          * Runs the TestSetup.
          */
         public override function run( result:TestResult ):void
-            {
+        {
             var self:TestSetup = this;
             var p:Protectable = new Protectable();
                 p.protect = function():void
-                    {
+                {
                     self["setUp"]();
                     self["basicRun"]( result );
                     self["tearDown"]();
-                    };
+                };
             
             result.runProtected( this, p );
-            }
+        }
         
         /**
          * Sets up the fixture.
@@ -68,9 +67,9 @@ package buRRRn.ASTUce.extensions
          * <p>To set up additional fixture state.</p>
          */
         prototype.setUp = function():void
-            {
+        {
             
-            };
+        };
         
         /**
          * Tears down the fixture. Implement as :
@@ -83,11 +82,11 @@ package buRRRn.ASTUce.extensions
          * to tear down additional fixture state.
          */
         prototype.tearDown = function():void
-            {
+        {
             
-            };
+        };
         
-        }
-    
     }
+    
+}
 

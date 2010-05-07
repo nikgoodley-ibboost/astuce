@@ -13,30 +13,27 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
 package buRRRn.ASTUce.framework
-    {
+{
     
     /**
      * An ITest can be run and collect its results.
      * @see TestResult
      */
     public interface ITest
-        {
+    {
         
         /**
          * Counts the number of test cases that will be run by this test.
          */
         function get countTestCases():int;
-        
-        //function get name():String;
         
         /**
          * Runs a test and collects its result in a TestResult instance.
@@ -49,7 +46,7 @@ package buRRRn.ASTUce.framework
          */
         function toString( ...args ):String;
         
-        }
-    
     }
+    
+}
 

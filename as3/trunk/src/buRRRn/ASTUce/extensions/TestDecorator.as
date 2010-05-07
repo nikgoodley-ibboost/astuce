@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -13,14 +12,16 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
 
 package buRRRn.ASTUce.extensions
-    {
+{
     import buRRRn.ASTUce.framework.*;
     
     /**
@@ -29,7 +30,7 @@ package buRRRn.ASTUce.extensions
      * <p>Test decorator subclasses can be introduced to add behaviour before or after a test is run.</p>
      */
     public class TestDecorator extends Assert implements ITest
-        {
+    {
         	
         /**
          * @private
@@ -37,33 +38,33 @@ package buRRRn.ASTUce.extensions
         private var _test:ITest;
         
         public function TestDecorator( test:ITest )
-            {
+        {
             _test = test;
-            }
+        }
         
         /**
          * The number of test cases.
          */
         public function get countTestCases():int
-            {
+        {
             return _test.countTestCases;
-            }
+        }
         
         /**
          * Indicates the ITest reference of this decorator.
          */
         public function get test():ITest
-            {
+        {
             return _test;
-            }
+        }
         
         /**
          * Runs the specified TestResult with this run method.
          */
         public function basicRun( result:TestResult ):void
-            {
+        {
             _test.run( result );
-            }
+        }
         
         /**
          * Runs the TestResult.

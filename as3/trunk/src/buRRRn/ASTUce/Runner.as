@@ -1,53 +1,58 @@
 ﻿/*
-The contents of this file are subject to the Mozilla Public License Version
-1.1 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at 
-http://www.mozilla.org/MPL/ 
+  The contents of this file are subject to the Mozilla Public License Version
+  1.1 (the "License"); you may not use this file except in compliance with
+  the License. You may obtain a copy of the License at 
+  http://www.mozilla.org/MPL/ 
   
-Software distributed under the License is distributed on an "AS IS" basis,
-WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
-for the specific language governing rights and limitations under the License. 
+  Software distributed under the License is distributed on an "AS IS" basis,
+  WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  for the specific language governing rights and limitations under the License. 
   
-The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
+  The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
   
-The Initial Developer of the Original Code is
-Zwetan Kjukov <zwetan@gmail.com>.
-Portions created by the Initial Developer are Copyright (C) 2006-2008
-the Initial Developer. All Rights Reserved.
+  The Initial Developer of the Original Code is
+  Zwetan Kjukov <zwetan@gmail.com>.
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  the Initial Developer. All Rights Reserved.
   
-Contributor(s):
-- Marc Alcaraz <vegas@ekameleon.net>.
- */
+  Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
+*/
 
 package buRRRn.ASTUce
 {
+    import core.strings.format; void(format);
+    import core.reflect.getClassName; void(getClassName);
+    import core.reflect.getClassMethods; void(getClassMethods);
+    
+    import system.terminals.InteractiveConsole;
+    import system.terminals.console;
+    
     import buRRRn.ASTUce.framework.*;
     import buRRRn.ASTUce.runner.BaseTestRunner;
     import buRRRn.ASTUce.runner.NullSuiteError;
-    import buRRRn.ASTUce.runner.strings;
     import buRRRn.ASTUce.ui.ResultPrinter;
-
-    import system.Reflection;
-    import system.Strings;
-    import system.console;
-    import system.io.Writeable;
 
     /**
      * This is the default TestRunner for ASTUce
      */
     public class Runner extends BaseTestRunner
     {
+        private static var config:ASTUceConfigurator = metadata.config;
+        private static var strings:Object = metadata.strings;
+        
         /**
          * @private
          */
-        private var _printer:ResultPrinter;
+        private var _printer:*;
 
         /**
          * Display the header.
          */
         protected static function displayHeader():void
         {
-            console.writeLine(buRRRn.ASTUce.info(true));
+            console.writeLine( metadata.info( true ) );
         }
 
         /**
@@ -57,7 +62,7 @@ package buRRRn.ASTUce
         {
             if( config.showConstructorList )
             {
-                console.writeLine(suite);
+                console.writeLine( suite );
             }
         }
 
@@ -66,7 +71,7 @@ package buRRRn.ASTUce
          */
         protected override function runFailed( message:String ):void
         {
-            console.writeLine(message);
+            console.writeLine( message );
         }
 
         /**
@@ -77,9 +82,14 @@ package buRRRn.ASTUce
          * For building a custom class writer, you have to define a class witch
          * implements system.IO.Writeable.
          */
-        public function Runner( writer:Writeable = null )
+        public function Runner( writer:InteractiveConsole = null )
         {
-            _printer = new ResultPrinter(writer);
+            if( !writer )
+            {
+                writer = console;    
+            }
+            
+            _printer = new ResultPrinter( writer );
         }
         
         /**
@@ -121,7 +131,7 @@ package buRRRn.ASTUce
             
             if( any is Class )
             {
-                return Reflection.getClassName(any, true);
+                return getClassName( any, true );
             }
             
             return "";
@@ -140,25 +150,25 @@ package buRRRn.ASTUce
             
             for( var i:int = 0;i < args.length;i++ )
             {
-                suiteName = runner.getTestName(args[i]);
+                suiteName = runner.getTestName( args[i] );
                 //console.writeLine( Strings.format( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i ) );
-                console.writeLine(buRRRn.ASTUce.runner.strings.runTitle, suiteName, i);
+                console.writeLine( format( strings.runTitle, suiteName, i ) );
                 
                 try
                 {
-                    result = run(args[i], runner);
+                    result = run( args[i], runner );
                 }
                 catch( e1:NullSuiteError )
                 {
-                    runner.runFailed(buRRRn.ASTUce.runner.strings.nullTestsuite);
+                    runner.runFailed( strings.nullTestsuite );
                 }
                 catch( e2:Error )
                 {
-                    runner.runFailed(Strings.format(buRRRn.ASTUce.runner.strings.canNotCreateAndRun, i));
-                    runner.runFailed(Strings.format(buRRRn.ASTUce.runner.strings.tab, e2.toString()));
+                    runner.runFailed( format( strings.canNotCreateAndRun, i) );
+                    runner.runFailed( format( strings.tab, e2.toString()) );
                 }
                 
-                console.writeLine(buRRRn.ASTUce.strings.separator);
+                console.writeLine( strings.separator );
             }
         }
         
@@ -200,7 +210,14 @@ package buRRRn.ASTUce
             
             if( test is Class )
             {
-                var staticSuite:* = Reflection.getMethodByName(test, "suite");
+                var methods:Array = getClassMethods( test );
+                var staticSuite:Function = null;
+                if( methods.indexOf( "suite" ) > - 1 )
+                {
+                    staticSuite = test["suite"];
+                }
+                
+                //var staticSuite:* = Reflection.getMethodByName( test, "suite" );
                 
                 if( staticSuite != null )
                 {
@@ -208,7 +225,7 @@ package buRRRn.ASTUce
                 }
                 else
                 {
-                    suite = new TestSuite(test);
+                    suite = new TestSuite( test );
                 }
             }
             
@@ -221,20 +238,20 @@ package buRRRn.ASTUce
         public function doRun( suite:ITest ):TestResult
         {
             var result:TestResult = new TestResult();
-            result.addListener(printer);
+            result.addListener( printer );
             
             /* note:
             we use the Date class to not be dependent
             on flash getTimer()
              */
             var startTime:Number = new Date().valueOf();
-            suite.run(result);
+            suite.run( result );
             var endTime:Number = new Date().valueOf();
             
             var runTime:Number = endTime - startTime;
-            printer.print(result, runTime);
+            printer.print( result, runTime );
             
-            displayInfos(suite, result);
+            displayInfos( suite, result );
             
             return result;
         }

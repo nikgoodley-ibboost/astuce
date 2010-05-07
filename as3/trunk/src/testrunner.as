@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -21,33 +21,34 @@
 
 package
     {
-    import flash.display.Sprite;
-    
     import buRRRn.ASTUce.Runner;
-    import buRRRn.ASTUce.about;
-    import buRRRn.ASTUce.config;
+    import buRRRn.ASTUce.metadata;
     import buRRRn.ASTUce.samples.AllTests;
-    import buRRRn.ASTUce.tests.AllTests;
     import buRRRn.ASTUce.samples.SimpleTest;
+    import buRRRn.ASTUce.tests.AllTests;
+    
+    import flash.display.Sprite;
     
     SimpleTest;
     
-    public class ASTUce_TestRunner extends Sprite
+    [SWF(width="400", height="400", backgroundColor="0xffffff", frameRate="24", pageTitle="testrunner", scriptRecursionLimit="1000", scriptTimeLimit="60")]
+    public class testrunner extends Sprite
         {
         
-        public function ASTUce_TestRunner()
+        public function testrunner()
             {
             
             /* note:
                basic options to tune your output
             */
-            buRRRn.ASTUce.config.allowStackTrace     = true ;
-            // buRRRn.ASTUce.config.allowErrorTrace     = false ;
-            // buRRRn.ASTUce.config.showPrinterDetails  = false ;
-            // buRRRn.ASTUce.config.showPrinterShortTests = false ;
-            buRRRn.ASTUce.config.showConstructorList = false ;
+            metadata.config.allowStackTrace     = true;
+            //metadata.config.allowErrorTrace     = false;
+            //metadata.config.showPrinterDetails  = false;
+            //metadata.config.showPrinterShortTests = false;
+            //metadata.config.showObjectSource = false;
+            metadata.config.showConstructorList = false;
             
-            buRRRn.ASTUce.about( true, false );
+            metadata.about( false, false );
             
             /* note:
                SimpleTest will generate error and failure

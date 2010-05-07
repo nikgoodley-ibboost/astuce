@@ -13,22 +13,21 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
 package buRRRn.ASTUce.framework
-    {
+{
     
     /**
      * TestWarning, an enclosure for information on tests that generate warnings.
      */
     public class TestWarning extends TestCase
-        {
+    {
         
         /**
          * @private
@@ -44,29 +43,29 @@ package buRRRn.ASTUce.framework
          * Creates a new TestWarning instance.
          */
         public function TestWarning( message:String = "", detail:String = "" )
-            {
+        {
             super( "warning" );
             _message = message;
             _detail  = detail;
-            }
+        }
         
         /**
          * Runs the test.
          */
         protected override function runTest():void
-            {
+        {
             fail( _detail );
-            }
+        }
         
         /**
          * Returns the String representation of the object.
          * @return the String representation of the object.
          */
         public override function toString( ...args ):String
-            {
+        {
             return name + "(" + _message + ")";
-            }
-        
         }
+        
     }
+}
 

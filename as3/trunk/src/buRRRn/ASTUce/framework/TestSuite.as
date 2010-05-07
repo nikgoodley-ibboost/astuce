@@ -13,21 +13,23 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  
-    - Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
+  Marc Alcaraz <ekameleon@gmail.com>.
 
 */
 package buRRRn.ASTUce.framework
-    {
-    import buRRRn.ASTUce.config;
-    import buRRRn.ASTUce.strings;
+{
     
-    import system.Reflection;
-    import system.Strings;
+    import core.strings.format; void(format);
+    import core.strings.startsWith; void(startsWith);
+    import core.reflect.getClassByName; void(getClassByName);
+    import core.reflect.getClassName; void(getClassName);
+    import core.reflect.getClassMethods; void(getClassMethods);
+    
+    import buRRRn.ASTUce.metadata;
     
     /**
      * A TestSuite is a composite of Tests.
@@ -47,8 +49,11 @@ package buRRRn.ASTUce.framework
      * <p>This constructor creates a suite with all the methods starting with "test" that take no arguments.</p>
      */       
     public class TestSuite implements ITest
-        {
-        	
+    {
+        
+        private var config:Object = metadata.config;
+        private static var strings:Object = metadata.strings;
+        
         /**
          * @private
          */
@@ -71,67 +76,71 @@ package buRRRn.ASTUce.framework
         
         /**
          * Creates a new TestSuite instance.
-         * <p><b>Note :<b>theConstructor argument can be either a String an ITest or a Class in case of a Class tests will be extracted automatically.</p>
+         * <p><b>Note:<b></p>
+         * <p>
+         * theConstructor argument can be either a <code>String</code>, an <code>ITest</code> or a <code>Class</code>;
+         * in case of a <code>Class</code> tests will be extracted automatically.
+         * </p>
          */
         public function TestSuite( theConstructor:* = null, name:String = "", simpleTrace:Boolean = false )
-            {
+        {
             if( (name != "") && (name != null) )
-                {
+            {
                 _name = name;
-                }
+            }
             
             this.simpleTrace = simpleTrace;
             
             //Constructs an empty TestSuite
             if( theConstructor == null )
-                {
+            {
                 return;
-                }
+            }
             
             if( theConstructor is String )
-                {
+            {
                 try
-                    {
+                {
                     var originalCtor:String = theConstructor;
-                    theConstructor = Reflection.getClassByName( theConstructor );
-                    }
+                    theConstructor = getClassByName( theConstructor );
+                }
                 catch( e:Error )
-                    {
+                {
                     _name = originalCtor ;
                     return;
-                    }
                 }
+            }
             
             if( theConstructor is ITest )
-                {
+            {
                 //trace( "ctor addtest : " + Reflection.getClassName( theConstructor ) );
                 addTest( theConstructor );
                 return;
-                }
+            }
             
             //Constructs a TestSuite from the given class.
             var className:String = "";
             
             if( theConstructor is Class )
-                {
-                className = Reflection.getClassName( theConstructor );
-                }
+            {
+                className = getClassName( theConstructor );
+            }
             
             if( className != "" )
-                {
+            {
                 _name = className;
-                }
+            }
             else
-                {
+            {
                 _name = _unknown;
-                }
+            }
             
             try
-                {
+            {
                 var ctorResult:* = new theConstructor();
-                }
+            }
             catch( er:Error )
-                {
+            {
                 /* note:
                    some class could have a constructor that throw an error
                    to simulate protected/private ctor for implementing singleton pattern.
@@ -158,24 +167,25 @@ package buRRRn.ASTUce.framework
                          
                 */
                 if( er.errorID == 1063 )
-                    {
-                    addTest( _warning( Strings.format( strings.ctorIsMalformed, className ), er.message ) );
-                    }
-                else
-                    {
-                    addTest( _warning( Strings.format( strings.ctorNotInstanciable, className ), er.message ) );
-                    }
-                return;
+                {
+                    addTest( _warning( format( strings.ctorIsMalformed, className ), er.message ) );
                 }
+                else
+                {
+                    addTest( _warning( format( strings.ctorNotInstanciable, className ), er.message ) );
+                }
+                
+                return;
+            }
             
             if( !(ctorResult is ITest) )
-                {
-                addTest( _warning( Strings.format( strings.ctorNotATest, className ) ) );
+            {
+                addTest( _warning( format( strings.ctorNotATest, className ) ) );
                 return;
-                }
+            }
             
             //Adds all the methods starting with "test" as test cases to the suite.
-            var names:Array = Reflection.getClassMethods( ctorResult, config.testInheritedTests );
+            var names:Array = getClassMethods( ctorResult, config.testInheritedTests );
             //trace( "method names: " + names );
             
             /* note:
@@ -195,67 +205,66 @@ package buRRRn.ASTUce.framework
             //trace( "method names filtered: " + names );
             
             for( var i:int=0; i<names.length; i++ )
-                {
+            {
                 _addTestMethod( names[i], theConstructor );
-                }
+            }
             
             if( testCount == 0 )
-                {
-                addTest( _warning( Strings.format( strings.noTestsFound, className ) ) );
-                }
-            
-            
+            {
+                addTest( _warning( format( strings.noTestsFound, className ) ) );
             }
+            
+        }
        
-       /**
-        * @private
-        */
-       private static function _warning( message:String, detail:String = "" ):ITest
-            {
+        /**
+         * @private
+         */
+        private static function _warning( message:String, detail:String = "" ):ITest
+        {
             return new TestWarning( message, detail );
-            }
+        }
 
-       /**
-        * @private
-        */
-       private function _addTestMethod( method:String, theConstructor:Class ):void
-            {
+        /**
+         * @private
+         */
+        private function _addTestMethod( method:String, theConstructor:Class ):void
+        {
             if( !_isTestMethod( method ) )
-                {
+            {
                 return;
-                }
+            }
             
             addTest( createTest( theConstructor, method ) );
-            }
+        }
         
         /*
         for now we can only reflect public methods, ctors, etc.
         so we don't need the following
         
         private function _isPublicTestMethod( method:String ):Boolean
-            {
+        {
             
-            }
+        }
         */
         
         /**
          * @private
          */
         private function _isTestMethod( method:String ):Boolean
-            {
+        {
             /* TODO:
                - add check for paramters length == 0
                - add check for return type == void
             */
             method = method.toLowerCase();
-            return Strings.startsWith( method, "test" );
-            }
+            return startsWith( method, "test" );
+        }
         
-       /**
-        * @private
-        */
-       private function _isTestMethodFilter( element:*, index:int, arr:Array ):Boolean
-            {
+        /**
+         * @private
+         */
+        private function _isTestMethodFilter( element:*, index:int, arr:Array ):Boolean
+        {
             var method:String = element.toLowerCase();
             
             /* note:
@@ -263,168 +272,168 @@ package buRRRn.ASTUce.framework
                because they are defined in the prototype
                and so will not be filtered correctly
             */
-            if( (method == "tostring") || (method == "tostring") )
-                {
+            if( (method == "tostring") || (method == "valueof") )
+            {
                 return false;
-                }
-            
-            return Strings.startsWith( element.toLowerCase(), "test" );
             }
+            
+            return startsWith( element.toLowerCase(), "test" );
+        }
         
         /**
          * Indicates the number of TestCase elements in this suite.
          */
         public function get countTestCases():int
-            {
+        {
             var count:int = 0;
             
             for( var i:int=0; i<tests.length; i++ )
-                {
+            {
                 count += tests[i].countTestCases;
-                }
+            }
             
             return count;
-            }
+        }
         
         /**
          * Indicates the name of the suite. if no name is defined we return "[Unknown]".
          */
         public function get name():String
-            {
+        {
             if( (_name == null) || (_name == "") )
-                {
+            {
                 return _unknown;
-                }
+            }
             
             return _name;
-            }
+        }
         
         /**
          * @private
          */
         public function set name( value:String ):void
-            {
+        {
             _name = value;
-            }
+        }
         
         /**
          * Indicates the number of tests in this suite.
          */
         public function get testCount():int
-            {
+        {
             return _tests.length;
-            }
+        }
         
         /**
          * Indicates the tests as an Array.
          */
         public function get tests():Array
-            {
+        {
             return _tests;
-            }
+        }
         
         /**
          * Creates a test corresponding to the method name in theConstructor class.
          */
         public static function createTest( theConstructor:Class, name:String ):ITest
-            {
+        {
             if( theConstructor == null )
-                {
-                return( _warning( Strings.format( strings.canNotCreateTest, name ) ) );
-                }
+            {
+                return( _warning( format( strings.canNotCreateTest, name ) ) );
+            }
             
             var test:ITest;
-            var classname:String = Reflection.getClassName( theConstructor );
+            var classname:String = getClassName( theConstructor );
             try
-                {
+            {
                 //is for that kind of things that you like dynamic languages ;)
                 test = new theConstructor( name );
-                }
+            }
             catch( e:Error )
-                {
+            {
                 /* see notes in contructor
                 */
                 if( e.errorID == 1063 )
-                    {
-                    return _warning( Strings.format( strings.ctorIsMalformedMethod, name, classname ), e.message );
-                    }
-                else
-                    {
-                    return _warning( Strings.format( strings.ctorNotInstanciableMethod, name, classname ), e.message );
-                    }
+                {
+                    return _warning( format( strings.ctorIsMalformedMethod, name, classname ), e.message );
                 }
+                else
+                {
+                    return _warning( format( strings.ctorNotInstanciableMethod, name, classname ), e.message );
+                }
+            }
             
             return test;
-            }
+        }
         
         /**
          * Adds a test to the suite.
          */
         public function addTest( test:ITest ):void
-            {
+        {
             /* attention:
                If you try to test something that has not been
                included or loaded then off course you obtain a warning.
             */
             if( test == null )
-                {
+            {
                 addTest( _warning( strings.argTestDoesNotExist ) );
                 return;
-                }
+            }
             
             if( !(test is ITest) )
-                {
+            {
                 addTest( _warning( strings.argTestNotATest ) );
                 return;
-                }
+            }
             
             _tests.push( test );
-            }
+        }
         
         /**
          * Adds the tests from the given class to the suite.
          */
         public function addTestSuite( testConstructor:Class ):void
-            {
+        {
             addTest( new TestSuite( testConstructor ) );
-            }
+        }
         
         /**
          * Runs the tests and collects their result in a <TestResult>.
          */
         public function run( result:TestResult ):void
-            {
+        {
             var i:int;
             var test:ITest;
             
             for( i=0; i< tests.length; i++ )
-                {
+            {
                 if( result.shouldStop )
-                    {
+                {
                     break;
-                    }
+                }
                 
                 test = tests[i];
                 runTest( test, result );
-                }
             }
+        }
         
         /**
          * Runs the test.
          */
         public function runTest( test:ITest, result:TestResult ):void
-            {
+        {
             test.run( result );
-            }
+        }
         
         /**
          * Returns the test at the given index.
          * @return the test at the given index.
          */
         public function testAt( index:int ):ITest
-            {
+        {
             return _tests[ index ];
-            }
+        }
         
         /**
          * Returns a string representation of the test suite.
@@ -433,81 +442,89 @@ package buRRRn.ASTUce.framework
          * </pre>
          */
         public function toString( ...args ):String
-            {
+        {
             var increment:int = 0;
             var asSimpleTrace:Boolean = false;
             var simpleTraceDepth:int  = 0;
             
             if( (args.length > 0) && (args[0] is Number) )
-                {
+            {
                 increment = int( args[0] );
-                }
+            }
             
             if( (args.length > 1) && (args[1] is Boolean) )
-                {
+            {
                 asSimpleTrace = args[1];
-                }
+            }
             
             if( (args.length > 2) && (args[2] is Number) )
-                {
+            {
                 asSimpleTrace    = false ;
                 simpleTraceDepth = int( args[2] );
-                }
+            }
             else
-                {
+            {
                 simpleTraceDepth = 0;
-                }
+            }
             
             var str:String    = "";
             var CRLF:String   = "\n";
-            var TAB:String    = "\t";
+            var TAB:String    = "  ";
             var SPC:String    = TAB;
             
             if( increment > 0 )
-                {
+            {
                 for( var j:int=0; j<increment; j++ )
-                    {
+                {
                     SPC += TAB;
-                    }
-                TAB = SPC;
                 }
+                TAB = SPC;
+            }
+            
+            var TABL:String = TAB.substr(2);
             
             str  += name;
             
             if( testCount > 0 )
-                {
-                str += CRLF + TAB + "{" + CRLF;
+            {
+                str += CRLF + TABL + "{" + CRLF;
                 if( asSimpleTrace || simpleTrace )
-                    {
+                {
                     str += TAB + countTestCases + " Tests ..." + CRLF;
-                    }
+                }
                 else
-                    {
+                {
                     for( var i:int=0; i<testCount; i++ )
-                        {
+                    {
                         
                         if( tests[i] is TestSuite )
-                            {
+                        {
                             increment++;
                             simpleTraceDepth--;
-                            }
+                        }
                         
                         str += TAB + tests[i].toString( increment, asSimpleTrace, simpleTraceDepth ) + CRLF;
                         
                         if( tests[i] is TestSuite )
-                            {
+                        {
                             increment--;
                             simpleTraceDepth++;
-                            }
                         }
                     }
-                str += TAB + "}";
                 }
-            return str;
-            
+                str += TABL + "}";
             }
-        
+            else if( testCount == 0 )
+            {
+                str += CRLF + TABL + "{" + CRLF;
+                str += TAB + "0 Tests ..." + CRLF;
+                str += TABL + "}";
+            }
+            
+            return str;
         }
-    
+        
     }
+    
+}
 

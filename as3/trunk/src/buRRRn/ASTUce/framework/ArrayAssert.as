@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -21,37 +21,38 @@
 */
 
 package buRRRn.ASTUce.framework
-    {
+{
+    import core.dump; void(dump);
     
     /**
     * A set of assert methods specialized for arrays.
     */
     public class ArrayAssert extends Assert
-        {
+    {
         
         /**
          * Asserts that any two Arrays are equal.
          * @throws AssertionFailedError If they are not equals.
          */   
         public static function assertEquals( expected:Array, actual:Array, message:String = "" ):void
-            {
+        {
             if( expected == actual )
-                {
+            {
                 return;
-                }
+            }
             
-            var exp:String = _serialize( expected );
-            var act:String = _serialize( actual );
+            var exp:String = dump( expected );
+            var act:String = dump( actual );
             
             if( expected.length != actual.length )
-                {
+            {
                 //_failNotEquals( expected, actual, message );
                 throw new ComparisonFailure( exp, act, message );
-                }
+            }
             
             Assert.assertEquals( exp, act, message );
-            }
-        
         }
+        
     }
+}
 

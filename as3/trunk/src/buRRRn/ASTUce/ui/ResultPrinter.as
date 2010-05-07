@@ -12,21 +12,22 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-  - Marc Alcaraz <vegas@ekameleon.net>.
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
 
 package buRRRn.ASTUce.ui
-    {
-    import system.io.Writeable;
-    import system.Strings;
-    import system.console;
+{
+    import core.strings.format; void(format);
     
-    import buRRRn.ASTUce.config;
-    import buRRRn.ASTUce.strings;
+    import system.terminals.InteractiveConsole;
+    import system.terminals.console;
+    
+    import buRRRn.ASTUce.metadata;
     import buRRRn.ASTUce.framework.AssertionFailedError;
     import buRRRn.ASTUce.framework.ITest;
     import buRRRn.ASTUce.framework.ITestListener;
@@ -38,15 +39,18 @@ package buRRRn.ASTUce.ui
      * The UI result printer object.
      */
     public class ResultPrinter implements ITestListener
-        {
-        private var _writer:Writeable = console; //default writer
+    {
+        protected var config:Object  = metadata.config;
+        protected var strings:Object = metadata.strings;
+        
+        private var _writer:InteractiveConsole = console; //default writer
         protected var column:int  = 0;
         
         /**
          * Converts the elapsed time as String.
          */
         protected function elapsedTimeAsString( runTime:Number ):String
-            {
+        {
             var dat:Date = new Date( runTime.valueOf() );
             
             var ms:int = dat.getUTCMilliseconds();
@@ -54,225 +58,225 @@ package buRRRn.ASTUce.ui
             var m:int  = dat.getUTCMinutes();
             var h:int  = dat.getUTCHours();
             
-            return Strings.format( strings.PrtElapsedTime, {h:h, mn:m, s:s, ms:ms} );            
-            }
+            return format( strings.PrtElapsedTime, h, m, s, ms );            
+        }
         
         protected function printDefects( booBoos:Array, count:int, type:String ):void
-            {
+        {
             var i:int;
             
             if( count == 0 )
-                {
+            {
                 return;
-                }
+            }
             
             if( count == 1 )
-                {
-                writer.writeLine( strings.PrtOneDefect, count, type );
-                }
+            {
+                writer.writeLine( format( strings.PrtOneDefect, count, type ) );
+            }
             else
-                {
-                writer.writeLine( strings.PrtMoreDefects, count, type );
-                }
+            {
+                writer.writeLine( format( strings.PrtMoreDefects, count, type ) );
+            }
             
             for( i=0; i<booBoos.length; i++ )
-                {
+            {
                 printDefect( booBoos[i], i );
-                }
             }
+        }
         
         protected function printDefectHeader( booBoo:TestFailure, count:int ):void
-            {
+        {
             if( !config.defectHeaderAsError )
-                {
-                writer.writeLine( strings.PrtDefectHeader, count, booBoo.failedTest );
-                }
-            else
-                {
-                writer.writeLine( strings.PrtDefectHeader, count, booBoo.thrownError );
-                }
+            {
+                writer.writeLine( format( strings.PrtDefectHeader, count, booBoo.failedTest ) );
             }
+            else
+            {
+                writer.writeLine( format( strings.PrtDefectHeader, count, booBoo.thrownError ) );
+            }
+        }
         
         protected function printDefectTrace( booBoo:TestFailure ):void
-            {
+        {
             if( !config.allowErrorTrace )
-                {
+            {
                 return;
-                }
+            }
             
             if( !config.allowStackTrace )
-                {
+            {
                 if( !config.defectHeaderAsError )
-                    {
-                    writer.writeLine( strings.PrtDefectTrace, " ", booBoo.thrownError );
-                    }
-                }
-            else
                 {
+                    writer.writeLine( format( strings.PrtDefectTrace, " ", booBoo.thrownError ) );
+                }
+            }
+            else
+            {
                 var i:int = 0;
                 var lines:Array = BaseTestRunner.getFilteredTrace( booBoo.trace() );
                 
                 if( config.defectHeaderAsError )
-                    {
+                {
                     i++;
-                    }
+                }
                 
                 for( ; i<lines.length; i++ )
-                    {
-                    writer.writeLine( strings.PrtDefectTrace, " ", lines[i] );
-                    }
+                {
+                    writer.writeLine( format( strings.PrtDefectTrace, " ", lines[i] ) );
                 }
             }
+        }
         
         protected function printErrors( result:TestResult ):void
-            {
+        {
             printDefects( result.errors, result.errorCount, strings.nameError );
-            }
+        }
         
         protected function printFailures( result:TestResult ):void
-            {
+        {
             printDefects( result.failures, result.failureCount, strings.nameFailure );
-            }
+        }
         
         protected function printFooter( result:TestResult ):void
-            {
+        {
             if( result.wasSuccessful() )
-                {
-                writer.writeLine( strings.PrtOK, result.runCount, (result.runCount == 1 ? "": "s") );
-                }
-            else
-                {
-                writer.writeLine( strings.PrtFailure );
-                writer.writeLine( strings.PrtFailureDetails, result.runCount, result.failureCount, result.errorCount );
-        		}
+            {
+                writer.writeLine( format( strings.PrtOK, result.runCount, (result.runCount == 1 ? "": "s") ) );
             }
+            else
+            {
+                writer.writeLine( format( strings.PrtFailure ) );
+                writer.writeLine( format( strings.PrtFailureDetails, result.runCount, result.failureCount, result.errorCount ) );
+        	}
+        }
         
         protected function printHeader( runTime:Number ):void
-            {
+        {
             printBlank();
-            writer.writeLine( strings.PrtTime, elapsedTimeAsString( runTime ) );
-            }
+            writer.writeLine( format( strings.PrtTime, elapsedTimeAsString( runTime ) ) );
+        }
         
-        public function ResultPrinter( writer:Writeable = null )
-            {
+        public function ResultPrinter( writer:InteractiveConsole = null )
+        {
             if( writer != null )
-                {
+            {
                 _writer = writer;
-                }
             }
+        }
         
         public function get writer():*
-            {
+        {
             return _writer;
-            }
+        }
         
         // implementation of <ITestListener>
         
         /* An error occurred.
         */
         public function addError( test:ITest, e:Error ):void
-            {
+        {
             if( !config.showPrinterShortTests )
-                {
+            {
                 return;
-                }
+            }
             
             writer.write( strings.PrtShortError );
-            }
+        }
         
         /* A failure occurred.
         */
         public function addFailure( test:ITest, afe:AssertionFailedError ):void
-            {
+        {
             if( !config.showPrinterShortTests )
-                {
+            {
                 return;
-                }
+            }
             
             writer.write( strings.PrtShortFailure );
-            }
+        }
         
         /* A valid test occurred.
         */
         public function addValid( test:ITest ):void
-            {
+        {
             if( !config.showPrinterShortTests )
-                {
+            {
                 return;
-                }
+            }
             
             writer.write( strings.PrtShortTest );
-            }
+        }
         
         /* A test ended.
         */
         public function endTest( test:ITest ):void
-            {
+        {
             
-            }
+        }
         
         /* A test started.
         */
         public function startTest( test:ITest ):void
-            {
+        {
             if( !config.showPrinterShortTests )
-                {
+            {
                 return;
-                }
+            }
             
             if( column++ >= config.maxColumn )
-                {
+            {
                 printBlank();
                 column = 1;
-                }
             }
+        }
         
         public function reset():void
-            {
+        {
             column = 0;
-            }
+        }
         
         public function print( result:TestResult, runTime:Number ):void
-            {
+        {
             
             if( config.showPrintHeader )
-                {
+            {
                 printHeader( runTime );
-                }
+            }
             
             if( config.showPrintErrors )
-                {
+            {
                 printErrors( result );
-                }
+            }
             
             if( config.showPrintFailures )
-                {
+            {
                 printFailures( result );
-                }
+            }
             
             if( config.showPrintFooter )
-                {
+            {
                 printBlank();
                 printFooter( result );
-                }
+            }
             
             reset();
             
-            }
+        }
         
         public function printBlank():void
-            {
+        {
             writer.writeLine( "" );
-            }
+        }
         
         //only public for testing purposes
         public function printDefect( booBoo:TestFailure, count:int ):void
-            {
+        {
             printDefectHeader( booBoo, count );
             printDefectTrace( booBoo );
-            }
-        
         }
-    
+        
     }
+    
+}
 

@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -21,7 +21,7 @@
 */
 
 package buRRRn.ASTUce.framework
-    {
+{
     
     /**
      * A set of assert methods specialized for Dates.
@@ -41,18 +41,18 @@ package buRRRn.ASTUce.framework
      * </pre>
      */
     public class DateAssert extends Assert
-        {
+    {
         
         /**
          * Asserts that any two Date are equal.
          * @throws AssertionFailedError If they are not equals.
          */   
         public static function assertEquals( expected:Date, actual:Date, message:String = "" ):void
-            {
+        {
             if( expected == actual )
-                {
+            {
                 return;
-                }
+            }
             
             var offset:Number = expected.getTimezoneOffset() ; 
             var diff:Number   = offset * 60 * 1000  ;
@@ -61,13 +61,13 @@ package buRRRn.ASTUce.framework
             var act:Number = actual.valueOf()   - diff ;
             
             if( exp != act )
-                {
+            {
                 throw new ComparisonFailure( expected.toString(), actual.toString() , message );
-                }            
+            }            
             
             Assert.assertEquals( exp, act, message );
-            }
-        
         }
+        
     }
+}
 

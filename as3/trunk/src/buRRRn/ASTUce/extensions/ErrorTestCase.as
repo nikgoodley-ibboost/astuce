@@ -12,16 +12,16 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
   
-  	- Alcaraz Marc (aka eKameleon) <vegas@ekameleon.net> (2007-2008)
-
 */
+
 package buRRRn.ASTUce.extensions
-    {
+{
     import buRRRn.ASTUce.framework.*;
     
     /**
@@ -43,7 +43,7 @@ package buRRRn.ASTUce.extensions
      * </pre>
      */
     public class ErrorTestCase extends TestCase
-        {
+    {
         
         /**
          * @private
@@ -56,36 +56,36 @@ package buRRRn.ASTUce.extensions
          * @param The error class.
          */
         public function ErrorTestCase( name:String = "", error:Class = null )
-            {
+        {
             super( name );
             _expected = error;
-            }
+        }
         
         /**
          * Run the test.
          */
         protected override function runTest():void
-            {
+        {
             try
-                {
+            {
                 super.runTest();
-                }
+            }
             catch( e:* )
-                {
+            {
                 if( e is _expected )
-                    {
+                {
                     return;
-                    }
-                else
-                    {
-                    throw e;
-                    }
                 }
+                else
+                {
+                    throw e;
+                }
+            }
             
             fail( "Expected exception " + _expected );
-            }
-        
         }
-    
+        
     }
+    
+}
 
