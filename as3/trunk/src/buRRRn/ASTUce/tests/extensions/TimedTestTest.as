@@ -1,4 +1,3 @@
-
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -13,29 +12,30 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
 
-
 package buRRRn.ASTUce.tests.extensions
-    {
-    import buRRRn.ASTUce.framework.*;
-    
+{
+    import buRRRn.ASTUce.framework.*;    
     import buRRRn.ASTUce.extensions.TimedTest;
     
+    [ExcludeClass]
     public class TimedTestTest extends TestCase
-        {
+    {
         
         public function TimedTestTest( name:String = "" )
-            {
+        {
             super( name );
-            }
+        }
         
         public function testSuiteLong():void
-            {
+        {
             var suite:TestSuite = new TestSuite( "Long suite" );
             
             suite.addTestSuite( LongTest );
@@ -48,10 +48,10 @@ package buRRRn.ASTUce.tests.extensions
     		assertEquals( 2, result.runCount );
     		assertEquals( 0, result.failureCount );
     		assertEquals( 0, result.errorCount );
-            }
+        }
         
         public function testSuiteShort():void
-            {
+        {
             var suite:TestSuite = new TestSuite( "Short suite" );
             
             suite.addTestSuite( ShortTest );
@@ -64,47 +64,9 @@ package buRRRn.ASTUce.tests.extensions
     		assertEquals( 2, result.runCount );
     		assertEquals( 0, result.failureCount );
     		assertEquals( 0, result.errorCount );
-            }
+        }
         
-        }
-    
     }
-
-import buRRRn.ASTUce.framework.TestCase;
-
-internal class LongTest extends TestCase
-    {
-    public function LongTest( name:String = "" )
-        {
-        super( name );
-        }
     
-    public function testLong():void
-        {
-        var i:int;
-        var count:int = 0;
-        for( i=0; i<100000; i++ )
-            {
-            count++;
-            }
-        }
-    }
-
-internal class ShortTest extends TestCase
-    {
-    public function ShortTest( name:String = "" )
-        {
-        super( name );
-        }
-    
-    public function testShort():void
-        {
-        var i:int;
-        var count:int = 0;
-        for( i=0; i<1000; i++ )
-            {
-            count++;
-            }
-        }
-    }
+}
 

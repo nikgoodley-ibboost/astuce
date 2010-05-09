@@ -11,22 +11,25 @@
   The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
   
   The Initial Developer of the Original Code is
-  ALCARAZ Marc <ekameleon@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Zwetan Kjukov <zwetan@gmail.com>.
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
+
 package buRRRn.ASTUce.tests.mocks
 {
     import buRRRn.ASTUce.framework.*;
     
+    [ExcludeClass]
     public class AllTests
-        {
+    {
         
         public static function suite():ITest
-            {
+        {
             var suite:TestSuite = new TestSuite( "Mock Tests" );
             
             /*
@@ -41,10 +44,10 @@ package buRRRn.ASTUce.tests.mocks
             suite.addTestSuite( TypeOfTest ) ;
             */
             return suite;
-            }
-        
-        
         }
-    
+        
+        
     }
+    
+}
 

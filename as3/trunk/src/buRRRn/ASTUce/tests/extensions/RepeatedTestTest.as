@@ -1,4 +1,3 @@
-
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -13,77 +12,80 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
 
 package buRRRn.ASTUce.tests.extensions
-    {
+{
     import buRRRn.ASTUce.framework.*;
     import buRRRn.ASTUce.extensions.RepeatedTest;
     import buRRRn.ASTUce.tests.extensions.SuccessTest;
     
+    [ExcludeClass]
     public class RepeatedTestTest extends TestCase
-        {
+    {
         private var _suite:TestSuite;
         
         public function RepeatedTestTest( name:String = "" )
-            {
+        {
             super( name );
             
             _suite = new TestSuite();
             _suite.addTest( new SuccessTest() );
             _suite.addTest( new SuccessTest() );
             
-            }
+        }
         
         public function testRepeatedOnce():void
-            {
+        {
             var test:ITest = new RepeatedTest( _suite, 1 );
     		assertEquals( 2, test.countTestCases );
     		
     		var result:TestResult = new TestResult();
     		test.run( result );
     		assertEquals( 2, result.runCount );
-            }
+        }
         
         public function testRepeatedMoreThanOnce():void
-            {
+        {
             var test:ITest = new RepeatedTest( _suite, 3 );
             assertEquals( 6, test.countTestCases );
             
             var result:TestResult = new TestResult();
     		test.run( result );
     		assertEquals( 6, result.runCount );
-            }
+        }
         
         public function testRepeatedZero():void
-            {
+        {
             var test:ITest = new RepeatedTest( _suite, 0 );
             assertEquals( 0, test.countTestCases );
             
             var result:TestResult = new TestResult();
     		test.run( result );
     		assertEquals( 0, result.runCount );
-            }
+        }
         
         public function testRepeatedNegative():void
-            {
+        {
             try
-                {
+            {
                 new RepeatedTest( _suite, -1 );
-                }
+            }
             catch( e:ArgumentError )
-                {
+            {
                 return;
-                }
+            }
             
             fail( "Should throw an ArgumentError" );
-            }
-        
         }
-    
+        
     }
+    
+}
 

@@ -1,4 +1,3 @@
-
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -13,74 +12,75 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
 
-
 package buRRRn.ASTUce.tests.extensions
-    {
+{
     import buRRRn.ASTUce.framework.*;
-    
     import buRRRn.ASTUce.extensions.ErrorTestCase;
     
+    [ExcludeClass]
     public class ErrorTestCaseTest extends TestCase
-        {
+    {
         
         public function ErrorTestCaseTest( name:String = "" )
-            {
+        {
             super( name );
-            }
+        }
         
         public function testErrorTest():void
-            {
+        {
             var test:ErrorTestCase = new ErrorTestCase( "test", Error );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 1, result.runCount );
             assertTrue( result.wasSuccessful() );
-            }
+        }
         
         public function testErrorSubclass():void
-            {
+        {
             var test:ErrorTestCase = new ThrowErrorTestCase( "test", Error );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 1, result.runCount );
             assertTrue( result.wasSuccessful() );
-            }
+        }
         
         public function testFailure():void
-            {
+        {
             var test:ErrorTestCase = new ThrowRuntimeErrorTestCase( "test", RangeError );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 1, result.runCount );
             assertEquals( 1, result.errorCount );
-            }
+        }
         
         public function testNoError():void
-            {
+        {
             var test:ErrorTestCase = new ThrowNoErrorTestCase( "test", Error );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 1, result.runCount );
             assertEquals( 1, result.failureCount );
-            }
+        }
         
         public function testWrongError():void
-            {
+        {
             var test:ErrorTestCase = new ThrowRuntimeErrorTestCase( "test", RangeError );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 1, result.runCount );
             assertEquals( 1, result.errorCount );
-            }
-        
         }
-    
+        
     }
+    
+}
 
 

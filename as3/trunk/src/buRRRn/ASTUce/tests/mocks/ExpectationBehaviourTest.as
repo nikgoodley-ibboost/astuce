@@ -11,20 +11,20 @@
   The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
   
   The Initial Developer of the Original Code is
-  ALCARAZ Marc <ekameleon@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Zwetan Kjukov <zwetan@gmail.com>.
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
+
 package buRRRn.ASTUce.tests.mocks 
 {
     import buRRRn.ASTUce.framework.TestCase;
     
-    /**
-     * @author eKameleon
-     */
+    [ExcludeClass]
     public class ExpectationBehaviourTest extends TestCase 
     {
 

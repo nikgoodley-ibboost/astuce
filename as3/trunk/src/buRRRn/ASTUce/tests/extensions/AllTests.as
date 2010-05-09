@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -13,21 +12,24 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
 
 package buRRRn.ASTUce.tests.extensions
 {
 	import buRRRn.ASTUce.framework.*;    
-
+    
+    [ExcludeClass]
 	public class AllTests
-        {
+    {
         
         static public function suite():ITest
-            {
+        {
             var suite:TestSuite = new TestSuite( "Extensions Tests" );
             //suite.simpleTrace = true;
             
@@ -57,9 +59,9 @@ package buRRRn.ASTUce.tests.extensions
             */
             
             return suite;
-            }
-        
         }
-    
+        
     }
+    
+}
 

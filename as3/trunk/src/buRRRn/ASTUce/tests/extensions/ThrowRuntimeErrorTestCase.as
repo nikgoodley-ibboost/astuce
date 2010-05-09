@@ -1,4 +1,3 @@
-
 /*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
@@ -13,16 +12,19 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
 
 package buRRRn.ASTUce.tests.extensions
 {
     import buRRRn.ASTUce.extensions.ErrorTestCase;
     
+    [ExcludeClass]
     public class ThrowRuntimeErrorTestCase extends ErrorTestCase
     {
         public function ThrowRuntimeErrorTestCase( name:String = "", error:Class = null )

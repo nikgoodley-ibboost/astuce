@@ -22,22 +22,25 @@
 
 package buRRRn.ASTUce.tests.extensions
 {
-    import buRRRn.ASTUce.extensions.TestSetup;
-    import buRRRn.ASTUce.framework.ITest;
+    import buRRRn.ASTUce.framework.TestCase;
     
     [ExcludeClass]
-    public class FailedSetUp extends TestSetup
+    public class LongTest extends TestCase
     {
-        public function FailedSetUp( test:ITest )
+        public function LongTest( name:String = "" )
         {
-            super( test );
+            super( name );
         }
         
-        public function setUp():void
+        public function testLong():void
         {
-            fail();
+            var i:int;
+            var count:int = 0;
+            for( i=0; i<100000; i++ )
+            {
+                count++;
+            }
         }
         
     }
 }
-
