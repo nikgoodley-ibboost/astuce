@@ -16,27 +16,26 @@
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
+  Marc Alcaraz <ekameleon@gmail.com>.
   
 */
 
 package
-    {
+{
     import buRRRn.ASTUce.Runner;
     import buRRRn.ASTUce.metadata;
     import buRRRn.ASTUce.samples.AllTests;
-    import buRRRn.ASTUce.samples.SimpleTest;
+    import buRRRn.ASTUce.samples.SimpleTest; SimpleTest;
     import buRRRn.ASTUce.tests.AllTests;
     
     import flash.display.Sprite;
     
-    SimpleTest;
-    
     [SWF(width="400", height="400", backgroundColor="0xffffff", frameRate="24", pageTitle="testrunner", scriptRecursionLimit="1000", scriptTimeLimit="60")]
     public class testrunner extends Sprite
-        {
+    {
         
         public function testrunner()
-            {
+        {
             
             /* note:
                basic options to tune your output
@@ -46,9 +45,9 @@ package
             //metadata.config.showPrinterDetails  = false;
             //metadata.config.showPrinterShortTests = false;
             //metadata.config.showObjectSource = false;
-            metadata.config.showConstructorList = false;
+            metadata.config.showConstructorList = true;
             
-            metadata.about( false, false );
+            metadata.about( false, true );
             
             /* note:
                SimpleTest will generate error and failure
@@ -60,7 +59,7 @@ package
             Runner.main( buRRRn.ASTUce.tests.AllTests.suite(),
                          buRRRn.ASTUce.samples.AllTests.suite() );
             
-            }
         }
     }
+}
 
