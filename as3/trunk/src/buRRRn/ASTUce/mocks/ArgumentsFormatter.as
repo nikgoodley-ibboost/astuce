@@ -11,16 +11,18 @@
   The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
   
   The Initial Developer of the Original Code is
-  ALCARAZ Marc <ekameleon@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Zwetan Kjukov <zwetan@gmail.com>.
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
+
 package buRRRn.ASTUce.mocks 
 {
-    import system.Reflection;    
+    import core.reflect.getClassName; void(getClassName);
     
     /**
      * This tool class format an Array of types.
@@ -49,7 +51,7 @@ package buRRRn.ASTUce.mocks
                 else if( value is TypeOf || value is Class ) 
                 {
                     var clazz:Class = ( value is TypeOf ) ? (value as TypeOf).type : ( value as Class ) ;
-                    var name:String = Reflection.getClassName(clazz) ;
+                    var name:String = getClassName(clazz) ;
                     formatted += name + ( formatted == "" ? ", " : "" ) ; 
                 }
                 else if( value is String ) 

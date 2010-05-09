@@ -11,18 +11,20 @@
   The Original Code is [ASTUce: ActionScript Test Unit compact edition AS3]. 
   
   The Initial Developer of the Original Code is
-  ALCARAZ Marc <ekameleon@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2008
+  Zwetan Kjukov <zwetan@gmail.com>.
+  Portions created by the Initial Developer are Copyright (C) 2006-2010
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
-
+  Marc Alcaraz <ekameleon@gmail.com>.
+  
 */
+
 package buRRRn.ASTUce.mocks 
 {
     import flash.utils.describeType;
     
-    import system.Reflection;
+    import core.reflect.getClassName; void(getClassName);
     
     /**
      * The MockFactory class.
@@ -208,6 +210,8 @@ package buRRRn.ASTUce.mocks
             {
                 return false;
             }
+            
+            return true;
         }
         
         /**
@@ -244,7 +248,7 @@ package buRRRn.ASTUce.mocks
         public static function getClassMethods( o:*, inherited:Boolean = false ):Array
         {
             var type:XML = describeType( o );
-            var fullname:String = Reflection.getClassName( o, true );
+            var fullname:String = getClassName( o, true );
             var members:Array = [];
             for each( var member:XML in type.method )
             {
