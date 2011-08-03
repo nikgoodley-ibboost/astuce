@@ -32,15 +32,19 @@ package buRRRn.ASTUce.framework
      * <p>It is an instance of the Collecting Parameter pattern.</p>
      * <p>The test framework distinguishes between *failures* and *errors*.</p>
      * <p>A failure is anticipated and checked for with assertions.</p>
-     * <p>Errors are unanticipated problems like an <ArgumentError>.</p>
-     * <p><b>Note : </b></p>
-     * <p>A little difference with JUnit is the addition of addValid calls, which is used to indicate 
-     * to a ITestListener that a "test run" ran without problems.</p>
-     * <p>While implementing the command line interface I noticed that the writing of test runs as "...F...E.." was not 
+     * <p>Errors are unanticipated problems like an <code>ArgumentError</code>.</p>
+     * <p><b>Note: </b></p>
+     * <p>
+     * A little difference with JUnit is the addition of addValid calls, which is used to indicate 
+     * to a ITestListener that a "test run" ran without problems.
+     * </p>
+     * <p>
+     * While implementing the command line interface I noticed that the writing of test runs as "...F...E.." was not 
      * in sync, if you ran 3 tests without errors/failures you did obtained the exact count "...", but if you ran
      * 3 test which contained 1 failure you obtained ".F.." and as my goal was to display a symbol corresponding
      * to either an error/a failure or a valid test, then I added the addValid to allow to do that.
      * </p>
+     * 
      * @see ITest
      */
     public class TestResult

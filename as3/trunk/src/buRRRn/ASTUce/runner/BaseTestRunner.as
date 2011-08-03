@@ -89,7 +89,7 @@ package buRRRn.ASTUce.runner
         
         /**
          * Filter the specified line.
-         * @return <code prettyprint>true</code> if the line is filter.
+         * @return <code>true</code> if the line is filter.
          */
         public static function filterLine( line:*, index:int = 0, arr:Array = null ):Boolean
         {
@@ -228,7 +228,7 @@ package buRRRn.ASTUce.runner
         
         /**
          * Returns the Test corresponding to the given suite. 
-         * This is a template method, subclasses override runFailed(), clearStatus().
+         * This is a template method, subclasses override <code>runFailed()</code>, <code>clearStatus()</code>.
          */
         public function getTest( suiteClassName:String ):ITest
         {

@@ -78,9 +78,9 @@ package buRRRn.ASTUce
          * Creates a new Runner instance.
          * Using the given class writer if provided.
          * <p><b>Note :</b></p>
-         * The default class writer for ResultPrinter is system.console.
+         * The default class writer for <code>ResultPrinter</code> is <code>system.terminals.console</code>.
          * For building a custom class writer, you have to define a class witch
-         * implements system.IO.Writeable.
+         * implements <code>system.terminals.InteractiveConsole</code>.
          */
         public function Runner( writer:InteractiveConsole = null )
         {
@@ -175,12 +175,15 @@ package buRRRn.ASTUce
         /**
          * Runs a single test and collects its results.
          * <p>This method can be used to start a test run from your program.</p>
-         * <p>Parameters :</p>
-         * <p><b>Note :</b></p>
-         * <p>In the case of a string parameter, the runner will first try to
-         * locate a static suite() method, and if it can not find it 
+         * 
+         * <p>
+         * In the case of a string parameter, the runner will first try to
+         * locate a <code>static suite()</code> method, and if it can not find it 
          * then will try to extract a test suite automatically.
-         * @param test Can be a ITest (TestCase,TestSuite,etc.), a Class or a String
+         * </p>
+         * 
+         * @param test Can be a <code>ITest</code> (<code>TestCase</code>,<code>TestSuite</code>,etc.),
+         * a <code>Class</code> or a <code>String</code>
          */
         public static function run( test:*, runner:Runner = null ):TestResult
         {

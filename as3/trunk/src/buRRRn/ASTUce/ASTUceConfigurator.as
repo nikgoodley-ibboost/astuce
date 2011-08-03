@@ -65,7 +65,7 @@ package buRRRn.ASTUce
         /**
         * Boolean option to configure the getInfo method behaviour.
         * <p>
-        * If the value is <code class="prettyprint">true</code> more verbose else less verbose.
+        * If the value is <code>true</code> more verbose else less verbose.
         * </p>
         */
         public function get verbose():Boolean
@@ -82,23 +82,27 @@ package buRRRn.ASTUce
         }
         
         /**
-        * Boolean option to display all the constructors being tested.
-        * <p>If the value is <code class="prettyprint">true</code> show constructors list elsedon't show constructor list.</p>
-        * <p><b>Note : </b> Will show an indented list of tests</p>
-        * <pre class="prettyprint">
-        * All ASTUce tests
-        *      {
-        *      Framework Tests
-        *      {
-        *      TestCaseTest
-        *              {
-        *              testCaseToString( TestCaseTest )
-        *                 testRunAndTearDownFails( TestCaseTest )
-        *                 testWasRun( TestCaseTest )
-        *                 testError( TestCaseTest )
-        *                 ...
-        * </pre>                
-        */
+         * Boolean option to display all the constructors being tested.
+         * <p>If the value is <code>true</code> show constructors list else don't show constructor list.</p>
+         * <p><b>Note: </b> Will show an indented list of tests</p>
+         * 
+         * @example output sample
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * All ASTUce tests
+         * {
+         *      Framework Tests
+         *      {
+         *          TestCaseTest
+         *          {
+         *              testCaseToString( TestCaseTest )
+         *              testRunAndTearDownFails( TestCaseTest )
+         *              testWasRun( TestCaseTest )
+         *              testError( TestCaseTest )
+         *              ...
+         * </code>
+         * </listing>
+         */
         public function get showConstructorList():Boolean
         {
             return _config.showConstructorList;
@@ -113,22 +117,26 @@ package buRRRn.ASTUce
         }
         
         /**
-        * If false will show the full indentation
-        * <pre class="prettyprint">
-        *  All ASTUce tests
-        *      {
-        *      Framework Tests
-        *          {
-        *          TestCaseTest
-        *              {
-        *              testCaseToString( TestCaseTest )
-        *              testRunAndTearDownFails( TestCaseTest )
-        *              testWasRun( TestCaseTest )
-        *              testError( TestCaseTest )
-        *              ...
-        * </pre> 
-        * If true will show the indentation till the showSimpleTraceDepth.
-        */
+         * If false will show the full indentation
+         * @example output sample
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * All ASTUce tests
+         * {
+         *      Framework Tests
+         *      {
+         *          TestCaseTest
+         *          {
+         *              testCaseToString( TestCaseTest )
+         *              testRunAndTearDownFails( TestCaseTest )
+         *              testWasRun( TestCaseTest )
+         *              testError( TestCaseTest )
+         *              ...
+         * </code>
+         * </listing>
+         * 
+         * If true will show the indentation till the showSimpleTraceDepth.
+         */
         public function get showAllAsSimpleTrace():Boolean
         {
             return _config.showAllAsSimpleTrace;
@@ -143,351 +151,356 @@ package buRRRn.ASTUce
         }
         
         /**
-        * will limit the depth of description for constructors list
-        * <pre class="prettyprint">
-        * All ASTUce tests
-        *      {
-        *      Framework Tests
-        *          {
-        *          TestCaseTest
-        *              {
-        *              13 Tests ...
-        *              }
-        *          Suite tests
-        *              {
-        *              7 Tests ...
-        *              }
-        * </pre> 
-        */
+         * will limit the depth of description for constructors list
+         * 
+         * @example output sample
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * All ASTUce tests
+         * {
+         *      Framework Tests
+         *      {
+         *          TestCaseTest
+         *          {
+         *              13 Tests ...
+         *          }
+         *          Suite tests
+         *          {
+         *              7 Tests ...
+         *          }
+         * </code>
+         * </listing>
+         */
         public function get showSimpleTraceDepth():int
         {
             return _config.showSimpleTraceDepth;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showSimpleTraceDepth( value:int ):void
         {
             _config.showSimpleTraceDepth = value;
         }
         
         /**
-        * Shows the short tests.
-        * <pre class="prettyprint">
-        *  ...F..E...
-        * </pre> 
-        */
+         * Shows the short tests.
+         * 
+         * @example output sample
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         *  ...F..E...
+         * </code>
+         * </listing>
+         */
         public function get showPrinterShortTests():Boolean
         {
             return _config.showPrinterShortTests;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showPrinterShortTests( value:Boolean ):void
         {
             _config.showPrinterShortTests = value;
         }
         
         /** 
-        * Need to be true to display :
-        * <li>printHeader</li>
-        * <li>printErrors</li>
-        * <li>printFailures</li>
-        * <li>printFooter</li>
-        * <li>empty tests</li>
-        */
+         * Need to be true to display:
+         * 
+         * <ul>
+         * <li>printHeader</li>
+         * <li>printErrors</li>
+         * <li>printFailures</li>
+         * <li>printFooter</li>
+         * <li>empty tests</li>
+         * </ul>
+         */
         public function get showPrinterDetails():Boolean
         {
             return _config.showPrinterDetails;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showPrinterDetails( value:Boolean ):void
         {
             _config.showPrinterDetails = value;
         }
         
         /**
-        * show the header
-        * <pre class="prettyprint">
-        *  Time: 0h:0mn:0s:10ms
-        * </pre> 
-        */
+         * show the header
+         * 
+         * @example output sample
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         *  Time: 0h:0mn:0s:10ms
+         * </code>
+         * </listing>
+         */
         public function get showPrintHeader():Boolean
         {
             return _config.showPrintHeader;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showPrintHeader( value:Boolean ):void
         {
             _config.showPrintHeader = value;
         }
         
         /**
-        * Show the errors details.
-        */
+         * Show the errors details.
+         */
         public function get showPrintErrors():Boolean
         {
             return _config.showPrintErrors;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showPrintErrors( value:Boolean ):void
         {
             _config.showPrintErrors = value;
         }
         
         /**
-        * Show the failures details
-        */
+         * Show the failures details
+         */
         public function get showPrintFailures():Boolean
         {
             return _config.showPrintFailures;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showPrintFailures( value:Boolean ):void
         {
             _config.showPrintFailures = value;
         }
         
         /**
-        * Show the footer.
-        * <pre class="prettyprint">
-        * OK (10 tests)
-        * </pre> 
-        */
+         * Show the footer.
+         * 
+         * @example output sample
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * OK (10 tests)
+         * </code>
+         * </listing>
+         */
         public function get showPrintFooter():Boolean
         {
             return _config.showPrintFooter;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showPrintFooter( value:Boolean ):void
         {
             _config.showPrintFooter = value;
         }
         
         /**
-        * Sometimes you add a test or a test suite that does not contain any tests, il will show something as
-        * <pre class="prettyprint">
-        * [unknown]
-        * </pre> 
-        */
+         * Sometimes you add a test or a test suite that does not contain any tests,
+         * il will show something as "unknown"
+         * 
+         * @example output sample
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * [unknown]
+         * </code>
+         * </listing>
+         */
         public function get showEmptyTests():Boolean
         {
             return _config.showEmptyTests;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showEmptyTests( value:Boolean ):void
         {
             _config.showEmptyTests = value;
         }
         
         /**
-        * Boolean option to display the source of objects being compared.
-        * <p>If the value is <code class="prettyprint">true</code> show the object source else don't show the source.
-        * <p><b>Note :</b>It help you to debug to see</p>
-        * <pre class="prettyprint">
-        * AssertionFailedError : expected:<{a:1,b:2,c:3}> but was:<{a:1,b:2,c:4}>
-        * </pre> 
-        * <p>instead of</p>
-        * <pre class="prettyprint">
-        * AssertionFailedError : expected:<[object Object]> but was:<[object Object]>
-        * </pre> 
-        */
+         * Boolean option to display the source of objects being compared.
+         * <p>If the value is <code>true</code> show the object source else don't show the source.</p>
+         * <p><b>Note :</b>It help you to debug to see</p>
+         * 
+         * @example output sample with object source
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * AssertionFailedError : expected:&lt;{a:1,b:2,c:3}&gt; but was:&lt;{a:1,b:2,c:4}&gt;
+         * </code>
+         * </listing>
+         * 
+         * @example output sample without object source
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * AssertionFailedError : expected:&lt;[object Object]&gt; but was:&lt;[object Object]&gt;
+         * </code>
+         * </listing>
+         */
         public function get showObjectSource():Boolean
         {
             return _config.showObjectSource;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set showObjectSource( value:Boolean ):void
         {
             _config.showObjectSource = value;
         }
         
-        /**
-        * Boolean option to invert the order of the arguments: expected, actual 
-        * see <code class="prettyprint">buRRRn.ASTUce.framework.Assert</code>.
-        * <p><b>Parameters:</b></p>
-        * <li><b>true</b> : the argument order is: actual, expected. (inverted)</li>
-        * <li><b>false</b> : the argument order is: expected, actual. (default)</li>
-        */
+
         public function get invertExpectedActual():Boolean
         {
             return _config.invertExpectedActual;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set invertExpectedActual( value:Boolean ):void
         {
             _config.invertExpectedActual = value;
         }
         
         /**
-        * Boolean option allowing to iterate or not trough inherited tests.
-        * <p>If is <b>true</b> iterate inherited tests.</p>
-        * <p><b>Note :</b></p>
-        * <p>If you set this option to false the following test <code class="prettyprint">SuiteTest( testInheritedTests )</code> will fail.</p>
-        * <p>Hopefully the failure message should direct you here ;).</p>
-        * <pre class="prettyprint">
-        * 0) testInheritedTests( SuiteTest )
-        *    AssertionFailedError: see buRRRn.ASTUce.config.testInheritedTests
-        *        at buRRRn.ASTUce.framework::Assert$/fail()
-        *        at buRRRn.ASTUce.framework::Assert$/assertTrue()
-        *        at buRRRn.ASTUce.tests.framework::SuiteTest/testInheritedTests()
-        * </pre> 
-        */
+         * Boolean option allowing to iterate or not trough inherited tests.
+         * <p>If is <b>true</b> iterate inherited tests.</p>
+         * <p><b>Note :</b></p>
+         * <p>If you set this option to false the following test <code>SuiteTest( testInheritedTests )</code> will fail.</p>
+         * <p>Hopefully the failure message should direct you here ;).</p>
+         * 
+         * @example message failure
+         * <listing version="3.0">
+         * <code class="prettyprint">
+         * 0) testInheritedTests( SuiteTest )
+         *    AssertionFailedError: see buRRRn.ASTUce.config.testInheritedTests
+         *        at buRRRn.ASTUce.framework::Assert$/fail()
+         *        at buRRRn.ASTUce.framework::Assert$/assertTrue()
+         *        at buRRRn.ASTUce.tests.framework::SuiteTest/testInheritedTests()
+         * </code>
+         * </listing>
+         */
         public function get testInheritedTests():Boolean
         {
             return _config.testInheritedTests;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set testInheritedTests( value:Boolean ):void
         {
             _config.testInheritedTests = value;
         }
         
         /**
-        * Indicates the max columns chars to display before returning to the line.
-        * <p>-> only usefull to print short tests/failures/errors.</p>
-        */
+         * Indicates the max columns chars to display before returning to the line.
+         * <p>only usefull to print short tests/failures/errors.</p>
+         */
         public function get maxColumn():int
         {
             return _config.maxColumn;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set maxColumn( value:int ):void
         {
             _config.maxColumn = value;
         }
         
         /**
-        * Defect the header as error.
-        */
+         * Defect the header as error.
+         */
         public function get defectHeaderAsError():Boolean
         {
             return _config.defectHeaderAsError;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set defectHeaderAsError( value:Boolean ):void
         {
             _config.defectHeaderAsError = value;
         }
         
         /**
-        * Indicates if the error trace is allowed.
-        */
+         * Indicates if the error trace is allowed.
+         */
         public function get allowErrorTrace():Boolean
         {
             return _config.allowErrorTrace;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set allowErrorTrace( value:Boolean ):void
         {
             _config.allowErrorTrace = value;
         }
         
         /**
-        * Indicates if the stack trace is allowed.
-        */
+         * Indicates if the stack trace is allowed.
+         */
         public function get allowStackTrace():Boolean
         {
             return _config.allowStackTrace;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set allowStackTrace( value:Boolean ):void
         {
             _config.allowStackTrace = value;
         }
         
         /**
-        * Indicates if the filter error stack is allowed.
-        * Allow to use the filteredPatterns array to filter or not the errors stack trace 
-        * set it to false if you want the full stack.
-        */
+         * Indicates if the filter error stack is allowed.
+         * Allow to use the filteredPatterns array to filter or not the errors stack trace 
+         * set it to false if you want the full stack.
+         */
         public function get filterErrorStack():Boolean
         {
             return _config.filterErrorStack;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set filterErrorStack( value:Boolean ):void
         {
             _config.filterErrorStack = value;
         }
         
-        /**
-        * Allows to clean some informations of the stack trace line
-        * 
-        * ex:
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()[C:\code\sandbox\buRRRn\ASTUce\samples\ArrayTest.as:72]
-        * become
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()
-        * 
-        * note:
-        * to remove all file system info between [ and ]
-        * /\[.*\]/ -> ""
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()[C:\code\sandbox\buRRRn\ASTUce\samples\ArrayTest.as:72]
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()
-        * 
-        * to remove only the drive (c:\) info (windows)
-        * /\[[a-zA-Z]\:\\/ -> "["
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()[C:\code\sandbox\buRRRn\ASTUce\samples\ArrayTest.as:72]
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()[code\sandbox\buRRRn\ASTUce\samples\ArrayTest.as:72]
-        * 
-        * to remove the drive and path info (c:\some\path) (windows)
-        * /\[[a-zA-Z].*\\/ -> "["
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()[C:\code\sandbox\buRRRn\ASTUce\samples\ArrayTest.as:72]
-        * at buRRRn.ASTUce.samples::ArrayTest/testClone()[ArrayTest.as:72]
-        */
         public function get cleanupErrorStack():Boolean
         {
             return _config.cleanupErrorStack;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set cleanupErrorStack( value:Boolean ):void
         {
             _config.cleanupErrorStack = value;
@@ -495,57 +508,45 @@ package buRRRn.ASTUce
         
         
         /**
-        * The cleanup setting value.
-        */
+         * The cleanup setting value.
+         */
         public function get cleanupPattern():RegExp
         {
             return _config.cleanupPattern;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set cleanupPattern( value:RegExp ):void
         {
             _config.cleanupPattern = value;
         }
         
         /**
-        * Indicates the cleanup replacement value. 
-        */
+         * Indicates the cleanup replacement value. 
+         */
         public function get cleanupReplacement():String
         {
             return _config.cleanupReplacement;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set cleanupReplacement( value:String ):void
         {
             _config.cleanupReplacement = value;
         }
         
-        /**
-        * An Array of patterns to filter the stack trace.
-        * </p><b>Attention :</b></p>
-        * <p>Be carefull with what you add adding "buRRRn.ASTUce.framework" will filter out</p>
-        * <li>buRRRn.ASTUce.framework::Assert$/fail()</li>
-        * <li>buRRRn.ASTUce.framework::Assert$/assertTrue()</li>
-        * <li>or any other Assert methods</li>
-        * </p>to not filter the AssertionFailure it is better to add the filters this way</p>
-        * <li>"buRRRn.ASTUce.framework::TestResult"</li>
-        * <li>"buRRRn.ASTUce.framework::TestCase"</li>
-        * <li>"buRRRn.ASTUce.framework::TestSuite"</li>
-        */
         public function get filteredPatterns():Array
         {
             return _config.filteredPatterns;
         }
         
         /**
-        * @private
-        */
+         * @private
+         */
         public function set filteredPatterns( value:Array ):void
         {
             _config.filteredPatterns = value;

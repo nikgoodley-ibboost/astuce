@@ -25,8 +25,11 @@ package buRRRn.ASTUce.framework
     
     /**
      * A set of assert methods specialized for Dates.
-     * <p><b>Example :</b></p>
-     * <pre class="prettyprint">
+     * 
+     * @example basic usage
+     * <listing version="3.0">
+     * <code class="prettyprint">
+     * 
      * import buRRRn.ASTUce.framework.DateAssert ;
      * 
      * var d1:Date = new Date( "6/13/2008 8:18:15 AM" ) ;
@@ -36,16 +39,19 @@ package buRRRn.ASTUce.framework
      * DateAssert.assertEquals( d1 , d2 ) ; // is equals
      * 
      * DateAssert.assertEquals( d1 , d3 ) ;
-     * // ComparisonFailure: expected:<...8...> but was:<...7...>
+     * // ComparisonFailure: expected:&lt;...8...&gt; but was:&lt;...7...&gt;
      * // at buRRRn.ASTUce.framework::DateAssert$/assertEquals()
-     * </pre>
+     * 
+     * </code>
+     * </listing>
      */
     public class DateAssert extends Assert
     {
         
         /**
          * Asserts that any two Date are equal.
-         * @throws AssertionFailedError If they are not equals.
+         * 
+         * @throws <code>AssertionFailedError</code> If they are not equals.
          */   
         public static function assertEquals( expected:Date, actual:Date, message:String = "" ):void
         {

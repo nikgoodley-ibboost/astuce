@@ -28,34 +28,34 @@ package buRRRn.ASTUce
     import system.terminals.console;
     
     /**
-     * Stores static metadata about the project
+     * Stores static metadata about the project.
      */
     public class metadata
     {
-        /**
-         * Name of the project.
-         */ 
+        /** Name of the project. */ 
         public static var name:String = "ASTUce";
         
-        /**
-         * Full name of the project.
-         */
+        /** Full name of the project. */
         public static var fullname:String = "ActionScript Test Unit compact edition AS3";
         
-        /**
-         * Version of the project.
-         */ 
+        /** Version of the project. */ 
         public static var version:core.version = new core.version();
         
         include "version.properties";
         
         version.revision = parseInt( "$Rev$".split( " " )[1] );
         
+        /** Copyright of the project. */
         public static var copyright:String = "Copyright © 2006-2010 Zwetan Kjukov, All right reserved.";
-        public static var origin:String    = "Made in the EU.";
+        
+        /** Origin of the project. */
+        public static var origin:String = "Made in the EU.";
         
         /**
         * Prints the informations of the package.
+        * 
+        * @param verbose (optional) display more informations, default is <code>false</code>
+        * @param showConfig (optional) display the pretty printing of the config object, default is <code>false</code>
         */
         public static function about( verbose:Boolean = false, showConfig:Boolean = false ):void
         {
@@ -64,6 +64,9 @@ package buRRRn.ASTUce
         
         /**
         * Returns the informations of the package.
+        * 
+        * @param verbose (optional) add more informations, default is <code>false</code>
+        * @param showConfig (optional) add the pretty printing of the config object, default is <code>false</code>
         */
         public static function info( verbose:Boolean = false, showConfig:Boolean = false ):String
         {
@@ -148,6 +151,8 @@ package buRRRn.ASTUce
         /**
          * Stores the string resources of the package. 
          */
+        public static var strings:ASTUceStrings = new ASTUceStrings();
+        /*
         public static var strings:Object = {};
                           strings.separator = "----------------------------------------------------------------";
                           strings.expectedNotSame = "{0}expected not same";
@@ -193,6 +198,7 @@ package buRRRn.ASTUce
                           strings.tab                = "    {0}";
                           strings.nullTestsuite      = "Could not create and run a null test suite";
                           strings.canNotCreateAndRun = "Could not create and run test suite #{0}.";
+    */
         
     }
 }

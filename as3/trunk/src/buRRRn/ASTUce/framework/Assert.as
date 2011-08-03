@@ -21,13 +21,10 @@
  
 package buRRRn.ASTUce.framework
 {
-    import buRRRn.ASTUce.config;
-    import buRRRn.ASTUce.strings;
+    import buRRRn.ASTUce.metadata;
     
+    import core.dump;
     import core.strings.format;
-    
-    import system.Equatable;
-    import system.eden;
     
     /**
      * A set of assert methods. Messages are only displayed when an assert fails. It is a static only class.
@@ -71,10 +68,13 @@ package buRRRn.ASTUce.framework
             we don't want to have prettyPrinting messing
             with our lines output so we deactivate it
              */
-            var pretty:Boolean  = eden.prettyPrinting;
-            eden.prettyPrinting = false;
+            //var pretty:Boolean  = eden.prettyPrinting;
+            //eden.prettyPrinting = false;
             
-            var str:String = eden.serialize(o);
+            //var str:String = eden.serialize(o);
+            
+            
+            var str:String = dump( o, false );
             
             /* note:
             in case original serializer would output nothing
@@ -90,7 +90,8 @@ package buRRRn.ASTUce.framework
             Serializer.format = tmp;
             }
              */
-            eden.prettyPrinting = pretty;
+            //eden.prettyPrinting = pretty;
+            
             return str;
         }
         
@@ -99,13 +100,13 @@ package buRRRn.ASTUce.framework
          */
         protected static function _failNotEquals(expected:*, actual:*, message:String = ""):void
         {
-            if ( buRRRn.ASTUce.config.showObjectSource )
+            if ( metadata.config.showObjectSource )
             {
                 expected = _serialize(expected);
                 actual = _serialize(actual);
             }
             
-            if ( buRRRn.ASTUce.config.invertExpectedActual )
+            if ( metadata.config.invertExpectedActual )
             {
                 var tmp:* = expected;
                 expected = actual;
@@ -127,7 +128,7 @@ package buRRRn.ASTUce.framework
                 formatted = message + " ";
             }
             
-            fail( format(strings.expectedNotSame, formatted));
+            fail( format( metadata.strings.expectedNotSame, formatted));
         }
         
         /**
@@ -142,20 +143,20 @@ package buRRRn.ASTUce.framework
                 formatted = message + " ";
             }
             
-            if ( buRRRn.ASTUce.config.showObjectSource )
+            if ( metadata.config.showObjectSource )
             {
                 expected = _serialize(expected);
                 actual = _serialize(actual);
             }
             
-            if ( buRRRn.ASTUce.config.invertExpectedActual )
+            if ( metadata.config.invertExpectedActual )
             {
                 var tmp:* = expected;
                 expected = actual;
                 actual = tmp;
             }
             
-            fail( core.strings.format(strings.expectedSame, formatted, expected, actual));
+            fail( core.strings.format( metadata.strings.expectedSame, formatted, expected, actual));
         }
         
         /**
@@ -214,10 +215,11 @@ package buRRRn.ASTUce.framework
                 return;
             }
             
-            if ( (expected is Equatable) && expected.equals(actual) )
+            //temporarily stop checking for Equatable interface
+            /*if ( (expected is Equatable) && expected.equals(actual) )
             {
                 return;
-            }
+            }*/
             
             if ( "equals" in expected && expected["equals"] is Function )
             {
@@ -338,7 +340,7 @@ package buRRRn.ASTUce.framework
             {
                 formatted = message + " ";
             }
-            return core.strings.format(strings.expectedButWas, formatted, expected, actual);
+            return core.strings.format( metadata.strings.expectedButWas, formatted, expected, actual);
         }
     }
 }

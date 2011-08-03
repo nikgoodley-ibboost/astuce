@@ -20,10 +20,12 @@
   
 */
 
+
 package
 {
     import flash.display.Sprite;
     
+    [ExcludeClass]
     [SWF(width="400", height="400", backgroundColor="0xffffff", frameRate="24", pageTitle="astuce", scriptRecursionLimit="1000", scriptTimeLimit="60")]
     public class astuce extends Sprite
     {
@@ -36,3 +38,10 @@ package
     }
     
 }
+
+
+//include "buRRRn/ASTUce/metadata.as";
+
+
+
+

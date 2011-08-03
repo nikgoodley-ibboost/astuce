@@ -33,20 +33,28 @@ package buRRRn.ASTUce.framework
     
     /**
      * A TestSuite is a composite of Tests.
-     * <p>It runfs collection of test cases.</p>
-     * <p><b>Example :</b></p>
-     * <pre class="prettyprint">
+     * <p>It runs collection of test cases.</p>
+     * 
+     * @example basic usage
+     * <listing version="3.0">
+     * <code class="prettyprint">
      * var suite:TestSuite = new TestSuite();
      * suite.addTest( new SimpleTest( "testHelloWorld" );
      * suite.addTest( new SimpleTest( "testOtherThing" );
-     * </pre>
+     * </code>
+     * </listing>
+     * 
      * Alternatively, a testSuite can extract the tests to be run automatically.
      * To do so you pass the class of your ITest to the constructor.
-     * <p><b>Example :</b></p>
-     * <pre class="prettyprint">
+     * 
+     * @example extracting automatically the tests from an <code>ITest</code>
+     * <listing version="3.0">
+     * <code class="prettyprint">
      * var suite:TestSuite = new TestSuite( SimpleTest );
-     * </pre>
-     * <p>This constructor creates a suite with all the methods starting with "test" that take no arguments.</p>
+     * </code>
+     * </listing>
+     * 
+     * This constructor creates a suite with all the methods starting with "test" that take no arguments.
      */       
     public class TestSuite implements ITest
     {
@@ -76,7 +84,7 @@ package buRRRn.ASTUce.framework
         
         /**
          * Creates a new TestSuite instance.
-         * <p><b>Note:<b></p>
+         * <p><b>Note:</b></p>
          * <p>
          * theConstructor argument can be either a <code>String</code>, an <code>ITest</code> or a <code>Class</code>;
          * in case of a <code>Class</code> tests will be extracted automatically.
@@ -399,7 +407,7 @@ package buRRRn.ASTUce.framework
         }
         
         /**
-         * Runs the tests and collects their result in a <TestResult>.
+         * Runs the tests and collects their result in a <code>TestResult</code>.
          */
         public function run( result:TestResult ):void
         {
