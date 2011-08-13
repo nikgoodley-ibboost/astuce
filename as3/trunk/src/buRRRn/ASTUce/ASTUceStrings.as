@@ -22,6 +22,9 @@
 
 package buRRRn.ASTUce
 {
+    /**
+    * Ressource strings for the ASTUce framework.
+    */
     public class ASTUceStrings
     {
         public var separator:String = "----------------------------------------------------------------";
