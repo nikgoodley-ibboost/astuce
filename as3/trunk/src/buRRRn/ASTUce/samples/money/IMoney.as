@@ -25,6 +25,7 @@ package buRRRn.ASTUce.samples.money
     
     /* The common interface for simple Monies and MoneyBags.
      */
+    [ExcludeClass]
     public interface IMoney
     {
         /* Adds a money to this money.

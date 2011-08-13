@@ -24,6 +24,7 @@ package buRRRn.ASTUce.samples
 {
     import buRRRn.ASTUce.framework.TestCase;
     
+    [ExcludeClass]
     public class SimpleTest extends TestCase
     {
         public var value1:int;

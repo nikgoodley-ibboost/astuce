@@ -25,6 +25,7 @@ package buRRRn.ASTUce.samples.money
 
     /* A simple Money.
      */
+    [ExcludeClass]
     public class Money implements IMoney
     {
 

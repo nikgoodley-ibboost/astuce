@@ -27,6 +27,7 @@ package buRRRn.ASTUce.samples
     /**
      * A sample test case, testing Array.
      */
+    [ExcludeClass]
     public class ArrayTest extends TestCase
     {
         public static function main():void

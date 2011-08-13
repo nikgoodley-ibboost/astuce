@@ -30,6 +30,7 @@ package buRRRn.ASTUce.samples.money
     as a bag containing the two Monies 12€ and 14$.
     Adding another 10 euros gives a bag with 22€ and 14$.
      */
+    [ExcludeClass]
     public class MoneyBag implements IMoney
     {
 

@@ -24,6 +24,7 @@ package buRRRn.ASTUce.samples.money
 {
     import buRRRn.ASTUce.framework.TestCase;
     
+    [ExcludeClass]
     public class MoneyTest extends TestCase
     {
         

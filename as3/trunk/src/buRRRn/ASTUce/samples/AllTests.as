@@ -30,6 +30,7 @@ package buRRRn.ASTUce.samples
     /**
      * TestSuite that runs all the sample tests
      */
+    [ExcludeClass]
     public class AllTests
     {
         public function AllTests()
