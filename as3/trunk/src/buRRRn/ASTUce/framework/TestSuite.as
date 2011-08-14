@@ -25,9 +25,7 @@ package buRRRn.ASTUce.framework
     
     import core.strings.format; void(format);
     import core.strings.startsWith; void(startsWith);
-    import core.reflect.getClassByName; void(getClassByName);
-    import core.reflect.getClassName; void(getClassName);
-    import core.reflect.getClassMethods; void(getClassMethods);
+    import core.reflect.*
     
     import buRRRn.ASTUce.metadata;
     
