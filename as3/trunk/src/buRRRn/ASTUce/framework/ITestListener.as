@@ -32,27 +32,27 @@ package buRRRn.ASTUce.framework
         /**
          * An error occurred.
          */
-        function addError( test:ITest, e:Error ):void;
+        function addError( test:Test, e:Error ):void;
         
         /**
          * A failure occurred.
          */
-        function addFailure( test:ITest, afe:AssertionFailedError ):void;
+        function addFailure( test:Test, afe:AssertionFailedError ):void;
         
         /**
          * A valid test occurred.
          */
-        function addValid( test:ITest ):void;
+        function addValid( test:Test ):void;
         
         /**
          * A test ended.
          */
-        function endTest( test:ITest ):void;
+        function endTest( test:Test ):void;
         
         /**
          * A test started.
          */
-        function startTest( test:ITest ):void;
+        function startTest( test:Test ):void;
         
     }
     
