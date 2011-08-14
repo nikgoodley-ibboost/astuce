@@ -12,7 +12,7 @@
         <mkdir dir="${basedir}/${asdoc.output}" />
     </target>
     
-    <target name="main" depends="clean,before,build-abc,build-abc-test,build-swc,build-swc-SA,after">
+    <target name="main" depends="clean,before,build-doc,build-abc,build-abc-test,build-swc,build-swc-SA,after">
         
     </target>
     
