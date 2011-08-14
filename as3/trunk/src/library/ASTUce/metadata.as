@@ -46,7 +46,7 @@ package library.ASTUce
         version.revision = parseInt( "$Rev$".split( " " )[1] );
         
         /** Copyright of the project. */
-        public static var copyright:String = "Copyright © 2006-2010 Zwetan Kjukov, All right reserved.";
+        public static var copyright:String = "Copyright © 2006-2011 Zwetan Kjukov, All right reserved.";
         
         /** Origin of the project. */
         public static var origin:String = "Made in the EU.";
