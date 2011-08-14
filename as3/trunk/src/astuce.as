@@ -20,5 +20,44 @@
   
 */
 
+//framework
+include "buRRRn/ASTUce/framework/ITest.as";
+include "buRRRn/ASTUce/framework/ITestListener.as";
+
+include "buRRRn/ASTUce/framework/Assert.as";
+include "buRRRn/ASTUce/framework/ArrayAssert.as";
+include "buRRRn/ASTUce/framework/DateAssert.as";
+include "buRRRn/ASTUce/framework/AssertionFailedError.as";
+include "buRRRn/ASTUce/framework/ComparisonFailure.as";
+
+include "buRRRn/ASTUce/framework/Protectable.as";
+include "buRRRn/ASTUce/framework/TestCase.as";
+include "buRRRn/ASTUce/framework/TestFailure.as";
+include "buRRRn/ASTUce/framework/TestResult.as";
+include "buRRRn/ASTUce/framework/TestSuite.as";
+include "buRRRn/ASTUce/framework/TestWarning.as";
+
+//runner
+include "buRRRn/ASTUce/runner/ITestRunListener.as";
+
+include "buRRRn/ASTUce/runner/BaseTestRunner.as";
+include "buRRRn/ASTUce/runner/NullSuiteError.as";
+include "buRRRn/ASTUce/runner/TestRunStatus.as";
+
+//ui
+include "buRRRn/ASTUce/ui/ResultPrinter.as";
+
+//extensions
+include "buRRRn/ASTUce/extensions/TestDecorator.as";
+include "buRRRn/ASTUce/extensions/ErrorTestCase.as";
+include "buRRRn/ASTUce/extensions/RepeatedTest.as";
+include "buRRRn/ASTUce/extensions/TestSetup.as";
+include "buRRRn/ASTUce/extensions/TimedTest.as";
+include "buRRRn/ASTUce/extensions/TimedTestCase.as";
+
+//*
+include "buRRRn/ASTUce/ASTUceConfigurator.as";
+include "buRRRn/ASTUce/ASTUceStrings.as";
 include "buRRRn/ASTUce/metadata.as";
+include "buRRRn/ASTUce/Runner.as";
 
