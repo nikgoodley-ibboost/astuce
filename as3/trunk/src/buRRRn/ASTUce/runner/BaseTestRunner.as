@@ -22,9 +22,7 @@
 
 package buRRRn.ASTUce.runner
 {
-    import core.reflect.hasDefinitionByName; void(hasDefinitionByName);
-    import core.reflect.getClassByName; void(getClassByName);
-    import core.reflect.getClassMethods; void(getClassMethods);
+    import core.reflect.*;
     
     import buRRRn.ASTUce.metadata;
     import buRRRn.ASTUce.framework.ITest;
