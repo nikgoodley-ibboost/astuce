@@ -41,12 +41,12 @@
             <exclude-sources path-element="${basedir}/${project.src}/astuce.as" />
             <exclude-sources path-element="${basedir}/${project.src}/astuce-test.as" />
             <exclude-sources path-element="${basedir}/${project.src}/astuce-testrunner.as" />
-            <packages.package name="buRRRn.ASTUce" description="The ASTUce framework" />
-            <packages.package name="buRRRn.ASTUce.extensions" description="addons to the framework" />
-            <packages.package name="buRRRn.ASTUce.framework" description="the framework itself" />
-            <packages.package name="buRRRn.ASTUce.mocks" description="mock library - alpha" />
-            <packages.package name="buRRRn.ASTUce.runner" description="test runners" />
-            <packages.package name="buRRRn.ASTUce.ui" description="user interface" />
+            <packages.package name="library.ASTUce" description="The ASTUce framework" />
+            <packages.package name="library.ASTUce.extensions" description="addons to the framework" />
+            <packages.package name="library.ASTUce.framework" description="the framework itself" />
+            <packages.package name="library.ASTUce.mocks" description="mock library - alpha" />
+            <packages.package name="library.ASTUce.runner" description="test runners" />
+            <packages.package name="library.ASTUce.ui" description="user interface" />
         </asdoc>
         
     </target>
@@ -112,7 +112,7 @@
                <include name="system.terminals.swc"/>
             </external-library-path>
             <source-path path-element="${basedir}/${project.src}" />
-            <include-sources dir="${basedir}/${project.src}/buRRRn/ASTUce" includes="**/*.as" />
+            <include-sources dir="${basedir}/${project.src}/library/ASTUce" includes="**/*.as" />
             <metadata date="${TODAY}" title="${project.name}">
                 <publisher name="${project.publisher}" />
                 <creator name="${project.creator}" />
@@ -144,7 +144,7 @@
                <include name="system.terminals.swc"/>
             </library-path>
             <source-path path-element="${basedir}/${project.src}" />
-            <include-sources dir="${basedir}/${project.src}/buRRRn/ASTUce" includes="**/*.as" />
+            <include-sources dir="${basedir}/${project.src}/library/ASTUce" includes="**/*.as" />
             <metadata date="${TODAY}" title="${project.name}">
                 <publisher name="${project.publisher}" />
                 <creator name="${project.creator}" />

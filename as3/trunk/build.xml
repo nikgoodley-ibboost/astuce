@@ -17,7 +17,7 @@
             <os family="windows" />
         </condition>
         
-        <property file="src/buRRRn/ASTUce/version.properties"/>
+        <property file="src/library/ASTUce/version.properties"/>
         <property file="build/build.properties"/>
         
         <tstamp>
