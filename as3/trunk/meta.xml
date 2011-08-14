@@ -27,19 +27,21 @@
         left-frameset-width="300"
         failonerror="true"
         >
-            <define name="CONFIG::release"  value="true" />
-            <define name="CONFIG::debugger" value="false" />
+            <load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+            <load-config filename="${basedir}/build/config.xml"/>
             <keep-xml>true</keep-xml>
             <doc-sources path-element="${basedir}/${project.src}"/>
             <verbose-stacktraces>true</verbose-stacktraces>
             <source-path path-element="${basedir}/${project.src}" />
             <external-library-path dir="${basedir}/${project.lib-swc}/" append="true">
+               <include name="logd.swc"/>
                <include name="core.swc"/>
                <include name="system.terminals.swc"/>
             </external-library-path>
             <exclude-sources path-element="${basedir}/${project.src}/astuce.as" />
             <exclude-sources path-element="${basedir}/${project.src}/astuce-test.as" />
-            <packages.package name="buRRRn.ASTUce" description="The ASTUce framework v${project.version}" />
+            <exclude-sources path-element="${basedir}/${project.src}/astuce-testrunner.as" />
+            <packages.package name="buRRRn.ASTUce" description="The ASTUce framework" />
             <packages.package name="buRRRn.ASTUce.extensions" description="addons to the framework" />
             <packages.package name="buRRRn.ASTUce.framework" description="the framework itself" />
             <packages.package name="buRRRn.ASTUce.mocks" description="mock library - alpha" />
