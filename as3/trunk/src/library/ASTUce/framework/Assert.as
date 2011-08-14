@@ -19,9 +19,9 @@
   Marc Alcaraz <ekameleon@gmail.com>.
  */
  
-package buRRRn.ASTUce.framework
+package library.ASTUce.framework
 {
-    import buRRRn.ASTUce.metadata;
+    import library.ASTUce.metadata;
     
     import core.dump;
     import core.strings.format;

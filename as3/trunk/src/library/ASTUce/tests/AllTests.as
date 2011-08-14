@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,12 +20,12 @@
   
 */
 
-package buRRRn.ASTUce.tests
+package library.ASTUce.tests
 {
-    import buRRRn.ASTUce.framework.*;
-    import buRRRn.ASTUce.tests.extensions.AllTests;
-    import buRRRn.ASTUce.tests.framework.AllTests;
-    import buRRRn.ASTUce.tests.mocks.AllTests;    
+    import library.ASTUce.framework.*;
+    import library.ASTUce.tests.extensions.AllTests;
+    import library.ASTUce.tests.framework.AllTests;
+    import library.ASTUce.tests.mocks.AllTests;    
 
     /* TestSuite that runs all the ASTUce tests
     */
@@ -42,9 +42,9 @@ package buRRRn.ASTUce.tests
         {
             var suite:TestSuite = new TestSuite( "All ASTUce tests" );
             
-            suite.addTest( buRRRn.ASTUce.tests.framework.AllTests.suite() );
-            suite.addTest( buRRRn.ASTUce.tests.extensions.AllTests.suite() );
-            suite.addTest( buRRRn.ASTUce.tests.mocks.AllTests.suite() );
+            suite.addTest( library.ASTUce.tests.framework.AllTests.suite() );
+            suite.addTest( library.ASTUce.tests.extensions.AllTests.suite() );
+            suite.addTest( library.ASTUce.tests.mocks.AllTests.suite() );
             
             return suite;
         }

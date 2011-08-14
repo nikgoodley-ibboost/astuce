@@ -12,18 +12,18 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
   Marc Alcaraz <ekameleon@gmail.com>.
 
 */
-package buRRRn.ASTUce.extensions
+package library.ASTUce.extensions
 {
     import flash.utils.getTimer;
     
-    import buRRRn.ASTUce.framework.*;
+    import library.ASTUce.framework.*;
     
     /**
      * A Decorator that runs a test and fails if the maximum elapsed time was exceeded.

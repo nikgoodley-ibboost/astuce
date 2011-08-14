@@ -2,11 +2,11 @@
 include "astuce.as";
 include "astuce-test.as";
 
-import buRRRn.ASTUce.Runner;
-import buRRRn.ASTUce.metadata;
-import buRRRn.ASTUce.samples.AllTests;
-import buRRRn.ASTUce.samples.SimpleTest;
-import buRRRn.ASTUce.tests.AllTests;
+import library.ASTUce.Runner;
+import library.ASTUce.metadata;
+import library.ASTUce.samples.AllTests;
+import library.ASTUce.samples.SimpleTest;
+import library.ASTUce.tests.AllTests;
 
 /* note:
    basic options to tune your output
@@ -23,9 +23,9 @@ metadata.about( false, true );
 /* note:
    SimpleTest will generate error and failure
 */
-//Runner.main( buRRRn.ASTUce.tests.AllTests.suite(),
-//             buRRRn.ASTUce.samples.AllTests.suite(),
-//             "buRRRn.ASTUce.samples.SimpleTest" );
+//Runner.main( library.ASTUce.tests.AllTests.suite(),
+//             library.ASTUce.samples.AllTests.suite(),
+//             "library.ASTUce.samples.SimpleTest" );
 
-Runner.main( buRRRn.ASTUce.tests.AllTests.suite(),
-             buRRRn.ASTUce.samples.AllTests.suite() );
+Runner.main( library.ASTUce.tests.AllTests.suite(),
+             library.ASTUce.samples.AllTests.suite() );

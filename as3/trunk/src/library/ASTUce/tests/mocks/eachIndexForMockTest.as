@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,9 +20,9 @@
   
 */
 
-package buRRRn.ASTUce.tests.mocks 
+package library.ASTUce.tests.mocks
 {
-    import buRRRn.ASTUce.framework.TestCase;
+    import library.ASTUce.framework.TestCase;
     
     [ExcludeClass]
     public class eachIndexForMockTest extends TestCase 

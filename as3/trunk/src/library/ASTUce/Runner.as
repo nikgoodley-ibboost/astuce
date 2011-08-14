@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,7 +20,7 @@
   
 */
 
-package buRRRn.ASTUce
+package library.ASTUce
 {
     import core.strings.format; void(format);
     import core.reflect.getClassName; void(getClassName);
@@ -29,19 +29,16 @@ package buRRRn.ASTUce
     import system.terminals.InteractiveConsole;
     import system.terminals.console;
     
-    import buRRRn.ASTUce.framework.*;
-    import buRRRn.ASTUce.runner.BaseTestRunner;
-    import buRRRn.ASTUce.runner.NullSuiteError;
-    import buRRRn.ASTUce.ui.ResultPrinter;
+    import library.ASTUce.framework.*;
+    import library.ASTUce.runner.BaseTestRunner;
+    import library.ASTUce.runner.NullSuiteError;
+    import library.ASTUce.ui.ResultPrinter;
 
     /**
      * This is the default TestRunner for ASTUce
      */
     public class Runner extends BaseTestRunner
     {
-        private static var config:ASTUceConfigurator = metadata.config;
-        private static var strings:Object = metadata.strings;
-        
         /**
          * @private
          */
@@ -60,7 +57,7 @@ package buRRRn.ASTUce
          */
         protected static function displayInfos( suite:Test, result:TestResult ):void
         {
-            if( config.showConstructorList )
+            if( metadata.config.showConstructorList )
             {
                 console.writeLine( suite );
             }
@@ -152,7 +149,7 @@ package buRRRn.ASTUce
             {
                 suiteName = runner.getTestName( args[i] );
                 //console.writeLine( Strings.format( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i ) );
-                console.writeLine( format( strings.runTitle, suiteName, i ) );
+                console.writeLine( format( metadata.strings.runTitle, suiteName, i ) );
                 
                 try
                 {
@@ -160,15 +157,15 @@ package buRRRn.ASTUce
                 }
                 catch( e1:NullSuiteError )
                 {
-                    runner.runFailed( strings.nullTestsuite );
+                    runner.runFailed( metadata.strings.nullTestsuite );
                 }
                 catch( e2:Error )
                 {
-                    runner.runFailed( format( strings.canNotCreateAndRun, i) );
-                    runner.runFailed( format( strings.tab, e2.toString()) );
+                    runner.runFailed( format( metadata.strings.canNotCreateAndRun, i) );
+                    runner.runFailed( format( metadata.strings.tab, e2.toString()) );
                 }
                 
-                console.writeLine( strings.separator );
+                console.writeLine( metadata.strings.separator );
             }
         }
         

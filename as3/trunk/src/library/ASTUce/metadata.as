@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,7 +20,7 @@
   
 */
 
-package buRRRn.ASTUce
+package library.ASTUce
 {
     import core.strings.format; void(format);
     import core.version;
@@ -137,10 +137,10 @@ package buRRRn.ASTUce
                            cleanupPattern: /\[.*\]/,
                            cleanupReplacement: "",
                            filteredPatterns: [
-                           "buRRRn.ASTUce.framework::TestResult",
-                           "buRRRn.ASTUce.framework::TestCase",
-                           "buRRRn.ASTUce.framework::TestSuite",
-                           "buRRRn.ASTUce.UI",
+                           "library.ASTUce.framework::TestResult",
+                           "library.ASTUce.framework::TestCase",
+                           "library.ASTUce.framework::TestSuite",
+                           "library.ASTUce.ui",
                            "at MethodInfo",
                            "at ()",
                            "at Function/http://adobe.com/AS3/2006/builtin::call()",

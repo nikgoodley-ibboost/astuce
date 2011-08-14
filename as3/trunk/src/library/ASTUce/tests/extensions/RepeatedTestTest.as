@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,11 +20,11 @@
   
 */
 
-package buRRRn.ASTUce.tests.extensions
+package library.ASTUce.tests.extensions
 {
-    import buRRRn.ASTUce.framework.*;
-    import buRRRn.ASTUce.extensions.RepeatedTest;
-    import buRRRn.ASTUce.tests.extensions.SuccessTest;
+    import library.ASTUce.framework.*;
+    import library.ASTUce.extensions.RepeatedTest;
+    import library.ASTUce.tests.extensions.SuccessTest;
     
     [ExcludeClass]
     public class RepeatedTestTest extends TestCase

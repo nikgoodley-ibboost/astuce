@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,9 +20,9 @@
   
 */
 
-package buRRRn.ASTUce.tests.framework
+package library.ASTUce.tests.framework
 {
-    import buRRRn.ASTUce.framework.TestCase;
+    import library.ASTUce.framework.TestCase;
     
     [ExcludeClass]
     public class NoArgTestCaseTest extends TestCase
@@ -59,16 +59,16 @@ package buRRRn.ASTUce.tests.framework
                
                Here the XML describeType from a a valid test class:
                (code)
-                <type name="buRRRn.ASTUce.tests.framework::AssertTest"
+                <type name="library.ASTUce.tests.framework::AssertTest"
                       base="Class" isDynamic="true" isFinal="true" isStatic="true">
                   <extendsClass type="Class"/>
                   <extendsClass type="Object"/>
                   <accessor name="prototype" access="readonly" type="*" declaredBy="Class"/>
-                  <factory type="buRRRn.ASTUce.tests.framework::AssertTest">
-                    <extendsClass type="buRRRn.ASTUce.framework::TestCase"/>
-                    <extendsClass type="buRRRn.ASTUce.framework::Assert"/>
+                  <factory type="library.ASTUce.tests.framework::AssertTest">
+                    <extendsClass type="library.ASTUce.framework::TestCase"/>
+                    <extendsClass type="library.ASTUce.framework::Assert"/>
                     <extendsClass type="Object"/>
-                    <implementsInterface type="buRRRn.ASTUce.framework::Test"/>
+                    <implementsInterface type="library.ASTUce.framework::Test"/>
                     <constructor>
                       <parameter index="1" type="*" optional="true"/>
                     </constructor>
@@ -78,22 +78,22 @@ package buRRRn.ASTUce.tests.framework
                
                Here the XML describeType from a class without a constructor:
                (code)
-                <type name="buRRRn.ASTUce.tests.framework::NoArgTestCaseTest" base="Class" isDynamic="true" isFinal="true" isStatic="true">
+                <type name="library.ASTUce.tests.framework::NoArgTestCaseTest" base="Class" isDynamic="true" isFinal="true" isStatic="true">
                   <extendsClass type="Class"/>
                   <extendsClass type="Object"/>
                   <accessor name="prototype" access="readonly" type="*" declaredBy="Class"/>
-                  <factory type="buRRRn.ASTUce.tests.framework::NoArgTestCaseTest">
-                    <extendsClass type="buRRRn.ASTUce.framework::TestCase"/>
-                    <extendsClass type="buRRRn.ASTUce.framework::Assert"/>
+                  <factory type="library.ASTUce.tests.framework::NoArgTestCaseTest">
+                    <extendsClass type="library.ASTUce.framework::TestCase"/>
+                    <extendsClass type="library.ASTUce.framework::Assert"/>
                     <extendsClass type="Object"/>
-                    <implementsInterface type="buRRRn.ASTUce.framework::Test"/>
-                    <method name="testNothing" declaredBy="buRRRn.ASTUce.tests.framework::NoArgTestCaseTest" returnType="void"/>
-                    <method name="runBare" declaredBy="buRRRn.ASTUce.framework::TestCase" returnType="void"/>
-                    <accessor name="name" access="readwrite" type="String" declaredBy="buRRRn.ASTUce.framework::TestCase"/>
-                    <method name="toString" declaredBy="buRRRn.ASTUce.framework::TestCase" returnType="String"/>
-                    <accessor name="countTestCases" access="readonly" type="int" declaredBy="buRRRn.ASTUce.framework::TestCase"/>
-                    <method name="run" declaredBy="buRRRn.ASTUce.framework::TestCase" returnType="void">
-                      <parameter index="1" type="buRRRn.ASTUce.framework::TestResult" optional="false"/>
+                    <implementsInterface type="library.ASTUce.framework::Test"/>
+                    <method name="testNothing" declaredBy="library.ASTUce.tests.framework::NoArgTestCaseTest" returnType="void"/>
+                    <method name="runBare" declaredBy="library.ASTUce.framework::TestCase" returnType="void"/>
+                    <accessor name="name" access="readwrite" type="String" declaredBy="library.ASTUce.framework::TestCase"/>
+                    <method name="toString" declaredBy="library.ASTUce.framework::TestCase" returnType="String"/>
+                    <accessor name="countTestCases" access="readonly" type="int" declaredBy="library.ASTUce.framework::TestCase"/>
+                    <method name="run" declaredBy="library.ASTUce.framework::TestCase" returnType="void">
+                      <parameter index="1" type="library.ASTUce.framework::TestResult" optional="false"/>
                     </method>
                   </factory>
                 </type>

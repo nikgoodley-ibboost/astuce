@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,10 +20,10 @@
   
 */
 
-package buRRRn.ASTUce.tests.framework
+package library.ASTUce.tests.framework
 {
-    import buRRRn.ASTUce.framework.*;
-    import buRRRn.ASTUce.tests.framework.*;
+    import library.ASTUce.framework.*;
+    import library.ASTUce.tests.framework.*;
     
     /* TestSuite that runs all the framework tests.
     */

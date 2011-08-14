@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,20 +20,20 @@
   
 */
 
-package buRRRn.ASTUce.ui
+package library.ASTUce.ui
 {
     import core.strings.format; void(format);
     
     import system.terminals.InteractiveConsole;
     import system.terminals.console;
     
-    import buRRRn.ASTUce.metadata;
-    import buRRRn.ASTUce.framework.AssertionFailedError;
-    import buRRRn.ASTUce.framework.Test;
-    import buRRRn.ASTUce.framework.TestListener;
-    import buRRRn.ASTUce.framework.TestFailure;
-    import buRRRn.ASTUce.framework.TestResult;
-    import buRRRn.ASTUce.runner.BaseTestRunner;
+    import library.ASTUce.metadata;
+    import library.ASTUce.framework.AssertionFailedError;
+    import library.ASTUce.framework.Test;
+    import library.ASTUce.framework.TestListener;
+    import library.ASTUce.framework.TestFailure;
+    import library.ASTUce.framework.TestResult;
+    import library.ASTUce.runner.BaseTestRunner;
     
     /**
      * The UI result printer object.

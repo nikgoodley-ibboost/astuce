@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,16 +20,16 @@
   
 */
 
-package buRRRn.ASTUce.runner
+package library.ASTUce.runner
 {
     import core.reflect.*;
     
-    import buRRRn.ASTUce.framework.Test;
-    import buRRRn.ASTUce.framework.TestListener;
-    import buRRRn.ASTUce.framework.AssertionFailedError;
-    import buRRRn.ASTUce.framework.TestSuite;
+    import library.ASTUce.framework.Test;
+    import library.ASTUce.framework.TestListener;
+    import library.ASTUce.framework.AssertionFailedError;
+    import library.ASTUce.framework.TestSuite;
     
-    import buRRRn.ASTUce.metadata;
+    import library.ASTUce.metadata;
     
     
     /**

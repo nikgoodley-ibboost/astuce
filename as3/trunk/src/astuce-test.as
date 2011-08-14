@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,76 +20,76 @@
   
 */
 
-include "buRRRn/ASTUce/tests/WasRun.as";
+include "library/ASTUce/tests/WasRun.as";
 
 //tests.framework
-include "buRRRn/ASTUce/tests/framework/TornDown.as";
-include "buRRRn/ASTUce/tests/framework/OneTestCase.as";
-include "buRRRn/ASTUce/tests/framework/ArrayAssertTest.as";
-include "buRRRn/ASTUce/tests/framework/AssertTest.as";
-include "buRRRn/ASTUce/tests/framework/ComparisonFailureTest.as";
-include "buRRRn/ASTUce/tests/framework/DoubleTestCase.as";
-include "buRRRn/ASTUce/tests/framework/EmptyRunTestCase.as";
-include "buRRRn/ASTUce/tests/framework/ErrorTestCaseLocal.as";
-include "buRRRn/ASTUce/tests/framework/ExceptionRunningAndTearDown.as";
-include "buRRRn/ASTUce/tests/framework/FailureTestCase.as";
-include "buRRRn/ASTUce/tests/framework/InheritedTestCase.as";
-include "buRRRn/ASTUce/tests/framework/NoArgTestCaseTest.as";
-include "buRRRn/ASTUce/tests/framework/NoTestCaseClass.as";
-include "buRRRn/ASTUce/tests/framework/NoTestCases.as";
-include "buRRRn/ASTUce/tests/framework/NumberAssertTest.as";
-include "buRRRn/ASTUce/tests/framework/OverrideTestCase.as";
-include "buRRRn/ASTUce/tests/framework/RunAndTearDownFails.as";
-include "buRRRn/ASTUce/tests/framework/SetupFailsTestCase.as";
-include "buRRRn/ASTUce/tests/framework/SuccessTestCase.as";
-include "buRRRn/ASTUce/tests/framework/SuiteTest.as";
-include "buRRRn/ASTUce/tests/framework/TearDownFailsTestCase.as";
-include "buRRRn/ASTUce/tests/framework/TearDownSetupFails.as";
-include "buRRRn/ASTUce/tests/framework/TestCaseTest.as";
-include "buRRRn/ASTUce/tests/framework/TestImplementorTest.as";
-include "buRRRn/ASTUce/tests/framework/TestListenerTest.as";
-include "buRRRn/ASTUce/tests/framework/ValidTestCase.as";
-include "buRRRn/ASTUce/tests/framework/AllTests.as";
+include "library/ASTUce/tests/framework/TornDown.as";
+include "library/ASTUce/tests/framework/OneTestCase.as";
+include "library/ASTUce/tests/framework/ArrayAssertTest.as";
+include "library/ASTUce/tests/framework/AssertTest.as";
+include "library/ASTUce/tests/framework/ComparisonFailureTest.as";
+include "library/ASTUce/tests/framework/DoubleTestCase.as";
+include "library/ASTUce/tests/framework/EmptyRunTestCase.as";
+include "library/ASTUce/tests/framework/ErrorTestCaseLocal.as";
+include "library/ASTUce/tests/framework/ExceptionRunningAndTearDown.as";
+include "library/ASTUce/tests/framework/FailureTestCase.as";
+include "library/ASTUce/tests/framework/InheritedTestCase.as";
+include "library/ASTUce/tests/framework/NoArgTestCaseTest.as";
+include "library/ASTUce/tests/framework/NoTestCaseClass.as";
+include "library/ASTUce/tests/framework/NoTestCases.as";
+include "library/ASTUce/tests/framework/NumberAssertTest.as";
+include "library/ASTUce/tests/framework/OverrideTestCase.as";
+include "library/ASTUce/tests/framework/RunAndTearDownFails.as";
+include "library/ASTUce/tests/framework/SetupFailsTestCase.as";
+include "library/ASTUce/tests/framework/SuccessTestCase.as";
+include "library/ASTUce/tests/framework/SuiteTest.as";
+include "library/ASTUce/tests/framework/TearDownFailsTestCase.as";
+include "library/ASTUce/tests/framework/TearDownSetupFails.as";
+include "library/ASTUce/tests/framework/TestCaseTest.as";
+include "library/ASTUce/tests/framework/TestImplementorTest.as";
+include "library/ASTUce/tests/framework/TestListenerTest.as";
+include "library/ASTUce/tests/framework/ValidTestCase.as";
+include "library/ASTUce/tests/framework/AllTests.as";
 
 //tests.runner
 //none
 
 //test.extensions
-include "buRRRn/ASTUce/tests/extensions/ErrorTestCaseTest.as";
-include "buRRRn/ASTUce/tests/extensions/ErrorTimedTest.as";
-include "buRRRn/ASTUce/tests/extensions/ExtensionTest.as";
-include "buRRRn/ASTUce/tests/extensions/FailedSetUp.as";
-include "buRRRn/ASTUce/tests/extensions/FailedTornDown.as";
-include "buRRRn/ASTUce/tests/extensions/LongTest.as";
-include "buRRRn/ASTUce/tests/extensions/NoTimeoutTimedTest.as";
-include "buRRRn/ASTUce/tests/extensions/RepeatedTestTest.as";
-include "buRRRn/ASTUce/tests/extensions/SampleTimedTest.as";
-include "buRRRn/ASTUce/tests/extensions/ShortTest.as";
-include "buRRRn/ASTUce/tests/extensions/SuccessTest.as";
-include "buRRRn/ASTUce/tests/extensions/ThrowErrorTestCase.as";
-include "buRRRn/ASTUce/tests/extensions/ThrowNoErrorTestCase.as";
-include "buRRRn/ASTUce/tests/extensions/ThrowRuntimeErrorTestCase.as";
-include "buRRRn/ASTUce/tests/extensions/TimedTestCaseTest.as";
-include "buRRRn/ASTUce/tests/extensions/TimedTestTest.as";
-include "buRRRn/ASTUce/tests/extensions/AllTests.as";
+include "library/ASTUce/tests/extensions/ErrorTestCaseTest.as";
+include "library/ASTUce/tests/extensions/ErrorTimedTest.as";
+include "library/ASTUce/tests/extensions/ExtensionTest.as";
+include "library/ASTUce/tests/extensions/FailedSetUp.as";
+include "library/ASTUce/tests/extensions/FailedTornDown.as";
+include "library/ASTUce/tests/extensions/LongTest.as";
+include "library/ASTUce/tests/extensions/NoTimeoutTimedTest.as";
+include "library/ASTUce/tests/extensions/RepeatedTestTest.as";
+include "library/ASTUce/tests/extensions/SampleTimedTest.as";
+include "library/ASTUce/tests/extensions/ShortTest.as";
+include "library/ASTUce/tests/extensions/SuccessTest.as";
+include "library/ASTUce/tests/extensions/ThrowErrorTestCase.as";
+include "library/ASTUce/tests/extensions/ThrowNoErrorTestCase.as";
+include "library/ASTUce/tests/extensions/ThrowRuntimeErrorTestCase.as";
+include "library/ASTUce/tests/extensions/TimedTestCaseTest.as";
+include "library/ASTUce/tests/extensions/TimedTestTest.as";
+include "library/ASTUce/tests/extensions/AllTests.as";
 
 //tests.mocks
 //ignore as in beta
-include "buRRRn/ASTUce/tests/mocks/AllTests.as";
+include "library/ASTUce/tests/mocks/AllTests.as";
 
 //tests
-include "buRRRn/ASTUce/tests/AllTests.as";
+include "library/ASTUce/tests/AllTests.as";
 
 
 //samples.money
-include "buRRRn/ASTUce/samples/money/IMoney.as";
-include "buRRRn/ASTUce/samples/money/Money.as";
-include "buRRRn/ASTUce/samples/money/MoneyBag.as";
-include "buRRRn/ASTUce/samples/money/MoneyTest.as";
+include "library/ASTUce/samples/money/IMoney.as";
+include "library/ASTUce/samples/money/Money.as";
+include "library/ASTUce/samples/money/MoneyBag.as";
+include "library/ASTUce/samples/money/MoneyTest.as";
 
 //samples
-include "buRRRn/ASTUce/samples/SimpleTest.as";
-include "buRRRn/ASTUce/samples/ArrayTest.as";
-include "buRRRn/ASTUce/samples/AllTests.as";
+include "library/ASTUce/samples/SimpleTest.as";
+include "library/ASTUce/samples/ArrayTest.as";
+include "library/ASTUce/samples/AllTests.as";
 
 

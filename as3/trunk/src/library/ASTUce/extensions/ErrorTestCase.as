@@ -12,7 +12,7 @@
   
   The Initial Developer of the Original Code is
   Zwetan Kjukov <zwetan@gmail.com>.
-  Portions created by the Initial Developer are Copyright (C) 2006-2010
+  Portions created by the Initial Developer are Copyright (C) 2006-2011
   the Initial Developer. All Rights Reserved.
   
   Contributor(s):
@@ -20,9 +20,9 @@
   
 */
 
-package buRRRn.ASTUce.extensions
+package library.ASTUce.extensions
 {
-    import buRRRn.ASTUce.framework.*;
+    import library.ASTUce.framework.*;
     
     /**
      * A TestCase that expects an Error of class _expected to be thrown. The other way to check that an expected error is thrown is:
