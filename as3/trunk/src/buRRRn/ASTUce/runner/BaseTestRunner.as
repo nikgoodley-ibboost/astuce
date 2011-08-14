@@ -24,11 +24,12 @@ package buRRRn.ASTUce.runner
 {
     import core.reflect.*;
     
-    import buRRRn.ASTUce.metadata;
     import buRRRn.ASTUce.framework.ITest;
     import buRRRn.ASTUce.framework.ITestListener;
     import buRRRn.ASTUce.framework.AssertionFailedError;
     import buRRRn.ASTUce.framework.TestSuite;
+    
+    import buRRRn.ASTUce.metadata;
     
     
     /**
@@ -42,8 +43,6 @@ package buRRRn.ASTUce.runner
      */
     public class BaseTestRunner implements ITestListener, ITestRunListener
     {
-        
-        private static var config:Object = metadata.config;
         
         /**
          * @private
@@ -67,7 +66,7 @@ package buRRRn.ASTUce.runner
             
             var preserveErrorMessage:String = lines.shift();
             
-            if( !config.filterErrorStack )
+            if( !metadata.config.filterErrorStack )
             {
                 return lines;
             }
@@ -75,7 +74,7 @@ package buRRRn.ASTUce.runner
             var filteredStack:Array  = [];
             filteredStack = lines.filter( filterLine );
             
-            if( config.cleanupErrorStack )
+            if( metadata.config.cleanupErrorStack )
             {
                 filteredStack.forEach( cleanupLine );
             }
@@ -91,7 +90,7 @@ package buRRRn.ASTUce.runner
          */
         public static function filterLine( line:*, index:int = 0, arr:Array = null ):Boolean
         {
-            var patterns:Array = config.filteredPatterns;
+            var patterns:Array = metadata.config.filteredPatterns;
             
             if( patterns.length == 0 )
             {
@@ -115,7 +114,7 @@ package buRRRn.ASTUce.runner
          */
         public static function cleanupLine( line:*, index:int = 0, arr:Array = null ):void
         {
-            arr[index] = line.replace( config.cleanupPattern  , config.cleanupReplacement );
+            arr[index] = line.replace( metadata.config.cleanupPattern , metadata.config.cleanupReplacement );
         }
         
         // implementation of <ITestListener>
