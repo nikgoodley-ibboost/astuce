@@ -60,7 +60,7 @@
             failonerror="true"
         >
             <arg line="-AS3 -strict -optimize"/>
-            <arg line="-config LOG::P=true -config API::REDTAMARIN=true -config API::FLASH=false"/>
+            <arg line="-config LOG::P=false -config API::REDTAMARIN=true -config API::FLASH=false"/>
             <arg line="-import ${builtin} -import ${toplevel} -import ${logd} -import ${core} -import ${system.terminals}"/>
             <arg line="src/${project.as}"/>
         </java>
@@ -78,7 +78,7 @@
             failonerror="true"
         >
             <arg line="-AS3 -strict -optimize"/>
-            <arg line="-config LOG::P=true -config API::REDTAMARIN=true -config API::FLASH=false"/>
+            <arg line="-config LOG::P=false -config API::REDTAMARIN=true -config API::FLASH=false"/>
             <arg line="-import ${builtin} -import ${toplevel} -import ${core} -import ${system.terminals}"/>
             <arg line="-import ${basedir}/${release.dir}/${project.abc}"/>
             <arg line="src/${project.name}-test.as"/>
