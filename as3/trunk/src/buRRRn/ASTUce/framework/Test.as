@@ -24,7 +24,7 @@ package buRRRn.ASTUce.framework
 {
     
     /**
-     * An ITest can be run and collect its results.
+     * An Test can be run and collect its results.
      * @see TestResult
      */
     public interface Test

@@ -117,7 +117,7 @@ package buRRRn.ASTUce.runner
             arr[index] = line.replace( metadata.config.cleanupPattern , metadata.config.cleanupReplacement );
         }
         
-        // implementation of <ITestListener>
+        // implementation of <TestListener>
         
         /**
          * An error occurred.
@@ -160,7 +160,7 @@ package buRRRn.ASTUce.runner
         }
         
         
-        // implementation of <ITestRunListener>
+        // implementation of <TestRunListener>
         
         public function testRunStarted( testSuiteName:String, testCount:int ):void
         {

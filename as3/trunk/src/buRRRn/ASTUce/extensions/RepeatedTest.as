@@ -37,7 +37,7 @@ package buRRRn.ASTUce.extensions
         
         /**
          * Creates a new RepeatedTest instance.
-         * @param test The ITest reference of this object.
+         * @param test The Test reference of this object.
          * @param repeat The number of iteration of this repeated test.
          */
         public function RepeatedTest( test:Test, repeat:int )

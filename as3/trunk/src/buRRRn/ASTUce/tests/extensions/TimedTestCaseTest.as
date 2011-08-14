@@ -51,7 +51,7 @@ package buRRRn.ASTUce.tests.extensions
         
         public function testTime():void
         {
-            var test:ITest = new SampleTimedTest( "testShortTime" );
+            var test:Test = new SampleTimedTest( "testShortTime" );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 1, result.runCount );
@@ -63,7 +63,7 @@ package buRRRn.ASTUce.tests.extensions
         */
         public function testTimeExceeded():void
         {
-            var test:ITest = new SampleTimedTest( "testLongTime", 1 );
+            var test:Test = new SampleTimedTest( "testLongTime", 1 );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 1, result.runCount, "should run once" );
@@ -73,7 +73,7 @@ package buRRRn.ASTUce.tests.extensions
         
         public function testTimeSuite():void
         {
-            var test:ITest = new TestSuite( SampleTimedTest );
+            var test:Test = new TestSuite( SampleTimedTest );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 2, result.runCount );
@@ -86,7 +86,7 @@ package buRRRn.ASTUce.tests.extensions
         {
             TimedTestCase.timeout = _lowTimeout;
             
-            var test:ITest = new TestSuite( NoTimeoutTimedTest );
+            var test:Test = new TestSuite( NoTimeoutTimedTest );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 2, result.runCount, "should run twice" );
@@ -98,7 +98,7 @@ package buRRRn.ASTUce.tests.extensions
         {
             TimedTestCase.timeout = _highTimeout;
             
-            var test:ITest = new TestSuite( NoTimeoutTimedTest );
+            var test:Test = new TestSuite( NoTimeoutTimedTest );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 2, result.runCount );
@@ -108,7 +108,7 @@ package buRRRn.ASTUce.tests.extensions
         
         public function testErrorsWhileRunning():void
         {
-            var test:ITest = new TestSuite( ErrorTimedTest );
+            var test:Test = new TestSuite( ErrorTimedTest );
             var result:TestResult = new TestResult();
             test.run( result );
             assertEquals( 2, result.runCount );

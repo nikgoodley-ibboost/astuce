@@ -42,11 +42,11 @@ package buRRRn.ASTUce
         public var ctorIsMalformedMethod:String = "Method \"{0}\" can not be created because constructor \"{1}\" is malformed";
         public var ctorNotInstanciable:String = "Constructor \"{0}\" is not instanciable";
         public var ctorNotInstanciableMethod:String = "Method \"{0}\" can not be created because constructor \"{1}\" is not instanciable";
-        public var ctorNotATest:String = "Constructor \"{0}\" does not implement ITest";
+        public var ctorNotATest:String = "Constructor \"{0}\" does not implement Test";
         public var canNotInstanciateTestCase:String = "Cannot instantiate test case \"{0}\" ({1})";
         public var noTestsFound:String = "No tests found in \"{0}\"";
         public var argTestDoesNotExist:String = "the argument \"test\" does not exist in the namespace";
-        public var argTestNotATest:String = "the argument \"test\" does not implement ITest";
+        public var argTestNotATest:String = "the argument \"test\" does not implement Test";
         public var testMethNotPublic:String = "Test method \"{0}\" isn't public";
         public var canNotCreateTest:String = "Cannot instantiate \"{0}\" test case";
         public var nameError:String = "error";

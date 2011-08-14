@@ -41,7 +41,7 @@ package buRRRn.ASTUce.tests.extensions
             suite.addTestSuite( LongTest );
             suite.addTestSuite( LongTest );
             
-            var test:ITest = new TimedTest( suite, 100 );
+            var test:Test = new TimedTest( suite, 100 );
             var result:TestResult = new TestResult();
     		test.run( result );
     		
@@ -57,7 +57,7 @@ package buRRRn.ASTUce.tests.extensions
             suite.addTestSuite( ShortTest );
             suite.addTestSuite( ShortTest );
             
-            var test:ITest = new TimedTest( suite, 50 );
+            var test:Test = new TimedTest( suite, 50 );
             var result:TestResult = new TestResult();
     		test.run( result );
     		

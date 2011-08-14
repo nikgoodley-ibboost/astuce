@@ -44,9 +44,9 @@ package buRRRn.ASTUce.framework
      * </listing>
      * 
      * Alternatively, a testSuite can extract the tests to be run automatically.
-     * To do so you pass the class of your ITest to the constructor.
+     * To do so you pass the class of your Test to the constructor.
      * 
-     * @example extracting automatically the tests from an <code>ITest</code>
+     * @example extracting automatically the tests from an <code>Test</code>
      * <listing version="3.0">
      * <code class="prettyprint">
      * var suite:TestSuite = new TestSuite( SimpleTest );
@@ -85,7 +85,7 @@ package buRRRn.ASTUce.framework
          * Creates a new TestSuite instance.
          * <p><b>Note:</b></p>
          * <p>
-         * theConstructor argument can be either a <code>String</code>, an <code>ITest</code> or a <code>Class</code>;
+         * theConstructor argument can be either a <code>String</code>, an <code>Test</code> or a <code>Class</code>;
          * in case of a <code>Class</code> tests will be extracted automatically.
          * </p>
          */
@@ -123,7 +123,7 @@ package buRRRn.ASTUce.framework
             
             if( theConstructor is Test )
             {
-                LOG::P { log.d( "theConstructor is ITest" ); }
+                LOG::P { log.d( "theConstructor is Test" ); }
                 //trace( "ctor addtest : " + Reflection.getClassName( theConstructor ) );
                 addTest( theConstructor );
                 return;

@@ -51,7 +51,7 @@ package buRRRn.ASTUce.extensions
         }
         
         /**
-         * Indicates the ITest reference of this decorator.
+         * Indicates the Test reference of this decorator.
          */
         public function get test():Test
         {

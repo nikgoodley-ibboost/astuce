@@ -182,7 +182,7 @@ package buRRRn.ASTUce
          * then will try to extract a test suite automatically.
          * </p>
          * 
-         * @param test Can be a <code>ITest</code> (<code>TestCase</code>,<code>TestSuite</code>,etc.),
+         * @param test Can be a <code>Test</code> (<code>TestCase</code>,<code>TestSuite</code>,etc.),
          * a <code>Class</code> or a <code>String</code>
          */
         public static function run( test:*, runner:Runner = null ):TestResult

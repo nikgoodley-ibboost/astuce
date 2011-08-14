@@ -24,7 +24,7 @@ package buRRRn.ASTUce.tests.framework
 {
     import buRRRn.ASTUce.framework.*;
     
-    /* Test an implementor of buRRRn.ASTUce.framework.ITest
+    /* Test an implementor of buRRRn.ASTUce.framework.Test
        other than TestCase or TestSuite.
     */
     [ExcludeClass]

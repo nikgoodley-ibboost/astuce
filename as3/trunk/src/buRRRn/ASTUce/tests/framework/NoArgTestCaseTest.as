@@ -68,7 +68,7 @@ package buRRRn.ASTUce.tests.framework
                     <extendsClass type="buRRRn.ASTUce.framework::TestCase"/>
                     <extendsClass type="buRRRn.ASTUce.framework::Assert"/>
                     <extendsClass type="Object"/>
-                    <implementsInterface type="buRRRn.ASTUce.framework::ITest"/>
+                    <implementsInterface type="buRRRn.ASTUce.framework::Test"/>
                     <constructor>
                       <parameter index="1" type="*" optional="true"/>
                     </constructor>
@@ -86,7 +86,7 @@ package buRRRn.ASTUce.tests.framework
                     <extendsClass type="buRRRn.ASTUce.framework::TestCase"/>
                     <extendsClass type="buRRRn.ASTUce.framework::Assert"/>
                     <extendsClass type="Object"/>
-                    <implementsInterface type="buRRRn.ASTUce.framework::ITest"/>
+                    <implementsInterface type="buRRRn.ASTUce.framework::Test"/>
                     <method name="testNothing" declaredBy="buRRRn.ASTUce.tests.framework::NoArgTestCaseTest" returnType="void"/>
                     <method name="runBare" declaredBy="buRRRn.ASTUce.framework::TestCase" returnType="void"/>
                     <accessor name="name" access="readwrite" type="String" declaredBy="buRRRn.ASTUce.framework::TestCase"/>

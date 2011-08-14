@@ -36,7 +36,7 @@ package buRRRn.ASTUce.framework
      * <p><b>Note: </b></p>
      * <p>
      * A little difference with JUnit is the addition of addValid calls, which is used to indicate 
-     * to a ITestListener that a "test run" ran without problems.
+     * to a TestListener that a "test run" ran without problems.
      * </p>
      * <p>
      * While implementing the command line interface I noticed that the writing of test runs as "...F...E.." was not 
@@ -45,7 +45,7 @@ package buRRRn.ASTUce.framework
      * to either an error/a failure or a valid test, then I added the addValid to allow to do that.
      * </p>
      * 
-     * @see ITest
+     * @see Test
      */
     public class TestResult
     {
