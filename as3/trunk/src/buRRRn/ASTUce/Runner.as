@@ -58,7 +58,7 @@ package buRRRn.ASTUce
         /**
          * Display the test infos.
          */
-        protected static function displayInfos( suite:ITest, result:TestResult ):void
+        protected static function displayInfos( suite:Test, result:TestResult ):void
         {
             if( config.showConstructorList )
             {
@@ -124,7 +124,7 @@ package buRRRn.ASTUce
                 return any;
             }
             
-            if( any is ITest )
+            if( any is Test )
             {
                 return any.name;
             }
@@ -193,7 +193,7 @@ package buRRRn.ASTUce
                 displayHeader();
             }
             
-            var suite:ITest;
+            var suite:Test;
             
             
             if( test == null )
@@ -206,7 +206,7 @@ package buRRRn.ASTUce
                 suite = runner.getTest(test);
             }
             
-            if( test is ITest )
+            if( test is Test )
             {
                 suite = test;
             }
@@ -238,7 +238,7 @@ package buRRRn.ASTUce
         /**
          * Do the run process.
          */
-        public function doRun( suite:ITest ):TestResult
+        public function doRun( suite:Test ):TestResult
         {
             var result:TestResult = new TestResult();
             result.addListener( printer );

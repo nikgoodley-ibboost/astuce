@@ -22,7 +22,7 @@
 
 package buRRRn.ASTUce.samples
 {
-    import buRRRn.ASTUce.framework.ITest;
+    import buRRRn.ASTUce.framework.Test;
     import buRRRn.ASTUce.framework.TestSuite;
     import buRRRn.ASTUce.Runner;
     import buRRRn.ASTUce.samples.money.MoneyTest;
@@ -42,7 +42,7 @@ package buRRRn.ASTUce.samples
             Runner.run(suite());
         }
         
-        public static function suite():ITest
+        public static function suite():Test
         {
             var suite:TestSuite = new TestSuite("All ASTUce sample tests");
             //suite.simpleTrace = true;

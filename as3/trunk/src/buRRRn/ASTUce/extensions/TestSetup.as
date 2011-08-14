@@ -33,7 +33,7 @@ package buRRRn.ASTUce.extensions
         /**
          * Creates a new TestSetup instance.
          */
-        public function TestSetup( test:ITest )
+        public function TestSetup( test:Test )
         {
             super( test );
         }

@@ -23,14 +23,14 @@
 package buRRRn.ASTUce.tests.extensions
 {
     import buRRRn.ASTUce.extensions.TestSetup;
-    import buRRRn.ASTUce.framework.ITest;
+    import buRRRn.ASTUce.framework.Test;
     
     [ExcludeClass]
     public class FailedTornDown extends TestSetup
     {
         private var _tornDown:Boolean = false;
         
-        public function FailedTornDown( test:ITest )
+        public function FailedTornDown( test:Test )
         {
             super( test );
         }

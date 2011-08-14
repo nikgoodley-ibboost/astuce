@@ -23,12 +23,12 @@
 package buRRRn.ASTUce.tests.extensions
 {
     import buRRRn.ASTUce.extensions.TestSetup;
-    import buRRRn.ASTUce.framework.ITest;
+    import buRRRn.ASTUce.framework.Test;
     
     [ExcludeClass]
     public class FailedSetUp extends TestSetup
     {
-        public function FailedSetUp( test:ITest )
+        public function FailedSetUp( test:Test )
         {
             super( test );
         }

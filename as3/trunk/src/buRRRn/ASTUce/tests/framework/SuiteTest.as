@@ -39,7 +39,7 @@ package buRRRn.ASTUce.tests.framework
            build the suite manually, because some of the suites
            are testing the functionality that automatically builds suites.
         */
-        static public function suite():ITest
+        static public function suite():Test
         {
             var suite:TestSuite = new TestSuite( "SuiteTest" );
             
@@ -64,7 +64,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testOneTestCase():void
         {
-            var t:ITest = new TestSuite( OneTestCase );
+            var t:Test = new TestSuite( OneTestCase );
             t.run( result );
             assertTrue( result.runCount     == 1 );
             assertTrue( result.failureCount == 0 );
@@ -83,7 +83,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testNoTestCaseClass():void
         {
-            var t:ITest = new TestSuite( NoTestCaseClass );
+            var t:Test = new TestSuite( NoTestCaseClass );
             t.run( result );
             assertEquals( 1, result.runCount ); //warning test
             assertTrue( !result.wasSuccessful() );
@@ -91,7 +91,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testNoTestCases():void
         {
-            var t:ITest = new TestSuite( NoTestCases );
+            var t:Test = new TestSuite( NoTestCases );
             t.run( result );
             assertEquals( 1, result.runCount ); //warning test
             assertTrue( result.failureCount == 1 );
@@ -100,7 +100,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testNotExistingTestCase():void
         {
-            var t:ITest = new SuiteTest( "notExistingMethod" );
+            var t:Test = new SuiteTest( "notExistingMethod" );
             t.run( result );
             assertTrue( result.runCount     == 1 );
             assertTrue( result.failureCount == 1 );
@@ -131,7 +131,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testShadowedTests():void
         {
-            var t:ITest = new TestSuite( OverrideTestCase );
+            var t:Test = new TestSuite( OverrideTestCase );
             t.run( result );
             assertEquals( 1, result.runCount );
         }

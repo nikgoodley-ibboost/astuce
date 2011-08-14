@@ -21,8 +21,8 @@
 */
 
 //framework
-include "buRRRn/ASTUce/framework/ITest.as";
-include "buRRRn/ASTUce/framework/ITestListener.as";
+include "buRRRn/ASTUce/framework/Test.as";
+include "buRRRn/ASTUce/framework/TestListener.as";
 
 include "buRRRn/ASTUce/framework/Assert.as";
 include "buRRRn/ASTUce/framework/ArrayAssert.as";
@@ -38,7 +38,7 @@ include "buRRRn/ASTUce/framework/TestSuite.as";
 include "buRRRn/ASTUce/framework/TestWarning.as";
 
 //runner
-include "buRRRn/ASTUce/runner/ITestRunListener.as";
+include "buRRRn/ASTUce/runner/TestRunListener.as";
 
 include "buRRRn/ASTUce/runner/BaseTestRunner.as";
 include "buRRRn/ASTUce/runner/NullSuiteError.as";

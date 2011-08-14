@@ -38,7 +38,7 @@ package buRRRn.ASTUce.tests
             
         }
         
-        static public function suite():ITest
+        static public function suite():Test
         {
             var suite:TestSuite = new TestSuite( "All ASTUce tests" );
             

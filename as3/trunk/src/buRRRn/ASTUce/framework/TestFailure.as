@@ -28,13 +28,13 @@ package buRRRn.ASTUce.framework
      */
     public class TestFailure
     {
-        protected var _failedTest:ITest;
+        protected var _failedTest:Test;
         protected var _thrownError:Error;
 
         /**
          * Creates a TestFailure with the given test and error.
          */
-        public function TestFailure( failedTest:ITest, thrownError:Error )
+        public function TestFailure( failedTest:Test, thrownError:Error )
         {
             _failedTest = failedTest;
             _thrownError = thrownError;
@@ -56,7 +56,7 @@ package buRRRn.ASTUce.framework
         /**
          * Gets the failed test.
          */
-        public function get failedTest():ITest
+        public function get failedTest():Test
         {
             return _failedTest;
         }

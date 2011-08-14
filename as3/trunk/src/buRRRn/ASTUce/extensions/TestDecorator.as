@@ -29,15 +29,15 @@ package buRRRn.ASTUce.extensions
      * <p>Use TestDecorator as the base class for defining new test decorators.</p>
      * <p>Test decorator subclasses can be introduced to add behaviour before or after a test is run.</p>
      */
-    public class TestDecorator extends Assert implements ITest
+    public class TestDecorator extends Assert implements Test
     {
         	
         /**
          * @private
          */
-        private var _test:ITest;
+        private var _test:Test;
         
-        public function TestDecorator( test:ITest )
+        public function TestDecorator( test:Test )
         {
             _test = test;
         }
@@ -53,7 +53,7 @@ package buRRRn.ASTUce.extensions
         /**
          * Indicates the ITest reference of this decorator.
          */
-        public function get test():ITest
+        public function get test():Test
         {
             return _test;
         }

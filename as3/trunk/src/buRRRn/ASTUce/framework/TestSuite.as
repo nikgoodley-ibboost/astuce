@@ -55,7 +55,7 @@ package buRRRn.ASTUce.framework
      * 
      * This constructor creates a suite with all the methods starting with "test" that take no arguments.
      */       
-    public class TestSuite implements ITest
+    public class TestSuite implements Test
     {
         
         //private var config:Object = metadata.config;
@@ -121,7 +121,7 @@ package buRRRn.ASTUce.framework
                 }
             }
             
-            if( theConstructor is ITest )
+            if( theConstructor is Test )
             {
                 LOG::P { log.d( "theConstructor is ITest" ); }
                 //trace( "ctor addtest : " + Reflection.getClassName( theConstructor ) );
@@ -190,7 +190,7 @@ package buRRRn.ASTUce.framework
                 return;
             }
             
-            if( !(ctorResult is ITest) )
+            if( !(ctorResult is Test) )
             {
                 addTest( _warning( format( metadata.strings.ctorNotATest, className ) ) );
                 return;
@@ -231,7 +231,7 @@ package buRRRn.ASTUce.framework
         /**
          * @private
          */
-        private static function _warning( message:String, detail:String = "" ):ITest
+        private static function _warning( message:String, detail:String = "" ):Test
         {
             return new TestWarning( message, detail );
         }
@@ -347,14 +347,14 @@ package buRRRn.ASTUce.framework
         /**
          * Creates a test corresponding to the method name in theConstructor class.
          */
-        public static function createTest( theConstructor:Class, name:String ):ITest
+        public static function createTest( theConstructor:Class, name:String ):Test
         {
             if( theConstructor == null )
             {
                 return( _warning( format( metadata.strings.canNotCreateTest, name ) ) );
             }
             
-            var test:ITest;
+            var test:Test;
             var classname:String = getClassName( theConstructor );
             try
             {
@@ -381,7 +381,7 @@ package buRRRn.ASTUce.framework
         /**
          * Adds a test to the suite.
          */
-        public function addTest( test:ITest ):void
+        public function addTest( test:Test ):void
         {
             /* attention:
                If you try to test something that has not been
@@ -393,7 +393,7 @@ package buRRRn.ASTUce.framework
                 return;
             }
             
-            if( !(test is ITest) )
+            if( !(test is Test) )
             {
                 addTest( _warning( metadata.strings.argTestNotATest ) );
                 return;
@@ -416,7 +416,7 @@ package buRRRn.ASTUce.framework
         public function run( result:TestResult ):void
         {
             var i:int;
-            var test:ITest;
+            var test:Test;
             
             for( i=0; i< tests.length; i++ )
             {
@@ -433,7 +433,7 @@ package buRRRn.ASTUce.framework
         /**
          * Runs the test.
          */
-        public function runTest( test:ITest, result:TestResult ):void
+        public function runTest( test:Test, result:TestResult ):void
         {
             test.run( result );
         }
@@ -442,7 +442,7 @@ package buRRRn.ASTUce.framework
          * Returns the test at the given index.
          * @return the test at the given index.
          */
-        public function testAt( index:int ):ITest
+        public function testAt( index:int ):Test
         {
             return _tests[ index ];
         }

@@ -22,13 +22,13 @@
 
 package buRRRn.ASTUce.tests.framework
 {
-    import buRRRn.ASTUce.framework.ITest;
+    import buRRRn.ASTUce.framework.Test;
     import buRRRn.ASTUce.framework.TestCase;
     import buRRRn.ASTUce.framework.TestResult;
     import buRRRn.ASTUce.framework.Protectable;
     
     [ExcludeClass]
-    public class DoubleTestCase implements ITest
+    public class DoubleTestCase implements Test
     {
         private var _testcase:TestCase;
         

@@ -29,8 +29,8 @@ package buRRRn.ASTUce.ui
     
     import buRRRn.ASTUce.metadata;
     import buRRRn.ASTUce.framework.AssertionFailedError;
-    import buRRRn.ASTUce.framework.ITest;
-    import buRRRn.ASTUce.framework.ITestListener;
+    import buRRRn.ASTUce.framework.Test;
+    import buRRRn.ASTUce.framework.TestListener;
     import buRRRn.ASTUce.framework.TestFailure;
     import buRRRn.ASTUce.framework.TestResult;
     import buRRRn.ASTUce.runner.BaseTestRunner;
@@ -38,7 +38,7 @@ package buRRRn.ASTUce.ui
     /**
      * The UI result printer object.
      */
-    public class ResultPrinter implements ITestListener
+    public class ResultPrinter implements TestListener
     {
         protected var config:Object  = metadata.config;
         protected var strings:Object = metadata.strings;
@@ -170,11 +170,11 @@ package buRRRn.ASTUce.ui
             return _writer;
         }
         
-        // implementation of <ITestListener>
+        // implementation of <TestListener>
         
         /* An error occurred.
         */
-        public function addError( test:ITest, e:Error ):void
+        public function addError( test:Test, e:Error ):void
         {
             if( !config.showPrinterShortTests )
             {
@@ -186,7 +186,7 @@ package buRRRn.ASTUce.ui
         
         /* A failure occurred.
         */
-        public function addFailure( test:ITest, afe:AssertionFailedError ):void
+        public function addFailure( test:Test, afe:AssertionFailedError ):void
         {
             if( !config.showPrinterShortTests )
             {
@@ -198,7 +198,7 @@ package buRRRn.ASTUce.ui
         
         /* A valid test occurred.
         */
-        public function addValid( test:ITest ):void
+        public function addValid( test:Test ):void
         {
             if( !config.showPrinterShortTests )
             {
@@ -210,14 +210,14 @@ package buRRRn.ASTUce.ui
         
         /* A test ended.
         */
-        public function endTest( test:ITest ):void
+        public function endTest( test:Test ):void
         {
             
         }
         
         /* A test started.
         */
-        public function startTest( test:ITest ):void
+        public function startTest( test:Test ):void
         {
             if( !config.showPrinterShortTests )
             {

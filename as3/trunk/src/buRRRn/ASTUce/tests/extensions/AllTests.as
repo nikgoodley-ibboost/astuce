@@ -28,7 +28,7 @@ package buRRRn.ASTUce.tests.extensions
 	public class AllTests
     {
         
-        static public function suite():ITest
+        static public function suite():Test
         {
             var suite:TestSuite = new TestSuite( "Extensions Tests" );
             //suite.simpleTrace = true;

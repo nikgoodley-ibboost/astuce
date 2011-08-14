@@ -28,7 +28,7 @@ package buRRRn.ASTUce.tests.mocks
     public class AllTests
     {
         
-        public static function suite():ITest
+        public static function suite():Test
         {
             var suite:TestSuite = new TestSuite( "Mock Tests" );
             

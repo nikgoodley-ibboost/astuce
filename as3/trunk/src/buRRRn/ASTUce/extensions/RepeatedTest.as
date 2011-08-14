@@ -40,7 +40,7 @@ package buRRRn.ASTUce.extensions
          * @param test The ITest reference of this object.
          * @param repeat The number of iteration of this repeated test.
          */
-        public function RepeatedTest( test:ITest, repeat:int )
+        public function RepeatedTest( test:Test, repeat:int )
         {
             super( test );
             

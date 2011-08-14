@@ -119,7 +119,7 @@ package buRRRn.ASTUce.framework
         /**
          * Adds an error to the list of errors. The passed in exception caused the error.
          */
-        public function addError( test:ITest, e:Error ):void
+        public function addError( test:Test, e:Error ):void
         {
             var i:int;
             var listeners:Array = cloneListeners();
@@ -135,7 +135,7 @@ package buRRRn.ASTUce.framework
         /**
          * Adds a failure to the list of failures. The passed in exception caused the failure.
          */
-        public function addFailure( test:ITest, afe:AssertionFailedError ):void
+        public function addFailure( test:Test, afe:AssertionFailedError ):void
         {
             var i:int;
             var listeners:Array = cloneListeners();
@@ -151,7 +151,7 @@ package buRRRn.ASTUce.framework
         /**
          * Adds a a valid test to the listeners.
          */
-        public function addValid( test:ITest ):void
+        public function addValid( test:Test ):void
         {
             var i:int;
             var listeners:Array = cloneListeners();
@@ -165,7 +165,7 @@ package buRRRn.ASTUce.framework
         /**
          * Registers a TestListener.
          */
-        public function addListener( listener:ITestListener ):void
+        public function addListener( listener:TestListener ):void
         {
             _listeners.push( listener );
         }
@@ -181,7 +181,7 @@ package buRRRn.ASTUce.framework
         /**
          * Informs the result that a test was completed.
          */
-        public function endTest( test:ITest ):void
+        public function endTest( test:Test ):void
         {
             var i:int;
             var listeners:Array = cloneListeners();
@@ -195,7 +195,7 @@ package buRRRn.ASTUce.framework
         /**
          * Unregisters a TestListener.
          */
-        public function removeListener( listener:ITestListener ):void
+        public function removeListener( listener:TestListener ):void
         {
             var index:int = _listeners.indexOf( listener );
             
@@ -226,7 +226,7 @@ package buRRRn.ASTUce.framework
          * Runs a TestCase.
          * <p><b>Note :</b>Yes, you can catch errors by error type :)</p>
          */
-        public function runProtected( test:ITest, p:Protectable ):void
+        public function runProtected( test:Test, p:Protectable ):void
         {
             try
             {
@@ -249,7 +249,7 @@ package buRRRn.ASTUce.framework
         /**
          * Informs the result that a test will be started.
          */
-        public function startTest( test:ITest ):void
+        public function startTest( test:Test ):void
         {
             var i:int;
             var count:int = test.countTestCases;

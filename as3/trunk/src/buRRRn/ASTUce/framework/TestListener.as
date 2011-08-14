@@ -26,7 +26,7 @@ package buRRRn.ASTUce.framework
     /**
      * A Listener for test progress.
      */
-    public interface ITestListener
+    public interface TestListener
     {
         
         /**

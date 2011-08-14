@@ -25,7 +25,7 @@ package buRRRn.ASTUce.tests.framework
     import buRRRn.ASTUce.framework.*;
     
     [ExcludeClass]
-    public class TestListenerTest extends TestCase implements ITestListener
+    public class TestListenerTest extends TestCase implements TestListener
     {
         
         private var _result:TestResult;
@@ -40,27 +40,27 @@ package buRRRn.ASTUce.tests.framework
             super( name );
         }
         
-        public function addError( test:ITest, e:Error ):void
+        public function addError( test:Test, e:Error ):void
         {
             _errorCount++;
         }
         
-        public function addFailure( test:ITest, afe:AssertionFailedError ):void
+        public function addFailure( test:Test, afe:AssertionFailedError ):void
         {
             _failureCount++;
         }
         
-        public function addValid( test:ITest ):void
+        public function addValid( test:Test ):void
         {
             _validCount++;
         }
         
-        public function endTest( test:ITest ):void
+        public function endTest( test:Test ):void
         {
             _endCount++;
         }
         
-        public function startTest( test:ITest ):void
+        public function startTest( test:Test ):void
         {
             _startCount++;
         }

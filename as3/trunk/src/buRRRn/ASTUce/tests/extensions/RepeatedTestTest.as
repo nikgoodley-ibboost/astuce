@@ -43,7 +43,7 @@ package buRRRn.ASTUce.tests.extensions
         
         public function testRepeatedOnce():void
         {
-            var test:ITest = new RepeatedTest( _suite, 1 );
+            var test:Test = new RepeatedTest( _suite, 1 );
     		assertEquals( 2, test.countTestCases );
     		
     		var result:TestResult = new TestResult();
@@ -53,7 +53,7 @@ package buRRRn.ASTUce.tests.extensions
         
         public function testRepeatedMoreThanOnce():void
         {
-            var test:ITest = new RepeatedTest( _suite, 3 );
+            var test:Test = new RepeatedTest( _suite, 3 );
             assertEquals( 6, test.countTestCases );
             
             var result:TestResult = new TestResult();
@@ -63,7 +63,7 @@ package buRRRn.ASTUce.tests.extensions
         
         public function testRepeatedZero():void
         {
-            var test:ITest = new RepeatedTest( _suite, 0 );
+            var test:Test = new RepeatedTest( _suite, 0 );
             assertEquals( 0, test.countTestCases );
             
             var result:TestResult = new TestResult();

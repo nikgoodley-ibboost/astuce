@@ -34,7 +34,7 @@ package buRRRn.ASTUce.tests.framework
             super( name );
         }
         
-        protected function verifyError( test:ITest ):void
+        protected function verifyError( test:Test ):void
         {
     		var result:TestResult = new TestResult();
     		test.run( result );
@@ -126,7 +126,7 @@ package buRRRn.ASTUce.tests.framework
         
         public function testExceptionRunningAndTearDown():void
         {
-            var t:ITest = new ExceptionRunningAndTearDown();
+            var t:Test = new ExceptionRunningAndTearDown();
             var result:TestResult = new TestResult();
             t.run( result );
             var failure:TestFailure = result.errors[0];

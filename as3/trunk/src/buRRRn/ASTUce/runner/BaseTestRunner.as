@@ -24,8 +24,8 @@ package buRRRn.ASTUce.runner
 {
     import core.reflect.*;
     
-    import buRRRn.ASTUce.framework.ITest;
-    import buRRRn.ASTUce.framework.ITestListener;
+    import buRRRn.ASTUce.framework.Test;
+    import buRRRn.ASTUce.framework.TestListener;
     import buRRRn.ASTUce.framework.AssertionFailedError;
     import buRRRn.ASTUce.framework.TestSuite;
     
@@ -41,7 +41,7 @@ package buRRRn.ASTUce.runner
      * think about how to refactor that in a cleaner way...
      * </p>
      */
-    public class BaseTestRunner implements ITestListener, ITestRunListener
+    public class BaseTestRunner implements TestListener, TestRunListener
     {
         
         /**
@@ -122,7 +122,7 @@ package buRRRn.ASTUce.runner
         /**
          * An error occurred.
          */
-        public function addError( test:ITest, e:Error ):void
+        public function addError( test:Test, e:Error ):void
         {
             testFailed( TestRunStatus.error, test.toString(), e.toString() );
         }
@@ -130,7 +130,7 @@ package buRRRn.ASTUce.runner
         /**
          * A failure occurred.
          */
-        public function addFailure( test:ITest, afe:AssertionFailedError ):void
+        public function addFailure( test:Test, afe:AssertionFailedError ):void
         {
             testFailed( TestRunStatus.failure, test.toString(), afe.toString() );
         }
@@ -138,7 +138,7 @@ package buRRRn.ASTUce.runner
         /**
          * A valid test occurred.
          */
-        public function addValid( test:ITest ):void
+        public function addValid( test:Test ):void
         {
             
         }
@@ -146,7 +146,7 @@ package buRRRn.ASTUce.runner
         /**
          * A test ended.
          */
-        public function endTest( test:ITest ):void
+        public function endTest( test:Test ):void
         {
             testEnded( test.toString() );
         }
@@ -154,7 +154,7 @@ package buRRRn.ASTUce.runner
         /**
          * Invoked when the test is ended.
          */
-        public function startTest( test:ITest ):void
+        public function startTest( test:Test ):void
         {
             testStarted( test.toString() );
         }
@@ -227,7 +227,7 @@ package buRRRn.ASTUce.runner
          * Returns the Test corresponding to the given suite. 
          * This is a template method, subclasses override <code>runFailed()</code>, <code>clearStatus()</code>.
          */
-        public function getTest( suiteClassName:String ):ITest
+        public function getTest( suiteClassName:String ):Test
         {
             if( (suiteClassName == "") || (suiteClassName == null) )
             {
@@ -267,7 +267,7 @@ package buRRRn.ASTUce.runner
                 return new TestSuite( clazz );
             }
             
-            var test:ITest;
+            var test:Test;
             
             try
             {

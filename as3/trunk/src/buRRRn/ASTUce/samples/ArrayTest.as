@@ -35,7 +35,7 @@ package buRRRn.ASTUce.samples
             //TestRunner.run (suite());
         }
         
-        public static function suite():ITest
+        public static function suite():Test
         {
             return new TestSuite(ArrayTest);
         }

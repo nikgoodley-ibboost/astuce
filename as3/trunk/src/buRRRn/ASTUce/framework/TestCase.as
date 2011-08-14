@@ -33,7 +33,7 @@ package buRRRn.ASTUce.framework
      * @see TestResult
      * @see TestSuite
      */
-    public class TestCase extends Assert implements ITest
+    public class TestCase extends Assert implements Test
     {
         
         private var strings:Object = metadata.strings;

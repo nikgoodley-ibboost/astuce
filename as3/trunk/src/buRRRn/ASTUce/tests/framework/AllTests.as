@@ -23,7 +23,6 @@
 package buRRRn.ASTUce.tests.framework
 {
     import buRRRn.ASTUce.framework.*;
-    
     import buRRRn.ASTUce.tests.framework.*;
     
     /* TestSuite that runs all the framework tests.
@@ -32,7 +31,7 @@ package buRRRn.ASTUce.tests.framework
     public class AllTests
     {
         
-        static public function suite():ITest
+        static public function suite():Test
         {
             var suite:TestSuite = new TestSuite( "Framework Tests" );
             //suite.simpleTrace = true;

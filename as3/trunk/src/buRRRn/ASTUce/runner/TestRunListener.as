@@ -1,5 +1,4 @@
-
-/*
+﻿/*
   The contents of this file are subject to the Mozilla Public License Version
   1.1 (the "License"); you may not use this file except in compliance with
   the License. You may obtain a copy of the License at 
@@ -20,31 +19,45 @@
   Marc Alcaraz <ekameleon@gmail.com>.
 
 */
-package buRRRn.ASTUce.framework
+
+package buRRRn.ASTUce.runner
 {
     
     /**
-     * An ITest can be run and collect its results.
-     * @see TestResult
+     * A listener interface for observing the execution of a test run.
      */
-    public interface ITest
+    public interface TestRunListener
     {
         
         /**
-         * Counts the number of test cases that will be run by this test.
+         * Invoked when the test is ended.
          */
-        function get countTestCases():int;
+        function testEnded( testName:String ):void        
         
         /**
-         * Runs a test and collects its result in a TestResult instance.
+         * Invoked when the test is failed.
          */
-        function run( result:TestResult ):void;
+        function testFailed( status:TestRunStatus, testName:String, trace:String ):void        
         
         /**
-         * Returns a string representation of the object.
-         * Returns a string representation of the object.
+         * Invoked when the test process is ending.
+         */  
+        function testRunEnded( elapsedTime:Number ):void        
+        
+        /**
+         * Invoked when the test process is started.
          */
-        function toString( ...args ):String;
+        function testRunStarted( testSuiteName:String, testCount:int ):void
+        
+        /**
+         * Invoked when the test process is stopped.
+         */
+        function testRunStopped( elapsedTime:Number ):void
+        
+        /**
+         * Invoked when the test is started.
+         */
+        function testStarted( testName:String ):void
         
     }
     
