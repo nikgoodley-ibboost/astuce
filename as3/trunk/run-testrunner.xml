@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="astuce-SA" default="main" basedir=".">
+    
+    <target name="define">
+        
+        <property file="src/buRRRn/ASTUce/version.properties"/>
+        <property file="build/build.properties"/>
+        
+    </target>
+    
+    <target name="clean" depends="define">
+        <delete file="${basedir}/src/astuce-testrunner.abc" />
+    </target>
+    
+    <target name="main" depends="clean,build-testrunner,run-testrunner,after">
+        
+    </target>
+    
+    <target name="build-testrunner">
+        
+        <java
+            dir="${basedir}"
+            jar="${ASC}"
+            fork="true"
+            failonerror="true"
+        >
+            <arg line="-AS3 -strict -optimize"/>
+            <arg line="-config LOG::P=false -config API::REDTAMARIN=true -config API::FLASH=false"/>
+            <arg line="-import ${builtin} -import ${toplevel} -import ${avmglue} -import ${logd} -import ${core} -import ${system.terminals}"/>
+            <arg line="src/astuce-testrunner.as"/>
+        </java>
+        
+    </target>
+    
+    <target name="run-testrunner">
+        
+        <exec executable="${basedir}/bin/redshell_d">
+            <!-- <arg value="-Dastrace 4"/> -->
+            <arg value="${avmglue}"/>
+            <arg value="${logd}"/>
+            <arg value="${core}"/>
+            <arg value="${system.terminals}"/>
+            <arg value="src/astuce-testrunner.abc"/>
+        </exec>
+    </target>
+    
+    <target name="after">
+        
+    </target>
+    
+</project>
