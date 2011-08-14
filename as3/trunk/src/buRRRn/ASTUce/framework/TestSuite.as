@@ -25,7 +25,8 @@ package buRRRn.ASTUce.framework
     
     import core.strings.format; void(format);
     import core.strings.startsWith; void(startsWith);
-    import core.reflect.*
+    import core.reflect.*;
+    import core.log;
     
     import buRRRn.ASTUce.metadata;
     
@@ -57,8 +58,8 @@ package buRRRn.ASTUce.framework
     public class TestSuite implements ITest
     {
         
-        private var config:Object = metadata.config;
-        private static var strings:Object = metadata.strings;
+        //private var config:Object = metadata.config;
+        //private static var strings:Object = metadata.strings;
         
         /**
          * @private
@@ -90,6 +91,7 @@ package buRRRn.ASTUce.framework
          */
         public function TestSuite( theConstructor:* = null, name:String = "", simpleTrace:Boolean = false )
         {
+            LOG::P { log.i( "TestSuite( theConstructor="+theConstructor+", name="+name+", simpleTrace="+simpleTrace+" )" ); }
             if( (name != "") && (name != null) )
             {
                 _name = name;
@@ -100,11 +102,13 @@ package buRRRn.ASTUce.framework
             //Constructs an empty TestSuite
             if( theConstructor == null )
             {
+                LOG::P { log.d( "theConstructor == null" ); }
                 return;
             }
             
             if( theConstructor is String )
             {
+                LOG::P { log.d( "theConstructor is String" ); }
                 try
                 {
                     var originalCtor:String = theConstructor;
@@ -119,6 +123,7 @@ package buRRRn.ASTUce.framework
             
             if( theConstructor is ITest )
             {
+                LOG::P { log.d( "theConstructor is ITest" ); }
                 //trace( "ctor addtest : " + Reflection.getClassName( theConstructor ) );
                 addTest( theConstructor );
                 return;
@@ -129,6 +134,7 @@ package buRRRn.ASTUce.framework
             
             if( theConstructor is Class )
             {
+                LOG::P { log.d( "theConstructor is Class" ); }
                 className = getClassName( theConstructor );
             }
             
@@ -174,11 +180,11 @@ package buRRRn.ASTUce.framework
                 */
                 if( er.errorID == 1063 )
                 {
-                    addTest( _warning( format( strings.ctorIsMalformed, className ), er.message ) );
+                    addTest( _warning( format( metadata.strings.ctorIsMalformed, className ), er.message ) );
                 }
                 else
                 {
-                    addTest( _warning( format( strings.ctorNotInstanciable, className ), er.message ) );
+                    addTest( _warning( format( metadata.strings.ctorNotInstanciable, className ), er.message ) );
                 }
                 
                 return;
@@ -186,13 +192,13 @@ package buRRRn.ASTUce.framework
             
             if( !(ctorResult is ITest) )
             {
-                addTest( _warning( format( strings.ctorNotATest, className ) ) );
+                addTest( _warning( format( metadata.strings.ctorNotATest, className ) ) );
                 return;
             }
             
             //Adds all the methods starting with "test" as test cases to the suite.
-            var names:Array = getClassMethods( ctorResult, config.testInheritedTests );
-            //trace( "method names: " + names );
+            var names:Array = getClassMethods( ctorResult, metadata.config.testInheritedTests );
+            LOG::P { log.d( "method names: " + names ); }
             
             /* note:
                we want to prefilter the list of methods
@@ -208,7 +214,7 @@ package buRRRn.ASTUce.framework
                get all the methods starting with "test"
             */
             names = names.filter( _isTestMethodFilter );
-            //trace( "method names filtered: " + names );
+            LOG::P { log.d( "method names filtered: " + names ); }
             
             for( var i:int=0; i<names.length; i++ )
             {
@@ -217,7 +223,7 @@ package buRRRn.ASTUce.framework
             
             if( testCount == 0 )
             {
-                addTest( _warning( format( strings.noTestsFound, className ) ) );
+                addTest( _warning( format( metadata.strings.noTestsFound, className ) ) );
             }
             
         }
@@ -345,7 +351,7 @@ package buRRRn.ASTUce.framework
         {
             if( theConstructor == null )
             {
-                return( _warning( format( strings.canNotCreateTest, name ) ) );
+                return( _warning( format( metadata.strings.canNotCreateTest, name ) ) );
             }
             
             var test:ITest;
@@ -361,11 +367,11 @@ package buRRRn.ASTUce.framework
                 */
                 if( e.errorID == 1063 )
                 {
-                    return _warning( format( strings.ctorIsMalformedMethod, name, classname ), e.message );
+                    return _warning( format( metadata.strings.ctorIsMalformedMethod, name, classname ), e.message );
                 }
                 else
                 {
-                    return _warning( format( strings.ctorNotInstanciableMethod, name, classname ), e.message );
+                    return _warning( format( metadata.strings.ctorNotInstanciableMethod, name, classname ), e.message );
                 }
             }
             
@@ -383,13 +389,13 @@ package buRRRn.ASTUce.framework
             */
             if( test == null )
             {
-                addTest( _warning( strings.argTestDoesNotExist ) );
+                addTest( _warning( metadata.strings.argTestDoesNotExist ) );
                 return;
             }
             
             if( !(test is ITest) )
             {
-                addTest( _warning( strings.argTestNotATest ) );
+                addTest( _warning( metadata.strings.argTestNotATest ) );
                 return;
             }
             
