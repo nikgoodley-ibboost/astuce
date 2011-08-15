@@ -42,7 +42,7 @@ package library.ASTUce
         public static var version:core.version = new core.version();
         
         include "version.properties";
-         
+        
         version.revision = parseInt( "$Rev$".split( " " )[1] );
         
         /** Copyright of the project. */
