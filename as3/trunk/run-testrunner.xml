@@ -27,7 +27,7 @@
         >
             <arg line="-AS3 -strict -optimize"/>
             <arg line="-config LOG::P=false -config API::REDTAMARIN=true -config API::FLASH=false"/>
-            <arg line="-import ${builtin} -import ${toplevel} -import ${avmglue} -import ${logd} -import ${core} -import ${system.terminals}"/>
+            <arg line="-import ${builtin} -import ${toplevel} -import ${logd} -import ${core} -import ${system.terminals}"/>
             <arg line="src/astuce-testrunner.as"/>
         </java>
         
@@ -37,8 +37,7 @@
         
         <exec executable="${basedir}/bin/redshell_d">
             <!-- <arg value="-Dastrace 4"/> -->
-            <arg value="${avmglue}"/>
-            <arg value="${logd}"/>
+            <!-- <arg value="${logd}"/> -->
             <arg value="${core}"/>
             <arg value="${system.terminals}"/>
             <arg value="src/astuce-testrunner.abc"/>
