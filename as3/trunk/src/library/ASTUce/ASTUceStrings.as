@@ -27,6 +27,8 @@ package library.ASTUce
     */
     public class ASTUceStrings
     {
+        public function ASTUceStrings() {}
+        
         public var separator:String = "----------------------------------------------------------------";
         public var expectedNotSame:String = "{0}expected not same";
         public var expectedSame:String = "{0}expected same:<{1}> was not:<{2}>";
