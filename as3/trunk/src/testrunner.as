@@ -41,7 +41,7 @@ package
             /* note:
                basic options to tune your output
             */
-            metadata.config.allowStackTrace     = true;
+            metadata.config.allowStackTrace = true;
             //metadata.config.allowErrorTrace     = false;
             //metadata.config.showPrinterDetails  = false;
             //metadata.config.showPrinterShortTests = false;
