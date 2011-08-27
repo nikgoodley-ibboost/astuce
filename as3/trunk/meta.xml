@@ -16,7 +16,7 @@
         
     </target>
     
-    <target name="build-doc">
+    <target name="build-doc" unless="${build.nodocumentation}">
         <!--         templates-path="${basedir}/${asdoc.template}" -->
         <asdoc
         output="${basedir}/${asdoc.output}"
