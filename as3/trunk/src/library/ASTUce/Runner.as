@@ -26,6 +26,7 @@ package library.ASTUce
     import core.reflect.getClassName; void(getClassName);
     import core.reflect.getClassMethods; void(getClassMethods);
     
+    
     import system.terminals.InteractiveConsole;
     import system.terminals.console;
     
@@ -148,7 +149,6 @@ package library.ASTUce
             for( var i:int = 0;i < args.length;i++ )
             {
                 suiteName = runner.getTestName( args[i] );
-                //console.writeLine( Strings.format( buRRRn.ASTUce.runner.strings.runTitle, suiteName, i ) );
                 console.writeLine( format( metadata.strings.runTitle, suiteName, i ) );
                 
                 try
@@ -216,8 +216,6 @@ package library.ASTUce
                 {
                     staticSuite = test["suite"];
                 }
-                
-                //var staticSuite:* = Reflection.getMethodByName( test, "suite" );
                 
                 if( staticSuite != null )
                 {
