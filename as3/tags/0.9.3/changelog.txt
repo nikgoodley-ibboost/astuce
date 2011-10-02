@@ -1,0 +1,22 @@
+* 0.9.3
+  - refactored all builds
+  - updated use of metadata
+    each time a statgic config or strings were used
+    replaced by metadata.config and metadata.strings
+  - added LOG::P traces in TestSuite
+  - small refactor to produce *.abc files
+  - now compatible with redtamarin, avmglue, etc.
+  - produce astuce.abc and astuce-test.abc
+  - renamed all interfaces to remove the prefix I
+    ITest -> Test, ITestListener -> TestListener, etc.
+  - changed the root package from buRRRn.* to library.*
+  - updated headers to 2011
+
+* 0.9.2
+  - updated mocks to compile, and headers+contributors
+  - refactored all the brackets { and }
+  - refactored about()/info()/config/strings into metadata
+  - modified all headers to update for 2010
+  - modified all headers for contributors
+  - removed all svn:externals, now we use swc in /lib-swc
+  - removed dependencies on eden, now we use core/dump
