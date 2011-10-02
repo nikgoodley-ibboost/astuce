@@ -32,7 +32,7 @@ package library.ASTUce
      */
     public class metadata
     {
-        /** Name of the project. */ 
+        /** Name of the project. */
         public static var name:String = "ASTUce";
         
         /** Full name of the project. */
