@@ -1,3 +1,8 @@
+* 0.9.4
+  - refactored all builds
+  - now we use svn 1.8.8
+  - now we use ant 1.9.3
+
 * 0.9.3
   - refactored all builds
   - updated use of metadata
